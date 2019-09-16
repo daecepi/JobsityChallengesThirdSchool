@@ -1,0 +1,63 @@
+
+/*
+    Pallete color description
+*/
+:root{
+    --primary-background: rgba(211, 227, 226,1);
+    --secondary-background: rgba(233, 245, 244, 1);
+
+    --primary-text-font: rgba(119, 150, 148, 1);
+    --secondary-text-font: rgba(89, 125, 123, 1);
+
+    --primary-soft-tile: rgba(140, 222, 162, 1);
+    --darker-soft-tile: rgba(121, 189, 139, 1);
+
+    --primary-dark-tile: rgba(63, 102, 74, 1);
+    --darker-dark-tile: rgba(100, 102, 111, 1);
+}
+
+/*
+    layout definitions
+*/
+html, body{
+    padding: 0%;
+    margin: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    display: grid;
+    grid-template-rows: 1fr 19fr 1fr;
+}
+
+.content{
+    display: grid;
+    grid-template-rows: 19fr 1fr;
+    background: var(--secondary-background);
+}
+
+header{
+    text-align: center;
+    background: var(--primary-background);
+}
+
+.soft-tile{
+    width: 100px;
+    height: 20px;
+    border: 2px solid var(--primary-text-font);
+}
+
+h1{
+    color: var(--primary-text-font);
+}
+
+.pedal-wrapper{
+    border: 1px solid var(--secondary-text-font);
+    color: var(--secondary-text-font);
+}
+
+a{
+    text-align: center;
+    display: block;
+}
