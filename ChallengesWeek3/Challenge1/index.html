@@ -8,11 +8,29 @@
     <title>Piano</title>
 </head>
 <body>
+        <audio id="audio10">
+            <source src="./src/sounds/note10s.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     <!--This page is oriented to spanish speakers even though all code is made in English-->
     <header><h1>Teclas de piano</h1></header>
     <div class="content">
+        <div class="configs">
+            <input type="number" id="num-sections" class="num-sections" placeholder="Numero de sectores..">
+            <button id="config">config</button>
+        </div>
         <div class="tiles-wrapper">
+            <div id="s1" class="soft-tile"></div>
+            <div class="dark-tile"></div>
             <div class="soft-tile"></div>
+            <div class="dark-tile"></div>
+            <div class="soft-tile"></div>
+            <div class="soft-tile"></div>
+            <div class="dark-tile"></div>
+            <div class="soft-tile"></div>
+            <div class="dark-tile"></div>
+            <div class="soft-tile"></div>
+            <div class="dark-tile"></div>
             <div class="soft-tile"></div>
         </div>
         <div class="pedal-wrapper">

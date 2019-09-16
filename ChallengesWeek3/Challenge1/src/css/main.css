@@ -28,24 +28,66 @@ html, body{
 
 body{
     display: grid;
-    grid-template-rows: 1fr 19fr 1fr;
-}
-
-.content{
-    display: grid;
-    grid-template-rows: 19fr 1fr;
-    background: var(--secondary-background);
+    grid-template-rows: 1fr 19fr;
 }
 
 header{
     text-align: center;
-    background: var(--primary-background);
+}
+
+.content{
+    display: grid;
+    grid-template-rows: 1fr 19fr 1fr;
+    background: var(--secondary-background);
+    padding-bottom: 0.5rem;
+}
+
+.configs{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.5rem;
+}
+
+.tiles-wrapper{
+    margin: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr)
 }
 
 .soft-tile{
-    width: 100px;
-    height: 20px;
+    height: 100%;
     border: 2px solid var(--primary-text-font);
+}
+
+.dark-tile{
+    position: absolute;
+    left: 0.8em;
+    height: 20px;
+    width: 20px;
+    background: red;
+}
+
+a{
+    height: 100%;
+    text-align: center;
+    align-content: center;
+    display: block;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+/*
+    Styling
+*/
+.num-sections{
+    border-radius: 20px;
+}
+
+header{
+    border: 2px solid var(--primary-text-font);
+    background: var(--primary-background);
 }
 
 h1{
@@ -53,11 +95,9 @@ h1{
 }
 
 .pedal-wrapper{
-    border: 1px solid var(--secondary-text-font);
     color: var(--secondary-text-font);
 }
 
 a{
-    text-align: center;
-    display: block;
+    border: 1px solid var(--secondary-text-font);
 }
