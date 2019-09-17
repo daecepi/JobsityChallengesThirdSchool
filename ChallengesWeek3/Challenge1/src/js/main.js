@@ -2,9 +2,10 @@
 
 
 /**
- * 
+ * 1234567890qwertyuiopasdfghjklñzxcvbnm 
 */
-var baseKeys = "1234567890qwertyuiopasdfghjklñzxcvbnm"; //Keys that are supported for assignation for tiles
+
+var baseKeys = "zxcvbnmasdfghjklñqwertyuiop1234567890"; //Keys that are supported for assignation for tiles
 var keysAssignmentList;
 var tilesList;
 function handlerSetting(tiles, sounds){
@@ -20,11 +21,12 @@ function handlerSetting(tiles, sounds){
 
 function keyListener(e) {
     console.log(e.keyCode);
-    tilesList[e.keyCode].play();
-}
-
-function assignKeys() {
-    
+    if (tilesList[e.keyCode]) {
+        if(!tilesList[e.keyCode].ended){
+            tilesList[e.keyCode].currentTime = 0;
+        }
+        tilesList[e.keyCode].play();
+    }
 }
 
 function generateScaleList(prestr = "", posstr = "") {
