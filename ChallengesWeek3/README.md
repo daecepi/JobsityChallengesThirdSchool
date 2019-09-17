@@ -15,3 +15,6 @@
 
 ## Approaches avaluated:
 1. Implementing abstract factory:to creacte the tiles recursevely (families would be: frequencies if user wants more than one)
+
+## Designed to:
+1. Change the base keys used in the applications just by changing the string given for it

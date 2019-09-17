@@ -5,11 +5,8 @@
  * 
 */
 var baseKeys = "1234567890qwertyuiopasdfghjklñzxcvbnm"; //Keys that are supported for assignation for tiles
-var noteScale;
-var sounde = document.querySelector("#audio10");
-
-var piano;
-
+var keysAssignmentList;
+var tilesList;
 function handlerSetting(tiles, sounds){
     for(let i = 0; i < tiles.length; i++) {
         let element = document.querySelector("#"+tiles[i]);
@@ -18,9 +15,16 @@ function handlerSetting(tiles, sounds){
         });
     }
 
-    document.addEventListener("keypress", function (e) {
-        console.log(e.keyCode);
-    }, true);
+    document.addEventListener("keypress", keyListener, true);
+}
+
+function keyListener(e) {
+    console.log(e.keyCode);
+    tilesList[e.keyCode].play();
+}
+
+function assignKeys() {
+    
 }
 
 function generateScaleList(prestr = "", posstr = "") {
@@ -33,19 +37,23 @@ function generateScaleList(prestr = "", posstr = "") {
     return soundList;
 }
 
-function play() {
-    sound.play();
-}
-
 /*
     This function contains the initial setup of the application
 */
 function init() {
     
     let tiles = ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "d1", "d2", "d4", "d5", "d6"];
+
+    keysAssignmentList = baseKeys.split("");
     
     
     let soundsList = generateScaleList("./src/sounds/note", "s.mp3");
+
+    tilesList = [];
+
+    for (let i = 0; i < 12; i++) {
+        tilesList[keysAssignmentList.shift().charCodeAt(0)] = soundsList[i];
+    }
 
     handlerSetting(tiles, soundsList);
 }
