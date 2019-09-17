@@ -9,22 +9,6 @@
 </head>
 <body>
         <audio id="audio10">
-                <source src="./src/sounds/note10s.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        <audio id="audio10">
-                <source src="./src/sounds/note10s.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        <audio id="audio10">
-                <source src="./src/sounds/note10s.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        <audio id="audio10">
-                <source src="./src/sounds/note10s.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        <audio id="audio10">
             <source src="./src/sounds/note10s.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
@@ -32,27 +16,29 @@
     <header><h1>Teclas de piano</h1></header>
     <div class="content">
         <div class="configs">
-            <input type="number" id="num-sections" class="num-sections" placeholder="Numero de sectores..">
+            <input type="number" min="2" value="1" id="num-sections" class="num-sections" placeholder="Numero de sectores..">
             <button id="config">config</button>
         </div>
         <div class="tiles-wrapper">
             <div id="s1" class="soft-tile"></div>
-            <div class="dark-tile"></div>
-            <div class="soft-tile"></div>
-            <div class="dark-tile"></div>
-            <div class="soft-tile"></div>
-            <div class="soft-tile"></div>
-            <div class="dark-tile"></div>
-            <div class="soft-tile"></div>
-            <div class="dark-tile"></div>
-            <div class="soft-tile"></div>
-            <div class="dark-tile"></div>
-            <div class="soft-tile"></div>
+            <div id="d1" class="dark-tile doman"></div>
+            <div id="s2" class="soft-tile"></div>
+            <div id="d2" class="dark-tile reman"></div>
+            <div id="s3" class="soft-tile"></div>
+            <div id="s4" class="soft-tile"></div>
+            <div id="d4" class="dark-tile faman"></div>
+            <div id="s5" class="soft-tile"></div>
+            <div id="d5" class="dark-tile solman"></div>
+            <div id="s6" class="soft-tile"></div>
+            <div id="d6" class="dark-tile laman"></div>
+            <div id="s7" class="soft-tile"></div>
         </div>
         <div class="pedal-wrapper">
             <a id="foot-button">PEDAL</a>
         </div>
     </div>
+    <script src="./src/js/Tile.js"></script>
+    <script src="./src/js/Piano.js"></script>
     <script src="./src/js/main.js"></script>
 </body>
 </html>

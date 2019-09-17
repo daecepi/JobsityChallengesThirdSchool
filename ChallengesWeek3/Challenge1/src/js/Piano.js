@@ -4,7 +4,6 @@
 
 class Piano{
     constructor (keysSupported) {
-        super();
         this.numOctets = 1;
         this.keyAssignmentList = keysSupported.split("");
         this.handlers = {};
@@ -25,5 +24,3 @@ class Piano{
     }
 
 }
-
-modules.exports = Piano;
