@@ -1,6 +1,8 @@
 class Tile {
-    constructor(desc, frequency, sound, pedal){
+    constructor(type ,desc, frequency, sound, pedal){
+        this.type = type;
         this.htmlElement = document.querySelector("#"+desc);
+        console.log(desc);
         this.frequency = frequency;
         this.sound = sound;
         this.pressed = false;
@@ -9,25 +11,32 @@ class Tile {
 
     startSound(){
         if (!this.pressed) {
-            if(!tilesList[key].ended){
-                tilesList[key].currentTime = 0;
+            if(!this.sound.ended){
+                this.sound.currentTime = 0;
             }
-            tilesList[key].play();
+            this.htmlElement.style.background = "var(--darker-soft-tile)";
+            this.sound.play();
             this.pressed = true;
         }
     }
 
     stopSound(){
         if(this.pressed){
-            sound.playRate= 500;
-            setTimeout(()=>{
-                this.sound.p
-            },100);
+            
+            this.htmlElement.style.background = "var(--primary-soft-tile)"; 
+            
+            setTimeout(() => {
+                this.sound.pause();
+            }, 500);
             this.pressed = false;
         }
     }
 
-    changeStyle(){
+    changeStyle(isOn){
+        if (isOn) {
+            
+        }else{
 
+        }
     }
 }

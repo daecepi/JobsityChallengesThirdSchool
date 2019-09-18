@@ -9,15 +9,15 @@
     --primary-text-font: rgba(119, 150, 148, 1);
     --secondary-text-font: rgba(89, 125, 123, 1);
 
-    --primary-soft-tile: rgba(140, 222, 162, 1);
-    --darker-soft-tile: rgba(121, 189, 139, 1);
+    --primary-soft-tile: rgba(188, 221, 197, 1);
+    --darker-soft-tile: rgba(62, 133, 80, 1);
 
     --primary-dark-tile: rgba(63, 102, 74, 1);
     --darker-dark-tile: rgba(100, 102, 111, 1);
 
-    --primary-pedal-font: #ffffff;
+    --primary-pedal: rgba(182, 182, 182, 1);
     --primary-font: rgba(63, 102, 74, 1);
-    --dark-pedal: gray;
+    --dark-pedal: rgba(52, 56, 56, 1);
 }
 
 /*
@@ -61,16 +61,17 @@ header{
 }
 
 .soft-tile{
-    position: relative;
-    height: 100%;
+    border-radius: 20px;
     border: 2px solid var(--primary-text-font);
+    background: var(--primary-soft-tile);
 }
 
 .dark-tile{
+    border-radius: 20px;
     position: absolute;
     height: 20%;
     width: 20px;
-    border: 2px solid var(--darker-dark-tile);
+    border: 2px solid var(--primary-dark-tile);
     background: var(--primary-dark-tile);
 }
 
@@ -96,11 +97,16 @@ header{
     left: 84.5%;
 }
 
-a{
-    height: 100%;
+.pedal-wrapper{
+    display: flex;
+    flex-flow: row wrap;
     text-align: center;
     align-content: center;
-    display: block;
+}
+
+a{
+    height: 100%;
+    width: 100%;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
@@ -127,7 +133,9 @@ h1{
 }
 
 a{
+    font-size: 100%;
     color: var(--primary-text-font);
-    border-radius: 20px;
     border: 3px solid var(--secondary-text-font);
+    background: var(--primary-pedal);
+    border-radius: 10px;
 }
