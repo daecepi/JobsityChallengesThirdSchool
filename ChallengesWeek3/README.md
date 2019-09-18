@@ -6,14 +6,15 @@
 3. __Frequency:__ How sharpy a note can be.
 4. __Note:__ a sound like the ones facilitated as .mp3 files.
 
-## Steps made:
+## What was made:
 1. Organization of the main folder (with the sound files) and defined an interesting color palllete for the elements.
 2. Usage of HTML5, CSS3, grids, and flexbox to design the layout and styling.
+3. 
 
 ## Asumptions
 1. The page doesnt have a footer by the start.
 
-## Approaches avaluated:
+## Approaches evaluated:
 1. Implementing abstract factory:to creacte the tiles recursevely (families would be: frequencies if user wants more than one)
 
 ## Designed to:

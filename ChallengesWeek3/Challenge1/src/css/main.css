@@ -61,6 +61,7 @@ header{
 }
 
 .soft-tile{
+    position: relative;
     height: 100%;
     border: 2px solid var(--primary-text-font);
 }
@@ -76,7 +77,6 @@ header{
 
 .doman{
     left: 14.2%;
-
 }
 
 .reman{
