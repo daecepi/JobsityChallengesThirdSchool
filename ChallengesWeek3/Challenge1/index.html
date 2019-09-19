@@ -18,24 +18,29 @@
         <div class="configs">
             <input type="number" min="1" value="1" id="num-octets" class="num-sections" placeholder="Numero de sectores..">
             <button id="config">config</button>
+            <input type="number" min="1" value="1" id="num-octets" class="num-sections" placeholder="Numero de sectores..">
         </div>
         <div class="tiles-wrapper">
-            <div id="s1" class="soft-tile"></div>
-            <div id="d1" class="dark-tile doman"></div>
-            <div id="s2" class="soft-tile"></div>
-            <div id="d2" class="dark-tile reman"></div>
-            <div id="s3" class="soft-tile"></div>
-            <div id="s4" class="soft-tile"></div>
-            <div id="d4" class="dark-tile faman"></div>
-            <div id="s5" class="soft-tile"></div>
-            <div id="d5" class="dark-tile solman"></div>
-            <div id="s6" class="soft-tile"></div>
-            <div id="d6" class="dark-tile laman"></div>
-            <div id="s7" class="soft-tile"></div>
-
+            <div class="soft-wrapper">
+                <div id="s1" class="soft-tile"></div>
+                <div id="s2" class="soft-tile"></div>
+                <div id="s3" class="soft-tile"></div>
+                <div id="s4" class="soft-tile"></div>
+                <div id="s5" class="soft-tile"></div>
+                <div id="s6" class="soft-tile"></div>
+                <div id="s7" class="soft-tile"></div>
+            </div>
+            <div class="dark-wrapper">
+                <div id="d1" class="dark-tile doman"></div>
+                <div id="d2" class="dark-tile reman"></div>
+                <div id="d4" class="dark-tile faman"></div>
+                <div id="d5" class="dark-tile solman"></div>
+                <div id="d6" class="dark-tile laman"></div>
+            </div>
         </div>
         <div class="pedal-wrapper">
-        <a id="foot-button">PEDAL</a>
+            <a id="foot-button">PEDAL</a>
+            <div id="pedal-led" class="pedal-led"><p>apagado</p></div>
         </div>
     </div>
     <script src="./src/js/Tile.js"></script>

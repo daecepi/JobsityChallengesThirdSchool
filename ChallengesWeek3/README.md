@@ -5,11 +5,13 @@
 2. __Tile:__ element that contains a note from the scale (many Tiles may work the the same scale note but not at the same frequency).
 3. __Frequency:__ How sharpy a note can be.
 4. __Note:__ a sound like the ones facilitated as .mp3 files.
+5. __Pedal:__ is a function that maintains the sound for more time
 
 ## What was made:
 1. Organization of the main folder (with the sound files) and defined an interesting color palllete for the elements.
 2. Usage of HTML5, CSS3, grids, and flexbox to design the layout and styling.
-3. 
+3. Creation of keyboard and mouse events in two different types (keyup and keydown).
+4.
 
 ## Asumptions
 1. The page doesnt have a footer by the start.
@@ -18,4 +20,8 @@
 1. Implementing abstract factory:to creacte the tiles recursevely (families would be: frequencies if user wants more than one)
 
 ## Designed to:
-1. Change the base keys used in the applications just by changing the string given for it
+1. Change the base keys used in the applications just by changing the string given for it in the configs section
+
+## TO DO
+1. Creating a object that could model a piano (thus in charge of functions like managing: controlling the sustain passed to the keys)
+2. Adding a palletes manipulator control in the HTML structure (and its correspondings javascript functions)

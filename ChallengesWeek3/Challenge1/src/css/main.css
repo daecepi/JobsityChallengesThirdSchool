@@ -4,20 +4,25 @@
 */
 :root{
     --primary-background: rgba(211, 227, 226,1);
-    --secondary-background: rgba(233, 245, 244, 1);
+    --secondary-background: rgb(184, 214, 212);
 
     --primary-text-font: rgba(119, 150, 148, 1);
     --secondary-text-font: rgba(89, 125, 123, 1);
 
-    --primary-soft-tile: rgba(188, 221, 197, 1);
-    --darker-soft-tile: rgba(62, 133, 80, 1);
+    --primary-soft-tile: rgb(228, 238, 231);
+    --darker-soft-tile: rgb(104, 136, 111);
 
-    --primary-dark-tile: rgba(63, 102, 74, 1);
-    --darker-dark-tile: rgba(100, 102, 111, 1);
+    --primary-dark-tile: rgb(120, 156, 130);
+    --darker-dark-tile: rgb(45, 99, 52);
 
     --primary-pedal: rgba(182, 182, 182, 1);
     --primary-font: rgba(63, 102, 74, 1);
     --dark-pedal: rgba(52, 56, 56, 1);
+
+
+    --led-pedal-background-on: rgb(5, 107, 19);
+    --led-pedal-background-off: rgb(190, 34, 34);
+    --led-font: rgb(212, 201, 201);
 }
 
 /*
@@ -33,6 +38,7 @@ html, body{
 body{
     display: grid;
     grid-template-rows: 1fr 19fr;
+    background: var(--secondary-background);
 }
 
 header{
@@ -41,23 +47,34 @@ header{
 
 .content{
     display: grid;
-    grid-template-rows: 1fr 19fr 1fr;
-    background: var(--secondary-background);
-    padding-bottom: 0.5rem;
+    grid-template-rows: 1fr 16fr 2fr;
+    margin: 2em;
 }
 
 .configs{
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.5rem;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .tiles-wrapper{
-    margin: 0.5rem;
+    position: relative;
+    margin: 0.5em;
+    height: 100%;
+    width: 100%;
+}
+
+.soft-wrapper{
+    display: flex;
+    width: 100%;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.dark-wrapper{
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(7, 1fr)
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .soft-tile{
@@ -68,47 +85,48 @@ header{
 
 .dark-tile{
     border-radius: 20px;
-    position: absolute;
-    height: 20%;
+    height: 30%;
     width: 20px;
     border: 2px solid var(--primary-dark-tile);
     background: var(--primary-dark-tile);
 }
 
-
 .doman{
-    left: 14.2%;
+    left:14%;
 }
 
 .reman{
-    left: 28.25%;
-
+    left:24%;
 }
 
 .faman{
-    left:56.4%;
+
 }
 
 .solman{
-    left: 70.45%;
+
 }
 
 .laman{
-    left: 84.5%;
+
 }
 
 .pedal-wrapper{
     display: flex;
-    flex-flow: row wrap;
-    text-align: center;
-    align-content: center;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 a{
-    height: 100%;
-    width: 100%;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    flex-grow: 1;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.pedal-led{
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 /*
@@ -127,15 +145,21 @@ h1{
     color: var(--primary-text-font);
 }
 
-.pedal-wrapper{
-    height: 100%;
-    width: 100%;
+a{
+    background: var(--primary-pedal);
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px 3px var(--dark-pedal);
 }
 
-a{
-    font-size: 100%;
-    color: var(--primary-text-font);
-    border: 3px solid var(--secondary-text-font);
-    background: var(--primary-pedal);
-    border-radius: 10px;
+.pedal-led{
+    border-radius: 20px;
+    margin:0px;
+    padding: 0px;
+    background: var(--led-pedal-background-off);
+    border: 2px solid gray;
+    color: var(--led-font);
+}
+@media(max-width: 700px){
+
 }
