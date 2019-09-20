@@ -20,15 +20,7 @@ function mouseHandlers(tiles){
         let element = document.querySelector("#"+tiles[i]);
 
         let index = baseKeys[i].toUpperCase(); // get the letter assigned to the tile
-
-        element.addEventListener("touchstart", (e) => {
-            tilesList[index].startSound(sustainOn);
-        });
         
-        element.addEventListener("touchend", (e) => {
-            tilesList[index].stopSound();
-        });
-
         element.addEventListener("mousedown", (e) => {
             tilesList[index].startSound(sustainOn);
         });
@@ -36,8 +28,23 @@ function mouseHandlers(tiles){
         element.addEventListener("mouseup", (e) => {
             tilesList[index].stopSound();
         });
+
+        element.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            tilesList[index].startSound(sustainOn);
+        });
+        
+        element.addEventListener("touchend", (e) => {
+            tilesList[index].stopSound();
+        });
+
     }
     //Starting the mouse listeners for the pedal
+    let volumenController = document.querySelector("#volume-control");
+
+    volumenController.addEventListener("change", (e) =>{
+        console.log(document.querySelector("#volume-control").value);
+    });
 
 
     let pedal = document.querySelector("#foot-button");
@@ -86,7 +93,8 @@ function keyListenerUp(e) {
 }
 
 
-function pedalDown() {
+function pedalDown(e) {
+    e.preventDefault();
     let pedal = document.querySelector("#foot-button");
     pedal.style.background = "var(--dark-pedal)";
 }
@@ -167,6 +175,8 @@ function init() {
     mouseHandlers(tiles, soundsList);
     document.addEventListener("keydown", keyListenerDown);
     document.addEventListener("keyup", keyListenerUp);
+
+    console.log(document.querySelector("#volume-control").value);
 
     //Section to start creating the divs
     let generalDiv = document.querySelector("#tilesContainer");

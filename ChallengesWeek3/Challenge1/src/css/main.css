@@ -29,6 +29,7 @@
 /*
     layout definitions
 */
+
 html, body{
     padding: 0%;
     margin: 0%;
@@ -55,6 +56,8 @@ header{
 .configs{
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
@@ -62,9 +65,6 @@ header{
 .volume-box{
     display: grid;
     grid-template-columns: 1fr 3fr;
-    text-align: center;
-    align-content: center;
-    color: var();
 }
 
 .tiles-wrapper{
@@ -72,8 +72,7 @@ header{
     position: relative;
     margin: 0.5em;
     grid-template-columns: repeat(7, 1fr);
-    border-top: 5px solid black;
-    background: var(--primary-background);
+    border-top: 5px solid var(--piano-background);
 }
 
 .soft-tile{
@@ -200,11 +199,26 @@ a{
     margin:0px;
     padding: 0px;
     background: var(--led-pedal-background-off);
-    border: 2px solid gray;
     color: var(--led-font);
 }
-/*@media(max-width: 500px){
-    .tiles-wrapper{
-        transform: rotate(90deg);
-    }
-}*/
+
+.volume-box{
+    text-align: center;
+    align-content: center;
+    border: 2px solid var(--primary-font);
+    color: var(--primary-font);
+}
+@media(max-width: 578px){
+    @media (orientation: landscape) {
+        body {
+            transform: rotate(90deg);
+        }
+      }
+      
+      @media (orientation: portrait) {
+        body {
+            transform: rotate(0deg);
+        }
+      }
+}
+

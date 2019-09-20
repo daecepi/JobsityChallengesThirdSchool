@@ -21,6 +21,7 @@ class Tile {
                 this.sound.currentTime = 0;
             }
             this.htmlElement.style.background = "var(--darker-"+this.type+"-tile)";
+            console.log(this.sound.volume);
             this.sound.play();
             this.pressed = true;
         }
