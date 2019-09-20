@@ -8,20 +8,18 @@
     <title>Piano</title>
 </head>
 <body>
-        <audio id="audio10">
-            <source src="./src/sounds/note10s.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
     <!--This page is oriented to spanish speakers even though all code is made in English-->
-    <header><h1>Teclas de piano</h1></header>
+    <header><h1>PIANO TILES 2.0</h1></header>
     <div class="content">
         <div class="configs">
             <input type="number" min="1" value="1" id="num-octets" class="num-sections" placeholder="Numero de sectores..">
             <button id="config">config</button>
-            <input type="number" min="1" value="1" id="num-octets" class="num-sections" placeholder="Numero de sectores..">
+            <div class="volume-box">
+                <label for="volume-control">Volume:</label>
+                <input id="volume-control" type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            </div>
         </div>
         <div class="tiles-wrapper">
-            <div class="soft-wrapper">
                 <div id="s1" class="soft-tile"></div>
                 <div id="s2" class="soft-tile"></div>
                 <div id="s3" class="soft-tile"></div>
@@ -29,13 +27,16 @@
                 <div id="s5" class="soft-tile"></div>
                 <div id="s6" class="soft-tile"></div>
                 <div id="s7" class="soft-tile"></div>
-            </div>
             <div class="dark-wrapper">
-                <div id="d1" class="dark-tile doman"></div>
-                <div id="d2" class="dark-tile reman"></div>
-                <div id="d4" class="dark-tile faman"></div>
-                <div id="d5" class="dark-tile solman"></div>
-                <div id="d6" class="dark-tile laman"></div>
+                <div class="first-quartet">
+                    <div id="d1" class="dark-tile"></div>
+                    <div id="d2" class="dark-tile"></div>
+                </div>
+                <div class="second-quartet">
+                    <div id="d4" class="dark-tile"></div>
+                    <div id="d5" class="dark-tile"></div>
+                    <div id="d6" class="dark-tile"></div>
+                </div>
             </div>
         </div>
         <div class="pedal-wrapper">

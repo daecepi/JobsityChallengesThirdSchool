@@ -4,7 +4,7 @@ class Tile {
         this.htmlElement = document.querySelector("#"+desc);
         this.frequency = frequency;
         this.sound = sound;
-        this.sound.playbackRate = 0.8;
+        this.sound.playbackRate = 1.2;
 
         this.pressed = false;
         this.pedal = pedal;
@@ -13,16 +13,14 @@ class Tile {
     startSound(sustain){
         if(sustain){
             this.sound.playbackRate = 0.5;
+        }else{
+            this.sound.playbackRate = 1.2;
         }
         if (!this.pressed) {
             if(!this.sound.ended){
                 this.sound.currentTime = 0;
             }
-            if (this.type === "soft") {
-                this.htmlElement.style.background = "var(--darker-soft-tile)";
-            }else{
-                this.htmlElement.style.background = "var(--darker-dark-tile)";
-            }
+            this.htmlElement.style.background = "var(--darker-"+this.type+"-tile)";
             this.sound.play();
             this.pressed = true;
         }
@@ -30,20 +28,8 @@ class Tile {
 
     stopSound(){
         if(this.pressed){
-            if (this.type === "soft") {
-                this.htmlElement.style.background = "var(--primary-soft-tile)";
-            }else{
-                this.htmlElement.style.background = "var(--primary-dark-tile)";
-            }
+            this.htmlElement.style.background = "var(--primary-"+this.type+"-tile)";
             this.pressed = false;
-        }
-    }
-
-    changeStyle(isOn){
-        if (isOn) {
-            
-        }else{
-
         }
     }
 }

@@ -9,6 +9,7 @@ const baseSustainability = 4;
 var keysAssignmentList;
 var tilesList;
 var sustainOn;
+var volume;
 
 
 /*
@@ -19,20 +20,33 @@ function mouseHandlers(tiles){
         let element = document.querySelector("#"+tiles[i]);
 
         let index = baseKeys[i].toUpperCase(); // get the letter assigned to the tile
-        
-        element.addEventListener("mousedown", () => {
+
+        element.addEventListener("touchstart", (e) => {
             tilesList[index].startSound(sustainOn);
         });
         
-        element.addEventListener("mouseup", () => {
+        element.addEventListener("touchend", (e) => {
+            tilesList[index].stopSound();
+        });
+
+        element.addEventListener("mousedown", (e) => {
+            tilesList[index].startSound(sustainOn);
+        });
+        
+        element.addEventListener("mouseup", (e) => {
             tilesList[index].stopSound();
         });
     }
     //Starting the mouse listeners for the pedal
+
+
     let pedal = document.querySelector("#foot-button");
     
     pedal.addEventListener("mousedown", pedalDown);
     pedal.addEventListener("mouseup", pedalUp);
+
+    pedal.addEventListener("touchstart", pedalDown);
+    pedal.addEventListener("touchend", pedalUp);
 }
 
 
