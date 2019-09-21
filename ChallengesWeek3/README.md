@@ -23,13 +23,16 @@ Was divided into three parts in the same file called "main.css":
 __Javascript:__
 The javascript logic is divided in two files:
 - Tile.js: that contains the class that holds the logic and sounds used on the application.
-- main.js: which holds the list of tiles created using the Tile class, __three important functions to look at in this file are__ init:
+- main.js: which holds the list of tiles created using the Tile class, __three important functions to look at in this file are__ init: a function that sets the config values.
 
 __HTML:__
+Sections used in the index.html file:
+- __A header__:  that contains the title (and any other menu needed in the future)
+- __A Content__: that contains the 
 
-
-## Asumptions
-1. The present application doesnt have to have a footer.
+## Asumptions according sprint meeting
+1. The present application doesnt necesarily have to have a footer or header
+2. 
 
 ## Approaches evaluated:
 1. Reuse of the tiles logic for mouse and keyboard through the Tile class
@@ -42,5 +45,5 @@ __HTML:__
 
 ## TO DO
 1. Creating a object that could model a piano as its own (thus in charge of functions like managing: controlling the sustain passed to the keys)
-2. Adding a palletes manipulator control in the HTML structure (and its correspondings javascript functions)
+2. Adding a palletes manipulator control styling as user user wants (and its correspondings javascript functions)
 3. Create a element that says

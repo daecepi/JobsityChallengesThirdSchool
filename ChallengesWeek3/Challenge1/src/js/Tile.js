@@ -10,12 +10,13 @@ class Tile {
         this.pedal = pedal;
     }
 
-    startSound(sustain){
+    startSound(sustain, volume){
         if(sustain){
             this.sound.playbackRate = 0.5;
         }else{
             this.sound.playbackRate = 1.2;
         }
+        this.sound.volume = volume;
         if (!this.pressed) {
             if(!this.sound.ended){
                 this.sound.currentTime = 0;
