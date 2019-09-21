@@ -40,10 +40,6 @@ html, body, .wrapper{
 }
 
 
-body{
-	background: var(--primary-white);
-}
-
 
 /*Styling according to design*/
 .menu-left{
@@ -97,8 +93,8 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-  border-color: dodgerBlue;
-  box-shadow: 0 0 8px 0 dodgerBlue;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 8px 0 var(--primary-blue);
 }
 
 .inputWithIcon input[type="text"] {
@@ -119,7 +115,14 @@ input[type="text"]:focus {
 }
 
 .inputWithIcon input[type="text"]:focus + i {
-  color: rgb(75, 165, 255);
+  color: var(--primary-blue);
 }
 
 /*media querys*/
+@media (min-width: 700px) {
+  
+}
+
+@media (min-width: 500px) {
+  
+}
