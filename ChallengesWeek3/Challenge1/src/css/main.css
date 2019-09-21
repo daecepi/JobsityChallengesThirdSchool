@@ -1,0 +1,224 @@
+
+/*
+    Pallete color description
+*/
+:root{
+    --primary-background: rgba(211, 227, 226,1);
+    --secondary-background: rgb(184, 214, 212);
+    --piano-background: rgb(34, 65, 62);
+
+    --primary-text-font: rgb(8, 78, 74);
+    --secondary-text-font: rgb(120, 134, 134);
+
+    --primary-soft-tile: rgb(228, 238, 231);
+    --darker-soft-tile: rgb(104, 136, 111);
+
+    --primary-dark-tile: rgb(120, 156, 130);
+    --darker-dark-tile: rgb(45, 99, 52);
+
+    --primary-pedal: rgba(182, 182, 182, 1);
+    --primary-font: rgba(63, 102, 74, 1);
+    --dark-pedal: rgba(52, 56, 56, 1);
+
+
+    --led-pedal-background-on: rgb(5, 107, 19);
+    --led-pedal-background-off: rgb(190, 34, 34);
+    --led-font: rgb(212, 201, 201);
+}
+
+/*
+    layout definitions
+*/
+
+html, body{
+    padding: 0%;
+    margin: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    display: grid;
+    grid-template-rows: 1fr 19fr;
+    background: var(--secondary-background);
+}
+
+header{
+    text-align: center;
+}
+
+.content{
+    display: grid;
+    grid-template-rows: 1fr 16fr 2fr;
+    margin: 2em;
+}
+
+.configs{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.volume-box{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.tiles-wrapper{
+    display: grid;
+    position: relative;
+    margin: 0.5em;
+    grid-template-columns: repeat(7, 1fr);
+    border-top: 5px solid var(--piano-background);
+}
+
+.soft-tile{
+    z-index: 1;
+    display: flex;
+    justify-items: center;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.dark-wrapper{
+    position: absolute;
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 3fr 4fr;
+}
+
+
+.first-quartet{
+    height: 100%;
+    width: 100%;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    position:relative;
+    left:16px;
+    justify-items: flex-end;
+}
+
+.second-quartet{
+    height: 100%;
+    width: 100%;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    position:relative;
+    left:16px;
+    justify-items: flex-end;
+}
+
+.dark-tile{
+    width: 30px;
+    height: 30%;
+    z-index: 2;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.pedal-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+a{
+    flex-grow: 1;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.pedal-led{
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+/*
+    STYLING
+*/
+.num-sections{
+    border-radius: 20px;
+}
+
+header{
+    border: 2px solid var(--secondary-text-font);
+    background: var(--primary-background);
+}
+
+h1{
+    color: var(--primary-text-font);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.soft-tile{
+    border-radius: 0px 0px 20px 20px;
+    border: 2px solid var(--primary-text-font);
+    background: var(--primary-soft-tile);
+    box-shadow: inset  0px -10px 5px -1px var(--dark-pedal);
+}
+
+.soft-tile-pressed{
+    border-radius: 0px 0px 20px 20px;
+    border: 2px solid var(--primary-text-font);
+    background: var(--darker-soft-tile);
+    box-shadow: inset  0px 0px 0px 0px var(--dark-pedal);
+}
+
+.soft-tile p{
+    border-radius: 50px;
+    border: 2px solid var(--primary-dark-tile);
+    font-size: 2rem;
+    color: var(--primary-dark-tile);
+}
+
+.dark-tile{
+    border: 2px solid var(--primary-dark-tile);
+    background: var(--primary-dark-tile);
+    box-shadow: inset  0px -10px 5px -1px var(--dark-pedal);
+}
+
+.dark-tile-pressed{
+    border: 2px solid var(--primary-dark-tile);
+    background: var(--darker-dark-tile);
+    box-shadow: inset  0px 0px 0px 0px var(--dark-pedal);
+}
+
+a{
+    background: var(--primary-pedal);
+    text-align: center;
+    border-radius: 10px;
+    box-shadow:  0px 5px 5px 3px var(--dark-pedal);
+}
+
+.pedal-led{
+    border-radius: 20px;
+    margin:0px;
+    padding: 0px;
+    background: var(--led-pedal-background-off);
+    color: var(--led-font);
+}
+
+.volume-box{
+    text-align: center;
+    align-content: center;
+    border: 2px solid var(--primary-font);
+    color: var(--primary-font);
+}
+@media(max-width: 578px){
+    @media (orientation: landscape) {
+        body {
+            transform: rotate(90deg);
+        }
+      }
+      
+      @media (orientation: portrait) {
+        body {
+            transform: rotate(0deg);
+        }
+      }
+}
+

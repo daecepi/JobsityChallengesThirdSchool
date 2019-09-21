@@ -64,8 +64,6 @@ html, body, .wrapper{
   text-overflow: ellipsis;
 }
 
-
-
 .menu-left a, .menu-right a{
   text-decoration: none;
   color: inherit;
