@@ -12,35 +12,62 @@
     <header><h1>= ULTIMATE PIANO =</h1></header>
     <div class="content">
         <div class="configs">
-            <input type="number" min="1" max="3" value="1" id="num-octets" class="num-sections" placeholder="Numero de sectores..">
-            <button id="config">config</button>
+            <div class="num-scales-box">
+                <label for="num-scales-control">Num of scales</label>
+                <input id="num-scales-control" type="number" min="1" max="2" value="1" id="num-octets" class="num-sections" placeholder="Numero de sectores..">
+            </div>
+            <div>
+
+            </div>
             <div class="volume-box">
                 <label for="volume-control">Volume:</label>
                 <input id="volume-control" type="range" min="1" max="100" value="100" class="slider" id="myRange">
             </div>
         </div>
         <div class="tiles-wrapper">
-            <div id="s1" class="soft-tile"><p>Z</p></div>
-            <div id="s2" class="soft-tile"><p>C</p></div>
-            <div id="s3" class="soft-tile"><p>B</p></div>
-            <div id="s4" class="soft-tile"><p>N</p></div>
-            <div id="s5" class="soft-tile"><p>A</p></div>
-            <div id="s6" class="soft-tile"><p>D</p></div>
-            <div id="s7" class="soft-tile"><p>G</p></div>
-            <div class="dark-wrapper">
-                <div class="first-quartet">
-                    <div id="d1" class="dark-tile"><p>X</p></div>
-                    <div id="d2" class="dark-tile"><p>V</p></div>
+            <div class="tiles-wrapper-fullscale">
+                <div id="s1" class="soft-tile"><p>Z</p></div>
+                <div id="s2" class="soft-tile"><p>C</p></div>
+                <div id="s3" class="soft-tile"><p>B</p></div>
+                <div id="s4" class="soft-tile"><p>N</p></div>
+                <div id="s5" class="soft-tile"><p>A</p></div>
+                <div id="s6" class="soft-tile"><p>D</p></div>
+                <div id="s7" class="soft-tile"><p>G</p></div>
+                <div class="dark-wrapper">
+                    <div class="first-quartet">
+                        <div id="d1" class="dark-tile"><p>X</p></div>
+                        <div id="d2" class="dark-tile"><p>V</p></div>
+                    </div>
+                    <div class="second-quartet">
+                        <div id="d4" class="dark-tile"><p>M</p></div>
+                        <div id="d5" class="dark-tile"><p>S</p></div>
+                        <div id="d6" class="dark-tile"><p>F</p></div>
+                    </div>
                 </div>
-                <div class="second-quartet">
-                    <div id="d4" class="dark-tile"><p>M</p></div>
-                    <div id="d5" class="dark-tile"><p>S</p></div>
-                    <div id="d6" class="dark-tile"><p>F</p></div>
+            </div>
+            <div class="tiles-wrapper-fullscale">
+                <div class="soft-tile"><p>Z</p></div>
+                <div class="soft-tile"><p>C</p></div>
+                <div class="soft-tile"><p>B</p></div>
+                <div class="soft-tile"><p>N</p></div>
+                <div class="soft-tile"><p>A</p></div>
+                <div class="soft-tile"><p>D</p></div>
+                <div class="soft-tile"><p>G</p></div>
+                <div class="dark-wrapper">
+                    <div class="first-quartet">
+                        <div id="d1" class="dark-tile"><p>X</p></div>
+                        <div id="d2" class="dark-tile"><p>V</p></div>
+                    </div>
+                    <div class="second-quartet">
+                        <div id="d4" class="dark-tile"><p>M</p></div>
+                        <div id="d5" class="dark-tile"><p>S</p></div>
+                        <div id="d6" class="dark-tile"><p>F</p></div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="pedal-wrapper">
-            <a id="foot-button">PEDAL</a>
+            <a id="foot-button" class="foot-button">PEDAL</a>
             <div id="pedal-led" class="pedal-led"><p>apagado</p></div>
         </div>
     </div>

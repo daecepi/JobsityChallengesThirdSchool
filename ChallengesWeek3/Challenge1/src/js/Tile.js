@@ -1,13 +1,13 @@
 class Tile {
-    constructor(type ,desc, frequency, sound, pedal){
+    constructor(type ,desc, frequency, sound, baseSustainability){
         this.type = type;
         this.htmlElement = document.querySelector("#"+desc);
         this.frequency = frequency;
         this.sound = sound;
-        this.sound.playbackRate = 1.2;
+        this.sound.playbackRate = baseSustainability;
 
         this.pressed = false;
-        this.pedal = pedal;
+        this.pedalFlag = true;
     }
 
     startSound(sustain, volume){
@@ -15,6 +15,7 @@ class Tile {
             this.sound.playbackRate = 0.5;
         }else{
             this.sound.playbackRate = 1.2;
+            this.pedalFlag = false;
         }
         this.sound.volume = volume;
         if (!this.pressed) {
@@ -31,6 +32,11 @@ class Tile {
     stopSound(){
         if(this.pressed){
             this.htmlElement.style.background = "var(--primary-"+this.type+"-tile)";
+            //Accelerate finish of the sound since pedal is not pressed
+            if (!this.pedalFlag) {
+                
+                this.pedalFlag = true;
+            }
             this.pressed = false;
         }
     }

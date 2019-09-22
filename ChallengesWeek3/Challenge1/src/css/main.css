@@ -6,6 +6,7 @@
     --primary-background: rgba(211, 227, 226,1);
     --secondary-background: rgb(184, 214, 212);
     --piano-background: rgb(34, 65, 62);
+    --piano-background-secondary: rgb(40, 94, 86);
 
     --primary-text-font: rgb(8, 78, 74);
     --secondary-text-font: rgb(120, 134, 134);
@@ -16,7 +17,7 @@
 
     --primary-dark-tile: rgb(120, 156, 130);
     --darker-dark-tile: rgb(67, 83, 69);
-    --font-dark-tile: rgb(80, 77, 77);
+    --font-dark-tile: rgb(169, 207, 198);
 
     --primary-pedal: rgba(182, 182, 182, 1);
     --primary-font: rgba(63, 102, 74, 1);
@@ -64,17 +65,21 @@ header{
     grid-template-columns: repeat(3, 1fr);
 }
 
-.volume-box{
+.volume-box, .num-scales-box{
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
 
 .tiles-wrapper{
     display: grid;
-    position: relative;
     margin: 0.5em;
+    grid-template-columns: 1fr 1fr;
+}
+
+.tiles-wrapper-fullscale{
+    display: grid;
+    position: relative;
     grid-template-columns: repeat(7, 1fr);
-    border-top: 5px solid var(--piano-background);
 }
 
 .soft-tile{
@@ -131,8 +136,8 @@ header{
     justify-content: space-around;
 }
 
-a{
-    flex-grow: 1;
+.foot-button{
+    flex-grow: 2;
     margin-left: 0.5em;
     margin-right: 0.5em;
 }
@@ -158,6 +163,32 @@ header{
 h1{
     color: var(--primary-text-font);
     font-family: 'Courier New', Courier, monospace;
+}
+
+.num-scales-box{
+    text-align: center;
+    align-content: center;
+    color: var(--primary-font);
+}
+
+.volume-box{
+    text-align: center;
+    align-content: center;
+    border-radius: 5px;
+    border: 2px solid var(--primary-font);
+    color: var(--primary-font);
+}
+
+#num-scales-control, #volume-control{
+    background-color: var(--primary-background);
+}
+
+.tiles-wrapper{
+    border-radius: 10px;
+    background: var(--piano-background-secondary);
+    border-top: 7px solid var(--piano-background);
+    border-left: 6px solid var(--piano-background);
+    border-right: 6px solid var(--piano-background);
 }
 
 .soft-tile{
@@ -194,12 +225,6 @@ h1{
     box-shadow: inset  0px -10px 5px -1px var(--dark-pedal);
 }
 
-.dark-tile-pressed{
-    border: 2px solid var(--primary-dark-tile);
-    background: var(--darker-dark-tile);
-    box-shadow: inset  0px 0px 0px 0px var(--dark-pedal);
-}
-
 a{
     background: var(--primary-pedal);
     text-align: center;
@@ -211,17 +236,15 @@ a{
     border-radius: 20px;
     margin:0px;
     padding: 0px;
+    font-size: 1.5rem;
     background: var(--led-pedal-background-off);
     color: var(--led-font);
 }
 
-.volume-box{
-    text-align: center;
-    align-content: center;
-    border: 2px solid var(--primary-font);
-    color: var(--primary-font);
-}
 
+/**
+* MEDIA QUERIES SECTION
+*/
 @media (orientation: landscape) and (max-height: 578px) {
     body {
         grid-template-rows: 1fr;

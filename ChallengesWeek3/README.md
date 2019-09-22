@@ -11,7 +11,8 @@
 1. Organization of the main folder (with the sound files) and defined an interesting color palllete for the elements.
 2. Usage of HTML5, CSS3, grids, and flexbox to design the layout and styling.
 3. Creation of keyboard and mouse events in two different focuses (the touch and release of the tile)
-4. 
+4. Tuning of the sounds (and test with different ones)
+5. Organization of mobile views
 
 ### Implementation details
 __CSS:__
@@ -28,11 +29,11 @@ The javascript logic is divided in two files:
 __HTML:__
 Sections used in the index.html file:
 - __A header__:  that contains the title (and any other menu needed in the future)
-- __A Content__: that contains the 
+- __A Content__: that contains the  a section for simple configs of the piano, another for the piano itself
 
 ## Asumptions according sprint meeting
 1. The present application doesnt necesarily have to have a footer or header
-2. 
+2. All design and functions must be made by us (thus libraries like tone.js aren't allowed).
 
 ## Approaches evaluated:
 1. Reuse of the tiles logic for mouse and keyboard through the Tile class
@@ -46,4 +47,4 @@ Sections used in the index.html file:
 ## TO DO
 1. Creating a object that could model a piano as its own (thus in charge of functions like managing: controlling the sustain passed to the keys)
 2. Adding a palletes manipulator control styling as user user wants (and its correspondings javascript functions)
-3. Create a element that says
+3. Create a control to setup KEYS used in the array

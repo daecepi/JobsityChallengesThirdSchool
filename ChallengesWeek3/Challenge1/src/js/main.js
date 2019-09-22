@@ -1,61 +1,14 @@
-//import "/Piano.js";
-
-
 /**
  * Variables for configurations of the application
 */
-var baseKeys = "zxcvbnmasdfghjklñqwertyuiop1234567890"; //Keys that are supported for assignation for tiles
-const baseSustainability = 4;
-var keysAssignmentList;
+const baseKeys = "u7y6t5re3w2qmjnhbgvcdxsz"; //Keys that are supported for assignation for tiles
+const baseSustainability = 1.2;
+var keysAssignmentList; //variable that contains the baseKeys in an array form
+var keysAssigned; //Variable that holds the assigned keys
 var tilesList;
-var sustainOn;
-var volume;
+var sustainOn; //Vaiable that holds the press of the pedal
+var volume; // variables that contain the volume of the system
 
-
-/*
-* Function incharge of creating the event listeners for the mouse
-*/
-function mouseHandlers(tiles){
-    //Loop for HTML div-tiles
-    for(let i = 0; i < tiles.length; i++) {
-        let element = document.querySelector("#"+tiles[i]);
-
-        let index = baseKeys[i].toUpperCase(); // get the letter assigned to the tile
-        
-        element.addEventListener("mousedown", (e) => {
-            tilesList[index].startSound(sustainOn, volume);
-        });
-        
-        element.addEventListener("mouseup", (e) => {
-            tilesList[index].stopSound();
-        });
-
-        element.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            tilesList[index].startSound(sustainOn, volume);
-        });
-        
-        element.addEventListener("touchend", (e) => {
-            tilesList[index].stopSound();
-        });
-
-    }
-    //Starting the mouse listeners for the pedal
-    let volumenController = document.querySelector("#volume-control");
-
-    volumenController.addEventListener("change", (e) =>{
-        volume = document.querySelector("#volume-control").value / 100;
-    });
-
-
-    let pedal = document.querySelector("#foot-button");
-    
-    pedal.addEventListener("mousedown", pedalDown);
-    pedal.addEventListener("mouseup", pedalUp);
-
-    pedal.addEventListener("touchstart", pedalDown);
-    pedal.addEventListener("touchend", pedalUp);
-}
 
 
 /**
@@ -99,7 +52,6 @@ function keyListenerUp(e) {
  * @returns doesn't return any object
 */
 function pedalDown(e) {
-    e.preventDefault();
     let pedal = document.querySelector("#foot-button");
     pedal.style.background = "var(--dark-pedal)";
 }
@@ -144,7 +96,6 @@ function generateScaleList(prestr = "", posstr = "") {
     for (let index = 1; index <= 12; index++) {
         let sound = new Audio();
         sound.src = prestr + index + posstr;
-        sound.playbackRate = baseSustainability;
 
         soundList.push(sound);
     }
@@ -152,50 +103,13 @@ function generateScaleList(prestr = "", posstr = "") {
 }
 
 /**
- * This function contains the initial setup of the application
- * @params none
- * @returns does not return
+ * This function 
+ * @param 
+ * @param
  */
-function init() {
-    //Base classes
-    let tiles = ["s1", "d1", "s2", "d2", "s3", "s4", "d4", "s5", "d5", "s6", "d6", "s7"   ];
-    sustainOn = false;
-    volume = 1;
-
-    //Getting the keys supported by the program as a list of elements
-    keysAssignmentList = baseKeys.split("");
-    
-    //Get the base sounds that are going to be listened
-    let soundsList = generateScaleList("./src/sounds/note", "s.mp3");
-
-    //Creating the list that will hold the tiles
-    tilesList = [];
-    
-    
-    /*
-    * Instantiation of Tile's objects that contain the sounds and logic
-    */
-   let darkPieces = [2, 4, 7, 9, 11];//List of the position that sharp notes are always going to be in each 12
-   let keysAssiged = [];
-   for (let i = 0; i < 12; i++) {
-        let type;
-        if (darkPieces.includes(i+1)) {
-            type= "dark";
-        }else{
-            type = "soft";
-        }
-        let tile = new Tile(type, tiles[i], 10, soundsList[i], baseSustainability);
-        let key = keysAssignmentList.shift().toUpperCase();
-        keysAssiged.push(key);
-        tilesList[key] = tile;
-    }
-
-    //Assigning events
-    mouseHandlers(tiles, soundsList);
-    document.addEventListener("keydown", keyListenerDown);
-    document.addEventListener("keyup", keyListenerUp);
-
-    //Section to start creating the divs
+function htmlElementCreation() {
+    for (let i = 0; i < keysAssigned.length; i++) {
+        //Section to start creating the divs
     let generalDiv = document.querySelector("#tiles-wrapper");
 
     let doDiv = document.createElement("div");
@@ -237,6 +151,105 @@ function init() {
 
     let siDiv = document.createElement("div");
     siDiv.className += " soft-tile";
+        
+    }
+}
+
+/*
+* Function incharge of creating the event listeners for the mouse
+*/
+function mouseHandlers(tiles){
+    //Loop for HTML div-tiles
+    for(let i = 0; i < tiles.length; i++) {
+        let element = document.querySelector("#"+tiles[i]);
+
+        let index = keysAssigned[i].toUpperCase(); // get the letter assigned to the tile
+
+        element.addEventListener("mousedown", (e) => {
+            console.log();
+            tilesList[index].startSound(sustainOn, volume);
+        });
+        
+        element.addEventListener("mouseup", (e) => {
+            tilesList[index].stopSound();
+        });
+
+        element.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            tilesList[index].startSound(sustainOn, volume);
+        });
+        
+        element.addEventListener("touchend", (e) => {
+            tilesList[index].stopSound();
+        });
+
+    }
+    //Starting the mouse listeners for the pedal
+    let volumenController = document.querySelector("#volume-control");
+
+    volumenController.addEventListener("change", (e) =>{
+        volume = document.querySelector("#volume-control").value / 100;
+    });
+
+
+    let pedal = document.querySelector("#foot-button");
+    
+    pedal.addEventListener("mousedown", pedalDown);
+    pedal.addEventListener("mouseup", pedalUp);
+
+    //
+    pedal.addEventListener("touchstart", (e)=>{
+        e.preventDefault(); //Prevent default behavior of the event
+        pedalDown(); //Call of the function
+    });
+    pedal.addEventListener("touchend", pedalUp);
+}
+
+
+/**
+ * This function contains the initial setup of the application
+ * @params none
+ * @returns does not return
+ */
+function init() {
+    //Base classes
+    let tiles = ["s1", "d1", "s2", "d2", "s3", "s4", "d4", "s5", "d5", "s6", "d6", "s7"   ];
+    sustainOn = false;
+    volume = 1;
+
+    //Getting the keys supported by the program as a list of elements
+    keysAssignmentList = baseKeys.split("");
+    
+    //Get the base sounds that are going to be listened
+    let soundsList = generateScaleList("./src/sounds/note", "s.mp3");
+
+    //Creating the list that will hold the tiles
+    tilesList = [];
+    
+    
+   //Instantiation of Tile's objects that contain the sounds and logic
+   let darkPieces = [2, 4, 7, 9, 11];//List of the position that sharp notes are always going to be in each 12
+   keysAssigned = [];
+   for (let i = 0; i < 12; i++) {
+        let type;
+        if (darkPieces.includes(i+1)) {
+            type= "dark";
+        }else{
+            type = "soft";
+        }
+        let tile = new Tile(type, tiles[i], 10, soundsList[i], baseSustainability);
+        let key = keysAssignmentList.pop().toUpperCase();
+        keysAssigned.push(key);
+        tilesList[key] = tile;
+    }
+
+    
+    //Assigning events
+    mouseHandlers(tiles, soundsList);
+    document.addEventListener("keydown", keyListenerDown);
+    document.addEventListener("keyup", keyListenerUp);
+
+    htmlElementCreation();
 }
 
 //Call to the starting function
