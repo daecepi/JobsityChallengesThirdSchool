@@ -103,11 +103,10 @@ function generateScaleList(prestr = "", posstr = "") {
 }
 
 /**
- * This function 
+ * Using the configurations values and 
  * @param 
- * @param
  */
-function htmlElementCreation() {
+function tilesHtmlUpdater() {
     for (let i = 0; i < keysAssigned.length; i++) {
         //Section to start creating the divs
     let generalDiv = document.querySelector("#tiles-wrapper");
@@ -249,7 +248,7 @@ function init() {
     document.addEventListener("keydown", keyListenerDown);
     document.addEventListener("keyup", keyListenerUp);
 
-    htmlElementCreation();
+    tilesHtmlUpdater();
 }
 
 //Call to the starting function
