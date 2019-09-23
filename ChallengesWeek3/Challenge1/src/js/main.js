@@ -6,6 +6,7 @@ const baseSustainability = 1.2;
 var keysAssignmentList; //variable that contains the baseKeys in an array form
 var keysAssigned; //Variable that holds the assigned keys
 var tilesList;
+var scalesNum; //Num of scales needed by the user (available when the user)
 var sustainOn; //Vaiable that holds the press of the pedal
 var volume; // variables that contain the volume of the system
 
@@ -107,6 +108,7 @@ function generateScaleList(prestr = "", posstr = "") {
  * @param 
  */
 function tilesHtmlUpdater() {
+    
     for (let i = 0; i < keysAssigned.length; i++) {
         //Section to start creating the divs
     let generalDiv = document.querySelector("#tiles-wrapper");

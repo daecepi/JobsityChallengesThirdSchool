@@ -34,7 +34,7 @@ class Tile {
             this.htmlElement.style.background = "var(--primary-"+this.type+"-tile)";
             //Accelerate finish of the sound since pedal is not pressed
             if (!this.pedalFlag) {
-                
+                this.sound.playbackRate = 1.4;
                 this.pedalFlag = true;
             }
             this.pressed = false;

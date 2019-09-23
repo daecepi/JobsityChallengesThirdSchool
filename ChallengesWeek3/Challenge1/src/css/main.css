@@ -60,7 +60,7 @@ header{
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .volume-box, .num-scales-box{
@@ -234,7 +234,6 @@ a{
     border-radius: 20px;
     margin:0px;
     padding: 0px;
-    font-size: 1.5rem;
     background: var(--led-pedal-background-off);
     color: var(--led-font);
 }
@@ -244,13 +243,10 @@ a{
 * MEDIA QUERIES SECTION
 */
 @media (orientation: landscape) and (max-height: 578px) {
+    
     body {
         grid-template-rows: 1fr;
         height: 100%;
-    }
-
-    header h1{
-        font-size: 0.9rem;
     }
 
     header{
@@ -259,7 +255,6 @@ a{
 
     .content{
         height: 50%;
-        width: 100%;
     }
 
     .dark-tile p{
@@ -268,12 +263,26 @@ a{
 }
       
 @media (orientation: portrait) and (max-width: 578px) {
-    body {
-        transform: rotate(0deg);
+    
+    .content{
+        width: 85%;
     }
 
-    header h1{
-        font-size: 0.9rem;
+    .tiles-wrapper{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .tiles-wrapper-fullscale{
+        flex-grow: 1;
+    }
+
+    .dark-tile p{
+        border: 0px solid black;
+    }
+
+    .dark-tile{
+        width: 20px;
     }
 }
 
