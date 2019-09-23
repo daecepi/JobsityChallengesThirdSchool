@@ -32,7 +32,11 @@
 /*
     layout definitions
 */
-
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 html, body{
     padding: 0%;
     margin: 0%;
@@ -81,6 +85,8 @@ header{
 }
 
 .soft-tile{
+    height: 100%;
+    width: 100%;
     z-index: 1;
     display: flex;
     justify-items: center;
@@ -156,10 +162,14 @@ header{
 header{
     border: 2px solid var(--secondary-text-font);
     background: var(--primary-background);
+    display: flex;
+    align-items: center;
 }
 
 h1{
     color: var(--primary-text-font);
+    flex-grow: 1;
+    font-size: 1.5rem;
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -174,6 +184,7 @@ h1{
     align-content: center;
     border-radius: 5px;
     border: 2px solid var(--primary-font);
+    background: red;
     color: var(--primary-font);
 }
 
@@ -194,6 +205,7 @@ h1{
     border: 2px solid var(--primary-text-font);
     background: var(--primary-soft-tile);
     box-shadow: inset  0px -10px 5px -1px var(--dark-pedal);
+    padding-bottom: 1.5rem;
 }
 
 .soft-tile-pressed{
@@ -212,7 +224,6 @@ h1{
 
 .dark-tile p{
     border-radius: 50px;
-    border: 2px solid var(--font-dark-tile);
     font-size: 2rem;
     color: var(--font-dark-tile);
 }
@@ -221,6 +232,7 @@ h1{
     border: 2px solid var(--primary-dark-tile);
     background: var(--primary-dark-tile);
     box-shadow: inset  0px -10px 5px -1px var(--dark-pedal);
+    padding-bottom: 1rem;
 }
 
 a{
@@ -254,11 +266,12 @@ a{
     }
 
     .content{
-        height: 50%;
+        height: 100vh;
+        width: 100vw;
     }
 
     .dark-tile p{
-        border: 0px solid black;
+        font-size: 1rem;
     }
 }
       
@@ -278,7 +291,7 @@ a{
     }
 
     .dark-tile p{
-        border: 0px solid black;
+        font-size: 1rem;
     }
 
     .dark-tile{

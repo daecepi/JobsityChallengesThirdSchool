@@ -3,6 +3,7 @@
 */
 const baseKeys = "u7y6t5re3w2qmjnhbgvcdxsz"; //Keys that are supported for assignation for tiles
 const baseSustainability = 1.2;
+const soundsAvailable = 12;
 var keysAssignmentList; //variable that contains the baseKeys in an array form
 var keysAssigned; //Variable that holds the assigned keys
 var tilesList;
@@ -54,7 +55,8 @@ function keyListenerUp(e) {
 */
 function pedalDown(e) {
     let pedal = document.querySelector("#foot-button");
-    pedal.style.background = "var(--dark-pedal)";
+    pedal.style.background = "var(--soft-pedal)";
+    pedal.setAttribute("box-shadow", "0px 0px 0px 0px var(--dark-pedal)");
 }
 
 /**
@@ -94,7 +96,7 @@ function pedalUp(){
  */
 function generateScaleList(prestr = "", posstr = "") {
     let soundList = [];
-    for (let index = 1; index <= 12; index++) {
+    for (let index = 1; index <= soundsAvailable; index++) {
         let sound = new Audio();
         sound.src = prestr + index + posstr;
 
@@ -104,62 +106,10 @@ function generateScaleList(prestr = "", posstr = "") {
 }
 
 /**
- * Using the configurations values and 
- * @param 
+ * Function incharge of creating the event listeners that require touching the elements
+ * @param {Array} tiles : list of the tiles used in the HTML
  */
-function tilesHtmlUpdater() {
-    
-    for (let i = 0; i < keysAssigned.length; i++) {
-        //Section to start creating the divs
-    let generalDiv = document.querySelector("#tiles-wrapper");
-
-    let doDiv = document.createElement("div");
-    doDiv.className += " soft-tile";
-    doDiv.id = "tZ";
-    
-    let doShrpDiv = document.createElement("div");
-    doShrpDiv.className += " soft-tile";
-    doShrpDiv.id = "tX";
-
-    let reDiv = document.createElement("div");
-    reDiv.className += " soft-tile";
-    reDiv.id = "tC";
-    
-    let reShrpDiv = document.createElement("div");
-    reShrpDiv.className += " soft-tile";
-    reShrpDiv.id = "tV";
-
-    let miDiv = document.createElement("div");
-    miDiv.className += " soft-tile";
-
-    let faDiv = document.createElement("div");
-    faDiv.className += " soft-tile";
-    
-    let faShrpDiv = document.createElement("div");
-    faShrpDiv.className += " soft-tile";
-    
-    let solDiv = document.createElement("div");
-    solDiv.className += " soft-tile";
-    
-    let solShrpDiv = document.createElement("div");
-    solShrpDiv.className += " soft-tile";
-    
-    let laDiv = document.createElement("div");
-    laDiv.className += " soft-tile";
-    
-    let laShrpDiv = document.createElement("div");
-    laShrpDiv.className += " soft-tile";
-
-    let siDiv = document.createElement("div");
-    siDiv.className += " soft-tile";
-        
-    }
-}
-
-/*
-* Function incharge of creating the event listeners for the mouse
-*/
-function mouseHandlers(tiles){
+function touchHandlers(tiles){
     //Loop for HTML div-tiles
     for(let i = 0; i < tiles.length; i++) {
         let element = document.querySelector("#"+tiles[i]);
@@ -167,7 +117,6 @@ function mouseHandlers(tiles){
         let index = keysAssigned[i].toUpperCase(); // get the letter assigned to the tile
 
         element.addEventListener("mousedown", (e) => {
-            console.log();
             tilesList[index].startSound(sustainOn, volume);
         });
         
@@ -198,7 +147,6 @@ function mouseHandlers(tiles){
     pedal.addEventListener("mousedown", pedalDown);
     pedal.addEventListener("mouseup", pedalUp);
 
-    //
     pedal.addEventListener("touchstart", (e)=>{
         e.preventDefault(); //Prevent default behavior of the event
         pedalDown(); //Call of the function
@@ -206,6 +154,30 @@ function mouseHandlers(tiles){
     pedal.addEventListener("touchend", pedalUp);
 }
 
+/**
+ * Using the configuration values to update the HTML element
+ */
+function tilesHtmlUpdater() {
+    let generalDiv = document.querySelector(".tiles-wrapper");
+    
+    ///for (let i = 0; i < keysAssigned.length; i++) {
+        //Section to start creating the divs
+
+    let scaleWrapper = document.createElement("div");
+    scaleWrapper.classList.add("tiles-wrapper-fullscale");
+    let doDiv = document.createElement("div");
+    doDiv.className += " soft-tile";
+    doDiv.id = "tZ";
+    let text = document.createElement("p");
+    text.innerText = "H";
+    doDiv.appendChild(text);
+    
+    scaleWrapper.appendChild(doDiv);
+    generalDiv.appendChild(scaleWrapper);
+    
+        
+    //}
+}
 
 /**
  * This function contains the initial setup of the application
@@ -244,13 +216,17 @@ function init() {
         tilesList[key] = tile;
     }
 
+
     
     //Assigning events
-    mouseHandlers(tiles, soundsList);
+    touchHandlers(tiles);
+    
     document.addEventListener("keydown", keyListenerDown);
     document.addEventListener("keyup", keyListenerUp);
+    let numScales = document.querySelector("#");
 
-    tilesHtmlUpdater();
+    //Html setup
+    //tilesHtmlUpdater();
 }
 
 //Call to the starting function
