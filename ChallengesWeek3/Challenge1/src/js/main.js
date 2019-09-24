@@ -55,7 +55,7 @@ function keyListenerUp(e) {
 */
 function pedalDown(e) {
     let pedal = document.querySelector("#foot-button");
-    pedal.style.background = "var(--soft-pedal)";
+    pedal.style.background = "var(--dark-pedal)";
     pedal.setAttribute("box-shadow", "0px 0px 0px 0px var(--dark-pedal)");
 }
 
@@ -110,7 +110,7 @@ function generateScaleList(prestr = "", posstr = "") {
  * @param {Array} tiles : list of the tiles used in the HTML
  */
 function setTouchHandlers(tiles){
-    //Loop for HTML div-tiles
+    //Loop to assign event to HTML div-tiles
     for(let i = 0; i < tiles.length; i++) {
         let element = document.querySelector("#t"+tiles[i]);
 
@@ -152,13 +152,16 @@ function setTouchHandlers(tiles){
         pedalDown(); //Call of the function
     });
     pedal.addEventListener("touchend", pedalUp);
+
+    //Now since the keys have been updated everywhere and events are ready we can clear the list and wait for new ones
+    keysAssigned = [];
 }
 
 /**
  * Using the configuration values to update the HTML element
  * Execution of this function finishes if conditions are not right for scaling
  */
-function tilesHtmlUpdater() {
+function tilesUpdater() {
     let scalesWanted = document.querySelector("#num-scales-control").value;
 
     if (scalesWanted-1 > (tilesList.length/12)) {
@@ -223,7 +226,6 @@ function tilesHtmlUpdater() {
             
             for (let index = 0; index < 12; index++) {
                 let key = keysAssignedCopy.pop().toUpperCase(); //Getting the key for this element
-                console.log(keysAssigned);
                 //Verify if next tile is a dark piece and if is
                 if (darkPieces.includes(index)) {
                     //and first quartet hasn't been filled we put it there
@@ -259,7 +261,6 @@ function tilesHtmlUpdater() {
 
                     scaleWrapper.appendChild(noteElement);
                 }
-                
             }
 
             darkWrapper.appendChild(firstQuartet);
@@ -267,8 +268,15 @@ function tilesHtmlUpdater() {
 
             scaleWrapper.appendChild(darkWrapper); //Adding the dark wrapper to the 12 scale container
             generalDiv.appendChild(scaleWrapper); // Creating the only ReFlow necesary per new Scale created
+
+            assignTileReferences(); //Assign references to the respective tile objects
+
+            //Assigning events that require touch (keyboard adapts automatically because of program structure)
+            let keysToBeRead = keysAssigned.slice();
+            setTouchHandlers(keysToBeRead);
         }
         generalDiv.style["grid-template-columns"] = "repeat("+scalesWanted+", 1fr)";
+        actualScalesNum++; //Increase of the reference value for the number of scales created
     }
 }
 
@@ -277,12 +285,11 @@ function tilesHtmlUpdater() {
  */
 function assignTileReferences() {
     for (let i = 0; i < keysAssigned.length; i++) {
-        console.log(i)
         let key = keysAssigned[i];
-        console.log(key);
+
+        //Assign the Dom reference to tile
         let reference = document.querySelector("#t"+key);
         tilesList[key].assignDomReference(reference);
-        
     }
 }
 
@@ -308,37 +315,28 @@ function init() {
     tilesList = [];
     
    //Instantiation of Tile's objects that contain the sounds and logic
-   let darkPieces = [2, 4, 7, 9, 11];//List of the position that sharp notes are always going to be in each group of 12 notes
+   let darkPieces = [1, 3, 6, 8, 10];//List of the position that sharp notes are always going to be in each group of 12 notes
    keysAssigned = [];
    for (let i = 0; i < 12; i++) {
         let type;
-        if (darkPieces.includes(i+1)) {
+        if (darkPieces.includes(i)) {
             type= "dark";
         }else{
             type = "soft";
         }
         let key = keysAssignmentList.pop().toUpperCase();
         let tile = new Tile(type, soundsList[i], baseSustainability);
-        console.log(key);
         keysAssigned.push(key);
         tilesList[key] = tile;
     }
-    console.log(keysAssigned);
 
-    //Html setup
-    tilesHtmlUpdater();
+    //Html setup and tiles assignation
+    tilesUpdater();
 
-    console.log(keysAssigned);
-    assignTileReferences();
-    
-    console.log(keysAssigned);
-    //Assigning events
-    let keysToBeRead = keysAssigned.slice();
-    setTouchHandlers(keysToBeRead);
-    
     document.addEventListener("keydown", keyListenerDown);
     document.addEventListener("keyup", keyListenerUp);
-    //let numScales = document.querySelector("#");
+    let numScales = document.querySelector("#num-scales-control");
+    numScales.addEventListener("change", tilesUpdater);
 
 }
 

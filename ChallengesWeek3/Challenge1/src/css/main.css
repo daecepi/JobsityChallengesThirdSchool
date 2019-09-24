@@ -257,7 +257,7 @@ a{
     
     body {
         grid-template-rows: 1fr;
-        height: 100%;
+        height: 50vw;
     }
 
     header{
@@ -265,8 +265,7 @@ a{
     }
 
     .content{
-        height: 100vh;
-        width: 100vw;
+        height: 50%;
     }
 
     .dark-tile p{
