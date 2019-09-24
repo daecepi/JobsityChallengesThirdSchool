@@ -1,0 +1,79 @@
+{
+ "kind": "books#volumes",
+ "totalItems": 1,
+ "items": [
+  {
+   "kind": "books#volume",
+   "id": "lNdVAQAACAAJ",
+   "etag": "R55fNyKrk8s",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/lNdVAQAACAAJ",
+   "volumeInfo": {
+    "title": "Bacchus",
+    "authors": [
+     "Eddie Campbell"
+    ],
+    "publishedDate": "2015",
+    "description": "In Bacchus, the visionary behind From Hell (with Alan Moore) and ALEC: The Years Have Pants presents his version of \"an American-style comic book,\" filtered through his own brilliant, whimsical, and wide-ranging sensibility. With a fine blend of action, comedy, suspense, and an ear for a great story, Bacchus brings the gods and myths of ancient Greece to modern life, as if they had never left. Nearly 600-pages, this deluxe volume collects the first half of the Bacchus saga (including \"Immortality Isn't Forever,\" \"The Gods of Business,\" \"Doing the Islands with Bacchus,\" \"The Eyeball Kid: One Man Show,\" and \"Earth, Water, Air & Fire\") with new notes and commentary by the author.",
+    "industryIdentifiers": [
+     {
+      "type": "ISBN_10",
+      "identifier": "1603090266"
+     },
+     {
+      "type": "ISBN_13",
+      "identifier": "9781603090261"
+     }
+    ],
+    "readingModes": {
+     "text": false,
+     "image": false
+    },
+    "pageCount": 560,
+    "printType": "BOOK",
+    "categories": [
+     "Comics & Graphic Novels"
+    ],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+     "containsEpubBubbles": false,
+     "containsImageBubbles": false
+    },
+    "comicsContent": true,
+    "imageLinks": {
+     "smallThumbnail": "http://books.google.com/books/content?id=lNdVAQAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+     "thumbnail": "http://books.google.com/books/content?id=lNdVAQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.com.co/books?id=lNdVAQAACAAJ&dq=isbn:9781603090261&hl=&cd=1&source=gbs_api",
+    "infoLink": "http://books.google.com.co/books?id=lNdVAQAACAAJ&dq=isbn:9781603090261&hl=&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Bacchus.html?hl=&id=lNdVAQAACAAJ"
+   },
+   "saleInfo": {
+    "country": "CO",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": false
+   },
+   "accessInfo": {
+    "country": "CO",
+    "viewability": "NO_PAGES",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+     "isAvailable": false
+    },
+    "pdf": {
+     "isAvailable": false
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=lNdVAQAACAAJ&hl=&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "NONE",
+    "quoteSharingAllowed": false
+   },
+   "searchInfo": {
+    "textSnippet": "Nearly 600-pages, this deluxe volume collects the first half of the Bacchus saga (including &quot;Immortality Isn&#39;t Forever,&quot; &quot;The Gods of Business,&quot; &quot;Doing the Islands with Bacchus,&quot; &quot;The Eyeball Kid: One Man Show,&quot; and &quot;Earth, Water, Air &amp; ..."
+   }
+  }
+ ]
+}
