@@ -1,16 +1,16 @@
 /**
  * Variables for configurations of the application
 */
-const baseKeys = "u7y6t5re3w2qmjnhbgvcdxsz"; //Keys that are supported for assignation for tiles
+const baseKeys = "mjnhbgvcdxszu7y6t5re3w2q"; //Keys that are supported for assignation for tiles
 const baseSustainability = 1.2;
 const soundsAvailable = 12;
 var keysAssignmentList; //variable that contains the baseKeys in an array form
 var keysAssigned; //Variable that holds the assigned keys
 var tilesList;
-var scalesNum; //Num of scales needed by the user (available when the user)
+var actualScalesNum; // How many groups of 12 notes have been assigned to the piano (useful for HTML rendering optimization)
+var hiddenScales;
 var sustainOn; //Vaiable that holds the press of the pedal
 var volume; // variables that contain the volume of the system
-
 
 
 /**
@@ -109,10 +109,10 @@ function generateScaleList(prestr = "", posstr = "") {
  * Function incharge of creating the event listeners that require touching the elements
  * @param {Array} tiles : list of the tiles used in the HTML
  */
-function touchHandlers(tiles){
+function setTouchHandlers(tiles){
     //Loop for HTML div-tiles
     for(let i = 0; i < tiles.length; i++) {
-        let element = document.querySelector("#"+tiles[i]);
+        let element = document.querySelector("#t"+tiles[i]);
 
         let index = keysAssigned[i].toUpperCase(); // get the letter assigned to the tile
 
@@ -156,27 +156,134 @@ function touchHandlers(tiles){
 
 /**
  * Using the configuration values to update the HTML element
+ * Execution of this function finishes if conditions are not right for scaling
  */
 function tilesHtmlUpdater() {
-    let generalDiv = document.querySelector(".tiles-wrapper");
-    
-    ///for (let i = 0; i < keysAssigned.length; i++) {
-        //Section to start creating the divs
+    let scalesWanted = document.querySelector("#num-scales-control").value;
 
-    let scaleWrapper = document.createElement("div");
-    scaleWrapper.classList.add("tiles-wrapper-fullscale");
-    let doDiv = document.createElement("div");
-    doDiv.className += " soft-tile";
-    doDiv.id = "tZ";
-    let text = document.createElement("p");
-    text.innerText = "H";
-    doDiv.appendChild(text);
+    if (scalesWanted-1 > (tilesList.length/12)) {
+        //If sounds are going to be generated apply the respective logic here
+        alert("Not enough sounds in the system");
+        return ;
+    }
+
+    if (scalesWanted > (baseKeys.length / 12)) {
+        alert("Not enough keyboard are set for assignment in the system");
+        return;
+    }
     
-    scaleWrapper.appendChild(doDiv);
-    generalDiv.appendChild(scaleWrapper);
-    
+    let keysAssignedCopy = keysAssigned.slice().reverse(); //since push and pop method consumes less computational power is better to reverse the array
+    if(hiddenScales > 0 && actualScalesNum > scalesWanted){
+        let diff = scalesWanted - actualScalesNum; //number of sets of 12 notes to be created
+
+        let generalDiv = document.querySelector(".tiles-wrapper");
+        for (let index = 0; index < generalDiv.children.length; index++) {
+            if (diff > 0) {
+                generalDiv.children[index].display = grid;
+                hiddenScales--;
+                diff--;
+            }else{
+                break;
+            }
+        }
+        generalDiv.style["grid-template-columns"] = "repeat("+scalesWanted+", 1fr)";
+    }else if(actualScalesNum > scalesWanted){
+        //Hide scales not needed
+        let diff = actualScalesNum- scalesWanted;
+        let generalDiv = document.querySelector(".tiles-wrapper");
+        for (let index = generalDiv.children.length-1; index <= 0 ; index--) {
+            if (diff > 0) {
+                generalDiv.children[index].style.display = "none";
+                hiddenScales++;
+                diff--;
+            }else{
+                break;
+            }
+        }
+        generalDiv.style["grid-template-columns"] = "repeat("+scalesWanted+", 1fr)";
+    }else if(actualScalesNum < scalesWanted){
+        let diff = scalesWanted - actualScalesNum; //number of sets of 12 notes to be created
         
-    //}
+        let generalDiv = document.querySelector(".tiles-wrapper");
+        for (let index = 0; index < diff; index++) {
+            let scaleWrapper = document.createElement("div");
+            //Creation of 12 notes according schema
+            scaleWrapper.classList.add("tiles-wrapper-fullscale");
+
+            //DarkWrappers
+            let darkWrapper = document.createElement("div");
+            darkWrapper.classList.add("dark-wrapper");
+            let firstQuartet = document.createElement("div");
+            firstQuartet.classList.add("first-quartet");
+            let secondQuartet = document.createElement("div");
+            secondQuartet.classList.add("second-quartet");
+
+            let darkPieces = [1, 3, 6, 8, 10];//List of the position that sharp notes are always going to be in each group of 12 notes
+            let quartetCounter = 0; //Variable to determine when the first quartet is finished
+            
+            for (let index = 0; index < 12; index++) {
+                let key = keysAssignedCopy.pop().toUpperCase(); //Getting the key for this element
+                console.log(keysAssigned);
+                //Verify if next tile is a dark piece and if is
+                if (darkPieces.includes(index)) {
+                    //and first quartet hasn't been filled we put it there
+                    if (quartetCounter < 2) {
+                        let noteElement = document.createElement("div");
+                        noteElement.classList.add("dark-tile");
+                        noteElement.id = "t"+key;
+                        let text = document.createElement("p");
+                        text.innerText = key;
+                        noteElement.appendChild(text);
+
+                        firstQuartet.appendChild(noteElement);
+
+                        quartetCounter++;
+                    }else{
+                        let noteElement = document.createElement("div");
+                        noteElement.classList.add("dark-tile");
+                        noteElement.id = "t"+key;
+                        let text = document.createElement("p");
+                        text.innerText = key;
+                        noteElement.appendChild(text);
+                        
+                        secondQuartet.appendChild(noteElement);
+                    }
+                }else{
+                    //Creating html elements
+                    let noteElement = document.createElement("div");
+                    noteElement.classList.add("soft-tile");
+                    noteElement.id = "t"+key;
+                    let text = document.createElement("p");
+                    text.innerText = key;
+                    noteElement.appendChild(text);
+
+                    scaleWrapper.appendChild(noteElement);
+                }
+                
+            }
+
+            darkWrapper.appendChild(firstQuartet);
+            darkWrapper.appendChild(secondQuartet);
+
+            scaleWrapper.appendChild(darkWrapper); //Adding the dark wrapper to the 12 scale container
+            generalDiv.appendChild(scaleWrapper); // Creating the only ReFlow necesary per new Scale created
+        }
+        generalDiv.style["grid-template-columns"] = "repeat("+scalesWanted+", 1fr)";
+    }
+}
+
+/**
+ * Assigns or updates the references of the html elements they represent 
+ */
+function assignTileReferences() {
+    for (let i = 0; i < keysAssigned.length; i++) {
+        console.log(i)
+        let key = keysAssigned[i];
+        console.log(key);
+        let reference = document.querySelector("#t"+key);
+        tilesList[key].assignDomReference(reference);
+        
+    }
 }
 
 /**
@@ -186,9 +293,10 @@ function tilesHtmlUpdater() {
  */
 function init() {
     //Base classes
-    let tiles = ["s1", "d1", "s2", "d2", "s3", "s4", "d4", "s5", "d5", "s6", "d6", "s7"   ];
     sustainOn = false;
     volume = 1;
+    actualScalesNum = 0;
+    hiddenScales = 0;
 
     //Getting the keys supported by the program as a list of elements
     keysAssignmentList = baseKeys.split("");
@@ -199,9 +307,8 @@ function init() {
     //Creating the list that will hold the tiles
     tilesList = [];
     
-    
    //Instantiation of Tile's objects that contain the sounds and logic
-   let darkPieces = [2, 4, 7, 9, 11];//List of the position that sharp notes are always going to be in each 12
+   let darkPieces = [2, 4, 7, 9, 11];//List of the position that sharp notes are always going to be in each group of 12 notes
    keysAssigned = [];
    for (let i = 0; i < 12; i++) {
         let type;
@@ -210,23 +317,29 @@ function init() {
         }else{
             type = "soft";
         }
-        let tile = new Tile(type, tiles[i], 10, soundsList[i], baseSustainability);
         let key = keysAssignmentList.pop().toUpperCase();
+        let tile = new Tile(type, soundsList[i], baseSustainability);
+        console.log(key);
         keysAssigned.push(key);
         tilesList[key] = tile;
     }
+    console.log(keysAssigned);
 
+    //Html setup
+    tilesHtmlUpdater();
 
+    console.log(keysAssigned);
+    assignTileReferences();
     
+    console.log(keysAssigned);
     //Assigning events
-    touchHandlers(tiles);
+    let keysToBeRead = keysAssigned.slice();
+    setTouchHandlers(keysToBeRead);
     
     document.addEventListener("keydown", keyListenerDown);
     document.addEventListener("keyup", keyListenerUp);
-    let numScales = document.querySelector("#");
+    //let numScales = document.querySelector("#");
 
-    //Html setup
-    //tilesHtmlUpdater();
 }
 
 //Call to the starting function

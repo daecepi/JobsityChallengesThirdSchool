@@ -1,8 +1,7 @@
 class Tile {
-    constructor(type ,desc, frequency, sound, baseSustainability){
+    constructor(type, sound, baseSustainability){
         this.type = type;
-        this.htmlElement = document.querySelector("#"+desc);
-        this.frequency = frequency;
+        this.htmlElement = undefined;
         this.sound = sound;
         this.sound.playbackRate = baseSustainability;
 
@@ -38,6 +37,12 @@ class Tile {
                 this.pedalFlag = true;
             }
             this.pressed = false;
+        }
+    }
+
+    assignDomReference(reference){
+        if(this.htmlElement === undefined){
+            this.htmlElement = reference;
         }
     }
 }
