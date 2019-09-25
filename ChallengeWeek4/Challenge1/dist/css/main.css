@@ -127,6 +127,9 @@ html, body {
   .menu-right ol {
     overflow: hidden;
     list-style-type: none; }
+  .menu-right li {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem; }
 
 .menu-left a, .menu-right a {
   text-decoration: none;

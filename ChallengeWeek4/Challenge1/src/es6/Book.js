@@ -10,5 +10,14 @@ class Book{
     }
 
     getTitle(){
+        return this.title;
+    }
+
+    getDesc(){
+        return this.title;
+    }
+
+    getAuthors(){
+        return this.authors;
     }
 }

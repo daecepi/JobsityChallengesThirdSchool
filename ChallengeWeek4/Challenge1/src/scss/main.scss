@@ -161,11 +161,17 @@
     font-size: 0.5rem;
 
     @include addProperty(var(--primary-grey));
+
     ol{
       overflow: hidden;
       list-style-type: none;
     
       
+    }
+
+    li{
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
     }
   }
   
