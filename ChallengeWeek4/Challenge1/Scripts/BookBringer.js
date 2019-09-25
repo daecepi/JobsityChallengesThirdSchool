@@ -3,6 +3,9 @@
 let { Book } = require('./Book');
 
 let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+let fetch = require('node-fetch');
+
+
 let fs = require('fs');
 
 
@@ -35,7 +38,7 @@ let fields = [
         'title',
         'authors',
         'publishedDate',
-        'averageRating',
+        'maturityRating',
         'description',
         'pageCount',
         'imageLinks'
@@ -43,31 +46,31 @@ let fields = [
 
 
 let getBook = (book) => {
-    var xhr = new XMLHttpRequest();
+    let result = fetch(baseURL+book[0],
+        {method: 'GET'}).then((data) =>{
+            console.log(data.data);
+        }, (err) =>{
+            console.log(err);
+        });
 
-    xhr.open("GET", baseURL+books[0], false);
-    xhr.send(null);
-
-
-    if (xhr.status == 200) {
-        let response = JSON.parse(xhr.responseText);
-
-        let book = {};
-
-        for (let index = 0; index < fields['general'].length; index++) {
-            let field = fields['general'][index];
-            book[field] = response['items'][0].volumeInfo[field];
-            console.log(response['items'][0].volumeInfo[field]);
-        }
-        console.log(book);
-        finalData.push(book);
-    }
+    console.log(result);
 };
 
-let getBooksSpecific = (id) => {
-    
-}
+let resolveBooks = async (books, properties) => {
+    for (let index = 0; index < books.length; index++) {
+        console.log(baseURL+books[index]);
+        let result = await fetch(baseURL+books[index]).then(res => res.json());
 
+        console.log(result);
+        //Filtering fields
+        let data = {};
+        for (let index = 0; index < properties.length; index++) {
+            let field =properties[index];
+            //data[field] = result.items[0].volumeInfo[field];
+            //console.log(result.items[0]);
+        }
+    }
+}
 
 //Save final JSON inside file
 let writeToFile = (err, file) => {
@@ -77,8 +80,9 @@ let writeToFile = (err, file) => {
     }
 
     console.log("DOne");
-    
 }
+
+resolveBooks(books, fields);
 
 /*
 //Unitary code to test the data fetched
@@ -94,9 +98,9 @@ let bookToFind = books.map((x, i) => {
                 });
 */
 
-for (let index = 0; index < books.length; index++) {
+/*for (let index = 0; index < books.length; index++) {
     setTimeout(() => {getBook(books[index])}, 3000);
-}
+}*/
 
 // books.forEach(book => {
 //     console.log(book);
@@ -106,7 +110,5 @@ for (let index = 0; index < books.length; index++) {
 //     console.log(element);
 // })
 
-
-//const https = require("https");
 
 
