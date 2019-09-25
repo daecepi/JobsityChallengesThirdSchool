@@ -1,13 +1,54 @@
+/*
+  FONTS
+*/
+@font-face{
+  font-family: 'TitlePluton';
+  src: url('../fonts/HVD Fonts - PlutoSansMedium.otf');
+}
+
+@font-face{
+  font-family: "PlutonGeneral";
+  src: url('../font/HVD Fonts - PlutoSansCondMedium.otf');
+}
+
+
+/*
+  Section for color pallete variables
+*/
 :root {
     --primary-white:rgba(250, 252, 254, 1);
-    --secondary-white:rgba(252, 248, 243, 1);
-    --primary-blue:rgba(47, 151, 242, 1);
+    --secondary-white:rgba(243, 226, 188, 0.2);
+    --third-white: rgb(240, 240, 240);
+
+    --primary-blue:rgb(96, 181, 214);
     --letters-blue-darker:rgba(47, 151, 242, 1);
     --secondary-blue:rgba(47, 151, 242, 1);
+    
     --primary-dark:rgba(4, 29, 41, 1);
     --primary-grey:rgba(189, 191, 191, 1);
+
+    --line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80%);
   }
-  
+  /*
+    Section of mixings
+  */
+  /*Mixing*/
+  @mixin  transformUser(){
+    background: purple;
+    margin: 0;
+    padding: 0;
+  }
+
+  /*Mixin for side container*/
+  @mixin addProperty($color){
+    padding: 0.5rem 0.5rem; /* adding margin to side containers*/
+
+    p{
+      color: $color;
+      font-size: 0.9rem;
+    }
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -25,18 +66,67 @@
     grid-template-rows: 1fr 20fr;
   }
   
+  .header{
+    .search-bar {
+      font-family: "TitlePluton", Fallback, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      border-right: 5px solid var(--line-gradient);
+      background: var(--secondary-white);
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+
+      .title-level-1{
+        font-size: 1rem;
+        justify-content: center;
+        text-align: center;
+      }
+
+    }
+
+    .user{
+      background: var(--secondary-white);
+      display: flex;
+      align-content: space-between;
+      justify-content: space-between;
+
+      i{
+        @include transformUser();
+      }
+      .profile-name{
+        font-size: 0.8rem;
+        @include transformUser();
+      }
+
+      .profile-container .profile-pic{
+        height: 40px;
+        width: 40px;
+        border-radius: 20px;
+      }
+    }
+  }
+
   .header, .section-1 {
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
   }
-  
+
+  .menu-box{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
   /*Styling according to design*/
-  
   .menu-left {
+    font-family: "PlutonGeneral", Fallback, sans-serif;
     background: var(--primary-dark);
-    padding: 0.5rem 0.5rem;
-  
-    h4 {
+    font-size: 0.7rem;
+    @include addProperty(var(--primary-white));
+
+    p {
+      font-size: 0.5rem;
+      padding-bottom: 0.4rem;
       color: var(--primary-white);
     }
   
@@ -44,15 +134,39 @@
       color: var(--primary-blue);
       list-style-type: none;
       padding: 0%;
+      text-decoration: none;
+
+      li{
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+
+      a{
+        margin-left: 0.5rem;
+      }
+
+      a:hover{
+        text-decoration: none;
+        color: white;
+      }
     }
   }
-  
+
   .menu-right {
     background: var(--primary-dark);
     color: var(--primary-grey);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 0.5rem;
+
+    @include addProperty(var(--primary-grey));
+    ol{
+      overflow: hidden;
+      list-style-type: none;
+    
+      
+    }
   }
   
   .menu-left a, .menu-right a {
@@ -63,10 +177,6 @@
   .element {
     font: bold;
     color: var(--primary-blue);
-  }
-  
-  .search-bar {
-    display: flex;
   }
   
   .logo {
@@ -81,10 +191,11 @@
     display: none;
   }
   
-  .Content {
+  .content {
     display: flex;
     justify-content: center;
-    height: 90%;
+    height: 100%;
+    background: var(--third-white);
   }
   
   .CentralComponent {
@@ -109,19 +220,18 @@
     }
   }
   
-  .LibrarySummary {}
-  
   /* CSS COMPONENT FOR SEARCH BOX */
   
   input[type="text"] {
-    border: 2px solid var(--secondary-blue);
+    border: 2px solid var(--primary-blue);
     border-radius: 40px;
     margin: 8px 0;
     outline: none;
     box-sizing: border-box;
     padding: 8px;
-    transition: 0.3s;
-  
+    transition: 0.1s;
+    height: 2rem;
+    font-size: 0.7rem;
     &:focus {
       border-color: var(--primary-blue);
       box-shadow: 0 0 8px 0 var(--primary-blue);
@@ -132,7 +242,6 @@
     input[type="text"] {
       padding-left: 40px;
     }
-  
     position: relative;
   
     i {

@@ -1,5 +1,9 @@
+/**
+ * Funtion that initializes the application
+ */
 let init = () => {
-    console.log("adasdsa");
+    let holla = "";
+    let test = {};
 }
 
 init();
