@@ -24,7 +24,7 @@ gulp.task('move:html', function () {
 });
 
 gulp.task('build:es6', function() {
-  gulp.src('./src/es6/**/*.js')
+  return gulp.src('./src/es6/**/*.js')
         .pipe(babel({
             presets: ['@babel/env']
         }))

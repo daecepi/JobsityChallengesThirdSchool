@@ -23,7 +23,19 @@ function () {
 
   _createClass(Book, [{
     key: "getTitle",
-    value: function getTitle() {}
+    value: function getTitle() {
+      return this.title;
+    }
+  }, {
+    key: "getDesc",
+    value: function getDesc() {
+      return this.title;
+    }
+  }, {
+    key: "getAuthors",
+    value: function getAuthors() {
+      return this.authors;
+    }
   }]);
 
   return Book;

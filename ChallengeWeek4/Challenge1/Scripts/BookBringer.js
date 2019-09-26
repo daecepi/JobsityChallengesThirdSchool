@@ -34,15 +34,6 @@ let booksLegacy = [
     '9781603090421'
 ];
 
-const mainString = async () =>{
-    let bookNames = await SearchBooksRated(booksSearchApi, "funny");
-    console.log(bookNames);
-
-
-
-}
-
-mainString();
 let fields = [
         'title',
         'authors',
@@ -50,21 +41,21 @@ let fields = [
         'maturityRating',
         'description',
         'pageCount',
-        'imageLinks'
+        'imageLinks',
+        'averageRating'
     ];
 
-
-
-
-//Save final JSON inside file
-let writeToFile = (err, file) => {
-    if (err){
-        console.log("eddr");
-        return ;
-    }
-
-    console.log("DOne");
+const mainString = async () =>{
+    let bookNames = await SearchBooksRated(booksSearchApi, "funny", 30, "&startIndex=0", fields);
+    
+    fs.writeFile("../dist/FirstApi.json", JSON.stringify(bookNames), (err)=>{
+        if (err) return;
+        console.log("DONE");
+    });
 }
+
+mainString();
+
 
 
 // let getBook = (book) => {

@@ -9,23 +9,81 @@ let fetch = require('node-fetch');
  */
 
 /**
- * This function gets books that are rated according to
+ * This function manages the recolection of books from an API
  * @param {String} url : contains the API url where the books are
+ * @param {Number} booksToGet : contains the number of books to get
  * @param {String} category : contains the API url where the books are
  * @param {String} postr : contains the API url where the books are
+ * @param {List} properties : OPTIONAL: If you want to filter the params inmediately
  */
-const searchBooksRated = async (baseURL, category, posstr) => {
+const searchBooksRated = async (baseURL, category, booksToGet, posstr, properties) => {
+    let count = 0;
+    let books = [];
+    while (count < booksToGet) {
+        let partialBooks = await resolveBooks(baseURL, count, category, booksToGet, posstr, properties);
+        count += partialBooks.count;
+        books = books.concat(partialBooks.books);
+    }
+
+    console.log(books.length);
+
+    return books;
+};
+
+/**
+ * gets books that are rated according to a filter gotten in certain part of the code
+ * @param {String} baseURL : contains the API url where the books are
+ * @param {Number} baseCount : The amount of registers retrieved until now
+ * @param {Number} booksToGet : contains the number of books to get
+ * @param {String} category : contains the API url where the books are
+ * @param {String} postr : contains the API url where the books are
+ * @param {List} properties : OPTIONAL: If you want to filter the fields wanted and no need to review another link is necesary
+ */
+const resolveBooks = async (baseURL, baseCount, category, booksToGet, posstr, properties) => {
     if (!baseURL && !category) {
         let error = {}
         error['Error'] = "function call not correct";
         return error;
-        //let result = await fetch(baseURL+category).then(res => res.json());
     }
-    //Building the url to pass to API
-    let finalURL = `${baseURL}${(category ? category : "" )}${(posstr ? posstr : "" )}`;
+    //Building the url to pass to API: the baseURl+categor
+    let finalURL = `${baseURL}${(category ? category : "" )}${(posstr ? posstr+baseCount : "" )}`;
 
     //Returns promise from fetch
-    return fetch(baseURL).then(res => res.json());
+    let results = await fetch(finalURL).then(res => res.json());
+    
+    /*
+    Filtering the books that we want base of some logic: initially was to get the book if had rating
+    But for brevity just going to get the books number and then get the design
+    */
+
+    let bookCounter = 0;
+    let booksSelected = [];
+
+    for (let index = 0; index < results.totalItems; index++) {
+        if (bookCounter === booksToGet) {
+            break;
+        }
+        try {
+            if (properties) {
+                let book = {};
+                for (let j = 0; j < properties.length; j++) {
+                    let property = properties[j];
+                    book[property] = results.items[index].volumeInfo[property];
+                }
+                //CODE JUST FOR THE PURPOSE OF THE EXERCISE
+                if(book['averageRating'] === undefined){
+                    book['averageRating'] = 0;
+                }
+                booksSelected.push(book);
+                bookCounter++;
+            }else{
+                /*JUST ADD THE OBJECT*/
+            }
+        } catch (error) {
+            continue;
+        }
+    }
+    return {count: booksSelected.length, books: booksSelected};
 };
 
 /**
@@ -33,9 +91,8 @@ const searchBooksRated = async (baseURL, category, posstr) => {
  * @param {*} books 
  * @param {*} properties 
  */
-const resolveBooks = async (books, properties) => {
+const resolveBooksInfo = async (books, properties) => {
     for (let index = 0; index < books.length; index++) {
-        console.log(baseURL+books[index]);
         let result = await fetch(baseURL+books[index]).then(res => res.json());
 
         setTimeout(() => {
@@ -55,4 +112,4 @@ const resolveBooks = async (books, properties) => {
 * EXPORT SECTION
 */
 module.exports.SearchBooksRated = searchBooksRated;
-module.exports.LookForBooks = resolveBooks;
+module.exports.ResolveBooksInfo = resolveBooksInfo;
