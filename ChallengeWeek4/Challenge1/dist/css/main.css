@@ -78,7 +78,6 @@ html, body {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem; }
 
-/*Styling according to design*/
 .menu-left {
   font-family: "PlutonGeneral", Fallback, sans-serif;
   background: var(--primary-dark);
@@ -118,6 +117,10 @@ html, body {
   .menu-right p {
     color: var(--primary-grey);
     font-size: 0.9rem; }
+  .menu-right p {
+    font-size: 0.5rem;
+    padding-bottom: 0.4rem;
+    color: var(--primary-white); }
   .menu-right ol {
     overflow: hidden;
     list-style-type: none; }
@@ -130,7 +133,6 @@ html, body {
   color: inherit; }
 
 .element {
-  font: bold;
   color: var(--primary-blue); }
 
 .logo {
