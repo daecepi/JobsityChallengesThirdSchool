@@ -7,7 +7,7 @@
 }
 
 @font-face{
-  font-family: "PlutonGeneral";
+  font-family: 'PlutonGeneral';
   src: url('../fonts/HVD Fonts - PlutoSansCondMedium.otf');
 }
 
@@ -34,7 +34,6 @@
   */
   /*Mixing*/
   @mixin  transformUser(){
-    background: purple;
     margin: 0;
     padding: 0;
   }
@@ -74,15 +73,9 @@
       justify-content: space-between;
       text-align: center;
       border-right: 5px solid var(--line-gradient);
+      padding-left: 1rem;
+      padding-right: 1rem;
       background: var(--secondary-white);
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-
-      .title-level-1{
-        font-size: 1rem;
-        justify-content: center;
-        text-align: center;
-      }
 
     }
 
@@ -95,6 +88,7 @@
       i{
         @include transformUser();
       }
+      
       .profile-name{
         font-size: 0.8rem;
         @include transformUser();
@@ -165,8 +159,6 @@
     ol{
       overflow: hidden;
       list-style-type: none;
-    
-      
     }
 
     li{

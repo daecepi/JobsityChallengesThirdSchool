@@ -6,7 +6,7 @@
   src: url("../fonts/HVD Fonts - PlutoSansMedium.otf"); }
 
 @font-face {
-  font-family: "PlutonGeneral";
+  font-family: 'PlutonGeneral';
   src: url("../fonts/HVD Fonts - PlutoSansCondMedium.otf"); }
 
 /*
@@ -49,13 +49,9 @@ html, body {
   justify-content: space-between;
   text-align: center;
   border-right: 5px solid var(--line-gradient);
-  background: var(--secondary-white);
-  padding-left: 0.5rem;
-  padding-right: 0.5rem; }
-  .header .search-bar .title-level-1 {
-    font-size: 1rem;
-    justify-content: center;
-    text-align: center; }
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: var(--secondary-white); }
 
 .header .user {
   background: var(--secondary-white);
@@ -63,12 +59,10 @@ html, body {
   align-content: space-between;
   justify-content: space-between; }
   .header .user i {
-    background: purple;
     margin: 0;
     padding: 0; }
   .header .user .profile-name {
     font-size: 0.8rem;
-    background: purple;
     margin: 0;
     padding: 0; }
   .header .user .profile-container .profile-pic {
