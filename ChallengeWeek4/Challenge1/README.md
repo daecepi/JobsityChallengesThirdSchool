@@ -12,3 +12,11 @@
 
 ## What was made:
 1. requirements were evaluated
+
+### Dependencies
+__To Compile:__
+1. gulp (and all of the packages)
+
+__To use the application:__
+1. Bootstrap's rating stars class
+2. Font-awesome's CDN for the icons displaying

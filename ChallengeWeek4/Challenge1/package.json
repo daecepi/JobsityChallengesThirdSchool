@@ -10,6 +10,7 @@
   "author": "David Cermeño",
   "license": "ISC",
   "devDependencies": {
+    "gulp": "^4.0.2",
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
     "babelify": "^10.0.0",
@@ -26,7 +27,6 @@
     "xmlhttprequest": "^1.8.0"
   },
   "dependencies": {
-    "gulp": "^4.0.2",
     "node-fetch": "^2.6.0"
   }
 }

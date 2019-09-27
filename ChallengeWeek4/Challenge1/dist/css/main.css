@@ -48,6 +48,7 @@ html, body {
   flex-direction: column; }
 
 .header {
+  box-sizing: border-box;
   flex-basis: 5%; }
   .header .search-bar {
     font-family: "TitlePluton", Fallback, sans-serif;
@@ -107,6 +108,7 @@ html, body {
   display: block; }
 
 .section-1 {
+  box-sizing: border-box;
   flex-basis: 95%; }
 
 .header, .section-1 {
@@ -181,24 +183,37 @@ html, body {
 .content {
   display: flex;
   justify-content: flex-start;
-  height: 100%;
+  align-items: center;
   background: var(--third-white);
   flex-flow: column; }
-  .content .content-filter-box a {
-    color: var(--primary-grey); }
   .content .listing-manipulator {
+    box-sizing: border-box;
     flex-basis: 7%;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between; }
+    justify-content: space-around; }
+    .content .listing-manipulator .content-filter-box a {
+      color: var(--primary-grey); }
     .content .listing-manipulator h2 {
+      font-size: 1.1rem;
       font-family: 'SecondTitlePluton', Fallback, sans-serif;
       font-weight: normal;
       color: var(--secondary-grey); }
     .content .listing-manipulator p {
       text-decoration: none;
       color: var(--primary-grey); }
+  .content .books {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    margin: 1.5rem;
+    justify-content: space-around;
+    align-content: flex-start;
+    background: red; }
+    .content .books .book {
+      flex-basis: 15%;
+      background: red; }
 
 .CentralComponent {
   display: flex;
@@ -233,3 +248,9 @@ input[type="text"] {
     transition: 0.3s; }
   .inputWithIcon input[type="text"]:focus + i {
     color: var(--primary-blue); }
+
+@media (max-width: 750px) {
+  .content {
+    justify-content: flex-start; }
+  .books {
+    flex-wrap: wrap; } }
