@@ -40,7 +40,7 @@
 
   /*Mixin for side container*/
   @mixin addProperty($color){
-    padding: 0.5rem 0.5rem; /* adding margin to side containers*/
+    padding: 0.7rem 0.7rem; /* adding margin to side containers*/
 
     p{
       color: $color;
@@ -125,11 +125,8 @@
     font-size: 0.7rem;
     @include addProperty(var(--primary-white));
 
-    p {
-      font-size: 0.5rem;
-      padding-bottom: 0.4rem;
-      color: var(--primary-white);
-    }
+    @include defaultP();
+
   
     ul {
       color: var(--primary-blue);
@@ -202,6 +199,23 @@
     justify-content: center;
     height: 100%;
     background: var(--third-white);
+    flex-flow: row;
+    .listing-manipulator{
+      flex-grow: 1;
+      background: red;
+      width: 100%;
+      height: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+
+      a{
+        text-decoration: none;
+      }
+    }
+
+
   }
   
   .CentralComponent {
