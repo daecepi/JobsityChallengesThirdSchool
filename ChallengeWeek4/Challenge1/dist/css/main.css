@@ -14,7 +14,7 @@
 */
 :root {
   --primary-white:rgba(250, 252, 254, 1);
-  --secondary-white:rgba(243, 226, 188, 0.2);
+  --secondary-white:rgb(247, 243, 235);
   --third-white: rgb(240, 240, 240);
   --primary-blue:rgb(96, 181, 214);
   --letters-blue-darker:rgba(47, 151, 242, 1);
@@ -43,21 +43,39 @@ html, body {
   flex-direction: column; }
 
 .header {
-  flex-grow: 1; }
+  flex-basis: 5%; }
   .header .search-bar {
     font-family: "TitlePluton", Fallback, sans-serif;
     display: flex;
     align-items: center;
     justify-content: space-between;
     text-align: center;
-    border-right: 5px solid var(--line-gradient);
+    /*border-image:
+        linear-gradient(
+          to left,
+          red, blue
+        ) 1%,
+        linear-gradient(
+          to bottom, 
+          white 20%,
+          gray 20%,
+          gray 80%,
+          white 80%
+        ) 10%;*/
     padding-left: 1rem;
     padding-right: 1rem;
     background: var(--secondary-white); }
     .header .search-bar p {
       font-size: 1.5rem; }
+  .header .borderx {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0), white), linear-gradient(to bottom, #f7f3eb 20%, rgba(68, 68, 68, 0.5) 20%, rgba(68, 68, 68, 0.5) 80%, #f7f3eb 80%);
+    display: flex;
+    align-items: center;
+    justify-content: center; }
   .header .user {
     background: var(--secondary-white);
+    height: 99%;
+    width: 99%;
     display: flex;
     align-items: center;
     justify-content: center; }
@@ -79,7 +97,7 @@ html, body {
       border-radius: 20px; }
 
 .section-1 {
-  flex-grow: 20; }
+  flex-basis: 95%; }
 
 .header, .section-1 {
   display: grid;
