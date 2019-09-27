@@ -25,7 +25,7 @@
     --secondary-blue:rgba(47, 151, 242, 1);
     
     --primary-dark:rgba(4, 29, 41, 1);
-    --primary-grey:rgba(189, 191, 191, 1);
+    --primary-grey:rgb(160, 158, 153);
 
     --line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80%);
   }
@@ -40,19 +40,14 @@
 
   /*Mixin for side container*/
   @mixin addProperty($color){
-    padding: 0.7rem 0.7rem; /* adding margin to side containers*/
-
+    padding-left: 1rem; /* adding margin to side containers*/
+    padding-right: 1rem; /* adding margin to side containers*/
+    padding-top: 1.5rem;
     p{
+      font-weight: bold;
       color: $color;
-      font-size: 0.9rem;
-    }
-  }
-
-  @mixin defaultP(){
-    p {
-      font-size: 0.5rem;
+      font-size: 0.7rem;
       padding-bottom: 0.4rem;
-      color: var(--primary-white);
     }
   }
 
@@ -69,11 +64,12 @@
   .wrapper {
     height: 100vh;
     width: 100vw;
-    display: grid;
-    grid-template-rows: 1fr 20fr;
+    display: flex;
+    flex-direction: column;
   }
   
   .header{
+    flex-grow: 1;
     .search-bar {
       font-family: "TitlePluton", Fallback, sans-serif;
       display: flex;
@@ -84,29 +80,46 @@
       padding-left: 1rem;
       padding-right: 1rem;
       background: var(--secondary-white);
+
+      p{
+        font-size: 1.5rem;
+      }
     }
 
     .user{
       background: var(--secondary-white);
       display: flex;
-      align-content: space-between;
-      justify-content: space-between;
-
-      i{
-        @include transformUser();
+      align-items: center;
+      justify-content: center;
+      
+      .user-box{
+        display: flex;
+        align-content: center;
+        justify-content: center;
       }
 
-      .profile-name{
-        font-size: 0.8rem;
-        @include transformUser();
+      #user-name{
+        align-self: center;
+        font-size: 0.7rem;
+      }
+
+      i{
+        align-self: center;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
       }
 
       .profile-container .profile-pic{
-        height: 40px;
-        width: 40px;
+        padding-right: 0.5em;
+        height: 1.5em;
+        width: 1.5em;
         border-radius: 20px;
       }
     }
+  }
+
+  .section-1{
+    flex-grow: 20;
   }
 
   .header, .section-1 {
@@ -125,8 +138,6 @@
     font-size: 0.7rem;
     @include addProperty(var(--primary-white));
 
-    @include defaultP();
-
   
     ul {
       color: var(--primary-blue);
@@ -135,8 +146,8 @@
       text-decoration: none;
 
       li{
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem;
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
       }
 
       a{
@@ -156,20 +167,17 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 0.5rem;
+    font-size: 0.7rem;
 
     @include addProperty(var(--primary-grey));
 
-    @include defaultP();
-
     ol{
       overflow: hidden;
-      list-style-type: none;
     }
 
     li{
-      padding-top: 0.25rem;
-      padding-bottom: 0.25rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
     }
   }
   
@@ -186,10 +194,6 @@
     height: 100%;
   }
   
-  .user h1 {
-    font-size: 2vw;
-  }
-  
   .ddmenu {
     display: none;
   }
@@ -199,45 +203,27 @@
     justify-content: center;
     height: 100%;
     background: var(--third-white);
-    flex-flow: row;
+    flex-flow: column;
+
     .listing-manipulator{
-      flex-grow: 1;
       background: red;
       width: 100%;
       height: 3rem;
       display: flex;
+      align-content: flex-start;
       justify-content: space-between;
-      align-items: center;
       
-
       a{
         text-decoration: none;
+        color: var(--primary-dark);
       }
     }
-
-
   }
   
   .CentralComponent {
     display: flex;
     justify-content: center;
     width: 80%;
-  }
-  
-  .SideComponent {
-    display: flex;
-    width: 20%;
-  }
-  
-  .SideMenu {
-    display: grid;
-    color: rgba(110, 193, 228, 0.9);
-    font-family: 'Courier New', Courier, monospace;
-    background-color: rgba(0, 0, 0, 0.664);
-  
-    > dl > td {
-      color: white;
-    }
   }
   
   /* CSS COMPONENT FOR SEARCH BOX */
