@@ -11,6 +11,10 @@
   src: url('../fonts/HVD Fonts - PlutoSansCondMedium.otf');
 }
 
+@font-face{
+  font-family: 'SecondTitlePluton';
+  src: url('../fonts/HVD Fonts - PlutoSansCondExLight.otf');
+}
 
 /*
   Section for color pallete variables
@@ -26,6 +30,7 @@
     
     --primary-dark:rgba(4, 29, 41, 1);
     --primary-grey:rgb(160, 158, 153);
+    --secondary-grey: rgb(126, 124, 121);
 
     --line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80%);
   }
@@ -77,20 +82,7 @@
       align-items: center;
       justify-content: space-between;
       text-align: center;
-      //border-width: 1px;
-      //border-style: solid;
-      /*border-image:
-        linear-gradient(
-          to left,
-          red, blue
-        ) 1%,
-        linear-gradient(
-          to bottom, 
-          white 20%,
-          gray 20%,
-          gray 80%,
-          white 80%
-        ) 10%;*/
+      border-bottom: 1px solid var(--primary-blue);
       padding-left: 1rem;
       padding-right: 1rem;
       background: var(--secondary-white);
@@ -111,7 +103,8 @@
       background: var(--secondary-white);
       height: 99%;
       width: 99%;
-      display: flex;
+      position: relative;
+      display: inline-block;
       align-items: center;
       justify-content: center;
       
@@ -121,9 +114,14 @@
         justify-content: center;
       }
 
+      .user-box:hover{
+        border: 1px solid var(--primary-grey);
+        padding: 0.3em;
+      }
+
       #user-name{
         align-self: center;
-        font-size: 0.7rem;
+        font-size: 0.9rem;
       }
 
       i{
@@ -138,7 +136,22 @@
         width: 1.5em;
         border-radius: 20px;
       }
+    
+      .ddmenu{
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+      }
     }
+  }
+
+  /*Style that guarantees dropdown menu*/
+  .user:hover .ddmenu {
+    display: block;
   }
 
   .section-1{
@@ -217,29 +230,38 @@
     height: 100%;
   }
   
-  .ddmenu {
-    display: none;
-  }
-  
   .content {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100%;
     background: var(--third-white);
     flex-flow: column;
 
+    .content-filter-box a{
+      color: var(--primary-grey);
+    }
+
     .listing-manipulator{
-      background: red;
+      flex-basis: 7%;
       width: 100%;
-      height: 3rem;
       display: flex;
-      align-content: flex-start;
+      align-items: center;
       justify-content: space-between;
       
-      a{
-        text-decoration: none;
-        color: var(--primary-dark);
+      h2{
+        font-family: 'SecondTitlePluton', Fallback, sans-serif;
+        font-weight: normal;
+        color: var(--secondary-grey);
       }
+
+      p{
+        text-decoration: none;
+        color: var(--primary-grey);
+      }
+    }
+
+    .books{
+
     }
   }
   

@@ -46,7 +46,7 @@ const resolveBooks = async (baseURL, baseCount, category, booksToGet, posstr, pr
         return error;
     }
     //Building the url to pass to API: the baseURl+categor
-    let finalURL = `${baseURL}${(category ? category : "" )}${(posstr ? posstr+baseCount : "" )}`;
+    let finalURL = `${baseURL}${( category || "" )}${(posstr ? posstr+baseCount : "" )}`;
 
     //Returns promise from fetch
     let results = await fetch(finalURL).then(res => res.json());
