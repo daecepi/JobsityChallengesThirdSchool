@@ -3,12 +3,10 @@
 ## This project used
 1. Gulp with the modules in the gulp-sass and gulp-babel to read sass and es6 files and have them compiled to run)
 
-## How to prepare the project for upload
-1. run "npm install" in the project folder
-2. rum "gulp build:sass" to build the sass files and leave them in the right config folder
-3. run "gulp build:js" to build the javascript es6 files
-3. run ""
-4. run "gulp watch" to start updating the dist folder
+## How to prepare the project for tests and production
+1. run "npm install" in the project folder to install all packages required by the projects
+2. run "gulp" that runs by default all tasks that compile de project
+4. run "gulp watch" to start waiting for file changes to update the build folder (or further changes to the projects)
 
 ## What was made:
 1. requirements were evaluated

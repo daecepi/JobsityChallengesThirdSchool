@@ -2,10 +2,17 @@
  * Funtion that initializes the application
  */
 const init = () => {
-    //console.log("entry");
-    //let books = await fetch("/dist/FirstApi.json").then(res => res.json());
+    console.log("entry");
+    let books = fetch("./FirstApi.json").then(res => res.json()).then(res =>{
+        console.log(res);
+    });
+    console.log("asda");
 
     
 };
 
-//init();
+const createBookContainer = (bookInfo) => {
+    console.log("ad");
+};
+
+init();

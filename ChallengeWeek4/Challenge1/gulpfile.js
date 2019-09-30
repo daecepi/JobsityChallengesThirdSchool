@@ -1,4 +1,6 @@
-
+/**
+ * Imports necesary for gulp tasks
+ */
 let gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
@@ -111,7 +113,7 @@ gulp.task('move:cssExternals', function () {
 gulp.task('watch', function () {
   gulp.watch('src/*.html', gulp.parallel('move:html'))
   gulp.watch('src/scss/**/*.scss', gulp.parallel('build:sass'));
-  gulp.watch('src/es6/**/*.js', gulp.parallel('build:es62'));
+  gulp.watch('src/es6/**/*.js', gulp.parallel('build:es6'));
   gulp.watch('src/images/**/*.*', gulp.parallel('move:images'));
   gulp.watch('src/fonts/**/*.*', gulp.parallel('move:fonts'));
   gulp.watch('src/css/**/*.*', gulp.parallel('move:cssExternals'));

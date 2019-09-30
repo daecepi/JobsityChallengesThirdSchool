@@ -29,6 +29,7 @@
     --secondary-blue:rgba(47, 151, 242, 1);
     
     --primary-dark:rgba(4, 29, 41, 1);
+    --secondary-dark: rgba(63, 63, 63, 0.9);
     --primary-grey:rgb(160, 158, 153);
     --secondary-grey: rgb(126, 124, 121);
 
@@ -102,22 +103,29 @@
     
     .user{
       background: var(--secondary-white);
-      height: 99%;
-      width: 99%;
+      height: 99%; /*Used to get the line next to the users container*/
+      width: 99%; /*Used to get the line next to the users container*/
       position: relative;
-      display: inline-block;
+      display: flex;
       align-items: center;
       justify-content: center;
       
       .user-box{
-        display: flex;
+        position: relative;
+        display: inline-block;
         align-content: center;
         justify-content: center;
+        
+        .user-elements{
+          display: flex;
+          align-content: center;
+          justify-content: center;
+        }
       }
 
       .user-box:hover{
-        border: 1px solid var(--primary-grey);
         padding: 0.3em;
+        border: 1px solid var(--primary-grey);
       }
 
       #user-name{
@@ -135,17 +143,24 @@
         padding-right: 0.5em;
         height: 1.5em;
         width: 1.5em;
+      }
+
+      .profile-pic{
+        border: 1px solid var(--primary-blue);
         border-radius: 20px;
       }
     
       .ddmenu{
+        text-decoration: none;
+        list-style-type: none;
         display: none;
         position: absolute;
-        background-color: #f9f9f9;
+        background: #f9f9f9;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         padding: 12px 16px;
         z-index: 1;
+        color: gray;
       }
     }
   }
@@ -214,6 +229,7 @@
     }
 
     li{
+      font-size: 0.75rem;
       padding-top: 0.7rem;
       padding-bottom: 0.7rem;
     }
@@ -235,56 +251,55 @@
   .content {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: stretch;
     background: var(--third-white);
     flex-flow: column;
+    padding-left: 2rem;
+    padding-right: 2rem;
 
     .listing-manipulator{
-      box-sizing: border-box;
-      flex-basis: 7%;
-      width: 100%;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: space-around;
+      flex-basis: 5%;
 
       .content-filter-box a{
+        text-decoration: none;
         color: var(--primary-grey);
       }
       
       h2{
         font-size: 1.1rem;
         font-family: 'SecondTitlePluton', Fallback, sans-serif;
-        font-weight: normal;
-        color: var(--secondary-grey);
+        font-weight: bold;
+        color: var(--secondary-dark);
       }
 
       p{
         text-decoration: none;
         color: var(--primary-grey);
       }
+
+      .layout-form-box{
+        color: var(--primary-blue);
+      }
     }
 
     .books{
       display: flex;
-      flex-grow: 1;
-      width: 100%;
-      margin: 1.5rem;
-      justify-content: space-around;
+      justify-content: space-between;
       align-content: flex-start;
-      background: red;
+      background: blue;
 
       .book{
+        display: flex;
+        flex-flow: column;
         flex-basis: 15%;
         background: red;
       }
     }
   }
   
-  .CentralComponent {
-    display: flex;
-    justify-content: center;
-    width: 80%;
-  }
   
   /* CSS COMPONENT FOR SEARCH BOX */
   

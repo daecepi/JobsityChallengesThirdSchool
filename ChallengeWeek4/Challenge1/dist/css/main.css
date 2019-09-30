@@ -24,6 +24,7 @@
   --letters-blue-darker:rgba(47, 151, 242, 1);
   --secondary-blue:rgba(47, 151, 242, 1);
   --primary-dark:rgba(4, 29, 41, 1);
+  --secondary-dark: rgba(63, 63, 63, 0.9);
   --primary-grey:rgb(160, 158, 153);
   --secondary-grey: rgb(126, 124, 121);
   --line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80%); }
@@ -70,18 +71,25 @@ html, body {
   .header .user {
     background: var(--secondary-white);
     height: 99%;
+    /*Used to get the line next to the users container*/
     width: 99%;
+    /*Used to get the line next to the users container*/
     position: relative;
-    display: inline-block;
+    display: flex;
     align-items: center;
     justify-content: center; }
     .header .user .user-box {
-      display: flex;
+      position: relative;
+      display: inline-block;
       align-content: center;
       justify-content: center; }
+      .header .user .user-box .user-elements {
+        display: flex;
+        align-content: center;
+        justify-content: center; }
     .header .user .user-box:hover {
-      border: 1px solid var(--primary-grey);
-      padding: 0.3em; }
+      padding: 0.3em;
+      border: 1px solid var(--primary-grey); }
     .header .user #user-name {
       align-self: center;
       font-size: 0.9rem; }
@@ -92,16 +100,21 @@ html, body {
     .header .user .profile-container .profile-pic {
       padding-right: 0.5em;
       height: 1.5em;
-      width: 1.5em;
+      width: 1.5em; }
+    .header .user .profile-pic {
+      border: 1px solid var(--primary-blue);
       border-radius: 20px; }
     .header .user .ddmenu {
+      text-decoration: none;
+      list-style-type: none;
       display: none;
       position: absolute;
-      background-color: #f9f9f9;
+      background: #f9f9f9;
       min-width: 160px;
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
       padding: 12px 16px;
-      z-index: 1; }
+      z-index: 1;
+      color: gray; }
 
 /*Style that guarantees dropdown menu*/
 .user:hover .ddmenu {
@@ -167,6 +180,7 @@ html, body {
   .menu-right ol {
     overflow: hidden; }
   .menu-right li {
+    font-size: 0.75rem;
     padding-top: 0.7rem;
     padding-bottom: 0.7rem; }
 
@@ -183,42 +197,39 @@ html, body {
 .content {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: stretch;
   background: var(--third-white);
-  flex-flow: column; }
+  flex-flow: column;
+  padding-left: 2rem;
+  padding-right: 2rem; }
   .content .listing-manipulator {
-    box-sizing: border-box;
-    flex-basis: 7%;
-    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-around; }
+    flex-basis: 5%; }
     .content .listing-manipulator .content-filter-box a {
+      text-decoration: none;
       color: var(--primary-grey); }
     .content .listing-manipulator h2 {
       font-size: 1.1rem;
       font-family: 'SecondTitlePluton', Fallback, sans-serif;
-      font-weight: normal;
-      color: var(--secondary-grey); }
+      font-weight: bold;
+      color: var(--secondary-dark); }
     .content .listing-manipulator p {
       text-decoration: none;
       color: var(--primary-grey); }
+    .content .listing-manipulator .layout-form-box {
+      color: var(--primary-blue); }
   .content .books {
     display: flex;
-    flex-grow: 1;
-    width: 100%;
-    margin: 1.5rem;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: flex-start;
-    background: red; }
+    background: blue; }
     .content .books .book {
+      display: flex;
+      flex-flow: column;
       flex-basis: 15%;
       background: red; }
-
-.CentralComponent {
-  display: flex;
-  justify-content: center;
-  width: 80%; }
 
 /* CSS COMPONENT FOR SEARCH BOX */
 input[type="text"] {

@@ -112,27 +112,32 @@
 					<input type="text" placeholder="Search..">
 					<i class="fas fa-search" aria-hidden="true"></i>
 				</div>
-			</div>
+            </div>
+            <!--Users section-->
 			<div class="borderx">
                 <div class="user">
                     <div class="user-box">
-                        <p id="user-name">David Cermeño</p>
-                        <i class="fas fa-chevron-down"></i>
-                        <div class="profile-container">
-                            <img class="profile-pic" src="./images/DefaultUser.png" alt="">
+                        <div class="user-elements">
+                            <p id="user-name">David Cermeño</p>
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="profile-container">
+                                <img class="profile-pic" src="./images/DefaultUser.png" alt="">
+                            </div>
                         </div>
-                    </div>
-                    <div id="dropdown" class="ddmenu">
-                        <ul>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Books saved</a></li>
-                            <li><a href="#">Account Settings</a></li>
-                            <li><a href="#">Log Out</a></li>
-                        </ul>
+                        <!--DROP DOWN CONTAINER-->
+                        <div id="dropdown" class="ddmenu">
+                            <ul>
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Books saved</a></li>
+                                <li><a href="#">Account Settings</a></li>
+                                <li><a href="#">Log Out</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-		</header>
+        </header>
+        <!--MAIN CONTENT SECTION-->
 		<div class="section-1">
 			<div class="menu-left">
 				<div class="menu-box">
@@ -186,8 +191,14 @@
                         <i class="fa fa-th-large"></i>
                         <i class="fa fa-th-list"></i>
                     </div>
-				</div>
+                </div>
 				<div class="books">
+                    <div class="book">
+                        <img src="./images/content.jpeg" alt="">
+                        <p class="book-title">Descripcion</p>
+                        <p class="authors">Mini jing</p>
+                    </div>
+
                     <div class="book">
                         <img src="./images/content.jpeg" alt="">
                         <p class="book-title">Descripcion</p>
@@ -231,7 +242,6 @@
 			</div>
 		</div>
     </div>
-    <script src="./js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/10701ae0b8.js" crossorigin="anonymous"></script>
     <script src="./js/main.js"></script>
 </body>
