@@ -1,0 +1,24 @@
+{
+  "name": "bookshelfbackend",
+  "version": "1.0.0",
+  "description": "Backend in NodeJS for jobsity's bookshelf challenge",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daecepi/JobsityChallengesThirdSchool.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "ES6",
+    "Books"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daecepi/JobsityChallengesThirdSchool/issues"
+  },
+  "homepage": "https://github.com/daecepi/JobsityChallengesThirdSchool#readme"
+}
