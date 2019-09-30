@@ -8,31 +8,10 @@ let fs = require('fs');
 
 //Base URLs of the API
 const booksSearchApi = "https://www.googleapis.com/books/v1/volumes?q=";
-const baseURL  = "https://www.googleapis.com/books/v1/volumes?q=isbn:"; //Hasta to have a ISBN book after
+const baseURL  = "https://www.googleapis.com/books/v1/volumes?q=isbn:"; //Has to have a ISBN book after
 const specificData = "https://www.googleapis.com/books/v1/volumes/"; // has to have and ID of a book after
 
-let finalData = [];
 
-//Fifteen books to look for
-let books = [];
-
-let booksLegacy = [
-    '9781603090261',
-    '9781891830754',
-    '9781603090506',
-    '9781891830716',
-    '9781603090254',
-    '9781603090476',
-    '9781603093224',
-    '9781891830853',
-    '9781603090162',
-    '9781603092654',
-    '9781603092395',
-    '9781603090773',
-    '9781603093699',
-    '9781603090698',
-    '9781603090421'
-];
 
 let fields = [
         'title',
@@ -46,9 +25,9 @@ let fields = [
     ];
 
 const mainString = async () =>{
-    let bookNames = await SearchBooksRated(booksSearchApi, "funny", 30, "&startIndex=0", fields);
+    let bookNames = await SearchBooksRated(booksSearchApi, "funny", 30, "&startIndex=", fields);
     
-    fs.writeFile("../dist/FirstApi.json", JSON.stringify(bookNames), (err)=>{
+    fs.writeFile("../dist/FirstApi2.json", JSON.stringify(bookNames), (err)=>{
         if (err) return;
         console.log("DONE");
     });

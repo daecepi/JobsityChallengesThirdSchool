@@ -1,0 +1,25 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "A script that uses the created controller named 'BookResolverControlled' to get the books needed information for the frontend aplication developed",
+  "main": "BookBringer.js",
+  "scripts": {
+    "test": "node BookBringer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daecepi/JobsityChallengesThirdSchool/tree/master/ChallengeWeek4/Challenge1"
+  },
+  "keywords": [
+    "NodeJS",
+    "Books",
+    "Frontend",
+    "Files",
+    "JSON"
+  ],
+  "author": "David Eduardo Cermeño Pinzón",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}

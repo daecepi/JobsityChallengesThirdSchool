@@ -9,7 +9,7 @@ let fetch = require('node-fetch');
  */
 
 /**
- * This function manages the recolection of books from an API
+ * This function manages the recolection of books from an API even when has a limit of a number of books per request
  * @param {String} url : contains the API url where the books are
  * @param {Number} booksToGet : contains the number of books to get
  * @param {String} category : contains the API url where the books are
@@ -19,13 +19,14 @@ let fetch = require('node-fetch');
 const searchBooksRated = async (baseURL, category, booksToGet, posstr, properties) => {
     let count = 0;
     let books = [];
+    //
     while (count < booksToGet) {
         let partialBooks = await resolveBooks(baseURL, count, category, booksToGet, posstr, properties);
         count += partialBooks.count;
         books = books.concat(partialBooks.books);
+        console.log(books.length);
     }
 
-    console.log(books.length);
 
     return books;
 };
@@ -76,13 +77,15 @@ const resolveBooks = async (baseURL, baseCount, category, booksToGet, posstr, pr
                 }
                 booksSelected.push(book);
                 bookCounter++;
-            }else{
-                /*JUST ADD THE OBJECT*/
+            }else{//Means that the client wants the selflink info where more information can be found
+                booksSelected.push({selfLink: results.items[index].selfLink});
+                bookCounter++;
             }
-        } catch (error) {
+        } catch (error) {//Means that the book does not have a volumeInfo property still
             continue;
         }
     }
+    //returning the state of the search and the new books
     return {count: booksSelected.length, books: booksSelected};
 };
 
