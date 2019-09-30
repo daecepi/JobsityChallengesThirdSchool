@@ -57,10 +57,10 @@ const resolveBooks = async (baseURL, baseCount, category, booksToGet, posstr, pr
     But for brevity just going to get the books number and then get the design
     */
 
-    let bookCounter = 0;
+    let bookCounter = baseCount;
     let booksSelected = [];
 
-    for (let index = 0; index < results.totalItems; index++) {
+    for (let index = 0; index < results.items.length; index++) {
         if (bookCounter === booksToGet) {
             break;
         }
