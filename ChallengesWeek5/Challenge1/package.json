@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/daecepi/JobsityChallengesThirdSchool/issues"
   },
-  "homepage": "https://github.com/daecepi/JobsityChallengesThirdSchool#readme"
+  "homepage": "https://github.com/daecepi/JobsityChallengesThirdSchool#readme",
+  "dependencies": {
+    "@nestjs/mongoose": "^6.1.2"
+  }
 }
