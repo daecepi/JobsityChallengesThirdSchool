@@ -1,3 +1,15 @@
+export interface Book{
+    title: string;
+    description: string;
+    authors: [];
+    publishedDate: string;
+    pageCount: number;
+    imageLinks: [];
+    city: string;
+    type: string;
+}
+
+/* 
 export class BookModel {
     public title: string;
     public description: string;
@@ -18,4 +30,4 @@ export class BookModel {
         imageLinks = imageLinks;
     }
     
-}
+}*/

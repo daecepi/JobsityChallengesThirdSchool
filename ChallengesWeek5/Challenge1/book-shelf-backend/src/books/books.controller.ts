@@ -4,11 +4,23 @@ import { BooksService } from './books.service';
 
 @Controller('books')
 export class BooksController{
+    constructor(private readonly booksService: BooksService){
 
+    }
     @Post()
     public initializeBooks(){
 
     }
+
+    @Get('test')
+    public async addSomething(){
+        let result = await this.booksService.insertBook();
+
+        console.log(result);
+
+        return result;  
+    }
+
 
     @Get()
     public getBooks(
