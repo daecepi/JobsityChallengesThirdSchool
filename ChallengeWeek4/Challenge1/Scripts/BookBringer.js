@@ -13,6 +13,7 @@ const specificData = "https://www.googleapis.com/books/v1/volumes/"; // has to h
 
 //Books limit configuration
 
+
 const minStars = 1;
 const maxStars = 5;
 
@@ -31,10 +32,13 @@ let fields = [
 const mainString = async () =>{
     let bookNames = await SearchBooksRated(booksSearchApi, "funny", 30, "&startIndex=", fields);
     
-    let completedBook = bookNames.map(book=>{
-        console.log()
-    });
+    // let completedBook = bookNames.map(book=>{
+        
+    // });
 
+    for(let i = 0; i < 10; i++){
+        console.log(randomCityAssigner());
+    }
 
 
     /*fs.writeFile("../dist/FirstApi2.json", JSON.stringify(bookNames), (err)=>{
@@ -43,8 +47,9 @@ const mainString = async () =>{
     });*/
 }
 
-let randomCityAssigner = () =>{
-    Math.random()*()
+let getRandom = (max, min) =>{
+    return Math.floor(Math.random()*(maxStars-minStars))-minStars;
+
 }
 
 mainString();
