@@ -26,8 +26,12 @@ export class BooksService{
     /**
      * Service function destined to retriev all of the books from the service
      */
-    retrieveBooks(){
-        return [...this.books];
+    getBooks(){
+        let books = this.bookModel.find({});
+
+        console.log(books);
+        
+        return books;
     }
 
     /**
@@ -42,11 +46,25 @@ export class BooksService{
         return product;
     }
 
-    async updateBook(id:string){
+    /**
+     * Proceduyre in the service destined to lend the book if the book is not lent
+     * @param id : holds the id of the book
+     * @param user : holds the identification of the user
+     */
+    async lendBook(id, user){
 
     }
 
-    async initializeData(){
-        
+    /**
+     * Proceduyre in the service destined to return the book if the user was the one thatlent it
+     * @param id : holds the id of the book
+     * @param user : holds the identification of the user
+     */
+    async returnBook(id, user){
+
+    }
+
+    async updateBook(id:string){
+
     }
 }

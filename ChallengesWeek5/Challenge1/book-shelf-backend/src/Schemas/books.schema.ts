@@ -9,4 +9,5 @@ export const bookSchema = new mongoose.Schema({
     imageLinks: [],
     city: String,
     type: String,
+    lent: String,
 });

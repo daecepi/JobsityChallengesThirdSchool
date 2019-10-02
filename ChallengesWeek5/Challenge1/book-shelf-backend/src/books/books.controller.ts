@@ -12,18 +12,8 @@ export class BooksController{
 
     }
 
-    @Get('test')
-    public async addSomething(){
-        //let result = await this.booksService.insertBook();
-        let result = "";
-        console.log(result);
-
-        return result;  
-    }
-
-    @UseGuards(AuthGuard('jwt'))
-    @Get()
-    public getBooks(
+    /*
+    
         @Body('title') title: string,
         @Body('description') description: string,
         @Body('authors') authors: [],
@@ -32,14 +22,55 @@ export class BooksController{
         @Body('imageLinks') imageLinks: [],
         @Body('city') city: string,
         @Body('type') type: string
+    */
+    @Get('add')
+    public async addSomething(
     ){
+        let result = await this.booksService.insertBook("asdad", "asdasd", ['das','ad'], 'asdad', 10, ['zxcz','zxc'], 'Cartagena', 'Hardcover');
+        console.log(result);
 
+        return result;  
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Get()
+    public async getBooks(){
+        return this.booksService.getBooks();
     }
 
 
     @UseGuards(AuthGuard('jwt'))
     @Get(':id')
-    public getBook(@Param('id') id: string){
-        this.booksService.getBook(id);
+    public async getBook(@Param('id') id: string){
+        let book = this.booksService.getBook(id);
+
+        console.log(book);
+
+        return book;
+    }
+
+
+    /**
+     * 
+     * @param id : holds the book id
+     * @param userId : holds the identification of the user
+     */
+    @UseGuards(AuthGuard('jwt'))
+    @Post('lend')
+    public async lendBook(@Param('id') id: string, @Param('userId') userId: string){
+        let result = await this.booksService.lendBook(id, userId);
+        
+        console.log(id, userId);
+        return result ;
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Post('return')
+    public async returnBook(@Param('id') id: string, @Param('userId') userId: string){
+        let result = await this.booksService.returnBook(id, userId);
+
+        console.log(id, userId);
+
+        return result;
     }
 }
