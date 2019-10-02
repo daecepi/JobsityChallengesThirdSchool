@@ -12,8 +12,9 @@ export class BooksController{
 
     }
 
-    /*
     
+    @Post('add')
+    public async addSomething(
         @Body('title') title: string,
         @Body('description') description: string,
         @Body('authors') authors: [],
@@ -21,12 +22,10 @@ export class BooksController{
         @Body('pageCount') pageCount: number,
         @Body('imageLinks') imageLinks: [],
         @Body('city') city: string,
-        @Body('type') type: string
-    */
-    @Get('add')
-    public async addSomething(
+        @Body('type') type: string,
+        @Body('Lent') lent: string,
     ){
-        let result = await this.booksService.insertBook("asdad", "asdasd", ['das','ad'], 'asdad', 10, ['zxcz','zxc'], 'Cartagena', 'Hardcover');
+        let result = await this.booksService.insertBook(title, description, authors, publishedDate, pageCount, imageLinks, city, type, lent);
         console.log(result);
 
         return result;  

@@ -14,8 +14,8 @@ export class BooksService{
 
     constructor(@InjectModel('Book') private readonly bookModel: Model<Book>){}
 
-    async insertBook(title: string, description: string, authors: string[], publishedDate: string ,pageCount: number, imageLinks: string[], city: string, type: string ){
-        let book = new this.bookModel({title, description, authors, publishedDate, pageCount, imageLinks, city, type});
+    async insertBook(title: string, description: string, authors: string[], publishedDate: string ,pageCount: number, imageLinks: string[], city: string, type: string, lent: string ){
+        let book = new this.bookModel({title, description, authors, publishedDate, pageCount, imageLinks, city, type, lent});
         let result = await book.save();
 
         console.log(result);
