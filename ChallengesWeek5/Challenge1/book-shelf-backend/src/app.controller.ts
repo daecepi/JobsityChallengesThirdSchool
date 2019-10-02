@@ -1,12 +1,36 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Req, Body, Get, Post, UseGuards } from '@nestjs/common';
 
-@Controller()
+import { Request } from 'express';
+
+import { AuthGuard } from '@nestjs/passport';
+
+import { AppService } from './app.service';
+import { AuthService } from './auth/auth.service';
+
+
+@Controller('api')
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService, private readonly authService: AuthService) {}
+
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get('me')
+  getProfile(@Req() req: Request){
+    return req.user;
+  }
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getHello(@Body('username') id: string): string {
+    return id;
+  }
+
+  /**
+   * Authenticas user and returns the token
+   * @param req : contains the authorization results
+   */
+  @UseGuards(AuthGuard('local'))
+  @Post('login')
+  async loginUser(@Req() req: Request){
+    return this.authService.login(req.user);
   }
 }

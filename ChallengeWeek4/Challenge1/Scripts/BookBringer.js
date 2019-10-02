@@ -5,12 +5,16 @@ let { SearchBooksRated, LookForBooks } = require('./BookResolverController');
 //File writter
 let fs = require('fs');
 
-
 //Base URLs of the API
 const booksSearchApi = "https://www.googleapis.com/books/v1/volumes?q=";
 const baseURL  = "https://www.googleapis.com/books/v1/volumes?q=isbn:"; //Has to have a ISBN book after
 const specificData = "https://www.googleapis.com/books/v1/volumes/"; // has to have and ID of a book after
 
+
+//Books limit configuration
+
+const minStars = 1;
+const maxStars = 5;
 
 
 let fields = [
@@ -27,10 +31,20 @@ let fields = [
 const mainString = async () =>{
     let bookNames = await SearchBooksRated(booksSearchApi, "funny", 30, "&startIndex=", fields);
     
-    fs.writeFile("../dist/FirstApi2.json", JSON.stringify(bookNames), (err)=>{
+    let completedBook = bookNames.map(book=>{
+        console.log()
+    });
+
+
+
+    /*fs.writeFile("../dist/FirstApi2.json", JSON.stringify(bookNames), (err)=>{
         if (err) return;
         console.log("DONE");
-    });
+    });*/
+}
+
+let randomCityAssigner = () =>{
+    Math.random()*()
 }
 
 mainString();

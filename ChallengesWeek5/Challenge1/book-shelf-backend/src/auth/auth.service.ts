@@ -1,10 +1,13 @@
 import { Injectable } from '@nestjs/common';
 
+import { JwtService } from '@nestjs/jwt';
+
 import { UsersService } from '../users/users.service';
+
 
 @Injectable()
 export class AuthService {
-    constructor(private readonly usersService: UsersService){
+    constructor(private readonly usersService: UsersService, private readonly jwtService: JwtService){
 
     }
 
@@ -16,4 +19,16 @@ export class AuthService {
         }
         return {errors: 'User nor found'};
     }
+
+
+    /**
+     * This funtion gives a token to the user while in login
+     * @param user : a variable that contains the user you want to log in
+     */
+    async login(user: any) {
+        const payload = { username: user.username, sub: user.userId };
+        return {
+          access_token: this.jwtService.sign(payload),
+        };
+      }
 }

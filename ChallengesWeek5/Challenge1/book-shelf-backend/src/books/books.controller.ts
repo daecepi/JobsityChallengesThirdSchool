@@ -1,12 +1,12 @@
-import { Controller, Get, Body, Post, Param } from "@nestjs/common";
+import { Controller, Get, Body, Post, Param, UseGuards } from "@nestjs/common";
 
 import { BooksService } from './books.service';
+import { AuthService } from "src/auth/auth.service";
+import { AuthGuard } from "@nestjs/passport";
 
 @Controller('books')
 export class BooksController{
-    constructor(private readonly booksService: BooksService){
-
-    }
+    constructor(private readonly booksService: BooksService){}
     @Post()
     public initializeBooks(){
 
@@ -14,14 +14,14 @@ export class BooksController{
 
     @Get('test')
     public async addSomething(){
-        let result = await this.booksService.insertBook();
-
+        //let result = await this.booksService.insertBook();
+        let result = "";
         console.log(result);
 
         return result;  
     }
 
-
+    @UseGuards(AuthGuard('jwt'))
     @Get()
     public getBooks(
         @Body('title') title: string,
@@ -36,8 +36,10 @@ export class BooksController{
 
     }
 
+
+    @UseGuards(AuthGuard('jwt'))
     @Get(':id')
     public getBook(@Param('id') id: string){
-
+        this.booksService.getBook(id);
     }
 }
