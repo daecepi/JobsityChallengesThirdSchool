@@ -29,30 +29,69 @@ let fields = [
         'averageRating'
     ];
 
-const mainString = async () =>{
+let generateStars =(booksNum) => {
+    return genRandomsFromFullList(booksNum, [1,2,3,4,5]);
+};
+
+let generateTypes = (booksNum) =>{
+    return genRandomsFromFullList(booksNum, ['Digital', 'Hardcover']);
+};
+
+let generateCity = (booksNum) =>{
+    return genRandomsFromFullList(booksNum, ['Cartagena', 'Medellin', 'Quito']);
+};
+
+let genRandomsFromFullList = (numOfNumbers, listOfNums) =>{
+    
+    let tempList = [...listOfNums];
+
+    let randomsResult = []; //variable that stores the random numbers
+    
+    for (let i = 0; i < numOfNumbers; i++) {
+        if (tempList.length === 0) {
+            tempList = [...listOfNums];
+        }
+        let oscilator = Math.round(Math.random());
+        if (oscilator == 1) {
+            randomsResult.push(tempList.shift());
+        }else{
+            randomsResult.push(tempList.pop());
+        }
+    }
+    return randomsResult;
+}
+
+/**
+ * Function that looks for books and saves it to a file
+ * @param {number} numOfBook : number of books to save
+ * @param {string} filePath : path to the file that will be created
+ */
+const mainBooker = async (numOfBook, filePath) =>{
     let bookNames = await SearchBooksRated(booksSearchApi, "funny", 30, "&startIndex=", fields);
     
-    // let completedBook = bookNames.map(book=>{
-        
-    // });
-
-    for(let i = 0; i < 10; i++){
-        console.log(randomCityAssigner());
-    }
+    let stars = generateStars(numOfBook);
+    let cities = generateCity(numOfBook);
+    let types = generateTypes(numOfBook);
 
 
-    /*fs.writeFile("../dist/FirstApi2.json", JSON.stringify(bookNames), (err)=>{
+    let completedBooks = bookNames.map(book=>{
+        book['stars'] = stars.pop();
+        book['cities'] = cities.pop();
+        book['types'] = types.pop();
+        return book;
+    });
+
+    fs.writeFile(filePath, JSON.stringify(completedBooks), (err)=>{
         if (err) return;
         console.log("DONE");
-    });*/
+    });
 }
 
-let getRandom = (max, min) =>{
-    return Math.floor(Math.random()*(maxStars-minStars))-minStars;
+let numOfBooks = 30;
+let url = "./ApiInfo.json";
 
-}
-
-mainString();
+//Start of the script
+mainBooker(numOfBooks, url);
 
 
 
