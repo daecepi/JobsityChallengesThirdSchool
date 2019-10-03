@@ -88,7 +88,7 @@ const mainBooker = async (numOfBook, filePath) =>{
 }
 
 let numOfBooks = 30;
-let url = "./ApiInfo.json";
+let url = "./BooksInfo.json";
 
 //Start of the script
 mainBooker(numOfBooks, url);
