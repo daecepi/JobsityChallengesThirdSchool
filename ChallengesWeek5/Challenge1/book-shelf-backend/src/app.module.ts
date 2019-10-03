@@ -6,10 +6,17 @@ import { BooksModule } from './books/books.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 
+//MOdule to serve static files (like the dist folder)
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { join } from 'path';
+
 @Module({
   imports: [
     BooksModule,
     MongooseModule.forRoot('mongodb://localhost/BookshelfBD', {useNewUrlParser: true, useUnifiedTopology: true }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client'),
+    }),
     AuthModule,
     UsersModule,
   ],

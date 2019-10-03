@@ -3,7 +3,7 @@ import { InjectModel } from "@nestjs/mongoose";
 
 import { Model } from "mongoose";
 
-//Class fro books
+//Books interface
 import { Book } from "./books.model";
 
 
@@ -26,7 +26,7 @@ export class BooksService{
     /**
      * Service function destined to retriev all of the books from the service
      */
-    getBooks(){
+    async getBooks(){
         let books = this.bookModel.find({});
 
         console.log(books);
@@ -52,7 +52,9 @@ export class BooksService{
      * @param user : holds the identification of the user
      */
     async lendBook(id, user){
-
+        const book = this.bookModel.findById(id);
+        console.log(book.type);
+        
     }
 
     /**

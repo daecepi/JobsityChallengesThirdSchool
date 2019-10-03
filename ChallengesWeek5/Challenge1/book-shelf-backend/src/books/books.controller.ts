@@ -57,9 +57,11 @@ export class BooksController{
     @UseGuards(AuthGuard('jwt'))
     @Post('lend')
     public async lendBook(@Param('id') id: string, @Param('userId') userId: string){
+        console.log(id, userId);
+
         let result = await this.booksService.lendBook(id, userId);
         
-        console.log(id, userId);
+        
         return result ;
     }
 

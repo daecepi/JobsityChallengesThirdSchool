@@ -17,7 +17,7 @@ export class AuthService {
             const {password, ...result } = user;
             return result;
         }
-        return {errors: 'User nor found'};
+        return {errors: 'User not found'};
     }
 
 
@@ -27,8 +27,9 @@ export class AuthService {
      */
     async login(user: any) {
         const payload = { username: user.username, sub: user.userId };
+
         return {
           access_token: this.jwtService.sign(payload),
         };
-      }
+    }
 }
