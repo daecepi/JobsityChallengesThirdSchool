@@ -17,7 +17,6 @@ export class UsersController {
         @Body('age') age: number,
         @Body('email') email: string
     ){
-        console.log(identification, name, lname, username, password, age, email)
         let result = await this.userService.insertUser({identification, name, lname, username, password, age, email});
         return result;
     }

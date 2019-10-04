@@ -10,26 +10,7 @@ import { User } from "./users.model";
 
 @Injectable()
 export class UsersService {
-    private readonly users: any[];
-    constructor(@InjectModel('User') private readonly userModel: Model<User>){
-        this.users = [
-            {
-                userId: 1,
-                user: 'max',
-                password: 'maxter'
-            },
-            {
-                userId: 2,
-                user: 'meso',
-                password: 'osem'
-            },
-            {
-                userId: 3,
-                user: 'michell',
-                password: 'holamichelle'
-            },
-        ];
-    }
+    constructor(@InjectModel('User') private readonly userModel: Model<User>){}
 
     //userCreated: User
     async insertUser(userCreated: User): Promise<User | undefined>{

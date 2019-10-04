@@ -15,7 +15,7 @@ import { join } from 'path';
     BooksModule,
     MongooseModule.forRoot('mongodb://localhost/BookshelfBD', {useNewUrlParser: true, useUnifiedTopology: true }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client'),
+      rootPath: join(__dirname, '..', 'clients'),
     }),
     AuthModule,
     UsersModule,

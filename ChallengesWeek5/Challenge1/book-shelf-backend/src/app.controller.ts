@@ -12,15 +12,8 @@ import { AuthService } from './auth/auth.service';
 export class AppController {
   constructor(private readonly appService: AppService, private readonly authService: AuthService) {}
 
-
-  @UseGuards(AuthGuard('jwt'))
-  @Get('me')
-  getProfile(@Req() req: Request){
-    return req.user;
-  }
-
   @Get()
-  getHello(@Body('username') id: string): string {
+  getStarterRoute(@Body('username') id: string): string {
     return id;
   }
 
