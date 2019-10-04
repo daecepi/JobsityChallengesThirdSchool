@@ -16,13 +16,13 @@ __Prepare the backend server__
 
 ## Endpoints description
 __User endpoints__
-- /
+- / : renders a dummy frontend until next week comes
 - /login : destined for user to authenticate
 - /user/register : to add new user profiles
 - /books/ : to get all books in the API
 - /books/:id : changen the ":id" looks for the book with the specified id
-- /lend : to read lend a book if not digital
-- /return : to return the book after finished with it
+- /lend : to read lend a book if not digital (requires id of the book y id of the user that wants to lend it)
+- /return : to return the book after finished with it (requires id of the book y id of the user that wants to lend it)
 
 ### Important approaches
 - Reuse of BookResolver library done before

@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "13c0aa39-6992-4f46-82bb-b9ec5c1350d3",
+		"name": "Bookshelf",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/books/5d9650a6c3cf08a5d94b97ec",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						"5d9650a6c3cf08a5d94b97ec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Look for one book",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzAyMDczNTMsImV4cCI6MTU3MDIwNzQ3M30.fAaBYUq1NVkEqE3xj9njcgBtRSfzy5gYSSSPtADKE7g"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/books/5d9650a6c3cf08a5d94b97ed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						"5d9650a6c3cf08a5d94b97ed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate (get JWT token)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "sofi",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "sofi123123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImlhdCI6MTU3MDIwMzAyOSwiZXhwIjoxNTcwMjAzMTQ5fQ.9G1hQxXVMU0aXMtD09hfqdz94oUzMEn_WBJR9xucAYs"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "identification",
+							"value": "20547854582",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Sofia",
+							"type": "text"
+						},
+						{
+							"key": "lname",
+							"value": "Peralta",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "sofi",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "sofi123123",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "sofia.p@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"register"
+					]
+				},
+				"description": "Register users"
+			},
+			"response": []
+		},
+		{
+			"name": "Lend books",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzAyMTIxOTgsImV4cCI6MTU3MDI5ODU5OH0.CYaXExCLTA9KCz30a52In0digbilOjDzCkX7A4PDoh0"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "5d9650a6c3cf08a5d94b97ec",
+							"type": "text"
+						},
+						{
+							"key": "userId",
+							"value": "5d97765766e6cb05997166f8",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/books/lend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						"lend"
+					]
+				},
+				"description": "Lent books"
+			},
+			"response": []
+		},
+		{
+			"name": "Return books",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzAyMTIxOTgsImV4cCI6MTU3MDI5ODU5OH0.CYaXExCLTA9KCz30a52In0digbilOjDzCkX7A4PDoh0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "5d9650a6c3cf08a5d94b97ec",
+							"type": "text"
+						},
+						{
+							"key": "userId",
+							"value": "5d97765766e6cb05997166f8",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/books/return",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						"return"
+					]
+				},
+				"description": "Return books after being lent"
+			},
+			"response": []
+		}
+	]
+}
