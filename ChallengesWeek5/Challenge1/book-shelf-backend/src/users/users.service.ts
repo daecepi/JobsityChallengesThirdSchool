@@ -32,14 +32,14 @@ export class UsersService {
     }
 
     //userCreated: User
-    async insertUser(identification: string, name: string, lname: string, username: string, password: string, age: number, email: string): Promise<User | undefined>{
-        let user = new this.userModel({identification, name, lname, username, password, age, email});
+    async insertUser(userCreated: User): Promise<User | undefined>{
+        let user = new this.userModel(userCreated);
         let result = await user.save();
 
         return result;
     }
 
     async findOne(username: string): Promise<User | undefined>{
-        return this.users.find(user=>user.user === username);
+        return this.userModel.find({ username: username});
     }
 }
