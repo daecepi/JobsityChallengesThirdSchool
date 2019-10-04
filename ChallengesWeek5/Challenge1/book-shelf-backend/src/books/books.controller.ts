@@ -47,7 +47,7 @@ export class BooksController{
 
     @UseGuards(AuthGuard('jwt'))
     @Post('return')
-    public async returnBook(@Param('id') id: string, @Param('userId') userId: string){
+    public async returnBook(@Body('id') id: string, @Body('userId') userId: string){
         let result = await this.booksService.returnBook(id, userId);
 
         console.log(id, userId);

@@ -1,9 +1,14 @@
 ## Other important advancedments
 - Advancing the crud of clients
 
+## Setting things up
+1. After downloading/cloning the repo, locate this to folder:
+- BD (which contains the book's information to be added to the file)
+- POSTMAN ROUTER (a collection of routes already setup for use of the API when ready)
+
 ## installation
 __Preparing the database__
-1. Locate the ApiInfo inside this folder after downloading
+1. Locate the BooksInfo.json inside the BD folder after downloading
 2. Change the path in the next command after -file and run it (with the MongoDB database working): ./mongoimport --db BookshelfBD --collection books --type json --file [PATH_IN_YOUR_COMPUTER]/ApiInfoBooks.json --jsonArray
 3. OPTIONAL: If you don't want to register users to use the system
 

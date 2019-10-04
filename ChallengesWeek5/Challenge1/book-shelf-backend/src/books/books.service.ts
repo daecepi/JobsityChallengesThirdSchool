@@ -49,11 +49,11 @@ export class BooksService{
         }
 
         if (book.type === 'digital') {
-            throw new HttpException('Digital books cannot be lent', 403);
+            throw new HttpException('Digital books cannot be lent', 400);
         }
 
         if(book.lendingInfo !== undefined){
-            throw new HttpException("The books is already lent", 403);
+            throw new HttpException("The books is already lent", 204);
         }
 
         book.lendingInfo = user;
@@ -80,11 +80,11 @@ export class BooksService{
         }
 
         if (book.type === 'digital') {
-            throw new HttpException('Digital books cannot be lent and thus till now not necessarrily returned', 403);
+            throw new HttpException('Digital books cannot be lent and thus till now not necessarrily returned', 400);
         }
 
         if(book.lendingInfo !== undefined){
-            throw new HttpException("The books is already lent", 403);
+            throw new HttpException("The books is already lent", 204);
         }
 
         book.lendingInfo = undefined;

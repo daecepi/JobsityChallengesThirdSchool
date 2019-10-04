@@ -9,6 +9,10 @@ import { UsersModule } from './users/users.module';
 //MOdule to serve static files (like the dist folder)
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from 'path';
+import { LendingModule } from './lending/lending.module';
+
+import { ConfigModule } from 'nest-config';
+import * as path from "path";
 
 @Module({
   imports: [
@@ -17,8 +21,10 @@ import { join } from 'path';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'clients'),
     }),
+    ConfigModule.load(path.resolve(__dirname, 'config', '**/!(*.d).{ts,ts}')),
     AuthModule,
     UsersModule,
+    LendingModule,
   ],
   controllers: [AppController],
   providers: [AppService],

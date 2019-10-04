@@ -2,17 +2,28 @@
  * Funtion that initializes the application
  */
 const init = () => {
-    console.log("entry");
-    let books = fetch("./FirstApi.json").then(res => res.json()).then(res =>{
-        console.log(res);
+    fetch("./BooksInfo.json").then(res => res.json()).then(res =>{
+        let generalLayout = ``;
+        for (let i = 0; i < res.length; i++) {
+            generalLayout += createBookContainer(res[i]);
+            
+        }
+        let booksContainer = document.querySelector("#books");
+        booksContainer.innerHTML(generalLayout);
     });
-    console.log("asda");
-
-    
 };
 
 const createBookContainer = (bookInfo) => {
-    console.log("ad");
+    return `
+        <div class="book">
+            <img src="${bookInfo.imageLinks.smallThumbnail}" alt="">
+            <p class="book-title">${bookInfo.title}</p>
+            <p class="authors">${''.join(...bookInfo.authors)}</p>
+            <p class="stars">${bookInfo.stars}</p>
+        </div>
+    `;
 };
+
+
 
 init();
