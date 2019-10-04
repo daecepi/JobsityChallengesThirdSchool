@@ -1,9 +1,7 @@
 
-import { Model } from "mongoose";
-
-export interface Lend extends Model{
+export interface Lend{
     user: string,
     book: string,
-    
     startingDate: Date,
+    finishDate: Date,
 }

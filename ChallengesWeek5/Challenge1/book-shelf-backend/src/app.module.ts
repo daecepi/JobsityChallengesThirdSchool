@@ -21,7 +21,6 @@ import * as path from "path";
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'clients'),
     }),
-    ConfigModule.load(path.resolve(__dirname, 'config', '**/!(*.d).{ts,ts}')),
     AuthModule,
     UsersModule,
     LendingModule,
