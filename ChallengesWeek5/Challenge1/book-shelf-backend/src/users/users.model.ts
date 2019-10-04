@@ -1,6 +1,7 @@
 export interface User{
     identification: string;
-    user: string;
+    name: string;
+    lname: string;
     username:string;
     password: string;
     age: number;

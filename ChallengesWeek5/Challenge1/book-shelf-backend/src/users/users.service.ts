@@ -31,8 +31,9 @@ export class UsersService {
         ];
     }
 
-    async registerUser(userCreated: User){
-        let user = new this.userModel(userCreated);
+    //userCreated: User
+    async insertUser(identification: string, name: string, lname: string, username: string, password: string, age: number, email: string): Promise<User | undefined>{
+        let user = new this.userModel({identification, name, lname, username, password, age, email});
         let result = await user.save();
 
         return result;
