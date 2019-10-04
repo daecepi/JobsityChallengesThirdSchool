@@ -223,13 +223,11 @@ html, body {
   .content .books {
     display: flex;
     justify-content: space-between;
-    align-content: flex-start;
-    background: blue; }
+    align-content: flex-start; }
     .content .books .book {
       display: flex;
       flex-flow: column;
-      flex-basis: 15%;
-      background: red; }
+      flex-basis: 15%; }
 
 /* CSS COMPONENT FOR SEARCH BOX */
 input[type="text"] {

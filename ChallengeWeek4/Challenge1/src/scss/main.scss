@@ -289,13 +289,11 @@
       display: flex;
       justify-content: space-between;
       align-content: flex-start;
-      background: blue;
 
       .book{
         display: flex;
         flex-flow: column;
         flex-basis: 15%;
-        background: red;
       }
     }
   }
