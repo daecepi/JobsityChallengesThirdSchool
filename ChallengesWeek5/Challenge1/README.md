@@ -8,12 +8,16 @@
 
 ## installation
 __Preparing the database__
-1. Locate the BooksInfo.json inside the BD folder after downloading
-2. Change the path in the next command after -file and run it (with the MongoDB database working): ./mongoimport --db BookshelfBD --collection books --type json --file [PATH_IN_YOUR_COMPUTER]/ApiInfoBooks.json --jsonArray
-3. OPTIONAL: If you don't want to register users to use the system
+(after downloading/cloning the repo) 
+1. If your mongodb bin folder is added to Path of your system (therefore any command in there can be opened in the console just by adding it) got to the next step IF NOT move inside your terminal to the BIN folder of your MongoDB installation
+2. locate the BooksInfo.json inside the BD folder and copy the path to it (this is the information of the books)
+3. Run the command shown below putting the path that you copied instead of "[PATH_IN_YOUR_COMPUTER]" (with the MongoDB database working)
+- ON MAC/LINUX ./mongoimport --db BookshelfBD --collection books --type json --file [PATH_IN_YOUR_COMPUTER]/BooksInfo.json --jsonArray
+- ON WINDOWS mongoimport --db BookshelfBD --collection books --type json --file [PATH_IN_YOUR_COMPUTER]/BooksInfo.json --jsonArray
+4. OPTIONAL: If you don't want to register users a users.json is also available in the BD folder (run the command that you use to import books and add to it)
 
 __Prepare the backend server__
-1. Watch the instruction of the README.md of the nest server (located in this folder under: 'book-shelf-backend')
+1. Follow the instruction of the README.md in "book-shelf-backend" folder
 
 ## Setup the backend
 1. Clone or download the project and decompress it if required
