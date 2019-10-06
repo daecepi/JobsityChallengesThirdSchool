@@ -8,7 +8,7 @@ import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
 
 
-@Controller('api')
+@Controller('')
 export class AppController {
   constructor(private readonly appService: AppService, private readonly authService: AuthService) {}
 
@@ -24,7 +24,6 @@ export class AppController {
   @UseGuards(AuthGuard('local'))
   @Post('login')
   async loginUser(@Req() req: Request){
-    console.log(req);
     return this.authService.login(req.user);
   }
 }

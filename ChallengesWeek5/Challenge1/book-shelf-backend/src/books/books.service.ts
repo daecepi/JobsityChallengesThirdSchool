@@ -6,6 +6,9 @@ import { Model } from "mongoose";
 //Books interface
 import { Book } from "./books.model";
 
+//Adding the lending service
+import { LendingService } from "../lending/lending.service";
+
 
 @Injectable()
 export class BooksService{
@@ -14,10 +17,11 @@ export class BooksService{
      * 
      * @param bookModel : model of the books based on the interface created for it
      */
-    constructor(@InjectModel('Book') private readonly bookModel: Model<Book>){}
+    constructor(@InjectModel('Book') private readonly bookModel: Model<Book>, private readonly lendService: LendingService){}
 
     /**
      * Service function destined to retriev all of the books from the service
+     *  @retuns Promise of books wanted
      */
     async getBooks(): Promise<Book[] | undefined>{
         let books = this.bookModel.find();
@@ -42,22 +46,31 @@ export class BooksService{
      * @param user : holds the identification of the user
      */
     async lendBook(id, user){
-        const book = this.bookModel.findById(id);
         
+        //Looking for the book in the database
+        const book = await this.bookModel.findById(id);
+        
+        //Making sure the book exists
         if (!book) {
             throw new NotFoundException('Couldnt find book');
         }
 
-        if (book.type === 'digital') {
-            throw new HttpException('Digital books cannot be lent', 400);
+        //Verifing the book is not digital
+        if (book.type !== 'digital') {
+            return new HttpException('Digital books cannot be lent', 400);
         }
 
-        if(book.lendingInfo !== undefined){
-            throw new HttpException("The books is already lent", 204);
+        //Verifing that the book is not already lent
+        if(book.lent !== undefined){
+            return new HttpException("The books is already lent", 204); //Status code recommended by a programmer at jobsity Cartagena
         }
 
-        book.lendingInfo = user;
-        let result = book.save();
+        //Updating the book's lent property with a user and the date when the lent started
+        book.lent = {user, startDate: new Date().toString()};
+
+        //Updating the book in the database
+        let result = await book.save();
+
         return result;
     }
 
@@ -68,27 +81,37 @@ export class BooksService{
      * @param user : holds the identification of the user
      */
     async returnBook(id, user){
-        let book = this.bookModel.findById(id);
-        console.log(id, user);
+        //Looking for the book in the database
+        let book = await this.bookModel.findById(id);
+        
+        //Making sure the book exists
         if(!book){
             throw new NotFoundException('Couldn\'t find the books');
         }
 
-        //Making sure that the propertie exists
-        if (!book.lendingInfo) {
-            book.lendingInfo = undefined;
-        }
-
+        //Verifing the book is not digital
         if (book.type === 'digital') {
-            throw new HttpException('Digital books cannot be lent and thus till now not necessarrily returned', 400);
+            return new HttpException('Digital books cannot be lent and thus till now not necessarrily returned', 400);
         }
 
-        if(book.lendingInfo !== undefined){
-            throw new HttpException("The books is already lent", 204);
+        //Verifing that the book is actually lent
+        if(book.lent === undefined){
+            return new HttpException("The book hasn't been lent", 400);
         }
 
-        book.lendingInfo = undefined;
-        let result = book.save();
+        //Verifing the user returning it is the one that lent it
+        if(book.lent !== user){
+            return new HttpException("The book wasn't lend by this user", 400);
+        }
+
+        //Insertion of the lend details in the lends database
+        this.lendService.saveLend(id, user, book.lent.date, new Date().toString());
+        
+        book.lent = undefined;
+
+        
+
+        let result = await book.save();
 
         return result;
     }

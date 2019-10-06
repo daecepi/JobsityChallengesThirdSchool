@@ -1,3 +1,7 @@
+/**
+ * Interface for the books in the application
+ */
+
 export interface Book{
     title: string;
     description: string;
@@ -7,5 +11,5 @@ export interface Book{
     imageLinks: [];
     city: string;
     type: string;
-    lent: string;
+    lent: {}; //This property will have a user and a date when the lend started
 }

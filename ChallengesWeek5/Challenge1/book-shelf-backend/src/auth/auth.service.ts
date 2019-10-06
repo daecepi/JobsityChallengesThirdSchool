@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException } from '@nestjs/common';
 
 import { JwtService } from '@nestjs/jwt';
 
@@ -13,6 +13,12 @@ export class AuthService {
 
     async validateUser(username:string, password: string){
         const user = await this.usersService.findOne(username);
+
+        if (!user || !user[0].password) {
+            throw new HttpException("User not found", 404);
+            
+        }
+
         if (user && user[0].password === password) {
             const {password, ...result } = user;
             return result;
@@ -25,6 +31,7 @@ export class AuthService {
      * @param user : a variable that contains the user you want to log in
      */
     async login(user: any) {
+        console.log('entre2');
         const payload = { username: user.username, sub: user.userId };
 
         return {
