@@ -1,29 +1,44 @@
+const defaultResults = 15; //Holdis the initial number of books to load
+
 /**
  * Funtion that initializes the application
  */
-const init = () => {
-    fetch("./BooksInfo.json").then(res => res.json()).then(res =>{
-        let generalLayout = ``;
-        for (let i = 0; i < res.length; i++) {
-            generalLayout += createBookContainer(res[i]);
-            
-        }
-        let booksContainer = document.querySelector("#books");
-        booksContainer.innerHTML(generalLayout);
+let init = () => {
+    console.log('sd');
+    //Get books from API
+    fetch("./FirstApi.json").then(res => res.json()).then( res =>{
+        let bookContainersContent;
+        //Transform initial books to html 
+            let booksContent = res.slice(0, defaultResults)
+            .map(book=>{
+                return createBookContainer(book);
+            }).join('');
+        console.log(booksContent);
+        //Assigning books to html element
+        let booksContainer = document.querySelector("#book-container");
+        booksContainer.innerHTML = booksContent;
     });
+
+    
 };
 
-const createBookContainer = (bookInfo) => {
+const createBookContainer = (book) => {
     return `
-        <div class="book">
-            <img src="${bookInfo.imageLinks.smallThumbnail}" alt="">
-            <p class="book-title">${bookInfo.title}</p>
-            <p class="authors">${''.join(...bookInfo.authors)}</p>
-            <p class="stars">${bookInfo.stars}</p>
-        </div>
+    <div class="book">
+        <img src="${book.imageLinks.smallThumbnail}" alt="">
+        <p class="book-title">${book.title}</p>
+        <p class="authors">${book.authors.toString()}</p>
+        ${getRating(book.averageRating)}
+    </div>
     `;
 };
 
-
+const getRating = (num) =>{
+    if (num) {
+        return ``;
+    }else{
+        return `Not rated`;
+    }
+};
 
 init();

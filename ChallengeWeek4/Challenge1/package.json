@@ -21,12 +21,6 @@
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
-    "gulp-uglify": "^3.0.2",
-    "gulp-watch-sass": "^1.4.1",
-    "vinyl-source-stream": "^2.0.0",
-    "xmlhttprequest": "^1.8.0"
-  },
-  "dependencies": {
-    "node-fetch": "^2.6.0"
+    "gulp-watch-sass": "^1.4.1"
   }
 }

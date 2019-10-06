@@ -78,8 +78,8 @@ gulp.task('build:sass2', function () {
   * Function that moves all images added to the projects 'images' folder
   */
 gulp.task('move:images', function () {
-  return gulp.src('./images/**/*.*')
-          .pipe(gulp.dest('./dist/images'));
+  return gulp.src('./images/**.*')
+          .pipe(gulp.dest('dist/images'));
 });
 
 /**
@@ -114,7 +114,7 @@ gulp.task('watch', function () {
   gulp.watch('src/*.html', gulp.parallel('move:html'))
   gulp.watch('src/scss/**/*.scss', gulp.parallel('build:sass'));
   gulp.watch('src/es6/**/*.js', gulp.parallel('build:es6'));
-  gulp.watch('src/images/**/*.*', gulp.parallel('move:images'));
+  gulp.watch('src/images/**.*', gulp.parallel('move:images'));
   gulp.watch('src/fonts/**/*.*', gulp.parallel('move:fonts'));
   gulp.watch('src/css/**/*.*', gulp.parallel('move:cssExternals'));
   gulp.watch('src/js/**/*.*', gulp.parallel('move:jsExternals'));
