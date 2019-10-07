@@ -11,7 +11,7 @@ import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from 'path';
 import { LendingModule } from './lending/lending.module';
 
-import { ConfigModule } from 'nest-config';
+import { ConfigModule } from 'nest-config'; //For dockerization in next iteration of the project
 import * as path from "path";
 
 @Module({
@@ -20,6 +20,7 @@ import * as path from "path";
     MongooseModule.forRoot('mongodb://localhost/BookshelfBD', {useNewUrlParser: true, useUnifiedTopology: true }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'clients'),
+      renderPath: "/"
     }),
     AuthModule,
     UsersModule,

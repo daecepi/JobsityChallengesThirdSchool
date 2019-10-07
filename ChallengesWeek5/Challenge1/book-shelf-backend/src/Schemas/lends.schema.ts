@@ -2,8 +2,8 @@
 import * as mongoose from 'mongoose';
 
 export const lendSchema = new mongoose.Schema({
-    user: String,
-    book: String,
-    startingDate: Date,
-    finishDate: Date,
+    user: {type: String, required: true},
+    book: {type: String, required: true},
+    startingDate: {type: Date, required: true},
+    finishDate: {type: Date, required: true},
 });
