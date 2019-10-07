@@ -27,12 +27,23 @@ __Prepare the backend server__
 ## Endpoints description
 __User endpoints__
 - / : renders a dummy frontend until next week comes
-- /login : destined for user to authenticate
+- - Doesn't need to recieve anything
+- /login : destined for user to authenticate and where jwt token is going to be resolved
+- - POST (url http encoded): a user: string and a password: string
 - /user/register : to add new user profiles
-- /books/ : to get all books in the API
+- - POST: identification: string, name: string, lname: string, username:string, password: string, age: number, email: string;
+- /books : to get all books in the API
+- - HEADER: needs an auth token (jwt token)
+- - GET
 - /books/:id : changen the ":id" looks for the book with the specified id
+- - HEADER: needs an auth token (jwt token)
+- - GET and an id on the URL after an slash ("/")
 - /lend : to read lend a book if not digital (requires id of the book y id of the user that wants to lend it)
+- - HEADER: needs an auth token (jwt token)
+- - PATCH: bookId: string and userId
 - /return : to return the book after finished with it (requires id of the book y id of the user that wants to lend it)
+- - HEADER: needs an auth token (jwt token)
+- - PATCH: bookId: string and userId
 
 ### Important approaches
 - Reuse of BookResolver library done before
@@ -54,6 +65,7 @@ Not in the challenge
 [x] Some tests written
 [ ] Dockerize the application according to this doc (that show how to do it scalably): https://dev.to/carlillo/part-7-deploy-backend-nestjs-dockerdocker-compose-3cmb
 [ ] Assign secret to a service for it (better practice)
+[ ] Limitant of how many results can you get at the same time from the books endpoint
 [ ] Put the frontend in the public's folder that serves the static files
 
 ### Faked infor from the API:

@@ -41,6 +41,7 @@ export class AuthService {
 
         return {
           access_token: this.jwtService.sign(payload),
+          user: user[0] //User object without the password to update UI and further operations like lending in the future
         };
     }
 }

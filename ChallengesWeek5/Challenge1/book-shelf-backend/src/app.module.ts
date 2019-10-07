@@ -16,6 +16,7 @@ import * as path from "path";
 
 @Module({
   imports: [
+    UsersModule,
     BooksModule,
     MongooseModule.forRoot('mongodb://localhost/BookshelfBD', {useNewUrlParser: true, useUnifiedTopology: true }),
     ServeStaticModule.forRoot({
@@ -23,7 +24,6 @@ import * as path from "path";
       renderPath: "/"
     }),
     AuthModule,
-    UsersModule,
     LendingModule,
   ],
   controllers: [AppController],

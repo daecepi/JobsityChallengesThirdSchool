@@ -9,7 +9,6 @@ import { Book } from "./books.model";
 //Adding the lending service
 import { LendingService } from "../lending/lending.service";
 
-
 @Injectable()
 export class BooksService{
 
@@ -47,7 +46,7 @@ export class BooksService{
      * @param id : holds the id of the book
      * @param user : holds the identification of the user
      */
-    async lendBook(id, user): Promise<Book | HttpException>{
+    async lendBook(id: string, user: string): Promise<Book | HttpException>{
         
         //Looking for the book in the database
         const book = await this.bookModel.findById(id);
@@ -68,7 +67,7 @@ export class BooksService{
         }
 
         //Updating the book's lent property with a user and the date when the lent started
-        book.lent = {user, startDate: new Date().toString()};
+        book.lent = {user: user, startDate: new Date().toString()};
 
         //Updating the book in the database
         let result = await book.save();
@@ -82,7 +81,7 @@ export class BooksService{
      * @param id : holds the id of the book
      * @param user : holds the identification of the user
      */
-    async returnBook(id, user): Promise<Book | HttpException>{
+    async returnBook(id: string, user: string): Promise<Book | HttpException>{
         //Looking for the book in the database
         let book = await this.bookModel.findById(id);
         
@@ -107,7 +106,9 @@ export class BooksService{
         }
 
         //Insertion of the lend details in the lends database
-        await this.lendService.saveLend(id, user, book.lent.date, new Date().toString());
+        let date = new Date().toString();
+        console.log(book.lent);
+        await this.lendService.saveLend({user: user, book: id, startingDate: book.lent.startDate, finishDate: date});
         
         //Clearing state of the book's lent property
         book.lent = undefined;

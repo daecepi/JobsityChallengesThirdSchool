@@ -15,9 +15,9 @@ export class LendingService {
     constructor(@InjectModel('Lend') private readonly lendsModel: Model<Lend>){}
 
 
-    async saveLend(book, user, startDate, endDate): Promise<Lend>{
+    async saveLend(lendToInsert: Lend): Promise<Lend>{
         //Creating the new lend
-        let lend = new this.lendsModel(book, user, startDate, endDate);
+        let lend = new this.lendsModel(lendToInsert);
 
         //Save the book to the database
         let result = await lend.save();

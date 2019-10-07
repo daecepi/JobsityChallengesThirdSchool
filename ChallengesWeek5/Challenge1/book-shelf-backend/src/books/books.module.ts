@@ -10,12 +10,14 @@ import { bookSchema } from "../Schemas/books.schema";
 import { BooksController } from "./books.controller";
 import { BooksService } from "./books.service";
 import { LendingModule } from "../lending/lending.module";
+import { UsersModule } from "../users/users.module";
 
 
 @Module({
     imports: [
         MongooseModule.forFeature([{name: 'Book', schema: bookSchema}]),
         LendingModule,
+        UsersModule,
     ],
     controllers: [BooksController],
     providers: [BooksService],
