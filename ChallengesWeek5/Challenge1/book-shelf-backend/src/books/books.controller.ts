@@ -7,50 +7,52 @@ import { AuthGuard } from "@nestjs/passport";
 @Controller('books')
 export class BooksController{
     constructor(private readonly booksService: BooksService){}
-    @Post()
-    public initializeBooks(){
 
-    }
-
+    /**
+     * Endpoint to retrieve the books of API
+     */
     @UseGuards(AuthGuard('jwt'))
     @Get()
     public async getBooks(){
-        return this.booksService.getBooks();
+        return await this.booksService.getBooks();
     }
 
-
+    /**
+     * Endpoint to get a specific book
+     * @param id id of the book to retrieve
+     */
     @UseGuards(AuthGuard('jwt'))
     @Get(':id')
     public async getBook(@Param('id') id: string){
-        let book = this.booksService.getBook(id);
-        console.log(book);
+        let book = await this.booksService.getBook(id);
 
         return book;
     }
 
 
     /**
-     * 
+     * Endpoint to lend a book
      * @param id : holds the book id
      * @param userId : holds the identification of the user
      */
     @UseGuards(AuthGuard('jwt'))
     @Post('lend')
     public async lendBook(@Body('id') id: string, @Body('userId') userId: string){
-        console.log(id, userId);
-
+        //Calling the procedure destined for it
         let result = await this.booksService.lendBook(id, userId);
-        
         
         return result ;
     }
 
+    /**
+     * Endpoint to return a lent book
+     * @param id : holds the book id
+     * @param userId : holds the identification of the user
+     */
     @UseGuards(AuthGuard('jwt'))
     @Post('return')
     public async returnBook(@Body('id') id: string, @Body('userId') userId: string){
         let result = await this.booksService.returnBook(id, userId);
-
-        console.log(id, userId);
 
         return result;
     }

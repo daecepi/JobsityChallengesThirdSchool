@@ -35,7 +35,7 @@ export class BooksService{
     async getBook(id: string): Promise<Book[] | undefined>{
         const book = this.bookModel.findById(id);
         if (!book) {
-            throw new NotFoundException;
+            throw new NotFoundException('Couldnt find book');
         }
         return book;
     }
@@ -54,9 +54,9 @@ export class BooksService{
         if (!book) {
             throw new NotFoundException('Couldnt find book');
         }
-
+        console.log(book.type);
         //Verifing the book is not digital
-        if (book.type !== 'digital') {
+        if (book.type === 'Digital') {
             return new HttpException('Digital books cannot be lent', 400);
         }
 
@@ -90,7 +90,7 @@ export class BooksService{
         }
 
         //Verifing the book is not digital
-        if (book.type === 'digital') {
+        if (book.type === 'Digital') {
             return new HttpException('Digital books cannot be lent and thus till now not necessarrily returned', 400);
         }
 
@@ -100,17 +100,18 @@ export class BooksService{
         }
 
         //Verifing the user returning it is the one that lent it
-        if(book.lent !== user){
+        if(book.lent.user !== user){
             return new HttpException("The book wasn't lend by this user", 400);
         }
 
         //Insertion of the lend details in the lends database
-        this.lendService.saveLend(id, user, book.lent.date, new Date().toString());
+        await this.lendService.saveLend(id, user, book.lent.date, new Date().toString());
         
+        //Clearing state of the book's lent property
         book.lent = undefined;
 
         
-
+        //Updating book
         let result = await book.save();
 
         return result;

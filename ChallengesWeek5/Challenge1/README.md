@@ -40,12 +40,21 @@ __User endpoints__
 - Usage of mongoose and schemas to keep the app organized
 - Use the caching system to save information of the users about the user if necessary
 - Usage of Nest's error modules like: NotFoundException, UnauthorizedException and HttpExceptions
-- Salting a little the secret of JWT 
+- Salting a little the secret of JWT
+- Many of the default testing files modified for actual code are left for testers to agilize their work
 
 ## NestJS recommendations:
 - Maintain the schemas in the respective folder
 - The projet folder should remind outside the folder of the backend server
 - Keep strategies in the auth folder
+
+## TO DO extras
+Not in the challenge
+[x] Use of Nest
+[x] Some tests written
+[ ] Dockerize the application according to this doc (that show how to do it scalably): https://dev.to/carlillo/part-7-deploy-backend-nestjs-dockerdocker-compose-3cmb
+[ ] Assign secret to a service for it (better practice)
+[ ] Put the frontend in the public's folder that serves the static files
 
 ### Faked infor from the API:
 Information that was generated to books for the sake of this challenge
