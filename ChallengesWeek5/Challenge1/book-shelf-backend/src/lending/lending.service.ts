@@ -6,6 +6,10 @@ import { Model } from "mongoose";
 
 import { Lend } from "./lending.model";
 
+/**
+ * CLASS DESTINED TO MANAGE LENDINGS
+ * Actual approach: save the lendings finished for history (since the keeper of the book can be more easily consulted in book itself)
+ */
 @Injectable()
 export class LendingService {
     constructor(@InjectModel('Lend') private readonly lendsModel: Model<Lend>){}

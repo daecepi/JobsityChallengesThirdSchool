@@ -32,10 +32,12 @@ export class BooksService{
      * Function that looks for a book and retrieves it 
      * @param id : contains the id of the book that is required
      */
-    async getBook(id: string): Promise<Book[] | undefined>{
+    async getBook(id: string): Promise<Book | HttpException>{
         const book = this.bookModel.findById(id);
+
+        //Verifing that the book exists
         if (!book) {
-            throw new NotFoundException('Couldnt find book');
+            return new HttpException('Digital books cannot be lent', 404);
         }
         return book;
     }
@@ -45,14 +47,14 @@ export class BooksService{
      * @param id : holds the id of the book
      * @param user : holds the identification of the user
      */
-    async lendBook(id, user){
+    async lendBook(id, user): Promise<Book | HttpException>{
         
         //Looking for the book in the database
         const book = await this.bookModel.findById(id);
         
         //Making sure the book exists
         if (!book) {
-            throw new NotFoundException('Couldnt find book');
+            return new HttpException('Digital books cannot be lent', 404);
         }
         console.log(book.type);
         //Verifing the book is not digital
@@ -80,7 +82,7 @@ export class BooksService{
      * @param id : holds the id of the book
      * @param user : holds the identification of the user
      */
-    async returnBook(id, user){
+    async returnBook(id, user): Promise<Book | HttpException>{
         //Looking for the book in the database
         let book = await this.bookModel.findById(id);
         
