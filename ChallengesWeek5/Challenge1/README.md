@@ -12,9 +12,10 @@ __Preparing the database__
 1. If your mongodb bin folder is added to Path of your system (therefore any command in there can be opened in the console just by adding it) got to the next step IF NOT move inside your terminal to the BIN folder of your MongoDB installation
 2. locate the BooksInfo.json inside the BD folder and copy the path to it (this is the information of the books)
 3. Run the command shown below putting the path that you copied instead of "[PATH_IN_YOUR_COMPUTER]" (with the MongoDB database working)
-- ON MAC/LINUX ./mongoimport --db BookshelfBD --collection books --type json --file [PATH_IN_YOUR_COMPUTER]/BooksInfo.json --jsonArray
-- ON WINDOWS mongoimport --db BookshelfBD --collection books --type json --file [PATH_IN_YOUR_COMPUTER]/BooksInfo.json --jsonArray
+- ON MAC/LINUX ./mongoimport --db BookshelfBD --collection books --type json --file "[PATH_IN_YOUR_COMPUTER]/BooksInfo.json" --jsonArray
+- ON WINDOWS mongoimport --db BookshelfBD --collection books --type json --file "[PATH_IN_YOUR_COMPUTER]/BooksInfo.json" --jsonArray
 4. OPTIONAL: If you don't want to register users a users.json is also available in the BD folder (run the command that you use to import books and add to it)
+__(HAVE IN MIND THAT THE USERS ARE PROVIDED FOR FAST TESTING AND SHOULD BE DELETED ON DEPLOYMENT)__
 
 __Prepare the backend server__
 1. Follow the instruction of the README.md in "book-shelf-backend" folder
