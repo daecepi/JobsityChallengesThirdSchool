@@ -20,7 +20,7 @@ import * as path from "path";
     BooksModule,
     MongooseModule.forRoot('mongodb://localhost/BookshelfBD', {useNewUrlParser: true, useUnifiedTopology: true }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'clients'),
+      rootPath: join(__dirname, '..', 'public'),
       renderPath: "/"
     }),
     AuthModule,

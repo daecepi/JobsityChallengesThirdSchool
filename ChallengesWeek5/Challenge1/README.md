@@ -18,11 +18,9 @@ __Preparing the database__
 __(HAVE IN MIND THAT THE USERS ARE PROVIDED FOR FAST TESTING AND SHOULD BE DELETED ON DEPLOYMENT)__
 
 __Prepare the backend server__
-1. Follow the instruction of the README.md in "book-shelf-backend" folder
-
-## Setup the backend
-1. Clone or download the project and decompress it if required
-2. Npm install to donwload all dependencies
+1. Follow the instruction of the README.md in "book-shelf-backend" folder (which is the backend that uses NestJS with express)
+2. it will tell you to run npm install inside the folder
+3. then run "npm run start:dev" to run the server for development (more commands can be seen in the README.md mentioned)
 
 ## Endpoints description
 __User endpoints__
