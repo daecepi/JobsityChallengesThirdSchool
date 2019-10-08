@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 //Styles
-import './navbar.css';
+import './navbar.scss';
 
 //Svg logo
 import logo from './logo.svg'; 
@@ -13,7 +13,7 @@ class NavBar extends Component {
     state = {  }
     render() { 
         return ( 
-            <header className="header-div">
+            <header className="header">
                 <div className="logo">
                     <img src={logo} className="image-logo" alt='logo'></img>
                 </div>

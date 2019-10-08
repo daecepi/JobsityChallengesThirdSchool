@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './searchComponent.css';
+//import './searchComponent.scss';
 
 class SearchComponent extends Component {
     state = {  }
@@ -10,7 +10,7 @@ class SearchComponent extends Component {
                 <input type="text" placeholder="Search.."></input>
                 <i className="fas fa-search" aria-hidden="true"></i>
             </div>
-         );
+        );
     }
 }
  

@@ -1,6 +1,6 @@
 import React from 'react'; //Importing react
 //import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 //Components
 import NavBar from './components/navbar/navbar';
