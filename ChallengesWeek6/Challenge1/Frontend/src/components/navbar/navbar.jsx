@@ -28,7 +28,7 @@ class NavBar extends Component {
                                 <p id="user-name">Matt Barrera</p>
                                 <i className="fa fa-chevron-down fa-xs"></i>
                                 <div className="profile-container">
-                                    <img className="profile-pic" src="./images/profile.jpg" alt="" />
+                                    <img className="profile-pic" src="../../images/book.jpeg" alt="" />
                                 </div>
                             </div>
                             <div id="dropdown" className="ddmenu">
