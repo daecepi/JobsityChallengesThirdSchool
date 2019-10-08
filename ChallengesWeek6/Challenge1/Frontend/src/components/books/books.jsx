@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+//Styles
+import './books.scss';
 
 class Books extends Component {
     state = {  }
@@ -11,22 +13,22 @@ class Books extends Component {
                         <p>MAIN</p>
                         <ul>
                             <li>
-                                <i className="fas fa-globe"></i><a href="#" className="element">Quito</a>
+                                <i className="fas fa-globe"></i><a href="../../../public/index.html" className="element">Quito</a>
                             </li>
                             <li>
-                                <i className="fas fa-globe"></i><a href="#" className="element">Cartagena</a>
+                                <i className="fas fa-globe"></i><a href="../../../public/index.html" className="element">Cartagena</a>
                             </li>
                             <li>
-                                <i className="fas fa-globe"></i><a href="#" className="element">Medellín</a>
+                                <i className="fas fa-globe"></i><a href="../../../public/index.html" className="element">Medellín</a>
                             </li>
                             <li>
-                                <i className="fas fa-tablet-alt "></i><a href="#" className="element">Digital</a>
+                                <i className="fas fa-tablet-alt "></i><a href="../../../public/index.html" className="element">Digital</a>
                             </li>
                             <li>
-                                <i className="fas fa-user-tag"></i><a href="#" className="element">Personal Loans</a>
+                                <i className="fas fa-user-tag"></i><a href="../../../public/index.html" className="element">Personal Loans</a>
                             </li>
                             <li className="selected">
-                                <i className="fas fa-tags"></i><a href="#" className="element">New Releases</a>
+                                <i className="fas fa-tags"></i><a href="../../../public/index.html" className="element">New Releases</a>
                             </li>
                         </ul>
                 </div>
@@ -34,16 +36,16 @@ class Books extends Component {
                     <p>YOUR BOOKS</p>
                     <ul>
                         <li>
-                            <i className="fas fa-book-open"></i><a href="#" className="element">Readings</a>
+                            <i className="fas fa-book-open"></i><a href="../../../public/index.html" className="element">Readings</a>
                         </li>
                         <li>
-                            <i className="fas fa-history"></i><a href="#" className="element">History</a>
+                            <i className="fas fa-history"></i><a href="../../../public/index.html" className="element">History</a>
                         </li>
                         <li>
-                            <i className="fas fa-heart"></i><a href="#" className="element">Read Later</a>
+                            <i className="fas fa-heart"></i><a href="../../../public/index.html" className="element">Read Later</a>
                         </li>
                         <li>
-                            <i className="fas fa-tags"></i><a href="#" className="element">Favorites</a>
+                            <i className="fas fa-tags"></i><a href="../../../public/index.html" className="element">Favorites</a>
                         </li>
                     </ul>
                 </div>
@@ -52,7 +54,7 @@ class Books extends Component {
 				<div className="listing-manipulator">
                     <h2>New Releases</h2>
                     <div className="content-filter-box">
-                        <p><a href="#">Release Date</a> | <a href="#">Popularity</a></p>
+                        <p><a href="../../../public/index.html">Release Date</a> | <a href="../../../public/index.html">Popularity</a></p>
                     </div>
                     <div className="layout-form-box">
                         <i className="fa fa-th-large"></i>
@@ -66,11 +68,11 @@ class Books extends Component {
 				<div className="menu-box">
                     <p>MOST READ BOOKS</p>
                     <ol>
-                        <li><a href="#">Hooked: How To Build Habit forming Products.</a></li>
-                        <li><a href="#">The Inevitable: Understanding the 12 Technological Forces That Will Shape Our Future</a></li>
-                        <li><a href="#">Lean In: Women, Work, and the Will to Lead.</a></li>
-                        <li><a href="#">Building a Bussiness When There Are Not Easy Answers.</a></li>
-                        <li><a href="#">How Google Works</a></li>
+                        <li><a href="../../../public/index.html">Hooked: How To Build Habit forming Products.</a></li>
+                        <li><a href="../../../public/index.html">The Inevitable: Understanding the 12 Technological Forces That Will Shape Our Future</a></li>
+                        <li><a href="../../../public/index.html">Lean In: Women, Work, and the Will to Lead.</a></li>
+                        <li><a href="../../../public/index.html">Building a Bussiness When There Are Not Easy Answers.</a></li>
+                        <li><a href="../../../public/index.html">How Google Works</a></li>
                     </ol>
                 </div>
 			</div>

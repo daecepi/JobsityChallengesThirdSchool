@@ -2,15 +2,13 @@ import React from 'react'; //Importing react
 //import logo from './logo.svg';
 import './App.scss';
 
-//Components
-import NavBar from './components/navbar/navbar';
-import Books from './components/books/books';
+//components used
+import ParentBooker from './components/parentbooker/parentbooker';
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <Books />
+      <ParentBooker />
     </div>
   );
 }

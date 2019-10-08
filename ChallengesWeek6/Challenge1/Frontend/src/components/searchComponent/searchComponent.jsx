@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-//import './searchComponent.scss';
+import './searchComponent.scss';
 
 class SearchComponent extends Component {
     state = {  }

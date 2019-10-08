@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 
 export default class SideComponent extends Component {
-    state = {  }
+    state = { 
+        selection: [],
+     }
     render() { 
         return ( 
             <div>

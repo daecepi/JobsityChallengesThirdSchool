@@ -44,18 +44,7 @@
     padding: 0;
   }
 
-  /*Mixin for side container*/
-  @mixin addProperty($color){
-    padding-left: 1rem; /* adding margin to side containers*/
-    padding-right: 1rem; /* adding margin to side containers*/
-    padding-top: 1.5rem;
-    p{
-      font-weight: bold;
-      color: $color;
-      font-size: 0.7rem;
-      padding-bottom: 0.4rem;
-    }
-  }
+  
 
   * {
     margin: 0;
@@ -70,8 +59,20 @@
   .App {
     height: 100vh;
     width: 100vw;
-    display: flex;
-    flex-direction: column;
+  }
+
+
+  /*Mixin for side container*/
+  @mixin addProperty($color){
+    padding-left: 1rem; /* adding margin to side containers*/
+    padding-right: 1rem; /* adding margin to side containers*/
+    padding-top: 1.5rem;
+    p{
+      font-weight: bold;
+      color: $color;
+      font-size: 0.7rem;
+      padding-bottom: 0.4rem;
+    }
   }
 
   .section-1{
@@ -219,43 +220,7 @@
   .selected{
     color: var(--primary-white);
   }
-  /* CSS COMPONENT FOR SEARCH BOX */
   
-  input[type="text"] {
-    border: 2px solid var(--primary-blue);
-    border-radius: 40px;
-    margin: 8px 0;
-    outline: none;
-    box-sizing: border-box;
-    padding: 8px;
-    transition: 0.1s;
-    height: 2rem;
-    font-size: 0.7rem;
-    &:focus {
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 8px 0 var(--primary-blue);
-    }
-  }
-  
-  .inputWithIcon {
-    input[type="text"] {
-      padding-left: 40px;
-    }
-    position: relative;
-  
-    i {
-      position: absolute;
-      left: 0;
-      top: 8px;
-      padding: 9px 8px;
-      color: #aaa;
-      transition: 0.3s;
-    }
-  
-    input[type="text"]:focus + i {
-      color: var(--primary-blue);
-    }
-  }
 
   @media (max-width: 750px){
     .content{
@@ -264,5 +229,6 @@
 
     .books{
       flex-wrap: wrap;
+      flex-direction: row;
     }
   }
