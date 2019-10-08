@@ -6,6 +6,9 @@ import './navbar.css';
 //Svg logo
 import logo from './logo.svg'; 
 
+//Component
+import SearchComponent from '../searchComponent/searchComponent';
+
 class NavBar extends Component {
     state = {  }
     render() { 
@@ -16,10 +19,7 @@ class NavBar extends Component {
                 </div>
                 <div className="search-bar">
                     <p>Bookshelf</p>
-                    <div className="inputWithIcon">
-                        <input type="text" placeholder="Search.." />
-                        <i className="fas fa-search" aria-hidden="true"></i>
-                    </div>
+                    <SearchComponent />
                 </div>
                 <div className="borderx">
                     <div className="user">

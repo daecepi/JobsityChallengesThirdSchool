@@ -6,7 +6,7 @@ class Books extends Component {
     render() { 
         return ( 
             <div className="section-1">
-                <h2>fsfd</h2>
+                <h2>fsfdd</h2>
             </div>
          );
     }
