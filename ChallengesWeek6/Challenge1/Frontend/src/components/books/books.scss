@@ -1,15 +1,15 @@
-
+//Fonts import section
 @font-face{
     font-family: 'PlutonGeneral';
     src: url('../../fonts/HVD Fonts - PlutoSansCondMedium.otf');
 }
-  
+
 @font-face{
     font-family: 'SecondTitlePluton';
     src: url('../../fonts/HVD Fonts - PlutoSansCondExLight.otf');
 }
 
-//Color pallete
+//Color pallete section
 $primary-white:rgba(250, 252, 254, 1);
 $secondary-white:rgb(247, 243, 235);
 $third-white: rgb(240, 240, 240);
@@ -25,6 +25,7 @@ $secondary-grey: rgb(126, 124, 121);
 
 $line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80%);
 
+//Mixins section
   /*Mixin for side container*/
   @mixin addProperty($color){
     padding-left: 1rem; /* adding margin to side containers*/
