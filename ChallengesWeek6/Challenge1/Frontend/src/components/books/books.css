@@ -1,0 +1,6 @@
+.section-1{
+    box-sizing: border-box;
+    flex-basis: 95%;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+}
