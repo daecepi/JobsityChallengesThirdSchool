@@ -4,7 +4,10 @@ import React, { Component } from 'react';
 import './navbar.scss';
 
 //Svg logo
-import logo from './logo.svg'; 
+import logo from './logo.svg';
+
+//Image
+
 
 //Component
 import SearchComponent from '../searchComponent/searchComponent';
@@ -19,7 +22,7 @@ class NavBar extends Component {
                 </div>
                 <div className="search-bar">
                     <p>Bookshelf</p>
-                    <SearchComponent />
+                    <SearchComponent type="text" placeholder="Search.." iconClasses="fas fa-search" />
                 </div>
                 <div className="borderx">
                     <div className="user">

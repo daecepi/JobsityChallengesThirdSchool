@@ -5,10 +5,12 @@ import './App.scss';
 //components used
 import ParentBooker from './components/parentbooker/parentbooker';
 
+import Login from "./components/login/login";
+// <ParentBooker />
 function App() {
   return (
     <div className="App">
-      <ParentBooker />
+      <Login />
     </div>
   );
 }
