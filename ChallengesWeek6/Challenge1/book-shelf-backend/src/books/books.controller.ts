@@ -14,6 +14,7 @@ export class BooksController{
     @UseGuards(AuthGuard('jwt'))
     @Get()
     public async getBooks(){
+        console.log("tere");
         return await this.booksService.getBooks();
     }
 
