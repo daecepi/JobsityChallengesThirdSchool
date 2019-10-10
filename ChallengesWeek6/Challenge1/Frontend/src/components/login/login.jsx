@@ -14,7 +14,7 @@ class Login extends Component {
                     <div className="input">
                         <SearchComponent type="password" placeholder="Username..." iconClasses="fas fa-user-circle"/>
                     </div>
-                    <div input="input">
+                    <div className="input">
                         <SearchComponent type="password" placeholder="Username..." iconClasses="fas fa-lock"/>
                     </div>
                     <button className="button" submit="submit" value="Login">Login</button>
