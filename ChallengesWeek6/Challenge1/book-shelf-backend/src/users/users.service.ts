@@ -28,6 +28,7 @@ export class UsersService {
      * @param username : contains the username of the user to for
      */
     async findOne(username: string): Promise<User | undefined>{
+        console.log(username)
         return this.userModel.find({ username: username});
     }
 }

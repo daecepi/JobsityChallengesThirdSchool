@@ -21,7 +21,7 @@ export class UsersController {
         let userExistence = await this.userService.findOne(username);
         console.log(userExistence);
         if(userExistence[0]){ 
-            return new HttpException('Username if already in use', 200);
+            return new HttpException('Username is already in use', 200);
         }
 
         //Add the user if not

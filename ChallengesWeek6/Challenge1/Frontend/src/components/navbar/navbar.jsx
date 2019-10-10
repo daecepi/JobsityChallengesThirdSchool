@@ -7,7 +7,7 @@ import './navbar.scss';
 import logo from './logo.svg';
 
 //Image
-
+import profile from '../../images/profile.jpg';
 
 //Component
 import SearchComponent from '../searchComponent/searchComponent';
@@ -31,7 +31,7 @@ class NavBar extends Component {
                                 <p id="user-name">Matt Barrera</p>
                                 <i className="fa fa-chevron-down fa-xs"></i>
                                 <div className="profile-container">
-                                    <img className="profile-pic" src="../../images/book.jpeg" alt="" />
+                                    <img className="profile-pic" src="https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2019/02/5-create-fake-people-in-2-seconds-on-this-insane-site.jpg" alt="" />
                                 </div>
                             </div>
                             <div id="dropdown" className="ddmenu">
