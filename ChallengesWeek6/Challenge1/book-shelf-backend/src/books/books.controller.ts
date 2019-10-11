@@ -44,17 +44,5 @@ export class BooksController{
         
         return result ;
     }
-
-    /**
-     * Endpoint to return a lent book
-     * @param id : holds the book id
-     * @param userId : holds the identification of the user
-     */
-    @UseGuards(AuthGuard('jwt'))
-    @Put('return')
-    public async returnBook(@Body('bookId') id: string, @Body('userId') userId: string){
-        let result = await this.booksService.returnBook(id, userId);
-
-        return result;
-    }
+    
 }

@@ -1,9 +1,11 @@
-import { Controller, Post, Body, Inject, Param, HttpException } from '@nestjs/common';
+import { Controller, Post, Body, Inject, Param, HttpException, UseGuards, Put } from '@nestjs/common';
 import { UsersService } from './users.service';
+import { AuthGuard } from '@nestjs/passport';
+import { BooksService } from 'src/books/books.service';
 
 @Controller('users')
 export class UsersController {
-    constructor( private readonly userService: UsersService){
+    constructor( private readonly userService: UsersService, private readonly booksService: BooksService){
 
     }
 
@@ -26,6 +28,21 @@ export class UsersController {
 
         //Add the user if not
         let result = await this.userService.insertUser({identification, name, lname, username, password, age, email});
+        return result;
+    }
+
+    /**
+     * Endpoint to return a lent book by a user
+     * @param bookId : holds the book's id
+     * @param userId : holds the user's id
+     */
+    @UseGuards(AuthGuard('jwt'))
+    @Put('/:userId/book/:bookId')
+    async returnBook(@Param('userId') userId: string, @Param('bookId') bookId: string){
+        console.log(userId, bookId);
+
+        let result = await this.booksService.returnBook(bookId, userId);
+
         return result;
     }
 }
