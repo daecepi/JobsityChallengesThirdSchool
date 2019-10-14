@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Inject, Param, HttpException, UseGuards, Put } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport';
-import { BooksService } from 'src/books/books.service';
+import { BooksService } from '../books/books.service';
 
 @Controller('users')
 export class UsersController {

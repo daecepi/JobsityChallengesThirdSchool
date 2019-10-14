@@ -22,8 +22,14 @@ export class BooksService{
      * Service function destined to retriev all of the books from the service
      *  @retuns Promise of books wanted
      */
-    async getBooks(): Promise<Book[] | undefined>{
+    async getBooks(): Promise<Book[] | HttpException>{
         let books = this.bookModel.find();
+
+        //Verifing that books were resolved
+        if (!books) {
+            return new HttpException('Could not resolve any books', 500);
+        }
+
         return books;
     }
 
@@ -39,6 +45,17 @@ export class BooksService{
             return new HttpException('Digital books cannot be lent', 404);
         }
         return book;
+    }
+
+    async searchBooks(words: string): Promise<Book[] | HttpException>{
+        const books = this.bookModel.find({name: {regex: `/${words}/`}})
+
+        //Verifing that the book exists
+        if (!books) {
+            return new HttpException('No books with that description were found', 404);
+        }
+
+        return books;
     }
 
     /**

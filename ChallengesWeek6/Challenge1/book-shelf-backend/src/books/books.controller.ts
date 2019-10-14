@@ -13,8 +13,10 @@ export class BooksController{
      */
     @UseGuards(AuthGuard('jwt'))
     @Get()
-    public async getBooks(){
-        console.log("tere");
+    public async getBooks(@Param('words') words: string){
+        if(words){
+            return await this.booksService.searchBooks(words);
+        }
         return await this.booksService.getBooks();
     }
 
@@ -30,6 +32,17 @@ export class BooksController{
         return book;
     }
 
+    /**
+     * Endpoint to looks for books that match the words passed in
+     * @param words words that going to be compared as regular expressions on the database
+     */
+    @UseGuards(AuthGuard('jwt'))
+    @Get('/search/:words')
+    public async searchBooks(@Param('words') words: string){
+        //let book = await this.booksService.getBook(id);
+
+        //return "booos";
+    }
 
     /**
      * Endpoint to lend a book
@@ -44,5 +57,7 @@ export class BooksController{
         
         return result ;
     }
+
+
     
 }
