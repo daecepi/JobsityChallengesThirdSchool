@@ -18,14 +18,6 @@ class Login extends Component {
         message: undefined
     }
 
-
-    componentDidMount(){
-        let token = localStorage.getItem("access_token");
-        if(token){
-            console.log(token);;
-        }
-    }
-
     authenticate = async () => {
         //Taking out the necessary information from the states object
         const {username, password} = this.state;
@@ -58,10 +50,9 @@ class Login extends Component {
                 return;
             }else{
                 this.setState({message: "Success"})
-                console.log(authResult)
                 localStorage.setItem("access_token", authResult['access_token']);
                 //localStorage.setItem("user", JSON.stringify(authResult.user));
-                let token = await localStorage.getItem("access_token");
+                let token = localStorage.getItem("access_token");
                 console.log(token);
             }
         }

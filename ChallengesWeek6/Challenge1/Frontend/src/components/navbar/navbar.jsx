@@ -6,8 +6,6 @@ import './navbar.scss';
 //Svg logo
 import logo from './logo.svg';
 
-//Image
-import profile from '../../images/profile.jpg';
 
 //Component
 import SearchComponent from '../searchComponent/searchComponent';

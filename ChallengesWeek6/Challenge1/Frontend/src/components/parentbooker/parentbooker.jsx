@@ -10,16 +10,21 @@ import Login from "../login/login";
 
 class ParentBooker extends Component {
     state = {
-        loginVisible: true,
+        loginVisible: undefined,
         books: []
      }
 
     componentDidMount(){
-        console.log("Component redered");
+        let token = localStorage.getItem("access_token");
+        if(token){
+            this.setState({loginVisible: false});
+        }
     }
 
-    verify(){
-        localStorage.getItem();
+    handdleLogout = () => {
+        localStorage.removeItem("access_token");
+        
+        this.setState({loginVisible: true})
     }
 
     getBooks= async () => {
@@ -34,10 +39,10 @@ class ParentBooker extends Component {
     }
 
     render() { 
-        return ( 
+        return (
             <div className="app-container">
                 {this.state.loginVisible?<Login />: ""}
-                <NavBar />
+                <NavBar logout={this.handdleLogout} />
                 <Books />
             </div>
          );
