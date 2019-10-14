@@ -2,9 +2,16 @@
 
   .inputWithIcon {
     position: relative;
-    width: 100%;
   }
   
+  .inputNormal{
+    width: 10%;
+  }
+
+  .inputFull{
+    width: 100%;
+  }
+
   input[type="text"], input[type="password"] {
     border: 2px solid var(--primary-blue);
     border-radius: 40px;

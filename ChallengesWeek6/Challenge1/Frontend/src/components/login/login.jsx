@@ -58,8 +58,11 @@ class Login extends Component {
                 return;
             }else{
                 this.setState({message: "Success"})
-                localStorage.setItem("access_token", authResult.token);
-                localStorage.setItem("user", JSON.stringify(authResult.user));
+                console.log(authResult)
+                localStorage.setItem("access_token", authResult['access_token']);
+                //localStorage.setItem("user", JSON.stringify(authResult.user));
+                let token = await localStorage.getItem("access_token");
+                console.log(token);
             }
         }
     }
@@ -77,7 +80,7 @@ class Login extends Component {
         return (
             <div className="full-container">
                 <div className="container">
-                    <h1 className="login-title">Jobsity Login</h1>
+                    <h1 className="login-title">Bookshelf Login</h1>
                     <div className="input">
                         <SearchComponent type="text" placeholder="Username..." iconClasses="fas fa-user-circle" onchange={this.updateUsername} />
                     </div>

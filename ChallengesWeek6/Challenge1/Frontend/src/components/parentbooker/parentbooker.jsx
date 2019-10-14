@@ -6,13 +6,21 @@ import './parentbooker.scss';
 import NavBar from '../navbar/navbar';
 import Books from '../books/books';
 
+import Login from "../login/login";
+
 class ParentBooker extends Component {
-    state = {  }
+    state = {
+        loginVisible: true,
+        books: []
+     }
 
     componentDidMount(){
         console.log("Component redered");
     }
 
+    verify(){
+        localStorage.getItem();
+    }
 
     getBooks= async () => {
         let authResult = await fetch('http://localhost:5000/books',{
@@ -28,6 +36,7 @@ class ParentBooker extends Component {
     render() { 
         return ( 
             <div className="app-container">
+                {this.state.loginVisible?<Login />: ""}
                 <NavBar />
                 <Books />
             </div>
