@@ -13,17 +13,17 @@ class Login extends Component {
      * If login will require more than two
      */
     state = { 
-        username: "sofi",
-        password: "sofi123123",
+        username: undefined,
+        password: undefined,
         message: undefined
     }
 
 
     componentDidMount(){
-        //const  token = localStorage.getValue("token");
-        /*if (token) {
-            
-        }*/
+        let token = localStorage.getItem("access_token");
+        if(token){
+            console.log(token);;
+        }
     }
 
     authenticate = async () => {
@@ -56,6 +56,10 @@ class Login extends Component {
             if(authResult.error){
                 this.setState({message: authResult.error});
                 return;
+            }else{
+                this.setState({message: "Success"})
+                localStorage.setItem("access_token", authResult.token);
+                localStorage.setItem("user", JSON.stringify(authResult.user));
             }
         }
     }
