@@ -38,10 +38,10 @@ __User endpoints__
 - - GET and an id on the URL after an slash ("/")
 - /lend : to read lend a book if not digital (requires id of the book y id of the user that wants to lend it)
 - - HEADER: needs an auth token (jwt token)
-- - PATCH: bookId: string and userId
-- /return : to return the book after finished with it (requires id of the book y id of the user that wants to lend it)
+- - PUT: bookId: string and userId
+- user/:userId/return/:bookId : to return the book after finished with it (requires id of the book y id of the user that wants to lend it)
 - - HEADER: needs an auth token (jwt token)
-- - PATCH: bookId: string and userId
+- - PUT: bookId: string and userId
 
 ### Important approaches
 - Reuse of BookResolver library done before
