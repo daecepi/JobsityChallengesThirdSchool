@@ -1,0 +1,78 @@
+$primary-white:rgba(250, 252, 254, 1);
+$secondary-white:rgb(247, 243, 235);
+$secondary-white-opacity:rgba(247, 245, 243, 0.5);
+$third-white: rgb(240, 240, 240);
+
+$primary-blue:rgb(96, 181, 214);
+$letters-blue-darker:rgba(47, 151, 242, 1);
+$secondary-blue:rgba(47, 151, 242, 1);
+
+$primary-dark:rgba(4, 29, 41, 1);
+$secondary-dark: rgba(63, 63, 63, 0.9);
+$primary-grey:rgb(160, 158, 153);
+$secondary-grey: rgb(126, 124, 121);
+
+$line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80%);
+
+$primary-success: rgb(0, 97, 0);
+$primary-error: rgb(255,0,0);
+
+.full-container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;background-image: url("../../images/LoginImage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*STYLING FOR MODAL
+    position:fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;*/
+}
+
+.container{
+    background: $secondary-white;
+    box-shadow: 2px 10px 20px 0px black;
+    height: 40%;
+    width: 25%;
+    display: flex;
+    border-radius: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem;
+}
+
+.login-title{
+    justify-self: center;
+    align-self: center;
+    flex-grow: 5;
+    justify-content: center;
+}
+
+.input{
+    width: 90%;
+}
+
+.button{
+    display: block;
+    border-radius: 20px;
+    width: 90%;
+    flex-grow: 1;
+    margin-top: 2%;
+    margin: 8px 0;
+}
+
+.messages{
+    font-size: 0.7rem;
+}
+
+.messages-error{
+    color: $primary-error;
+}
+
+.messages-success{
+    color: $primary-success;
+}

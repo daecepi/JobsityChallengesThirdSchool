@@ -1,0 +1,140 @@
+//Fonts import section
+@font-face{
+    font-family: 'PlutonGeneral';
+    src: url('../../fonts/HVD Fonts - PlutoSansCondMedium.otf');
+}
+
+@font-face{
+    font-family: 'SecondTitlePluton';
+    src: url('../../fonts/HVD Fonts - PlutoSansCondExLight.otf');
+}
+
+//Color pallete section
+$primary-white:rgba(250, 252, 254, 1);
+$secondary-white:rgb(247, 243, 235);
+$third-white: rgb(240, 240, 240);
+
+$primary-blue:rgb(96, 181, 214);
+$letters-blue-darker:rgba(47, 151, 242, 1);
+$secondary-blue:rgba(47, 151, 242, 1);
+
+$primary-dark:rgba(4, 29, 41, 1);
+$secondary-dark: rgba(63, 63, 63, 0.9);
+$primary-grey:rgb(160, 158, 153);
+$secondary-grey: rgb(126, 124, 121);
+
+$line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80%);
+
+//Mixins section
+  /*Mixin for side container*/
+  @mixin addProperty($color){
+    padding-left: 1rem; /* adding margin to side containers*/
+    padding-right: 1rem; /* adding margin to side containers*/
+    padding-top: 1.5rem;
+    p{
+      font-weight: bold;
+      color: $color;
+      font-size: 0.7rem;
+      padding-bottom: 0.4rem;
+    }
+  }
+
+.section-1{
+    box-sizing: border-box;
+    flex-basis: 95%;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+}
+
+
+  .header, .section-1 {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+  }
+
+  .menu-box{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  
+
+  .menu-right {
+    background: $primary-dark;
+    color: $primary-grey;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 0.7rem;
+
+    @include addProperty($primary-grey);
+
+    ol{
+      overflow: hidden;
+    }
+
+    li{
+      font-size: 0.75rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+    }
+  }
+  
+  .menu-right a {
+    color: inherit;
+  }
+  
+  .logo {
+    height: 100%;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    background: $third-white;
+    flex-flow: column;
+    padding: 1rem 4rem 0rem 4rem;
+
+    .listing-manipulator{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      .content-filter-box a{
+        color: $primary-grey;
+      }
+      
+      h2{
+        font-size: 1.1rem;
+        font-family: 'SecondTitlePluton', Fallback, sans-serif;
+        font-weight: bold;
+        color: $secondary-dark;
+      }
+
+      p{
+        text-decoration: none;
+        color: $primary-grey;
+      }
+
+      .layout-form-box{
+        display: flex;
+        align-items: center;
+        justify-items: space-between;
+        color: $primary-blue;
+        i{
+          padding-left: 0.3rem;
+        }
+      }
+    }
+
+    .books{
+      display: flex;
+      justify-items: stretch;
+      align-items: space-between;
+      flex-wrap: wrap;
+    }
+  }
+  
+  .selected{
+    color: $primary-white;
+  }

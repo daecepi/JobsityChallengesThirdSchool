@@ -1,0 +1,37 @@
+//Color pallete section
+$primary-white:rgba(250, 252, 254, 1);
+$secondary-white:rgb(247, 243, 235);
+$third-white: rgb(240, 240, 240);
+
+$primary-blue:rgb(96, 181, 214);
+$letters-blue-darker:rgba(47, 151, 242, 1);
+$secondary-blue:rgba(47, 151, 242, 1);
+
+$primary-dark:rgba(4, 29, 41, 1);
+$secondary-dark: rgba(63, 63, 63, 0.9);
+$primary-grey:rgb(160, 158, 153);
+$secondary-grey: rgb(126, 124, 121);
+
+$line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80%);
+
+//SCSS SECTION
+.book{
+    display: flex;
+    flex-basis: 18%;
+    margin-left: auto;
+    flex-flow: column;
+    overflow: hidden;
+    img{
+      width: 15rem;
+      height: 20rem;
+    }
+    .book-title{
+      font-family: "TitlePluton", Fallback, sans-serif;
+      overflow: hidden;
+      white-space: nowrap;
+      overflow: hidden;
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: $secondary-dark;
+    }
+  }
