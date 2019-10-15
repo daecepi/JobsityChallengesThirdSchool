@@ -81,7 +81,6 @@ $line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80
   }
   
   .menu-right a {
-    text-decoration: none;
     color: inherit;
   }
   
@@ -104,10 +103,8 @@ $line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80
     .listing-manipulator{
       display: flex;
       justify-content: space-between;
-      align-items: stretch;
       margin-bottom: 1rem;
       .content-filter-box a{
-        text-decoration: none;
         color: $primary-grey;
       }
       
@@ -124,7 +121,13 @@ $line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80
       }
 
       .layout-form-box{
+        display: flex;
+        align-items: center;
+        justify-items: space-between;
         color: $primary-blue;
+        i{
+          padding-left: 0.3rem;
+        }
       }
     }
 

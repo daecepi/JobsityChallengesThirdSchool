@@ -18,7 +18,7 @@ class Book extends Component {
      }
 
     render() {
-        const { id, title, description, imageSrc, authors, averageRating  } = this.state;
+        const { id, title, imageSrc, authors, averageRating  } = this.state;
         return ( 
             <div className="book">
                 <img src={imageSrc} alt="" />

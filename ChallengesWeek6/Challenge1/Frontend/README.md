@@ -25,13 +25,18 @@ __To use the application:__
 1. Pluton fonts provided by the project documentation
 2. Font-awesome's CDN for the icons
 3. Images found for the users
+4. Tippy
+5. star rating component
 
 ## TO DO
 [X] move to Webpack in new version
-[ ] salting information
-[ ] Create the registration page
+[ ] salting information (adding security to password)
+[ ] Create the registration page (implement and finish the component)
 [ ] Add routing
 [ ] improve the security
+[ ] improve dropdown styling even more
+[ ] finish my own rating star component
+[ ] Changing tippy
 
 # React documentation based readme and components
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

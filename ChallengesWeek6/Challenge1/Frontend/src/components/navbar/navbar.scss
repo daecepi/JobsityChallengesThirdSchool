@@ -5,22 +5,22 @@
     font-family: 'TitlePluton';
     src: url('../../fonts/HVD Fonts - PlutoSansMedium.otf');
   }
-:root {
---primary-white:rgba(250, 252, 254, 1);
---secondary-white:rgb(247, 243, 235);
---third-white: rgb(240, 240, 240);
+  
+$primary-white:rgba(250, 252, 254, 1);
+$secondary-white:rgb(247, 243, 235);
+$third-white: rgb(240, 240, 240);
 
---primary-blue:rgb(96, 181, 214);
---letters-blue-darker:rgba(47, 151, 242, 1);
---secondary-blue:rgba(47, 151, 242, 1);
+$primary-blue:rgb(96, 181, 214);
+$letters-blue-darker:rgba(47, 151, 242, 1);
+$secondary-blue:rgba(47, 151, 242, 1);
 
---primary-dark:rgba(4, 29, 41, 1);
---secondary-dark: rgba(63, 63, 63, 0.9);
---primary-grey:rgb(160, 158, 153);
---secondary-grey: rgb(126, 124, 121);
+$primary-dark:rgba(4, 29, 41, 1);
+$secondary-dark: rgba(63, 63, 63, 0.9);
+$primary-grey:rgb(160, 158, 153);
+$secondary-grey: rgb(126, 124, 121);
 
---line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80%);
-}
+$line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80%);
+
 
 .header{
   box-sizing: border-box;
@@ -32,10 +32,10 @@
     align-items: center;
     justify-content: space-between;
     text-align: center;
-    border-bottom: 1px solid var(--primary-blue);
+    border-bottom: 1px solid $primary-blue;
     padding-left: 1rem;
     padding-right: 1rem;
-    background: var(--secondary-white);
+    background: $secondary-white;
 
     p{
       font-size: 1.5rem;
@@ -50,7 +50,7 @@
   }
   
   .user{
-    background: var(--secondary-white);
+    background: $secondary-white;
     height: 99%; /*Used to get the line next to the users container*/
     width: 99%; /*Used to get the line next to the users container*/
     position: relative;
@@ -69,11 +69,13 @@
         align-content: center;
         justify-content: center;
       }
+
+      
     }
 
     .user-box:hover{
       padding: 0.3em;
-      border: 1px solid var(--primary-grey);
+      border: 1px solid $primary-grey;
     }
 
     #user-name{
@@ -95,20 +97,8 @@
     }
 
     .profile-pic{
-      border: 2px solid var(--primary-blue);
+      border: 2px solid $primary-blue;
       border-radius: 50%;
-    }
-  
-    .ddmenu{
-      text-decoration: none;
-      list-style-type: none;
-      display: none;
-      position: absolute;
-      background: var(--secondary-white);
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      padding: 12px 16px;
-      z-index: 1;
-      color: gray;
     }
   }
 }
@@ -116,6 +106,31 @@
 /*Style that guarantees dropdown menu*/
 .user:hover .ddmenu {
   display: block;
+  text-decoration: none;
+  list-style-type: none;
 }
 
+.ddmenu{
+  display: none;
+  position: absolute;
+  background: $secondary-white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  color: gray;
+  ul{
+    list-style-type: none;
+    button{
+      font-weight: bold;
+      width: 100%;
+      background: none;
+      border: none;
+    }
+
+    button:hover{
+      background: $secondary-dark;
+      color: $secondary-white;
+    }
+  }
+}
 

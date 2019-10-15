@@ -35,9 +35,9 @@ class NavBar extends Component {
                             </div>
                             <div id="dropdown" className="ddmenu">
                                 <ul>
-                                    <li><a href="../../../public/index.html">Profile</a></li>
-                                    <li><a href="../../../public/index.html">Books saved</a></li>
-                                    <li><a href="../../../public/index.html">Account Settings</a></li>
+                                    <li><button>Profile</button></li>
+                                    <li><button>Books saved</button></li>
+                                    <li><button>Account Settings</button></li>
                                     <li><button onClick={logout}>Log Out</button></li>
                                 </ul>
                             </div>
