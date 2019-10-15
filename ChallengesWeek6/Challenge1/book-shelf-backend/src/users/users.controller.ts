@@ -27,7 +27,7 @@ export class UsersController {
         }
 
         //Add the user if not
-        let result = await this.userService.insertUser({identification, name, lname, username, password, age, email});
+        let result = await this.userService.insertUser({identification, name, lname, username, password, age, email, favorites: [], readings: [], laterReadings: []});
         return result;
     }
 

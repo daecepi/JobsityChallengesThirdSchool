@@ -26,8 +26,8 @@ export class AuthService {
 
         //Taking the property password out of the object and returning it
         if (user && user[0].password === password) {
-            const {password, ...result } = user;
-            return result;
+            //const {password, ...result } = user;
+            return user;
         }
     }
 

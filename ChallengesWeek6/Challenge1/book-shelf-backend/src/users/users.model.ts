@@ -8,5 +8,5 @@ export interface User{
     email: string;
     favorites: [];
     readings: [];
-    LaterReadings: [];
+    laterReadings: [];
 }
