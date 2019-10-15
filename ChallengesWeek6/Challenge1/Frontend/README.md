@@ -1,3 +1,39 @@
+# Frontend actual state
+## External components used
+- react-star-rating-component (eventhough i am designing mine, was a good oportunity to taste components like this)
+### Bookshelf
+#### Pre-requisites for the project (including the script)
+- NodeJS
+- NPM
+- (The packages on the dependencies to compile section)
+
+
+## How to use the script
+1. After cloning or downloading the repository cd into the /Scripts folder
+2. Use the command 'npm install' to download its dependencies
+3. Modifying the BookBringer.js file according to requirements (URL, properties)
+4. Run it using the command 'node BookBringer.js'
+
+
+## How to use the project for tests and production
+1. run "npm install" in the project folder to install all packages required by the projects
+2. 
+
+### Dependencies of the frontend application
+
+__To use the application:__
+1. Pluton fonts provided by the project documentation
+2. Font-awesome's CDN for the icons
+3. Images found for the users
+
+## TO DO
+[X] move to Webpack in new version
+[ ] salting information
+[ ] Create the registration page
+[ ] Add routing
+[ ] improve the security
+
+# React documentation based readme and components
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

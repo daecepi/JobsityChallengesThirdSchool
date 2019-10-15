@@ -13,3 +13,5 @@
 
 ## Comments
 - Both projects are ready to run in parallel
+
+## TO DO (for this week can be seen in each separate README)

@@ -1,0 +1,20 @@
+.book{
+    display: flex;
+    flex-basis: 18%;
+    margin-left: auto;
+    flex-flow: column;
+    overflow: hidden;
+    img{
+      width: 15rem;
+      height: 20rem;
+    }
+    .book-title{
+      font-family: "TitlePluton", Fallback, sans-serif;
+      overflow: hidden;
+      white-space: nowrap;
+      overflow: hidden;
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: $secondary-dark;
+    }
+  }

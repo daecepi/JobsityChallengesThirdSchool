@@ -14,12 +14,14 @@ class ParentBooker extends Component {
         books: []
      }
 
-    componentDidMount(){
+    componentWillMount(){
         let token = localStorage.getItem("access_token");
         if(token){
             this.setState({loginVisible: false});
+            this.getBooks();
         }
     }
+
 
     notifyCorrectAuth = () =>{
         this.setState({loginVisible: false});
@@ -31,7 +33,20 @@ class ParentBooker extends Component {
         this.setState({loginVisible: true})
     }
 
+    //Method to get all books
     getBooks= async () => {
+        let token = localStorage.getItem('access_token');
+        let authResult = await fetch('http://localhost:5000/books',{
+                method: "GET",
+                headers:{
+                    'Authorization': 'Bearer '+token,
+                },
+            }).then(res => res.json());
+
+        console.log(authResult);
+    }
+
+    getDigitalBooks= async () =>{
         let token = localStorage.getItem('access_token');
         let authResult = await fetch('http://localhost:5000/books',{
                 method: "GET",

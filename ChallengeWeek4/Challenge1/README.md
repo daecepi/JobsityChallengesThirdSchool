@@ -19,16 +19,11 @@
 
 
 ### Dependencies of the frontend application
-__To Compile:__
-1. gulp
-2. gulp-sourcemaps
-3. gulp-babel
-4. gulp-sass
-5. gulp-concat
 
 __To use the application:__
 1. Bootstrap's rating stars class
 2. Font-awesome's CDN for the icons
 
 ## TO DO
-[ ] move to Webpack in new version (offers good development speed and is quite flexible)
+[X] move to Webpack in new version
+[ ] salting information

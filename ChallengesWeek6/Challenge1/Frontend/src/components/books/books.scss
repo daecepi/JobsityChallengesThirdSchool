@@ -57,34 +57,7 @@ $line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80
     padding-bottom: 0.5rem;
   }
 
-  .menu-left {
-    font-family: "PlutonGeneral", Fallback, sans-serif;
-    background: $primary-dark;
-    font-size: 0.7rem;
-    @include addProperty($primary-white);
-
   
-    ul {
-      color: $primary-blue;
-      list-style-type: none;
-      padding: 0%;
-      text-decoration: none;
-
-      li{
-        padding-top: 0.6rem;
-        padding-bottom: 0.6rem;
-      }
-
-      a{
-        margin-left: 0.5rem;
-      }
-
-      a:hover{
-        text-decoration: none;
-        color: white;
-      }
-    }
-  }
 
   .menu-right {
     background: $primary-dark;
@@ -107,7 +80,7 @@ $line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80
     }
   }
   
-  .menu-left a, .menu-right a {
+  .menu-right a {
     text-decoration: none;
     color: inherit;
   }
@@ -160,27 +133,6 @@ $line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80
       justify-items: stretch;
       align-items: space-between;
       flex-wrap: wrap;
-
-      .book{
-        display: flex;
-        flex-basis: 18%;
-        margin-left: auto;
-        flex-flow: column;
-        overflow: hidden;
-        img{
-          width: 15rem;
-          height: 20rem;
-        }
-        .book-title{
-          font-family: "TitlePluton", Fallback, sans-serif;
-          overflow: hidden;
-          white-space: nowrap;
-          overflow: hidden;
-          font-weight: bold;
-          font-size: 0.9rem;
-          color: $secondary-dark;
-        }
-      }
     }
   }
   
