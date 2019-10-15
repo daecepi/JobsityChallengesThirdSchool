@@ -1,56 +1,116 @@
-
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 import "./sideMenuFilters.scss";
 
 export default class SideMenuFiltersComponent extends Component {
-    state = { 
-        selection: [],
-     }
-    render() { 
-        return (
-            <div className="menu-left">
-                <div className="menu-box">
-                        <p>MAIN</p>
-                        <ul>
-                            <li>
-                                <i className="fas fa-globe"></i><a href="../../../public/index.html" className="element">Quito</a>
-                            </li>
-                            <li>
-                                <i className="fas fa-globe"></i><a href="../../../public/index.html" className="element">Cartagena</a>
-                            </li>
-                            <li>
-                                <i className="fas fa-globe"></i><a href="../../../public/index.html" className="element">Medellín</a>
-                            </li>
-                            <li>
-                                <i className="fas fa-tablet-alt "></i><a href="../../../public/index.html" className="element">Digital</a>
-                            </li>
-                            <li>
-                                <i className="fas fa-user-tag"></i><a href="../../../public/index.html" className="element">Personal Loans</a>
-                            </li>
-                            <li className="selected">
-                                <i className="fas fa-tags"></i><a href="../../../public/index.html" className="element">New Releases</a>
-                            </li>
-                        </ul>
-                </div>
-                <div className="menu-box">
-                    <p>YOUR BOOKS</p>
-                    <ul>
-                        <li>
-                            <i className="fas fa-book-open"></i><a href="../../../public/index.html" className="element">Readings</a>
-                        </li>
-                        <li>
-                            <i className="fas fa-history"></i><a href="../../../public/index.html" className="element">History</a>
-                        </li>
-                        <li>
-                            <i className="fas fa-heart"></i><a href="../../../public/index.html" className="element">Read Later</a>
-                        </li>
-                        <li>
-                            <i className="fas fa-tags"></i><a href="../../../public/index.html" className="element">Favorites</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-         );
-    }
+  state = {
+    classifications: [
+      {
+        index: 1,
+        section: "Quito",
+        logoClasses: "fas fa-globe",
+        isSelected: false
+      },
+      {
+        index: 2,
+        section: "Cartagena",
+        logoClasses: "fas fa-globe",
+        isSelected: false
+      },
+      {
+        index: 3,
+        section: "Medellín",
+        logoClasses: "fas fa-globe",
+        isSelected: false
+      },
+      {
+        index: 4,
+        section: "Digital",
+        logoClasses: "fas fa-tablet-alt",
+        isSelected: false
+      },
+      {
+        index: 5,
+        section: "Personal Loans",
+        logoClasses: "fas fa-user-tag",
+        isSelected: false
+      },
+      {
+        index: 6,
+        section: "New Releases",
+        logoClasses: "fas fa-tags",
+        isSelected: true
+      },
+      {
+        index: 7,
+        section: "Readings",
+        logoClasses: "fas fa-book-open",
+        isSelected: false
+      },
+      {
+        index: 8,
+        section: "History",
+        logoClasses: "fas fa-history",
+        isSelected: false
+      },
+      {
+        index: 9,
+        section: "Read Later",
+        logoClasses: "fas fa-heart",
+        isSelected: false
+      },
+      {
+        index: 10,
+        section: "Favorites",
+        logoClasses: "fas fa-tags",
+        isSelected: false
+      }
+    ]
+  };
+  render() {
+    return (
+      <div className="menu-left">
+        <div className="menu-box">
+          <p>MAIN</p>
+          <ul>
+            {this.state.classifications.map((item, index) => {
+              console.log(index);
+              if (index < 6) {
+                return (
+                  <li
+                    key={item.index}
+                    className={item.isSelected ? "selected" : ""}
+                  >
+                    <i className={item.logoClasses}></i>
+                    <button className={item.isSelected ? "selected" : "element"}>{item.section}</button>
+                  </li>
+                );
+              }
+              return "";
+            })}
+          </ul>
+        </div>
+        <div className="menu-box">
+          <p>YOUR BOOKS</p>
+          <ul>
+            {this.state.classifications.map((item, index) => {
+              console.log(index);
+              if (index > 5) {
+                return (
+                  <li
+                    key={item.index}
+                    className={item.isSelected ? "selected" : ""}
+                  >
+                    <i className={item.logoClasses}></i>
+                    <button className={item.isSelected ? "selected" : "element"}>{item.section}</button>
+                  </li>
+                );
+              }
+              return "";
+            })}
+          </ul>
+        </div>
+      </div>
+    );
+  }
 }

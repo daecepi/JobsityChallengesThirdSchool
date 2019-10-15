@@ -42,8 +42,8 @@ class ParentBooker extends Component {
                     'Authorization': 'Bearer '+token,
                 },
             }).then(res => res.json());
-
-        console.log(authResult);
+        console.log(authResult  );
+        this.setState({books: authResult});
     }
 
     getDigitalBooks= async () =>{
@@ -59,11 +59,12 @@ class ParentBooker extends Component {
     }
 
     render() { 
+        const { books } = this.state;
         return (
             <div className="app-container">
                 {this.state.loginVisible ? <Login onGoodAuth={this.notifyCorrectAuth} />: ""}
                 {!this.state.loginVisible ? <NavBar logout={this.handdleLogout} /> : ""}
-                {!this.state.loginVisible ?<Books /> : ""}
+                {!this.state.loginVisible ? <Books books={books}/> : ""}
             </div>
          );
     }

@@ -11,7 +11,7 @@ class Book extends Component {
         id: this.props.id,
         title: this.props.title,
         description: this.props.description,
-        imageSrc: this.props.authors,
+        imageSrc: this.props.imageSrc,
         authors: this.props.authors,
         averageRating: this.props.averageRating,
         rating: this.props.averageRating

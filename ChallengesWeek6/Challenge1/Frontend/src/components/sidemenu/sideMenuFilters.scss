@@ -39,25 +39,31 @@ $line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80
       color: $primary-blue;
       list-style-type: none;
       padding: 0%;
-      text-decoration: none;
 
       li{
         padding-top: 0.6rem;
         padding-bottom: 0.6rem;
       }
 
-      a{
+      button{
         margin-left: 0.5rem;
+        background: none;
+        border:none;
       }
 
-      a:hover{
-        text-decoration: none;
+      button:hover{
         color: white;
+      }
+
+      .element {
+        color: $primary-blue;
+      }
+
+      .selected{
+        color:white;
+        text-decoration-color: white;
       }
     }
   }
 
-  .menu-left a{
-    text-decoration: none;
-    color: inherit;
-  }
+  

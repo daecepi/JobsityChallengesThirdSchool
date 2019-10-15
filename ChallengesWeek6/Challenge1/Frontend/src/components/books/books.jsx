@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 
-import SideMenuFiltersComponent from '../sidemenu/sideMenuFilters';
-
 //Styles
 import './books.scss';
 
+//Components used
+import SideMenuFiltersComponent from '../sidemenu/sideMenuFilters';
+import Book from "../book/book";
+
 class Books extends Component {
+
     state = {  }
-    render() { 
+    render() {
+        const { books } = this.props;
         return ( 
             <div className="section-1">
             <SideMenuFiltersComponent />
@@ -23,6 +27,18 @@ class Books extends Component {
                     </div>
                 </div>
 				<div id="book-container" className="books">
+                    {books.map((book)=>{
+                        console.log('entre');
+                        return <Book key={book.id} 
+                            id ={ book.id}
+                            title= {book.title}
+                            description= {book.description}
+                            imageSrc= {book.imageLinks[0].smallThumbnail}
+                            authors= {book.authors.toString()}
+                            averageRating= {book.averageRating}
+                            rating= {book.averageRating}
+                    />;
+                    })}
 				</div>
 			</div>
 			<div className="menu-right">
