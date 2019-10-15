@@ -47,8 +47,8 @@ export class BooksController{
      * @param city : string of the city where to look the books from
      */
     @UseGuards(AuthGuard('jwt'))
-    @Get('city/:city')
-    public async getBooksByCity(@Param('city')city: string){
+    @Get('city/:cityName')
+    public async getBooksByCity(@Param('cityName')city: string){
         let book = await this.booksService.getBooksbyCity(city);
 
         return book;

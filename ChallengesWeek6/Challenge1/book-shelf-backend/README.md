@@ -30,16 +30,28 @@ __User endpoints__
 - - POST (url http encoded): a user: string and a password: string
 - /user/register : to add new user profiles
 - - POST: identification: string, name: string, lname: string, username:string, password: string, age: number, email: string;
+- user/:userId/return/:bookId : to return the book after finished with it (requires id of the book y id of the user that wants to lend it)
+- - HEADER: needs an auth token (jwt token)
+- - PUT: bookId: string and userId
 - /books : to get all books in the API
+- - HEADER: needs an auth token (jwt token)
+- - GET
+- /books/city/:cityName : to get all books that are in a city, where cityName is the name of the city to look in
+- - HEADER: needs an auth token (jwt token)
+- - GET
+- /books/digital : to get all books that are of type digital in the API (uses the service that looks for books so can be scalable to look for as the city endpoint)
+- - HEADER: needs an auth token (jwt token)
+- - GET
+- /books/hardcover : to get all books that are of type hardcover in the API (uses the service that looks for books so can be scalable to look for as the city endpoint) (NOT IN USE FOR ACTUAL REQUIREMENTS)
+- - HEADER: needs an auth token (jwt token)
+- - GET
+- /books/search/:words : to get all books that contain the string to find in their title
 - - HEADER: needs an auth token (jwt token)
 - - GET
 - /books/:id : changen the ":id" looks for the book with the specified id
 - - HEADER: needs an auth token (jwt token)
 - - GET and an id on the URL after an slash ("/")
 - /lend : to read lend a book if not digital (requires id of the book y id of the user that wants to lend it)
-- - HEADER: needs an auth token (jwt token)
-- - PUT: bookId: string and userId
-- user/:userId/return/:bookId : to return the book after finished with it (requires id of the book y id of the user that wants to lend it)
 - - HEADER: needs an auth token (jwt token)
 - - PUT: bookId: string and userId
 
@@ -51,6 +63,7 @@ __User endpoints__
 - Usage of Nest's error modules like: NotFoundException, UnauthorizedException and HttpExceptions
 - Salting a little the secret of JWT
 - Many of the default testing files modified for actual code are left for testers to agilize their work
+- After results have been processed terminology established for success object is: {status, message }
 
 ## NestJS recommendations:
 - Maintain the schemas in the respective folder

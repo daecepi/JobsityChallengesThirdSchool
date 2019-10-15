@@ -8,4 +8,7 @@ export const userSchema = new mongoose.Schema({
     password: {type: String, required: true},
     age: {type: Number, required: true},
     email: {type: String, required: true},
+    favorites: [],
+    readings: [],
+    laterReadings: [],
 });
