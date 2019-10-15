@@ -15,7 +15,8 @@ class Login extends Component {
     state = { 
         username: undefined,
         password: undefined,
-        message: undefined
+        message: undefined,
+        message_style: "messages messages-error"
     }
 
     authenticate = async () => {
@@ -24,7 +25,7 @@ class Login extends Component {
 
         //Verifing that the use has input before trying the log in
         if(username === undefined || password === undefined){
-            this.setState({message: "Primero ingresa crdenciales de acceso"});
+            this.setState({message: "Primero ingresa credenciales de acceso"});
         }else{
             //Get the data for the request into a variable
             const authData = {username, password};
@@ -49,11 +50,10 @@ class Login extends Component {
                 this.setState({message: authResult.error});
                 return;
             }else{
-                this.setState({message: "Success"})
+                this.setState({message: "Success", message_style: "messages messages-success"})
                 localStorage.setItem("access_token", authResult['access_token']);
-                //localStorage.setItem("user", JSON.stringify(authResult.user));
-                let token = localStorage.getItem("access_token");
-                console.log(token);
+
+                this.props.onGoodAuth();
             }
         }
     }
@@ -68,6 +68,7 @@ class Login extends Component {
     }
 
     render() {
+        const {message, message_style} = this.state;
         return (
             <div className="full-container">
                 <div className="container">
@@ -79,7 +80,7 @@ class Login extends Component {
                         <SearchComponent type="password" placeholder="Password..." iconClasses="fas fa-lock"  onchange={this.updatePassword} />
                     </div>
                     <button onClick={this.authenticate} className="button" value="Login">Login</button>
-                    {this.state.message ? <span className="messages">{this.state.message}</span> : ""}
+                    {message ? <span className={message_style}>{message}</span> : ""}
                 </div>
             </div>
          );

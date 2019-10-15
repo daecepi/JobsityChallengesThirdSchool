@@ -12,7 +12,8 @@ import SearchComponent from '../searchComponent/searchComponent';
 
 class NavBar extends Component {
     state = {  }
-    render() { 
+    render() {
+        const { logout } = this.props;
         return ( 
             <header className="header">
                 <div className="logo">
@@ -37,7 +38,7 @@ class NavBar extends Component {
                                     <li><a href="../../../public/index.html">Profile</a></li>
                                     <li><a href="../../../public/index.html">Books saved</a></li>
                                     <li><a href="../../../public/index.html">Account Settings</a></li>
-                                    <li><a href="../../../public/index.html">Log Out</a></li>
+                                    <li><button onClick={logout}>Log Out</button></li>
                                 </ul>
                             </div>
                         </div>

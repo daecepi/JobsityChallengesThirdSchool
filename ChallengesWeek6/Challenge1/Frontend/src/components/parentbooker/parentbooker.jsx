@@ -10,7 +10,7 @@ import Login from "../login/login";
 
 class ParentBooker extends Component {
     state = {
-        loginVisible: undefined,
+        loginVisible: true,
         books: []
      }
 
@@ -21,6 +21,10 @@ class ParentBooker extends Component {
         }
     }
 
+    notifyCorrectAuth = () =>{
+        this.setState({loginVisible: false});
+    }
+
     handdleLogout = () => {
         localStorage.removeItem("access_token");
         
@@ -28,10 +32,11 @@ class ParentBooker extends Component {
     }
 
     getBooks= async () => {
+        let token = localStorage.getItem('access_token');
         let authResult = await fetch('http://localhost:5000/books',{
                 method: "GET",
                 headers:{
-                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzA3MzkzNzksImV4cCI6MTU3MDgyNTc3OX0.15I5f5cFHdY5_KZAf5MBOS6zzYKZExN_M4ka9FgCwWc',
+                    'Authorization': 'Bearer '+token,
                 },
             }).then(res => res.json());
 
@@ -41,9 +46,9 @@ class ParentBooker extends Component {
     render() { 
         return (
             <div className="app-container">
-                {this.state.loginVisible?<Login />: ""}
-                <NavBar logout={this.handdleLogout} />
-                <Books />
+                {this.state.loginVisible ? <Login onGoodAuth={this.notifyCorrectAuth} />: ""}
+                {!this.state.loginVisible ? <NavBar logout={this.handdleLogout} /> : ""}
+                {!this.state.loginVisible ?<Books /> : ""}
             </div>
          );
     }

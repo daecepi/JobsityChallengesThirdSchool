@@ -14,18 +14,22 @@ $secondary-grey: rgb(126, 124, 121);
 
 $line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80%);
 
+$primary-success: rgb(0, 97, 0);
+$primary-error: rgb(255,0,0);
+
 .full-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $secondary-white-opacity;
-    /*STYLING FOR MODAL*/
     height: 100vh;
     width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;background-image: url("../../images/LoginImage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*STYLING FOR MODAL
     position:fixed;
     z-index: 1;
     left: 0;
-    top: 0;
+    top: 0;*/
 }
 
 .container{
@@ -62,10 +66,13 @@ $line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80
 }
 
 .messages{
-    font-size: 0.5rem;
-    color: red;
+    font-size: 0.7rem;
 }
 
-@media(max-width: 578px){
-    
+.messages-error{
+    color: $primary-error;
+}
+
+.messages-success{
+    color: $primary-success;
 }
