@@ -64,7 +64,7 @@ export class BooksController{
     public async searchBooks(@Param('words') words: string){
         let book = await this.booksService.getBook(words);
 
-        return "booos";
+        return book;
     }
 
     
