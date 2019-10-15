@@ -19,6 +19,20 @@ export class BooksService{
     constructor(@InjectModel('Book') private readonly bookModel: Model<Book>, private readonly lendService: LendingService){}
 
     /**
+     * Function that looks for a book and retrieves it 
+     * @param id : contains the id of the book that is required
+     */
+    async getBook(id: string): Promise<Book | HttpException>{
+        const book = this.bookModel.findById(id);
+
+        //Verifing that the book exists
+        if (!book) {
+            return new HttpException('Digital books cannot be lent', 404);
+        }
+        return book;
+    }
+
+    /**
      * Service function destined to retriev all of the books from the service
      *  @retuns Promise of books wanted
      */
@@ -34,19 +48,39 @@ export class BooksService{
     }
 
     /**
-     * Function that looks for a book and retrieves it 
-     * @param id : contains the id of the book that is required
+     * Service function destined to retriev all of the books that are digital
+     *  @retuns Promise of books wanted
      */
-    async getBook(id: string): Promise<Book | HttpException>{
-        const book = this.bookModel.findById(id);
+    async getBooksByType(type: string): Promise<Book[] | HttpException>{
+        let books = this.bookModel.find({type: type});
 
-        //Verifing that the book exists
-        if (!book) {
-            return new HttpException('Digital books cannot be lent', 404);
+        //Verifing that books were resolved
+        if (!books) {
+            return new HttpException('Could not resolve any books', 500);
         }
-        return book;
+
+        return books;
     }
 
+    /**
+     * Service function destined to retriev all of the books that are digital
+     *  @retuns Promise of books wanted
+     */
+    async getBooksbyCity(city: string): Promise<Book[] | HttpException>{
+        let books = this.bookModel.find({city: city});
+
+        //Verifing that books were resolved
+        if (!books) {
+            return new HttpException('Could not resolve any books', 500);
+        }
+
+        return books;
+    }
+
+    /**
+     * Service function destined to retriev all of the books that in the title posses the substring wanted
+     *  @retuns Promise of books wanted
+     */
     async searchBooks(words: string): Promise<Book[] | HttpException>{
         const books = this.bookModel.find({name: {regex: `/${words}/`}})
 
