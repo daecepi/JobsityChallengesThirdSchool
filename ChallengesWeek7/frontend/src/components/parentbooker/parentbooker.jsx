@@ -14,7 +14,7 @@ class ParentBooker extends Component {
         books: []
      }
 
-    componentWillMount(){
+    componentDidMount(){
         let token = localStorage.getItem("access_token");
         if(token){
             this.setState({loginVisible: false});
@@ -42,7 +42,8 @@ class ParentBooker extends Component {
                     'Authorization': 'Bearer '+token,
                 },
             }).then(res => res.json());
-        console.log(authResult  );
+        
+        //Setting the state that holds the books for updates
         this.setState({books: authResult});
     }
 

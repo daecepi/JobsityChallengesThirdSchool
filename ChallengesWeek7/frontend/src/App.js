@@ -1,7 +1,7 @@
 import React from 'react'; //Importing react
 
 //Router affair
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import './App.scss';
 
@@ -12,27 +12,68 @@ import NotFoundPageComponent from './components/NotFoundPage/NotFoundPage';
 
 
 //Privater route
-const PrivateRoute = ({ component: Component, ...rest }) => (
+/*const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
     fakeAuth.isAuthenticated === true
       ? <Component {...props} />
       : <Redirect to='/login' />
   )} />
-)
+)*/
 
-function App() {
+const PrivateRoute = ({component: Component, loggedIn, path, ...rest}) => {
+  console.log('entre')
   return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/" exact component={ParentBooker}/>
-          <Route path="/Medellin" component={ParentBooker}/>
-          <Route path="/Cartagena" component={ParentBooker}/>
-          <Route path="/login" component={Login}/>
-        </Switch>
-      </Router>
-    </div>
-  );
+    <Route
+      path={path}
+      {...rest}
+      render={ (props) =>{
+        return loggedIn ? <Component {...props} /> : <Redirect to={{
+          pathname: "/",
+          state:{
+            prevLocation: path,
+            error: "You are not logged in"
+          }
+
+        }} />
+      }}
+      />
+  )
+}
+
+class App extends React.Component {
+
+  state = {
+    loggedIn: false,
+  }
+
+  handleLogin = () =>{
+    const { state = {} } = this.props.location;
+    const { prevLocation } = state;
+    this.setState({
+      loggedIn: true
+    }, () =>{
+      console.log("enter");
+      console.log(prevLocation);
+      this.props.history.push(prevLocation || "home")
+    });
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route path="/" exact component={ParentBooker}/>
+            <Route path="/lattest" exact component={ParentBooker}/>
+            <PrivateRoute path="/Medellin" loggedIn={this.state.loggedIn} component={ParentBooker}/>
+            <Route path="/Cartagena" component={ParentBooker}/>
+            <Route path="/login" component={Login}/>
+            <Route component={NotFoundPageComponent} />
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

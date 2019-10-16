@@ -74,7 +74,6 @@ export default class SideMenuFiltersComponent extends Component {
           <p>MAIN</p>
           <ul>
             {this.state.classifications.map((item, index) => {
-              console.log(index);
               if (index < 6) {
                 return (
                   <li
@@ -94,7 +93,6 @@ export default class SideMenuFiltersComponent extends Component {
           <p>YOUR BOOKS</p>
           <ul>
             {this.state.classifications.map((item, index) => {
-              console.log(index);
               if (index > 5) {
                 return (
                   <li

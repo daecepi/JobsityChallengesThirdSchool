@@ -17,6 +17,8 @@ class Book extends Component {
         rating: this.props.averageRating
      }
 
+
+    //Check star rating component
     render() {
         const { id, title, imageSrc, authors, averageRating  } = this.state;
         return ( 

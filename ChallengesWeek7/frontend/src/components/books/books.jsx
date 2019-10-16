@@ -28,8 +28,7 @@ class Books extends Component {
                 </div>
 				<div id="book-container" className="books">
                     {books.map((book)=>{
-                        console.log('entre');
-                        return <Book key={book.id} 
+                        return <Book key={book._id} 
                             id ={ book.id}
                             title= {book.title}
                             description= {book.description}
@@ -45,11 +44,11 @@ class Books extends Component {
 				<div className="menu-box">
                     <p>MOST READ BOOKS</p>
                     <ol>
-                        <li><a href="../../../public/index.html">Hooked: How To Build Habit forming Products.</a></li>
-                        <li><a href="../../../public/index.html">The Inevitable: Understanding the 12 Technological Forces That Will Shape Our Future</a></li>
-                        <li><a href="../../../public/index.html">Lean In: Women, Work, and the Will to Lead.</a></li>
-                        <li><a href="../../../public/index.html">Building a Bussiness When There Are Not Easy Answers.</a></li>
-                        <li><a href="../../../public/index.html">How Google Works</a></li>
+                        <li key="1"><a href="../../../public/index.html">Hooked: How To Build Habit forming Products.</a></li>
+                        <li key="2"><a href="../../../public/index.html">The Inevitable: Understanding the 12 Technological Forces That Will Shape Our Future</a></li>
+                        <li key="3"><a href="../../../public/index.html">Lean In: Women, Work, and the Will to Lead.</a></li>
+                        <li key="4"><a href="../../../public/index.html">Building a Bussiness When There Are Not Easy Answers.</a></li>
+                        <li key="5"><a href="../../../public/index.html">How Google Works</a></li>
                     </ol>
                 </div>
 			</div>
