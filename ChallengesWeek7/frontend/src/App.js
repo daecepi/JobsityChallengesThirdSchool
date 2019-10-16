@@ -14,7 +14,6 @@ import NotFoundPageComponent from './components/NotFoundPage/NotFoundPage';
 
 //Privater route
 const PrivateRoute = ({component, loggedIn, path, ...rest}) => {
-  console.log(loggedIn);
   return (
     <Route
       path={path}
@@ -62,10 +61,12 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Switch>
-            <PrivateRoute path="/" exact loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}  component={ParentBooker}/>
-            <PrivateRoute path="/cartagena" loggedIn={this.state.loggedIn} handleLogin={this.handleLogin} component={ParentBooker}/>
-            <PrivateRoute path="/medellin" loggedIn={this.state.loggedIn} handleLogin={this.handleLogin} component={ParentBooker}/>
-            <Route path="/login" component={Login}/>
+            <Route path="/" exact loggedIn={this.state.loggedIn} handleLogout={this.handdleLogout}  component={ParentBooker}/>
+            <PrivateRoute path="/cartagena" loggedIn={this.state.loggedIn} handleLogout={this.handdleLogout} component={ParentBooker}/>
+            <PrivateRoute path="/medellin" loggedIn={this.state.loggedIn} handleLogout={this.handdleLogout} component={ParentBooker}/>
+            <Route path="/login">
+              <Login  handleLogin={this.handleLogin} />
+            </Route>
             <Route path="/register" component={Register}/>
             <Route component={NotFoundPageComponent} />
           </Switch>

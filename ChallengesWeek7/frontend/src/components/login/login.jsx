@@ -55,7 +55,8 @@ class Login extends Component {
                 this.setState({message: "Success", message_style: "messages messages-success"})
                 localStorage.setItem("access_token", authResult['access_token']);
 
-                this.props.onGoodAuth();
+                console.log("entre");
+
             }
         }
     }
