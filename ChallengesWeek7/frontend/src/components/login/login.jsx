@@ -19,6 +19,15 @@ class Login extends Component {
         message_style: "messages messages-error"
     }
 
+    /*componentDidMount(){
+        const city = undefined;
+        const type = 'Digital';
+        const words = "asd asda";
+
+        let look = {{...{city? city: undefined}}, type, words};
+        console.log(look);
+    }*/
+
     authenticate = async (e) => {
         e.preventDefault() //Prevent default user
 

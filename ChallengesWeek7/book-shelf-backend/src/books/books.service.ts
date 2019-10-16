@@ -48,41 +48,17 @@ export class BooksService{
     }
 
     /**
-     * Service function destined to retriev all of the books that are digital
-     *  @retuns Promise of books wanted
-     */
-    async getBooksByType(type: string): Promise<Book[] | HttpException>{
-        let books = this.bookModel.find({type: type});
-
-        //Verifing that books were resolved
-        if (!books) {
-            return new HttpException('Could not resolve any books', 500);
-        }
-
-        return books;
-    }
-
-    /**
-     * Service function destined to retriev all of the books that are digital
-     *  @retuns Promise of books wanted
-     */
-    async getBooksbyCity(city: string): Promise<Book[] | HttpException>{
-        let books = this.bookModel.find({city: city});
-
-        //Verifing that books were resolved
-        if (!books) {
-            return new HttpException('Could not resolve any books', 500);
-        }
-
-        return books;
-    }
-
-    /**
      * Service function destined to retriev all of the books that in the title posses the substring wanted
      *  @retuns Promise of books wanted
      */
-    async searchBooks(words: string): Promise<Book[] | HttpException>{
-        const books = this.bookModel.find({name: {regex: `/${words}/`}})
+    async searchBooks(words: string, city: string, type: string): Promise<Book[] | HttpException>{
+        let books;
+        if (words) {
+            books = this.bookModel.find({name: {regex: `/${words}/`}});
+        }else{
+            let look ={city, type};
+            books = this.bookModel.find(look);
+        }
 
         //Verifing that the book exists
         if (!books) {

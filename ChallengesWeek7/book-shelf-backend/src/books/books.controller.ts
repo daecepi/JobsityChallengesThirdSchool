@@ -1,4 +1,4 @@
-import { Controller, Body, Get, Param, UseGuards, Put } from "@nestjs/common";
+import { Controller, Body, Get, Param, UseGuards, Put, Query } from "@nestjs/common";
 
 import { BooksService } from './books.service';
 import { AuthService } from "src/auth/auth.service";
@@ -13,45 +13,11 @@ export class BooksController{
      */
     @UseGuards(AuthGuard('jwt'))
     @Get()
-    public async getBooks(@Param('words') words: string){
+    public async getBooks(@Query('words') words: string, @Query('city') city: string, @Query('type') type){
         if(words){
-            return await this.booksService.searchBooks(words);
+            return await this.booksService.searchBooks(words, city, type);
         }
         return await this.booksService.getBooks();
-    }
-
-    /**
-     * Endpoint to get all digital books
-     */
-    @UseGuards(AuthGuard('jwt'))
-    @Get('digital')
-    public async getDigitalBook(){
-        let book = await this.booksService.getBooksByType('Digital');
-
-        return book;
-    }
-
-    /**
-     * Endpoint to get all hardcover books (still not needed for the actual requirements)
-     */
-    @UseGuards(AuthGuard('jwt'))
-    @Get('hardcover')
-    public async getHardcoverBook(){
-        let book = await this.booksService.getBooksByType('Hardcover');
-
-        return book;
-    }
-
-    /**
-     * Endpoint to get all books from a city
-     * @param city : string of the city where to look the books from
-     */
-    @UseGuards(AuthGuard('jwt'))
-    @Get('city/:cityName')
-    public async getBooksByCity(@Param('cityName')city: string){
-        let book = await this.booksService.getBooksbyCity(city);
-
-        return book;
     }
 
 
