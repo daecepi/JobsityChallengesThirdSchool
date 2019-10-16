@@ -57,6 +57,7 @@ class Login extends Component {
 
                 console.log("entre");
 
+                this.props.handleLogin();
             }
         }
     }
