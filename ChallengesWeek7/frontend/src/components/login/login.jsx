@@ -68,6 +68,7 @@ class Login extends Component {
     }
 
     render() {
+        console.log(this.props.test);
         const {message, message_style} = this.state;
         return (
             <div className="full-container">

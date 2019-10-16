@@ -9,8 +9,8 @@ class NotFoundPageComponent extends Component {
     state = {  }
     render() { 
         return ( 
-            <div className="bakground">
-                <div>
+            <div className="full-container">
+                <div className="not-found-container">
                     <h1>404 Page not found</h1>
                     <p>Resource not found</p>
                     <Link to="/">

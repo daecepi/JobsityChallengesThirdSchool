@@ -20,15 +20,16 @@ import NotFoundPageComponent from './components/NotFoundPage/NotFoundPage';
   )} />
 )*/
 
-const PrivateRoute = ({component: Component, loggedIn, path, ...rest}) => {
-  console.log('entre')
+const PrivateRoute = ({component, loggedIn, path, ...rest}) => {
+  console.log(loggedIn);
   return (
     <Route
       path={path}
       {...rest}
       render={ (props) =>{
-        return loggedIn ? <Component {...props} /> : <Redirect to={{
-          pathname: "/",
+        console.log(path)
+        return loggedIn === true ? <component {...props} /> : <Redirect to={{
+          pathname: "/login",
           state:{
             prevLocation: path,
             error: "You are not logged in"
@@ -52,9 +53,7 @@ class App extends React.Component {
     this.setState({
       loggedIn: true
     }, () =>{
-      console.log("enter");
-      console.log(prevLocation);
-      this.props.history.push(prevLocation || "home")
+      this.props.history.push(prevLocation || "/")
     });
   }
 
@@ -65,7 +64,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/" exact component={ParentBooker}/>
             <Route path="/lattest" exact component={ParentBooker}/>
-            <PrivateRoute path="/Medellin" loggedIn={this.state.loggedIn} component={ParentBooker}/>
+            <PrivateRoute path="/Medellin" loggedIn={this.state.loggedIn} handleLogin={this.handleLogin} component={ParentBooker}/>
             <Route path="/Cartagena" component={ParentBooker}/>
             <Route path="/login" component={Login}/>
             <Route component={NotFoundPageComponent} />

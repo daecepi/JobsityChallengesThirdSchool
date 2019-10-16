@@ -1,0 +1,31 @@
+//Section for color pallete varibales
+$primary-white:rgba(250, 252, 254, 1);
+  $secondary-white:rgb(247, 243, 235);
+
+  $primary-blue:rgb(96, 181, 214);
+  $letters-blue-darker:rgba(47, 151, 242, 1);
+  $secondary-blue:rgba(47, 151, 242, 1);
+
+  $third-dark: rgb(46, 64, 82);
+
+.not-found-container{
+    background: $secondary-white;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+
+    h1{
+        color: $secondary-blue;
+        padding-bottom: 0.5rem;
+    }
+
+    p{
+        color: $third-dark;
+    }
+
+    a{
+        color: $primary-blue;
+        text-decoration: none;
+    }
+}
