@@ -1,12 +1,5 @@
-//Section for color pallete varibales
-$primary-white:rgba(250, 252, 254, 1);
-  $secondary-white:rgb(247, 243, 235);
-
-  $primary-blue:rgb(96, 181, 214);
-  $letters-blue-darker:rgba(47, 151, 242, 1);
-  $secondary-blue:rgba(47, 151, 242, 1);
-
-  $third-dark: rgb(46, 64, 82);
+//Importing color pallete's variables
+@import '../../ColorTheme.scss';
 
 .not-found-container{
     background: $secondary-white;

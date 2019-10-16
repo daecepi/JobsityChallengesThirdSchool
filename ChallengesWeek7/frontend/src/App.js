@@ -8,18 +8,11 @@ import './App.scss';
 //components used
 import ParentBooker from './components/parentbooker/parentbooker';
 import Login from './components/login/login';
+import Register from './components/register/register';
 import NotFoundPageComponent from './components/NotFoundPage/NotFoundPage';
 
 
 //Privater route
-/*const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={(props) => (
-    fakeAuth.isAuthenticated === true
-      ? <Component {...props} />
-      : <Redirect to='/login' />
-  )} />
-)*/
-
 const PrivateRoute = ({component, loggedIn, path, ...rest}) => {
   console.log(loggedIn);
   return (
@@ -47,6 +40,13 @@ class App extends React.Component {
     loggedIn: false,
   }
 
+  handdleLogout = () => {
+      localStorage.removeItem("access_token");
+      
+      this.setState({loginVisible: true})
+  }
+
+  //Function that is in charge of changing the layout
   handleLogin = () =>{
     const { state = {} } = this.props.location;
     const { prevLocation } = state;
@@ -62,11 +62,11 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Switch>
-            <Route path="/" exact component={ParentBooker}/>
-            <Route path="/lattest" exact component={ParentBooker}/>
-            <PrivateRoute path="/Medellin" loggedIn={this.state.loggedIn} handleLogin={this.handleLogin} component={ParentBooker}/>
-            <Route path="/Cartagena" component={ParentBooker}/>
+            <PrivateRoute path="/" exact loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}  component={ParentBooker}/>
+            <PrivateRoute path="/cartagena" loggedIn={this.state.loggedIn} handleLogin={this.handleLogin} component={ParentBooker}/>
+            <PrivateRoute path="/medellin" loggedIn={this.state.loggedIn} handleLogin={this.handleLogin} component={ParentBooker}/>
             <Route path="/login" component={Login}/>
+            <Route path="/register" component={Register}/>
             <Route component={NotFoundPageComponent} />
           </Switch>
         </Router>

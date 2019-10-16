@@ -19,7 +19,9 @@ class Login extends Component {
         message_style: "messages messages-error"
     }
 
-    authenticate = async () => {
+    authenticate = async (e) => {
+        e.preventDefault() //Prevent default user
+
         //Taking out the necessary information from the states object
         const {username, password} = this.state;
 
@@ -59,28 +61,28 @@ class Login extends Component {
     }
 
     //Methods to update the usercredentials
-    updateUsername = (username) => {
+    handleUsernameChange = (username) => {
         this.setState({username});
     }
 
-    updatePassword = (password) => {
+    handlePasswordChange = (password) => {
         this.setState({password});
     }
 
     render() {
         console.log(this.props.test);
-        const {message, message_style} = this.state;
+        const {username, password, message, message_style} = this.state;
         return (
             <div className="full-container">
                 <div className="container">
                     <h1 className="login-title">Bookshelf Login</h1>
                     <div className="input">
-                        <SearchComponent type="text" placeholder="Username..." iconClasses="fas fa-user-circle" onchange={this.updateUsername} />
+                        <SearchComponent type="text" placeholder="Username..." iconClasses="fas fa-user-circle" value={username} onchange={this.handleUsernameChange} />
                     </div>
                     <div className="input">
-                        <SearchComponent type="password" placeholder="Password..." iconClasses="fas fa-lock"  onchange={this.updatePassword} />
+                        <SearchComponent type="password" placeholder="Password..." iconClasses="fas fa-lock" value={password} onchange={this.handlePasswordChange} />
                     </div>
-                    <button onClick={this.authenticate} className="button" value="Login">Login</button>
+                    <input type="submit" onSubmit={this.authenticate} className="button" value="Login" />
                     {message ? <span className={message_style}>{message}</span> : ""}
                 </div>
             </div>

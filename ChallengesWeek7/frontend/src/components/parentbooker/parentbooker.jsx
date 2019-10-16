@@ -6,7 +6,6 @@ import './parentbooker.scss';
 import NavBar from '../navbar/navbar';
 import Books from '../books/books';
 
-import Login from "../login/login";
 
 class ParentBooker extends Component {
     state = {
@@ -23,15 +22,7 @@ class ParentBooker extends Component {
     }
 
 
-    notifyCorrectAuth = () =>{
-        this.setState({loginVisible: false});
-    }
-
-    handdleLogout = () => {
-        localStorage.removeItem("access_token");
-        
-        this.setState({loginVisible: true})
-    }
+    
 
     //Method to get all books
     getBooks= async () => {
@@ -63,9 +54,8 @@ class ParentBooker extends Component {
         const { books } = this.state;
         return (
             <div className="app-container">
-                {this.state.loginVisible ? <Login onGoodAuth={this.notifyCorrectAuth} />: ""}
-                {!this.state.loginVisible ? <NavBar logout={this.handdleLogout} /> : ""}
-                {!this.state.loginVisible ? <Books books={books}/> : ""}
+                <NavBar logout={this.handdleLogout} /> :
+                <Books books={books}/>
             </div>
          );
     }

@@ -31,10 +31,11 @@ __To use the application:__
 ## TO DO
 [X] move to Webpack in new version
 [ ] salting information (adding security to password)
-[ ] Create the registration page (implement and finish the component)
-[ ] Add routing
+[X] Creating a THEME with the colors to use all over the application (to normalize experience)
+[X] Create the registration page (implement and finish the component)
+[X] Add routing
 [ ] improve the security
-[ ] improve dropdown styling even more
+[X] improve dropdown styling even more
 [ ] finish my own rating star component
 [ ] Changing tippy
 

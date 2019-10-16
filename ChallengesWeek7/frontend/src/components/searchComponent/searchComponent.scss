@@ -1,5 +1,7 @@
+//Importing color pallete's variables
+@import '../../ColorTheme.scss';
 
-
+  
   .inputWithIcon {
     position: relative;
   }
@@ -13,7 +15,7 @@
   }
 
   input[type="text"], input[type="password"] {
-    border: 2px solid var(--primary-blue);
+    border: 2px solid $primary-blue;
     border-radius: 40px;
     margin: 8px 0;
     outline: none;
@@ -26,8 +28,8 @@
   }
 
   input[type="text"]:focus, input[type="password"]:focus {
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 8px 0 var(--primary-blue);
+    border-color: $primary-blue;
+    box-shadow: 0 0 8px 0 $primary-blue;
   }
 
 
@@ -36,7 +38,7 @@
   }
 
   .inputWithIcon input[type="text"]:focus + i, .inputWithIcon input[type="password"]:focus + i {
-    color: var(--primary-blue);
+    color: $primary-blue;
   }
 
   .inputWithIcon i {
