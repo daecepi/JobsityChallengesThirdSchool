@@ -19,7 +19,7 @@ class SearchComponent extends Component {
         }
         return (
             <div className="inputWithIcon">
-                <input type={type} placeholder={placeholder+"normal-size"} onChange={this.handleChange}></input>
+                <input type={type} className={"normal-size"} placeholder={placeholder} onChange={this.handleChange}></input>
                 {iconClasses ? <i className={iconClasses} aria-hidden="true"></i> : ""}
             </div>
         );

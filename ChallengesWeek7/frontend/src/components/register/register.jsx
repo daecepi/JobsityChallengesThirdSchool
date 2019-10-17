@@ -23,9 +23,9 @@ class Register extends Component {
     render() { 
         return ( 
             <div className="full-container">
-                <div className="container">
-                    <form className="" onSubmit={this.handleSubmit}>
+                <div className="container-register">
                     <h2>Register</h2>
+                    <form className="" onSubmit={this.handleSubmit}>
                         <div className="input">
                             <SearchComponent type="text" placeholder="Identification..." iconClasses="fas fa-address-card" onchange={this.updateUsername} />
                         </div>

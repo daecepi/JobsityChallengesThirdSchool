@@ -76,7 +76,7 @@ class Login extends Component {
         const {username, password, message, message_style} = this.state;
         return (
             <div className="full-container">
-                <div className="container">
+                <div className="container-login">
                     <h1 className="login-title">Bookshelf Login</h1>
                     <div className="input">
                         <SearchComponent type="text" placeholder="Username..." iconClasses="fas fa-user-circle" value={username} onchange={this.handleUsernameChange} />
