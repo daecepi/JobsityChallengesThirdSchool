@@ -22,7 +22,6 @@ class Login extends Component {
     }
 
     authenticate = async (e) => {
-        console.log("enter")
         e.preventDefault() //Prevent default user
 
         //Taking out the necessary information from the states object
@@ -58,6 +57,7 @@ class Login extends Component {
                 this.setState({message: "Success", message_style: "messages messages-success"})
                 localStorage.setItem("access_token", authResult['access_token']);
 
+                console.log(authResult)
                 console.log("entre");
 
                 await this.props.handleLogin();

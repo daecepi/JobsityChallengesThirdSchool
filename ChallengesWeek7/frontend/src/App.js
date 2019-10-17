@@ -13,12 +13,12 @@ import NotFoundPageComponent from "./components/NotFoundPage/NotFoundPage";
 
 //Privater route
 const PrivateRoute = ({ component, loggedIn, path, ...rest }) => {
+  alert(loggedIn)
   return (
     <Route
       path={path}
       {...rest}
       render={(props) => {
-        console.log(path);
         return loggedIn === true ? (
           <component {...props} />
         ) : (
@@ -39,6 +39,16 @@ class App extends React.Component {
   state = {
     loggedIn: false
   };
+
+  componentDidMount(){
+    let token = localStorage.getItem("access_token");
+    console.log(token);
+    if(token){
+      this.setState({
+        loggedIn: true
+      })
+    }
+  }
 
   handdleLogout = () => {
     localStorage.removeItem("access_token");

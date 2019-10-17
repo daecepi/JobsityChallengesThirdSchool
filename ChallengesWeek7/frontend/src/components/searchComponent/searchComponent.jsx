@@ -12,13 +12,10 @@ class SearchComponent extends Component {
     }
 
     render() {
-        let { type, placeholder, iconClasses } = this.props;
-        if (type === 'password') {
-            
-        }
+        let { name, type, placeholder, iconClasses } = this.props;
         return (
             <div className="inputWithIcon">
-                <input type={type} className={"normal-size"} placeholder={placeholder} onChange={this.handleChange}></input>
+                <input type={type} name={name} className={"normal-size"} placeholder={placeholder} onChange={this.handleChange}></input>
                 {iconClasses ? <i className={iconClasses} aria-hidden="true"></i> : ""}
             </div>
         );

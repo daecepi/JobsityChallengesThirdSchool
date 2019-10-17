@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+
 //Styling imports
 import './register.scss';
 
@@ -9,7 +11,15 @@ import SearchComponent from "../searchComponent/searchComponent";
 
 
 class Register extends Component {
-    state = {  }
+    state = { 
+        identification: (this.props.identification | ""),
+        name: (this.props.name | ""),
+        lname: (this.props.lname | ""),
+        username: (this.props.username | ""),
+        password: (this.props.password | ""),
+        age: (this.props.age | ""),
+        email: (this.props.email | "")
+     }
 
     /**
      * Function that will handle the submit
@@ -18,39 +28,53 @@ class Register extends Component {
     handleSubmit= async (event) => {
         event.preventDefault();
 
+
     }
 
     render() { 
+        console.log(this.props)
         return ( 
             <div className="full-container">
                 <div className="container-register">
                     <h2>Register</h2>
-                    <form className="" onSubmit={this.handleSubmit}>
-                        <div className="input">
-                            <SearchComponent type="text" placeholder="Identification..." iconClasses="fas fa-address-card" onChange={this.updateUsername} />
-                        </div>
-                        <div className="input">
-                            <SearchComponent type="text" placeholder="First name..." iconClasses="fas fa-user" onChange={this.updateUsername} />
-                        </div>
-                        <div className="input">
-                            <SearchComponent type="text" placeholder="Last name..." iconClasses="fas fa-user" onChange={this.updateUsername} />
-                        </div>
-                        <div className="input">
-                            <SearchComponent type="text" placeholder="Username..." iconClasses="fas fa-user-circle" onChange={this.updateUsername} />
-                        </div>
-                        <div className="input">
-                            <SearchComponent type="password" placeholder="Password..." iconClasses="fas fa-lock" onChange={this.updateUsername} />
-                        </div>
-                        <div className="input">
-                            <SearchComponent type="text" placeholder="Age..." iconClasses="fas fa-clock" onChange={this.updateUsername} />
-                        </div>
-                        <div className="input">
-                            <SearchComponent spacing="" type="text" placeholder="Email..." iconClasses="fas fa-at" onChange={this.updateUsername} />
-                        </div>
-                        <input className="button" type="submit" value="Register"/>
-                    </form>
+                    <Formik
+                        initialValues={{ name: '', password: '' }}
+                        validate={values => {
+                            let errors = {};
+                            if (!values.name) {
+                            errors.name = 'Required';
+                            } else if (
+                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.name)
+                            ) {
+                            errors.name = 'Invalid email address';
+                            }
+                            return errors;
+                        }}
+                        onSubmit={(values, { setSubmitting }) => {
+                            setTimeout(() => {
+                            alert(JSON.stringify(values, null, 2));
+                            setSubmitting(false);
+                            }, 400);
+                        }}
+                        >
+                        {({ isSubmitting }) => (
+                            <Form>
+                            <Field
+                                name="name"
+                                render={({ field /* _form */ }) => (
+                                <SearchComponent {...field} iconsName="fas fa-address-card" type='text'  placeholder="Identification..." />
+                                )}
+                            />
+                            <ErrorMessage name="name" component="div"/>
+                            <Field type="password" name="password" />
+                            <ErrorMessage name="password" component="div" />
+                            <input className="button" type="submit" value="Register" disabled={isSubmitting}/>
+                            </Form>
+                        )}
+                        </Formik>
+                    
+                    </div>
                 </div>
-            </div>
          );
     }
 }
