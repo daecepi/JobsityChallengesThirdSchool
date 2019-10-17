@@ -62,11 +62,8 @@ export class BooksService{
             filters['types'] = type;
         }
         if (words) {
-            //filters['title'] = {$regex: /filters['title'] = {$regex: /${words}/};${words}/};
-            
             filters['title'] = {$regex: words};
         }
-        console.log(filters);
 
         books = this.bookModel.find(filters);
 
