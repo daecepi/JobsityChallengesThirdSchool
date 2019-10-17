@@ -1,28 +1,53 @@
 import React, { Component } from 'react';
 
+//Styling imports
+import './register.scss';
+
+
+//Components used
 import SearchComponent from "../searchComponent/searchComponent";
 
-/**
- * CLASS STILL TO BE IMPLEMENTED
- */
 
 class Register extends Component {
     state = {  }
+
+    /**
+     * Function that will handle the submit
+     * @param event : contains the submit event object
+     */
+    handleSubmit= async (event) => {
+        event.preventDefault();
+
+    }
+
     render() { 
         return ( 
             <div className="full-container">
                 <div className="container">
+                    <form className="" onSubmit={this.handleSubmit}>
                     <h2>Register</h2>
-                    <form onSubmit={undefined}>
-                    <div className="input">
-                        <SearchComponent type="text" placeholder="Username..." iconClasses="fas fa-user-circle" onchange={this.updateUsername} />
-                    </div>
-                    <div className="input">
-                        <SearchComponent type="text" placeholder="Username..." iconClasses="fas fa-user-circle" onchange={this.updateUsername} />
-                    </div>
-                    <div className="input">
-                        <SearchComponent type="text" placeholder="Username..." iconClasses="fas fa-user-circle" onchange={this.updateUsername} />
-                    </div>
+                        <div className="input">
+                            <SearchComponent type="text" placeholder="Identification..." iconClasses="fas fa-address-card" onchange={this.updateUsername} />
+                        </div>
+                        <div className="input">
+                            <SearchComponent type="text" placeholder="First name..." iconClasses="fas fa-user" onchange={this.updateUsername} />
+                        </div>
+                        <div className="input">
+                            <SearchComponent type="text" placeholder="Last name..." iconClasses="fas fa-user" onchange={this.updateUsername} />
+                        </div>
+                        <div className="input">
+                            <SearchComponent type="text" placeholder="Username..." iconClasses="fas fa-user-circle" onchange={this.updateUsername} />
+                        </div>
+                        <div className="input">
+                            <SearchComponent type="password" placeholder="Password..." iconClasses="fas fa-lock" onchange={this.updateUsername} />
+                        </div>
+                        <div className="input">
+                            <SearchComponent type="text" placeholder="Age..." iconClasses="fas fa-clock" onchange={this.updateUsername} />
+                        </div>
+                        <div className="input">
+                            <SearchComponent spacing="" type="text" placeholder="Email..." iconClasses="fas fa-at" onchange={this.updateUsername} />
+                        </div>
+                        <input className="button" type="submit" value="Register"/>
                     </form>
                 </div>
             </div>

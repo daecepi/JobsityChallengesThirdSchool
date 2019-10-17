@@ -1,0 +1,22 @@
+.container{
+    overflow: hidden;
+}
+
+form{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.input{
+    width: 90%;
+}
+
+.button{
+    display: block;
+    border-radius: 20px;
+    width: 90%;
+    flex-grow: 1;
+    margin-top: 2%;
+    margin: 8px 0;
+}

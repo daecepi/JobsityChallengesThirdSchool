@@ -22,16 +22,18 @@
     box-sizing: border-box;
     padding: 8px;
     transition: 0.1s;
-    height: 2rem;
     width: 100%;
     font-size: 0.7rem;
+  }
+
+  .normal-size{
+    height: 0.5rem;
   }
 
   input[type="text"]:focus, input[type="password"]:focus {
     border-color: $primary-blue;
     box-shadow: 0 0 8px 0 $primary-blue;
   }
-
 
   .inputWithIcon input[type="text"], .inputWithIcon input[type="password"] {
     padding-left: 40px;

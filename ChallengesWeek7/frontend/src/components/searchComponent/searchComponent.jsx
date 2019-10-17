@@ -4,13 +4,8 @@ import './searchComponent.scss';
 
 class SearchComponent extends Component {
 
-    constructor(props){
-        super(props);
-
-        this.state = { value: "HOla" };
-    }
-
-    componentDidMount(){
+    state={
+        name: ""
     }
 
     handleChange = (event)=>{
@@ -19,9 +14,12 @@ class SearchComponent extends Component {
 
     render() {
         let { type, placeholder, iconClasses } = this.props;
+        if (type === 'password') {
+            
+        }
         return (
             <div className="inputWithIcon">
-                <input type={type} placeholder={placeholder} onChange={this.handleChange}></input>
+                <input type={type} placeholder={placeholder+"normal-size"} onChange={this.handleChange}></input>
                 {iconClasses ? <i className={iconClasses} aria-hidden="true"></i> : ""}
             </div>
         );

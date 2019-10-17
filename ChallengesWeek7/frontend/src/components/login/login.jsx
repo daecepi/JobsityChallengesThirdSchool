@@ -12,21 +12,12 @@ class Login extends Component {
     /**
      * If login will require more than two
      */
-    state = { 
+    state = {
         username: undefined,
         password: undefined,
         message: undefined,
         message_style: "messages messages-error"
     }
-
-    /*componentDidMount(){
-        const city = undefined;
-        const type = 'Digital';
-        const words = "asd asda";
-
-        let look = {{...{city? city: undefined}}, type, words};
-        console.log(look);
-    }*/
 
     authenticate = async (e) => {
         e.preventDefault() //Prevent default user
