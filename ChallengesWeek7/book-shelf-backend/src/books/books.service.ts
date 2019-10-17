@@ -53,12 +53,22 @@ export class BooksService{
      */
     async searchBooks(words: string, city: string, type: string): Promise<Book[] | HttpException>{
         let books;
-        if (words) {
-            books = this.bookModel.find({name: {regex: `/${words}/`}});
-        }else{
-            let look ={city, type};
-            books = this.bookModel.find(look);
+
+        let filters = {};
+        if (city) {
+            filters['cities'] = city;
         }
+        if (type) {
+            filters['types'] = type;
+        }
+        if (words) {
+            //filters['title'] = {$regex: /filters['title'] = {$regex: /${words}/};${words}/};
+            
+            filters['title'] = {$regex: words};
+        }
+        console.log(filters);
+
+        books = this.bookModel.find(filters);
 
         //Verifing that the book exists
         if (!books) {
