@@ -35,9 +35,12 @@ __To use the application:__
 [X] Create the registration page (implement and finish the component)
 [X] Add routing
 [ ] improve the security
+[X] Stilying familiarity
+[/] reusable basic components
 [X] improve dropdown styling even more
 [ ] finish my own rating star component
-[ ] Changing tippy
+[ ] changing tippy
+[ ] put link to return to login in register
 
 # React documentation based readme and components
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

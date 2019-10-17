@@ -7,20 +7,10 @@ import StarRatingComponent from 'react-star-rating-component';
 import './book.scss';
 
 class Book extends Component {
-    state = { 
-        id: this.props.id,
-        title: this.props.title,
-        description: this.props.description,
-        imageSrc: this.props.imageSrc,
-        authors: this.props.authors,
-        averageRating: this.props.averageRating,
-        rating: this.props.averageRating
-     }
-
 
     //Check star rating component
     render() {
-        const { id, title, imageSrc, authors, averageRating  } = this.state;
+        const { id, title, imageSrc, authors, averageRating  } = this.props;
         return ( 
             <div className="book">
                 <img src={imageSrc} alt="" />

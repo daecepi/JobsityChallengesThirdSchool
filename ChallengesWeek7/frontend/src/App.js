@@ -20,13 +20,9 @@ const PrivateRoute = ({component, loggedIn, path, ...rest}) => {
       {...rest}
       render={ (props) =>{
         console.log(path)
-        return loggedIn === true ? <component {...props} /> : <Redirect to={{
+        return loggedIn === true ? <component {...props} /> : <Redirect {...props} push to={{
           pathname: "/login",
-          state:{
-            prevLocation: path,
-            error: "You are not logged in"
-          }
-
+          state: { prevLocation: "currentLocation" }
         }} />
       }}
       />
@@ -41,12 +37,18 @@ class App extends React.Component {
 
   handdleLogout = () => {
       localStorage.removeItem("access_token");
-      
+      const { state = {} } = this.props.location;
+      const { prevLocation } = state;
+      this.setState({
+        loggedIn: true
+      }, () =>{
+        this.props.history.push(prevLocation || "/")
+      });
       this.setState({loginVisible: true})
   }
 
   //Function that is in charge of changing the layout
-  handleLogin = () =>{
+  handleLogin = async () => {
     const { state = {} } = this.props.location;
     const { prevLocation } = state;
     this.setState({
@@ -57,15 +59,17 @@ class App extends React.Component {
   }
 
   render(){
+    console.log(this.state);
     return (
       <div className="App">
         <Router>
           <Switch>
-            <Route path="/" exact loggedIn={this.state.loggedIn} handleLogout={this.handdleLogout}  component={ParentBooker}/>
+            <PrivateRoute path="/" exact loggedIn={this.state.loggedIn} handleLogout={this.handdleLogout}  component={ParentBooker}/>
             <PrivateRoute path="/cartagena" loggedIn={this.state.loggedIn} handleLogout={this.handdleLogout} component={ParentBooker}/>
             <PrivateRoute path="/medellin" loggedIn={this.state.loggedIn} handleLogout={this.handdleLogout} component={ParentBooker}/>
-            <Route path="/login">
-              <Login  handleLogin={this.handleLogin} />
+            <PrivateRoute path="/quito" loggedIn={this.state.loggedIn} handleLogout={this.handdleLogout} component={ParentBooker}/>
+            <Route path="/login" render={props=><Login handleLogin={this.handleLogin} {...props} />}>
+              
             </Route>
             <Route path="/register" component={Register}/>
             <Route component={NotFoundPageComponent} />

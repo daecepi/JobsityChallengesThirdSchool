@@ -5,6 +5,7 @@
     height: 100vh;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-image: url("../../images/LoginImage.jpg");
@@ -66,4 +67,11 @@
     .container-login{
         width: 70%;
     }
+}
+
+.register-button{
+    margin-top: 3rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
 }

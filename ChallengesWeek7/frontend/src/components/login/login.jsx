@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 //Styles
 import './login.scss';
 
@@ -20,6 +22,7 @@ class Login extends Component {
     }
 
     authenticate = async (e) => {
+        console.log("enter")
         e.preventDefault() //Prevent default user
 
         //Taking out the necessary information from the states object
@@ -57,7 +60,7 @@ class Login extends Component {
 
                 console.log("entre");
 
-                this.props.handleLogin();
+                await this.props.handleLogin();
             }
         }
     }
@@ -72,21 +75,25 @@ class Login extends Component {
     }
 
     render() {
-        console.log(this.props.test);
         const {username, password, message, message_style} = this.state;
         return (
             <div className="full-container">
                 <div className="container-login">
-                    <h1 className="login-title">Bookshelf Login</h1>
-                    <div className="input">
-                        <SearchComponent type="text" placeholder="Username..." iconClasses="fas fa-user-circle" value={username} onchange={this.handleUsernameChange} />
-                    </div>
-                    <div className="input">
-                        <SearchComponent type="password" placeholder="Password..." iconClasses="fas fa-lock" value={password} onchange={this.handlePasswordChange} />
-                    </div>
-                    <input type="submit" onSubmit={this.authenticate} className="button" value="Login" />
-                    {message ? <span className={message_style}>{message}</span> : ""}
+                    <form onSubmit={this.authenticate}>
+                        <h1 className="login-title">Bookshelf Login</h1>
+                        <div className="input">
+                            <SearchComponent type="text" placeholder="Username..." iconClasses="fas fa-user-circle" value={username} onChange={this.handleUsernameChange} />
+                        </div>
+                        <div className="input">
+                            <SearchComponent type="password" placeholder="Password..." iconClasses="fas fa-lock" value={password} onChange={this.handlePasswordChange} />
+                        </div>
+                        <input type="submit" className="button" value="Login" />
+                        {message ? <span className={message_style}>{message}</span> : ""}
+                    </form>
                 </div>
+                <Link to="/register">
+                    <button className="register-button">Register</button>
+                </Link>
             </div>
          );
     }

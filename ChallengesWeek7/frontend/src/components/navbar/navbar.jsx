@@ -11,7 +11,9 @@ import logo from './logo.svg';
 import SearchComponent from '../searchComponent/searchComponent';
 
 class NavBar extends Component {
-    state = {  }
+    state = { 
+     }
+
     render() {
         const { logout } = this.props;
         return ( 
@@ -21,7 +23,7 @@ class NavBar extends Component {
                 </div>
                 <div className="search-bar">
                     <p>Bookshelf</p>
-                    <SearchComponent type="text" placeholder="Search.." iconClasses="fas fa-search" />
+                    <SearchComponent type="text" placeholder="Search.." onChange={this.props.handleSearch} iconClasses="fas fa-search" />
                 </div>
                 <div className="borderx">
                     <div className="user">

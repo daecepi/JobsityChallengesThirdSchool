@@ -10,6 +10,7 @@ import Books from '../books/books';
 class ParentBooker extends Component {
     state = {
         loginVisible: true,
+        searchWords: "",
         books: []
      }
 
@@ -20,9 +21,6 @@ class ParentBooker extends Component {
             this.getBooks();
         }
     }
-
-
-    
 
     //Method to get all books
     getBooks= async () => {
@@ -38,9 +36,9 @@ class ParentBooker extends Component {
         this.setState({books: authResult});
     }
 
-    getDigitalBooks= async () =>{
+    getBooksByType= async (type) =>{
         let token = localStorage.getItem('access_token');
-        let authResult = await fetch('http://localhost:5000/books',{
+        let authResult = await fetch(`http://localhost:5000/books?type=${type}`,{
                 method: "GET",
                 headers:{
                     'Authorization': 'Bearer '+token,
@@ -50,11 +48,36 @@ class ParentBooker extends Component {
         console.log(authResult);
     }
 
+    getBooksByCity = async (city) =>{
+        let token = localStorage.getItem('access_token');
+
+
+        let authResult = await fetch(`http://localhost:5000/books?city=${city}`,{
+                method: "GET",
+                headers:{
+                    'Authorization': 'Bearer '+token,
+                },
+            }).then(res => res.json());
+            console.log(authResult)
+    }
+
+    getBooksByWords = async () =>{
+        let token = localStorage.getItem('access_token');
+
+        let authResult = await fetch(`http://localhost:5000/books?words=${this.state.searchWords}`,{
+                method: "GET",
+                headers:{
+                    'Authorization': 'Bearer '+token,
+                },
+            }).then(res => res.json());
+            console.log(authResult)
+    }
+
     render() { 
         const { books } = this.state;
         return (
             <div className="app-container">
-                <NavBar logout={this.handdleLogout} /> :
+                <NavBar handleSearch={this.getBooksByWords} searchValue={this.state.searchWords} logout={this.handdleLogout} /> :
                 <Books books={books}/>
             </div>
          );

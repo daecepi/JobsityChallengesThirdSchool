@@ -5,11 +5,10 @@ import './searchComponent.scss';
 class SearchComponent extends Component {
 
     state={
-        name: ""
     }
 
     handleChange = (event)=>{
-        this.props.onchange(event.target.value);
+        this.props.onChange && this.props.onChange(event.target.value);
     }
 
     render() {
