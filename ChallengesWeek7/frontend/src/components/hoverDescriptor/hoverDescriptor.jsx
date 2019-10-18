@@ -12,7 +12,7 @@ class HoverDescriptorComponent extends Component {
                     <p className="blue-hover-text">{this.props.title.toUpperCase()}</p>
                     <p className="">{this.props.release}</p>
                 </div>
-                <div className="second-section">
+                <div className=".mini">
                     <p className="white-hover-text">Novel by</p><p className="gray-hover-text">{this.props.authors}</p>
                 </div>
                 <div>
