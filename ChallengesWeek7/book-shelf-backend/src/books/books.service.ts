@@ -57,15 +57,12 @@ export class BooksService{
     async searchBooks(words: string, city: string, type: string, startIndex: string): Promise<Book[] | HttpException>{
         let books;
 
-        console.log(typeof parseInt(startIndex));
-
         //Error handlers
         if(!startIndex){
             return new HttpException("A start index should be provided", 400);
-        }
-        /*else if(typeof startIndex !== "number"){
+        }else if(!(/^\d+$/.test(startIndex))){ //Verifing that the index is a number
             return new HttpException("The start index of the books lookup should be numeric", 400);
-        }*/
+        }
 
         let filters = {};
         if (city) {
@@ -78,7 +75,7 @@ export class BooksService{
             filters['title'] = {$regex: words};
         }   
 
-        books = this.bookModel.find(filters).skip(10).limit(10);
+        books = this.bookModel.find(filters).skip(parseInt(startIndex)).limit(10);
 
         //Verifing that the book exists
         if (!books) {
@@ -95,6 +92,11 @@ export class BooksService{
      */
     async lendBook(id: string, user: string): Promise<Book | HttpException>{
         
+        //Error handlers
+        if (!id || !user) {
+            return new HttpException("An identification for the user and the book to be lent must be specified", 400);   
+        }
+
         //Looking for the book in the database
         const book = await this.bookModel.findById(id);
         
@@ -102,7 +104,6 @@ export class BooksService{
         if (!book) {
             return new HttpException('Digital books cannot be lent', 404);
         }
-        console.log(book.type);
         //Verifing the book is not digital
         if (book.type === 'Digital') {
             return new HttpException('Digital books cannot be lent', 400);
@@ -154,7 +155,6 @@ export class BooksService{
 
         //Insertion of the lend details in the lends database
         let date = new Date().toString();
-        console.log(book.lent);
         await this.lendService.saveLend({user: user, book: id, startingDate: book.lent.startDate, finishDate: date});
         
         //Clearing state of the book's lent property
