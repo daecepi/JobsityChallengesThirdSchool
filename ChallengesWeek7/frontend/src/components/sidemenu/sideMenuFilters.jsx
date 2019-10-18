@@ -61,6 +61,7 @@ export default class SideMenuFiltersComponent extends Component {
       }
     ]
   };
+  
   render() {
     return (
       <div className="menu-left">

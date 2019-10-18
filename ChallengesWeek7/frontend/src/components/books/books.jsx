@@ -19,7 +19,7 @@ class Books extends Component {
         const { books } = this.props;
         return ( 
             <div className="section-1">
-            <SideMenuFiltersComponent />
+            <SideMenuFiltersComponent getBooksByType={this.props.getBooksByType} getBooksByCity={this.props.getBooksByCity} />
 			<div className="content">
 				<div className="listing-manipulator">
                     <h2>New Releases</h2>
@@ -35,7 +35,6 @@ class Books extends Component {
                     </div>
                 </div>
 				<div id="book-container" className="books">
-
                     {books.map((book)=>{
                         return <Book key={book._id} 
                             id ={ book.id}
