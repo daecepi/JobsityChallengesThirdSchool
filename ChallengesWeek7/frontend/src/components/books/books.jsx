@@ -14,6 +14,10 @@ class Books extends Component {
         maxCount: 30
      }
 
+     componentDidMount(){
+         
+     }
+
     handleRight =() =>{
         let newPageCount = this.state.pageCount;
 

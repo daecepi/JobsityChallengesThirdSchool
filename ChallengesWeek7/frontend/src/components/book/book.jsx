@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 //Typpy pop up component
 import Tippy from '@tippy.js/react';
 
@@ -10,6 +9,8 @@ import 'tippy.js/animations/scale-subtle.css';
 
 //Rating component
 import StarRatingComponent from 'react-star-rating-component';
+import SearchComponent from '../searchComponent/searchComponent';
+
 
 //Bringing styles
 import './book.scss';
@@ -18,10 +19,10 @@ class Book extends Component {
 
     //Check star rating component
     render() {
-        const { id, title, imageSrc, authors, averageRating  } = this.props;
+        const { id, title, description, imageSrc, authors, averageRating, release  } = this.props;
         return (
             <Tippy
-                content="Tooltip"
+                content={<SearchComponent />}
                 theme="bootstrap"
                 distance={7}
                 hideOnClick={false}

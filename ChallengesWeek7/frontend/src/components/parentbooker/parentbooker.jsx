@@ -9,17 +9,20 @@ import Books from '../books/books';
 
 class ParentBooker extends Component {
     state = {
-        loginVisible: true,
+        loginVisible: true, 
+        currentResourse: "general",
         searchWords: "",
         books: []
      }
 
-    componentDidMount(){
+     componentDidMount(){
         let token = localStorage.getItem("access_token");
         if(token){
             this.setState({loginVisible: false});
             this.getBooks(this.state.pageCount);
         }
+
+        //Get the query params
     }
 
     /**
@@ -45,6 +48,7 @@ class ParentBooker extends Component {
                 //Setting the state that holds the books for updates
                 this.setState({books: authResult});
             }
+            console.log(authResult);
     }
 
     /**
@@ -108,6 +112,7 @@ class ParentBooker extends Component {
     }
 
     render() { 
+        console.log(this.props)
         const { books, pageCount } = this.state;
         return (
             <div className="app-container">

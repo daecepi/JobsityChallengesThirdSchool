@@ -17,12 +17,12 @@ const PrivateRoute = ({ component: Comp, loggedIn, handleLogin, handleLogout, pa
     <Route
       path={path}
       {...rest}
-      render={({match, props}) => {
+      render={(props) => {
         const token = localStorage.getItem("access_token");
         return (token !== null ? 
           <Comp
             {...props}
-            {...match}
+            {...rest}
             loggedIn={loggedIn}
             handleLogout={handleLogout}/>
          : 
@@ -60,7 +60,6 @@ class App extends React.Component {
       loggedIn: false
     }, () =>{
       window.location = "/login";
-      //this.props.history.push("/login")
     });
   };
 

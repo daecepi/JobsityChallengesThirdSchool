@@ -1,0 +1,22 @@
+.general-hover-container {
+    margin: 0.4rem;
+    height: 100%;
+    width: 100%;
+
+    .hover-desc {
+      display: flex;
+      align-content: space-between;
+    }
+  }
+
+  .blue-hover-text{
+      color: $primary-blue;
+  }
+
+  .white-hover-text{
+    color: $primary-white;
+  }
+
+  .gray-hover-text{
+    color: $secondary-grey;
+  }
