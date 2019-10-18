@@ -15,3 +15,8 @@
 - Both projects are ready to run in parallel
 
 ## TO DO's (for this week can be seen in each separate README)
+[/] Add more security for endpoint (error handling)
+[ ] PUt arrows to change books next to the book component
+[ ] pass props to change the behaviour of redirecting (using the callback of the setState method)
+[ ] includu page count
+[ ] fixing images responsiveness
