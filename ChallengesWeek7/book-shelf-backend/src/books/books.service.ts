@@ -49,10 +49,23 @@ export class BooksService{
 
     /**
      * Service function destined to retriev all of the books that in the title posses the substring wanted
-     *  @retuns Promise of books wanted
+     * @param words words that going to be compared as regular expressions on the database
+     * @param city : contains the city the book should be in
+     * @param type : contains the type the book should have
+     * @param startIndex : contains the index at which the books should be sent
      */
-    async searchBooks(words: string, city: string, type: string): Promise<Book[] | HttpException>{
+    async searchBooks(words: string, city: string, type: string, startIndex: string): Promise<Book[] | HttpException>{
         let books;
+
+        console.log(typeof parseInt(startIndex));
+
+        //Error handlers
+        if(!startIndex){
+            return new HttpException("A start index should be provided", 400);
+        }
+        /*else if(typeof startIndex !== "number"){
+            return new HttpException("The start index of the books lookup should be numeric", 400);
+        }*/
 
         let filters = {};
         if (city) {
@@ -63,9 +76,9 @@ export class BooksService{
         }
         if (words) {
             filters['title'] = {$regex: words};
-        }
+        }   
 
-        books = this.bookModel.find(filters);
+        books = this.bookModel.find(filters).skip(10).limit(10);
 
         //Verifing that the book exists
         if (!books) {

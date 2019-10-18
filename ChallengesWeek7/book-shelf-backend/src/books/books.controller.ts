@@ -9,30 +9,17 @@ export class BooksController{
     constructor(private readonly booksService: BooksService){}
 
     /**
-     * Endpoint to retrieve the books of API
+     * Endpoint to retrieve the books of API that has the ability to search by city, type and word in the titl
+     * @param words words that going to be compared as regular expressions on the database
+     * @param city : contains the city the book should be in
+     * @param type : contains the type the book should have
+     * @param startIndex : contains the index at which the books should be sent
      */
     @UseGuards(AuthGuard('jwt'))
     @Get()
-    public async getBooks(@Query('words') words: string, @Query('city') city: string, @Query('type') type){
-        if(words){
-            return await this.booksService.searchBooks(words, city, type);
-        }
-        return await this.booksService.getBooks();
+    public async getBooks(@Query('words') words: string, @Query('city') city: string, @Query('type') type, @Query('startIndex') startIndex: string){
+        return await this.booksService.searchBooks(words, city, type, startIndex);
     }
-
-
-    /**
-     * Endpoint to looks for books that match the words passed in
-     * @param words words that going to be compared as regular expressions on the database
-     */
-    @UseGuards(AuthGuard('jwt'))
-    @Get('/search/:words')
-    public async searchBooks(@Param('words') words: string){
-        let book = await this.booksService.getBook(words);
-
-        return book;
-    }
-
     
     
     /**
