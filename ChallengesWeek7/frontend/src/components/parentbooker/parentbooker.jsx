@@ -23,9 +23,9 @@ class ParentBooker extends Component {
     }
 
     //Method to get all books
-    getBooks= async () => {
+    getBooks= async (startIndex = 0) => {
         let token = localStorage.getItem('access_token');
-        let authResult = await fetch('http://localhost:5000/books',{
+        let authResult = await fetch(`http://localhost:5000/books?startIndex=${startIndex}`,{
                 method: "GET",
                 headers:{
                     'Authorization': 'Bearer '+token,
@@ -36,9 +36,9 @@ class ParentBooker extends Component {
         this.setState({books: authResult});
     }
 
-    getBooksByType= async (type) =>{
+    getBooksByType= async (type, startIndex = 0) =>{
         let token = localStorage.getItem('access_token');
-        let authResult = await fetch(`http://localhost:5000/books?type=${type}`,{
+        let authResult = await fetch(`http://localhost:5000/books?startIndex=${startIndex}&type=${type}`,{
                 method: "GET",
                 headers:{
                     'Authorization': 'Bearer '+token,
@@ -48,11 +48,11 @@ class ParentBooker extends Component {
         console.log(authResult);
     }
 
-    getBooksByCity = async (city) =>{
+    getBooksByCity = async (city, startIndex = 0) =>{
         let token = localStorage.getItem('access_token');
 
 
-        let authResult = await fetch(`http://localhost:5000/books?city=${city}`,{
+        let authResult = await fetch(`http://localhost:5000/books?startIndex=${startIndex}&city=${city}`,{
                 method: "GET",
                 headers:{
                     'Authorization': 'Bearer '+token,
@@ -61,10 +61,10 @@ class ParentBooker extends Component {
             console.log(authResult)
     }
 
-    getBooksByWords = async () =>{
+    getBooksByWords = async (words, startIndex = 0) =>{
         let token = localStorage.getItem('access_token');
 
-        let authResult = await fetch(`http://localhost:5000/books?words=${this.state.searchWords}`,{
+        let authResult = await fetch(`http://localhost:5000/books?startIndex=${startIndex}&words=${this.state.searchWords}`,{
                 method: "GET",
                 headers:{
                     'Authorization': 'Bearer '+token,

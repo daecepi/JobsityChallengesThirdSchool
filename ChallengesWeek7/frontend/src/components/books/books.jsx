@@ -10,6 +10,11 @@ import Book from "../book/book";
 class Books extends Component {
 
     state = {  }
+
+    handleClick =() =>{
+        alert('hola')
+    }
+
     render() {
         const { books } = this.props;
         return ( 
@@ -25,7 +30,7 @@ class Books extends Component {
                         <i className="fa fa-th-large"></i>
                         <i className="fa fa-th-list"></i>
                         <p>| pages</p>
-                        <i className="fas fa-chevron-left i-hov" />
+                        <i onClick={this.handleClick} className="fas fa-chevron-left i-hov" />
                         <i className="fas fa-chevron-right i-hov" />
                     </div>
                 </div>
