@@ -10,11 +10,34 @@ import Book from "../book/book";
 class Books extends Component {
 
     state = { 
-        pageCount: 0
+        pageCount: 0,
+        maxCount: 30
      }
 
-    handleClick =() =>{
-        alert('hola')
+    handleRight =() =>{
+        let newPageCount = this.state.pageCount;
+
+        newPageCount += 10;
+
+        this.setState({
+            pageCount: newPageCount
+        })
+
+        this.props.handlePagination(newPageCount)
+    }
+
+    handleLeft = () =>{
+        let newPageCount = this.state.pageCount;
+
+        if(newPageCount > 0){
+            newPageCount -= 10;
+        }
+
+        this.setState({
+            pageCount: newPageCount
+        })
+
+        this.props.handlePagination(newPageCount)
     }
 
     render() {
@@ -32,21 +55,21 @@ class Books extends Component {
                         <i className="fa fa-th-large"></i>
                         <i className="fa fa-th-list"></i>
                         <p>| pages</p>
-                        <i onClick={this.handleClick} className="fas fa-chevron-left i-hov" />
-                        <i className="fas fa-chevron-right i-hov" />
+                        <i onClick={this.handleLeft} className="fas fa-chevron-left i-hov" />
+                        <i onClick={this.handleRight} className="fas fa-chevron-right i-hov" />
                     </div>
                 </div>
 				<div id="book-container" className="books">
                     {books.map((book)=>{
                         return <Book key={book._id} 
-                            id ={ book.id}
-                            title= {book.title}
-                            description= {book.description}
-                            imageSrc= {book.imageLinks[0].smallThumbnail}
-                            authors= {book.authors.toString()}
-                            averageRating= {book.averageRating}
-                            rating= {book.averageRating}
-                    />;
+                                id ={ book.id}
+                                title= {book.title}
+                                description= {book.description}
+                                imageSrc= {book.imageLinks[0].smallThumbnail}
+                                authors= {book.authors.toString()}
+                                averageRating= {book.averageRating}
+                                rating= {book.averageRating}
+                            />
                     })}
 				</div>
 			</div>

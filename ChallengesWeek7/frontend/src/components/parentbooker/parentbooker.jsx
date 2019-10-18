@@ -11,7 +11,6 @@ class ParentBooker extends Component {
     state = {
         loginVisible: true,
         searchWords: "",
-        pageCount: 0,
         books: []
      }
 
@@ -26,16 +25,8 @@ class ParentBooker extends Component {
     /**
      * Function used to 
      */
-    handlePagination(isIncreased){
-        let value = this.state.pageCount;
-        if (isIncreased) {
-            value += 10;
-        }else{
-            value -= 10;
-        }
-        this.setState({
-            pageCount: value
-        })
+    handlePagination(num){
+        console.log(num)
     }
 
     //Method to get all books

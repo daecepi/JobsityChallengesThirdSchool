@@ -112,6 +112,11 @@
           padding-left: 0.15rem;
           padding-right: 0.15rem;
         }
+
+        i:hover{
+          color: $secondary-blue;
+        }
+
         p{
           padding-left: 0.4rem;
           padding-right: 0.4rem;
@@ -127,12 +132,6 @@
     }
   }
 
-  /*
-   Style to border the pages changer
-  */
-  .i-hov:hover{
-    border-color: $primary-grey;
-  }
   
   .selected{
     color: $primary-white;
