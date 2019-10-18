@@ -111,6 +111,10 @@
         i{
           padding-left: 0.3rem;
         }
+        p{
+          padding-left: 0.4rem;
+          padding-right: 0.4rem;
+        }
       }
     }
 
@@ -120,6 +124,13 @@
       align-items: space-between;
       flex-wrap: wrap;
     }
+  }
+
+  /*
+   Style to border the pages changer
+  */
+  .i-hov:hover{
+    border-color: $primary-grey;
   }
   
   .selected{

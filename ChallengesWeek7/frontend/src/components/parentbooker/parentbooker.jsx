@@ -77,8 +77,10 @@ class ParentBooker extends Component {
         const { books } = this.state;
         return (
             <div className="app-container">
-                <NavBar handleSearch={this.getBooksByWords} searchValue={this.state.searchWords} logout={this.handdleLogout} /> :
+                <>
+                <NavBar handleSearch={this.getBooksByWords} searchValue={this.state.searchWords} logout={this.handdleLogout} />
                 <Books books={books}/>
+                </>
             </div>
          );
     }

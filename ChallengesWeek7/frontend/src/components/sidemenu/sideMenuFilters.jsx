@@ -37,30 +37,24 @@ export default class SideMenuFiltersComponent extends Component {
       },
       {
         index: 6,
-        section: "New Releases",
-        logoClasses: "fas fa-tags",
-        isSelected: true
-      },
-      {
-        index: 7,
         section: "Readings",
         logoClasses: "fas fa-book-open",
         isSelected: false
       },
       {
-        index: 8,
+        index: 7,
         section: "History",
         logoClasses: "fas fa-history",
         isSelected: false
       },
       {
-        index: 9,
+        index: 8,
         section: "Read Later",
         logoClasses: "fas fa-heart",
         isSelected: false
       },
       {
-        index: 10,
+        index: 9,
         section: "Favorites",
         logoClasses: "fas fa-tags",
         isSelected: false

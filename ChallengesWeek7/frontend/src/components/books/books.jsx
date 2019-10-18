@@ -24,9 +24,13 @@ class Books extends Component {
                     <div className="layout-form-box">
                         <i className="fa fa-th-large"></i>
                         <i className="fa fa-th-list"></i>
+                        <p>| pages</p>
+                        <i className="fas fa-chevron-left i-hov" />
+                        <i className="fas fa-chevron-right i-hov" />
                     </div>
                 </div>
 				<div id="book-container" className="books">
+
                     {books.map((book)=>{
                         return <Book key={book._id} 
                             id ={ book.id}

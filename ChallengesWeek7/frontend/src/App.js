@@ -13,13 +13,14 @@ import NotFoundPageComponent from "./components/NotFoundPage/NotFoundPage";
 
 //Privater route
 const PrivateRoute = ({ component, loggedIn, path, ...rest }) => {
-  alert(loggedIn)
   return (
     <Route
       path={path}
       {...rest}
       render={(props) => {
-        return loggedIn === true ? (
+        const token = localStorage.getItem("access_token");
+        // loggedIn === true
+        return token ? (
           <component {...props} />
         ) : (
           <Redirect
@@ -84,26 +85,26 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Switch>
-            <PrivateRoute
+            <Route
               path="/"
               exact
               loggedIn={this.state.loggedIn}
               handleLogout={this.handdleLogout}
               component={ParentBooker}
             />
-            <PrivateRoute
+            <Route
               path="/cartagena"
               loggedIn={this.state.loggedIn}
               handleLogout={this.handdleLogout}
               component={ParentBooker}
             />
-            <PrivateRoute
+            <Route
               path="/medellin"
               loggedIn={this.state.loggedIn}
               handleLogout={this.handdleLogout}
               component={ParentBooker}
             />
-            <PrivateRoute
+            <Route
               path="/quito"
               loggedIn={this.state.loggedIn}
               handleLogout={this.handdleLogout}
