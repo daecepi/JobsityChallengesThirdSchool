@@ -9,7 +9,9 @@ import Book from "../book/book";
 
 class Books extends Component {
 
-    state = {  }
+    state = { 
+        pageCount: 0
+     }
 
     handleClick =() =>{
         alert('hola')

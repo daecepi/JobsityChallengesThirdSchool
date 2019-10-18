@@ -121,7 +121,7 @@ class ParentBooker extends Component {
         return (
             <div className="app-container">
                 <>
-                <NavBar handleSearch={this.getBooksByWords} searchValue={this.state.searchWords} logout={this.handdleLogout} />
+                <NavBar handleSearch={this.getBooksByWords} searchValue={this.state.searchWords} logout={this.props.handleLogout} />
                 <Books books={books} pageCount={pageCount} getBooksByCity={this.getBooksByCity} getBooksByType={this.getBooksByType} handlePagination={this.handlePagination} />
                 </>
             </div>

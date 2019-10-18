@@ -58,7 +58,6 @@ class Login extends Component {
                 localStorage.setItem("access_token", authResult['access_token']);
 
                 console.log(authResult)
-                console.log("entre");
 
                 await this.props.handleLogin();
             }
@@ -76,6 +75,7 @@ class Login extends Component {
 
     render() {
         console.log(this.props)
+        console.log(this.match)
         const {username, password, message, message_style} = this.state;
         return (
             <div className="full-container">
