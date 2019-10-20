@@ -76,6 +76,7 @@ Not in the challenge
 [X] returning size of the books list per query in the /books endpoint
 [ ] searching for books in the description (still in evaluation of time this week)
 [X] Adding state objects to every endpoint for better evaluation of queries to endpoint
+[ ] usage of nest pagination module next week (for learning purposes the pagination was stablished with mongo's aggregate funtion)
 
 ### Faked infor from the API:
 Information that was generated to books for the sake of this challenge
