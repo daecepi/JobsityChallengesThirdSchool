@@ -32,27 +32,15 @@ __User endpoints__
 - - POST: identification: string, name: string, lname: string, username:string, password: string, age: number, email: string;
 - user/:userId/return/:bookId : to return the book after finished with it (requires id of the book y id of the user that wants to lend it)
 - - HEADER: needs an auth token (jwt token)
-- - PUT: bookId: string and userId
+- - PUT: bookId: id that MongoDB assigned to the book and userId: id that MongoDB assigned to the user
 - /books : to get all books in the API
 - - HEADER: needs an auth token (jwt token)
 - - GET
-- - Query params needed: startIndex since the API returns sets of 1 books (will be optional next week)
+- - Needed query params: startIndex since the API returns sets of 1 books (will be optional next week)
 - - Optional query params:
 - - - city (the name of the city to look for)
 - - - type (the type of the book that is required for the search)
 - - - words (words to look for in the tittle of the book, may be expanded to look in description too)
-- /books/city/:cityName : to get all books that are in a city, where cityName is the name of the city to look in
-- - HEADER: needs an auth token (jwt token)
-- - GET
-- /books/digital : to get all books that are of type digital in the API (uses the service that looks for books so can be scalable to look for as the city endpoint)
-- - HEADER: needs an auth token (jwt token)
-- - GET
-- /books/hardcover : to get all books that are of type hardcover in the API (uses the service that looks for books so can be scalable to look for as the city endpoint) (NOT IN USE FOR ACTUAL REQUIREMENTS)
-- - HEADER: needs an auth token (jwt token)
-- - GET
-- /books/search/:words : to get all books that contain the string to find in their title
-- - HEADER: needs an auth token (jwt token)
-- - GET
 - /books/:id : changen the ":id" looks for the book with the specified id
 - - HEADER: needs an auth token (jwt token)
 - - GET and an id on the URL after an slash ("/")
@@ -87,7 +75,7 @@ Not in the challenge
 [x] searching for books in the title
 [X] returning size of the books list per query in the /books endpoint
 [ ] searching for books in the description (still in evaluation of time this week)
-[ ] Adding state objects to every endpoint for better evaluation of queries to endpoint
+[X] Adding state objects to every endpoint for better evaluation of queries to endpoint
 
 ### Faked infor from the API:
 Information that was generated to books for the sake of this challenge
