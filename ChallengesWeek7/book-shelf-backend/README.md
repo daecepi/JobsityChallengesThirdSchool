@@ -36,6 +36,11 @@ __User endpoints__
 - /books : to get all books in the API
 - - HEADER: needs an auth token (jwt token)
 - - GET
+- - Query params needed: startIndex since the API returns sets of 1 books (will be optional next week)
+- - Optional query params:
+- - - city (the name of the city to look for)
+- - - type (the type of the book that is required for the search)
+- - - words (words to look for in the tittle of the book, may be expanded to look in description too)
 - /books/city/:cityName : to get all books that are in a city, where cityName is the name of the city to look in
 - - HEADER: needs an auth token (jwt token)
 - - GET
@@ -77,8 +82,12 @@ Not in the challenge
 [X] Fusing the endpoint to use query strings
 [ ] Dockerize the application according to this doc (that show how to do it scalably): https://dev.to/carlillo/part-7-deploy-backend-nestjs-dockerdocker-compose-3cmb
 [ ] Assign secret to a service for it (better practice)
-[ ] Limitant of how many results can you get at the same time from the books endpoint
+[X] Limitant of how many results can you get at the same time from the books endpoint
 [ ] Put the frontend in the public's folder that serves the static files
+[x] searching for books in the title
+[X] returning size of the books list per query in the /books endpoint
+[ ] searching for books in the description (still in evaluation of time this week)
+[ ] Adding state objects to every endpoint for better evaluation of queries to endpoint
 
 ### Faked infor from the API:
 Information that was generated to books for the sake of this challenge

@@ -21,7 +21,7 @@ export class UsersController {
     ){
         //Check for username already in use
         let userExistence = await this.userService.findOne(username);
-        console.log(userExistence);
+        
         if(userExistence[0]){ 
             return new HttpException('Username is already in use', 200);
         }
@@ -39,7 +39,6 @@ export class UsersController {
     @UseGuards(AuthGuard('jwt'))
     @Put('/:userId/book/:bookId')
     async returnBook(@Param('userId') userId: string, @Param('bookId') bookId: string){
-        console.log(userId, bookId);
 
         let result = await this.booksService.returnBook(bookId, userId);
 

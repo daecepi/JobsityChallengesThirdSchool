@@ -1,7 +1,9 @@
-import { Injectable, NotFoundException, HttpException } from "@nestjs/common";
+import { Injectable, NotFoundException, HttpException, BadRequestException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 
 import { Model } from "mongoose";
+
+import { ObjectId } from 'mongoose';
 
 //Books interface
 import { Book } from "./books.model";
@@ -22,29 +24,21 @@ export class BooksService{
      * Function that looks for a book and retrieves it 
      * @param id : contains the id of the book that is required
      */
-    async getBook(id: string): Promise<Book | HttpException>{
+    async getBook(id: string): Promise<{state: string, book: Book} | HttpException>{
+        //Error handling for mongoose id
+        const isValid = ObjectId.isValid(id);
+        if(!isValid){
+            throw new BadRequestException('Invalid ID!');
+        }
+        
+        //Searching for books id
         const book = this.bookModel.findById(id);
 
         //Verifing that the book exists
         if (!book) {
             return new HttpException('Digital books cannot be lent', 404);
         }
-        return book;
-    }
-
-    /**
-     * Service function destined to retriev all of the books from the service
-     *  @retuns Promise of books wanted
-     */
-    async getBooks(): Promise<Book[] | HttpException>{
-        let books = this.bookModel.find();
-
-        //Verifing that books were resolved
-        if (!books) {
-            return new HttpException('Could not resolve any books', 500);
-        }
-
-        return books;
+        return {state: "success", book: book};
     }
 
     /**
@@ -54,8 +48,7 @@ export class BooksService{
      * @param type : contains the type the book should have
      * @param startIndex : contains the index at which the books should be sent
      */
-    async searchBooks(words: string, city: string, type: string, startIndex: string): Promise<Book[] | HttpException>{
-        let books;
+    async searchBooks(words: string, city: string, type: string, startIndex: string): Promise<{state: string;listSize: number; books: Book[];} | HttpException>{
 
         //Error handlers
         if(!startIndex){
@@ -75,35 +68,44 @@ export class BooksService{
             filters['title'] = {$regex: words};
         }   
 
-        books = this.bookModel.find(filters).skip(parseInt(startIndex)).limit(10);
+        let books = this.bookModel.find(filters);
 
         //Verifing that the book exists
         if (!books) {
             return new HttpException('No books with that description were found', 404);
         }
 
-        return books;
+        const querySize = books.length;
+
+        const booksResult = books.skip(parseInt(startIndex)).limit(10)
+
+        return {state: "Success", listSize: querySize, books: booksResult};
     }
 
     /**
      * Proceduyre in the service destined to lend the book if the book is not lent
-     * @param id : holds the id of the book
-     * @param user : holds the identification of the user
+     * @param bookId : holds the id of the book
+     * @param userId : holds the identification of the user
      */
-    async lendBook(id: string, user: string): Promise<Book | HttpException>{
-        
-        //Error handlers
-        if (!id || !user) {
-            return new HttpException("An identification for the user and the book to be lent must be specified", 400);   
-        }
+    async lendBook(bookId: string, userId: string): Promise<{state: string, book: Book} | HttpException>{
 
+        //Error handling for mongoose ids
+        if(!ObjectId.isValid(bookId) || !ObjectId.isValid(userId)){
+            throw new BadRequestException('Invalid element ids for book of user!');
+        }
+        
+        //Error handler for knowing that a
+        if (!bookId || !userId) {
+            return new HttpException("An identification for the user and the book' id to be lent must be specified", 400);   
+        }
         //Looking for the book in the database
-        const book = await this.bookModel.findById(id);
+        const book = await this.bookModel.findById(bookId);
         
         //Making sure the book exists
         if (!book) {
-            return new HttpException('Digital books cannot be lent', 404);
+            return new HttpException('No books found under the information given', 404);
         }
+
         //Verifing the book is not digital
         if (book.type === 'Digital') {
             return new HttpException('Digital books cannot be lent', 400);
@@ -115,23 +117,29 @@ export class BooksService{
         }
 
         //Updating the book's lent property with a user and the date when the lent started
-        book.lent = {user: user, startDate: new Date().toString()};
+        book.lent = {user: userId, startDate: new Date().toString()};
 
         //Updating the book in the database
         let result = await book.save();
 
-        return result;
+        return {state: "success", book: result};
     }
 
 
     /**
      * Proceduyre in the service destined to return the book if the user was the one thatlent it
-     * @param id : holds the id of the book
-     * @param user : holds the identification of the user
+     * @param bookId : holds the id of the book
+     * @param userId : holds the identification of the user
      */
-    async returnBook(id: string, user: string): Promise<Book | HttpException>{
+    async returnBook(bookId: string, userId: string): Promise<{state: string, book: Book} | HttpException>{
+
+        //Error handling for mongoose ids
+        if(!ObjectId.isValid(bookId) || !ObjectId.isValid(userId)){
+            throw new BadRequestException('Invalid element ids for book of user!');
+        }
+
         //Looking for the book in the database
-        let book = await this.bookModel.findById(id);
+        let book = await this.bookModel.findById(bookId);
         
         //Making sure the book exists
         if(!book){
@@ -149,21 +157,20 @@ export class BooksService{
         }
 
         //Verifing the user returning it is the one that lent it
-        if(book.lent.user !== user){
+        if(book.lent.user !== userId){
             return new HttpException("The book wasn't lend by this user", 400);
         }
 
         //Insertion of the lend details in the lends database
         let date = new Date().toString();
-        await this.lendService.saveLend({user: user, book: id, startingDate: book.lent.startDate, finishDate: date});
+        await this.lendService.saveLend({user: userId, book: bookId, startingDate: book.lent.startDate, finishDate: date});
         
         //Clearing state of the book's lent property
         book.lent = undefined;
-
         
         //Updating book
         let result = await book.save();
 
-        return result;
+        return {state: "success", book: result};
     }
 }
