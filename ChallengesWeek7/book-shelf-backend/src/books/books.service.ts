@@ -48,7 +48,7 @@ export class BooksService{
      * @param type : contains the type the book should have
      * @param startIndex : contains the index at which the books should be sent
      */
-    async searchBooks(words: string, city: string, type: string, startIndex: string): Promise<{state: string;listSize: number; books: Book[];} | HttpException>{
+    async searchBooks(words: string, city: string, type: string, startIndex: string): Promise<{state: string;totalPages:number;pageNumber: number; books: Book[];} | HttpException>{
 
         //Error handlers
         if(!startIndex){
@@ -57,29 +57,37 @@ export class BooksService{
             return new HttpException("The start index of the books lookup should be numeric", 400);
         }
 
+        const index = parseInt(startIndex);
+
         let filters = {};
         if (city) {
-            filters['cities'] = city;
+            filters['city'] = city;
         }
         if (type) {
-            filters['types'] = type;
+            filters['type'] = type;
         }
         if (words) {
             filters['title'] = {$regex: words};
         }   
 
-        let books = this.bookModel.find(filters);
+        
+        //let books = await this.bookModel.find(filters).skip(10).limit(10);
 
-        //Verifing that the book exists
-        if (!books) {
-            return new HttpException('No books with that description were found', 404);
-        }
+        //Usage of aggregate
+        let books = await this.bookModel.aggregate([
+            { "$facet": {
+                "totalData": [
+                    { "$match": filters},
+                    { "$skip": 10 },
+                    { "$limit": 10 }
+                  ],
+                  "totalCount": [
+                    { "$count": "count" }
+                  ]
+            }}
+          ]);
 
-        const querySize = books.length;
-
-        const booksResult = books.skip(parseInt(startIndex)).limit(10)
-
-        return {state: "Success", listSize: querySize, books: booksResult};
+        return {state: "Success", totalPages:  books[0].totalCount.count,  pageNumber: index+1, books: books[0].totalData};
     }
 
     /**
