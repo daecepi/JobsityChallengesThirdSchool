@@ -12,29 +12,40 @@ export default class SideMenuFiltersComponent extends Component {
            {
             index: 1,
             section: "Quito",
+            to: "/city/quito",
             logoClasses: "fas fa-globe",
             isSelected: false
           },
           {
             index: 2,
             section: "Cartagena",
+            to: "/city/cartagena",
             logoClasses: "fas fa-globe",
             isSelected: false
           },
           {
             index: 3,
             section: "Medellín",
+            to: "/city/medellin",
             logoClasses: "fas fa-globe",
             isSelected: false
           },
           {
             index: 4,
             section: "Digital",
+            to: "/type/digital",
             logoClasses: "fas fa-tablet-alt",
             isSelected: false
           },
           {
             index: 5,
+            section: "Hardcover",
+            to: "/type/hardcover",
+            logoClasses: "fas fa-book",
+            isSelected: false
+          },
+          {
+            index: 6,
             section: "Personal Loans",
             logoClasses: "fas fa-user-tag",
             isSelected: false
@@ -45,25 +56,25 @@ export default class SideMenuFiltersComponent extends Component {
         label: "Your Books",
         items: [
               {
-                index: 6,
+                index: 7,
                 section: "Readings",
                 logoClasses: "fas fa-book-open",
                 isSelected: false
               },
               {
-                index: 7,
+                index: 8,
                 section: "History",
                 logoClasses: "fas fa-history",
                 isSelected: false
               },
               {
-                index: 8,
+                index: 9,
                 section: "Read Later",
                 logoClasses: "fas fa-heart",
                 isSelected: false
               },
               {
-                index: 9,
+                index: 10,
                 section: "Favorites",
                 logoClasses: "fas fa-tags",
                 isSelected: false

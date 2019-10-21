@@ -48,7 +48,7 @@ export class BooksService{
      * @param type : contains the type the book should have
      * @param startIndex : contains the index at which the books should be sent
      */
-    async searchBooks(words: string, city: string, type: string, startIndex: string): Promise<{state: string;totalPages:number;pageNumber: number; books: Book[];} | HttpException>{
+    async searchBooks(words: string, city: string, type: string, startIndex: string): Promise< {state: string;totalPages:number;pageNumber: number; books: Book[]} | HttpException>{
 
         //Error handlers
         if(!startIndex){
@@ -70,23 +70,23 @@ export class BooksService{
             filters['title'] = {$regex: words};
         }   
 
-        
-        //let books = await this.bookModel.find(filters).skip(10).limit(10);
-
         //Usage of aggregate
         let books = await this.bookModel.aggregate([
             { "$facet": {
                 "totalData": [
                     { "$match": filters},
-                    { "$skip": 10 },
+                    { "$skip": index },
                     { "$limit": 10 }
                   ],
                   "totalCount": [
+                    { "$match": filters },
                     { "$count": "count" }
                   ]
             }}
           ]);
-        return {state: "Success", totalPages:  Math.floor(books[0].totalCount[0].count/10),  pageNumber: (index+1), books: books[0].totalData};
+
+        const count = books[0].totalCount[0].count ? Math.floor(books[0].totalCount[0].count/10) : 0; // Build the count object if data exists
+        return {state: "Success", totalPages:  count,  pageNumber: (index+1), books: books[0].totalData};
     }
 
     /**

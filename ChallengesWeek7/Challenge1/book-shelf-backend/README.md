@@ -77,6 +77,7 @@ Not in the challenge
 [ ] searching for books in the description (still in evaluation of time this week)
 [X] Adding state objects to every endpoint for better evaluation of queries to endpoint
 [ ] usage of nest pagination module next week (for learning purposes the pagination was stablished with mongo's aggregate funtion)
+[ ] Modify to bring only books with whole information
 
 ### Faked infor from the API:
 Information that was generated to books for the sake of this challenge

@@ -19,7 +19,6 @@ import "./book.scss";
 class Book extends Component {
   //Check star rating component
   render() {
-    console.log(this.props.book);
     const {
       id,
       title,

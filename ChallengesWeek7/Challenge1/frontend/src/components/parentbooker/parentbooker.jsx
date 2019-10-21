@@ -8,7 +8,7 @@ import Books from "../books/books";
 
 class ParentBooker extends Component {
   state = {
-    currentResourse: "general",
+    resourse: undefined,
     actualPage: 0,
     totalPageCount: 0,
     searchWords: "",
@@ -18,18 +18,24 @@ class ParentBooker extends Component {
   componentDidMount() {
     let token = localStorage.getItem("access_token");
     if (!token) {
-      console.log("entr");
       return;
     }
     //Get the query params
     const path = this.props.match.path;
+    console.log(path);
     switch (path) {
       case "/":
         this.getBooks(0);
         break;
-      case "city/:name":
+      case "/city/:name":
+          const city = this.props.match.params.name;
+          console.log(city);
+          this.getBooksByCity(city, 0);
         break;
-      case "type/:name":
+      case "/type/:name":
+          const type = this.props.match.params.name;
+          console.log(type);
+          this.getBooksByType(type, 0);
         break;
       default:
         break;
@@ -43,7 +49,18 @@ class ParentBooker extends Component {
     console.log(num);
   }
 
-  //Method to get all books
+  /**
+   * Function used to capitilize the first letter of types and cities wanted as API requires in its registries
+   * @param {*} word 
+   */
+  capitalizeFLetter(word) { 
+    return word[0].toUpperCase() + word.slice(1); 
+  } 
+
+  /**
+   * FUnction used to get all books from the api
+   * 
+   */
   getBooks = async (startIndex = 0) => {
     let token = localStorage.getItem("access_token");
     let authResult = await fetch(
@@ -63,6 +80,7 @@ class ParentBooker extends Component {
       this.setState({
         actualPage: 1,
         totalPageCount: authResult.totalPages,
+        resource: "/",
         books: authResult.books,
       });
     }
@@ -73,9 +91,11 @@ class ParentBooker extends Component {
    *
    */
   getBooksByType = async (type, startIndex = 0) => {
-    let token = localStorage.getItem("access_token");
+    const typeCap = this.capitalizeFLetter(type);
+    
+    let token = localStorage.getItem("access_token"); //Getting the token for the request
     let authResult = await fetch(
-      `http://localhost:5000/books?startIndex=${this.state.pageCount}&type=${type}`,
+      `http://localhost:5000/books?startIndex=${startIndex}&type=${typeCap}`,
       {
         method: "GET",
         headers: {
@@ -87,17 +107,24 @@ class ParentBooker extends Component {
     console.log(authResult);
     if (authResult === 400) {
       alert(authResult.message);
-    } else {
+    } else if(authResult.state === "Success") {
       //Setting the state that holds the books for updates
-      this.setState({ books: authResult });
+      this.setState({
+        actualPage: 1,
+        totalPageCount: authResult.totalPages,
+        resource: "/type",
+        books: authResult.books,
+      });
     }
   };
 
   getBooksByCity = async (city, startIndex = 0) => {
-    let token = localStorage.getItem("access_token");
+    const cityCap = this.capitalizeFLetter(city);
+
+    let token = localStorage.getItem("access_token"); // Getting the token for the request
 
     let authResult = await fetch(
-      `http://localhost:5000/books?startIndex=${startIndex}&city=${city}`,
+      `http://localhost:5000/books?startIndex=${startIndex}&city=${cityCap}`,
       {
         method: "GET",
         headers: {
@@ -108,17 +135,22 @@ class ParentBooker extends Component {
     console.log(authResult);
     if (authResult === 400) {
       alert(authResult.message);
-    } else {
+    } else if(authResult.state === "Success") {
       //Setting the state that holds the books for updates
-      this.setState({ books: authResult });
+      this.setState({
+        actualPage: 1,
+        totalPageCount: authResult.totalPages,
+        resource: "/city",
+        books: authResult.books,
+      });
     }
   };
 
-  getBooksByWords = async (words, startIndex = 0) => {
+  getBooksByWords = async ( startIndex = 0) => {
     let token = localStorage.getItem("access_token");
 
     let authResult = await fetch(
-      `http://localhost:5000/books?startIndex=${startIndex}&words=${this.state.searchWords}`,
+      `http://localhost:5000/books?startIndex=${startIndex}&words=${this.state.words}`,
       {
         method: "GET",
         headers: {
@@ -137,7 +169,8 @@ class ParentBooker extends Component {
   };
 
   render() {
-    const { books, pageCount } = this.state;
+    console.log(this.props);
+    const { books, pageCount, totalPageCount } = this.state;
     return (
       <div className="app-container">
         <>
@@ -148,6 +181,7 @@ class ParentBooker extends Component {
           />
           <Books
             books={books}
+            totalPages={totalPageCount}
             pageCount={pageCount}
             getBooksByCity={this.getBooksByCity}
             getBooksByType={this.getBooksByType}

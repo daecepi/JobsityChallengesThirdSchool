@@ -10,12 +10,6 @@ import Book from "../book/book";
 class Books extends Component {
 
     state = { 
-        pageCount: 0,
-        maxCount: 30
-     }
-
-     componentDidMount(){
-         
      }
 
     handleRight =() =>{
