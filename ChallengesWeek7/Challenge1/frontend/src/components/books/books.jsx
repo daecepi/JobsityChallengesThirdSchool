@@ -16,6 +16,7 @@ class Books extends Component {
         const { totalPages, actualPage } = this.props;
 
         if(actualPage+1 === totalPages){
+            alert("You are already at the end of the list");
             return ;
         }
         this.props.handlePagination(actualPage+1);
@@ -25,6 +26,7 @@ class Books extends Component {
         const { actualPage } = this.props;
 
         if(actualPage === 0){
+            alert("You are already at the start of the list");
             return ;
         }
 
