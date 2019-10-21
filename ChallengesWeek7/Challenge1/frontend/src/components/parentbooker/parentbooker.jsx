@@ -19,35 +19,35 @@ class ParentBooker extends Component {
     if (!token) {
       return;
     }
-    //Get the query params
-    const path = this.props.match.path;
-    console.log(path);
-    switch (path) {
-      case "/":
-        this.getBooks(0);
-        break;
-      case "/city/:name":
-          const city = this.props.match.params.name;
-          console.log(city);
-          this.getBooksByCity(city, 0);
-        break;
-      case "/type/:name":
-          const type = this.props.match.params.name;
-          console.log(type);
-          this.getBooksByType(type, 0);
-        break;
-      default:
-        break;
-    }
+    this.handlePagination(0);
   }
 
   /**
    * Function used to
    */
-  handlePagination(num) {
+  handlePagination = (num) => {
+    //Get the query params
+    const path = this.props.match.path;
+    console.log(path);
+    switch (path) {
+      case "/":
+        this.getBooks(num);
+        break;
+      case "/city/:name":
+          const city = this.props.match.params.name;
+          console.log(city);
+          this.getBooksByCity(city, num);
+        break;
+      case "/type/:name":
+          const type = this.props.match.params.name;
+          console.log(type);
+          this.getBooksByType(type, num);
+        break;
+      default:
+        break;
+    }
+
     console.log(num);
-    let resource = this.state.resourse.split("/");
-    console.log(resource);
   }
 
   /**
@@ -79,7 +79,7 @@ class ParentBooker extends Component {
     } else if(authResult.state === "Success") {
       //Setting the state that holds the books for updates
       this.setState({
-        actualPage: 1,
+        actualPage: (authResult.pageNumber-1),
         totalPageCount: authResult.totalPages,
         resource: "/",
         books: authResult.books,
@@ -111,7 +111,7 @@ class ParentBooker extends Component {
     } else if(authResult.state === "Success") {
       //Setting the state that holds the books for updates
       this.setState({
-        actualPage: 1,
+        actualPage: (authResult.pageNumber-1),
         totalPageCount: authResult.totalPages,
         resource: `/type/${type}`,
         books: authResult.books,
@@ -139,7 +139,7 @@ class ParentBooker extends Component {
     } else if(authResult.state === "Success") {
       //Setting the state that holds the books for updates
       this.setState({
-        actualPage: 1,
+        actualPage: (authResult.pageNumber-1),
         totalPageCount: authResult.totalPages,
         resource:  `/city/${city}`,
         books: authResult.books,
@@ -171,7 +171,7 @@ class ParentBooker extends Component {
 
   render() {
     console.log(this.state)
-    const { books, pageCount, totalPageCount } = this.state;
+    const { books, actualPage, totalPageCount } = this.state;
     return (
       <div className="app-container">
         <>
@@ -184,7 +184,7 @@ class ParentBooker extends Component {
             books={books}
             resource={this.state.resource}
             totalPages={totalPageCount}
-            pageCount={pageCount}
+            actualPage={actualPage}
             getBooksByCity={this.getBooksByCity}
             getBooksByType={this.getBooksByType}
             handlePagination={this.handlePagination}

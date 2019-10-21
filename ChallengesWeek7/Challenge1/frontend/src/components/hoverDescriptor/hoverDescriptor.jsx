@@ -9,7 +9,6 @@ import StarRatingComponent from "react-star-rating-component";
 class HoverDescriptorComponent extends Component {
   state = {};
   render() {
-    console.log(this.props);
     const {
       title,
       authors,

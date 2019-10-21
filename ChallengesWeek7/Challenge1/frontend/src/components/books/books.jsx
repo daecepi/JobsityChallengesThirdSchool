@@ -13,29 +13,22 @@ class Books extends Component {
      }
 
     handleRight =() =>{
-        let newPageCount = this.state.pageCount;
+        const { totalPages, actualPage } = this.props;
 
-        newPageCount += 10;
-
-        this.setState({
-            pageCount: newPageCount
-        })
-
-        this.props.handlePagination(newPageCount)
+        if(actualPage+1 === totalPages){
+            return ;
+        }
+        this.props.handlePagination(actualPage+1);
     }
 
     handleLeft = () =>{
-        let newPageCount = this.state.pageCount;
+        const { actualPage } = this.props;
 
-        if(newPageCount > 0){
-            newPageCount -= 10;
+        if(actualPage === 0){
+            return ;
         }
 
-        this.setState({
-            pageCount: newPageCount
-        })
-
-        this.props.handlePagination(newPageCount)
+        this.props.handlePagination(actualPage-1);
     }
 
     render() {
