@@ -75,7 +75,7 @@ export class BooksService{
             { "$facet": {
                 "totalData": [
                     { "$match": filters},
-                    { "$skip": index },
+                    { "$skip": (index*10) },
                     { "$limit": 10 }
                   ],
                   "totalCount": [
