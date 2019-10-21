@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
 //import styling
-import "./hoverDescriptor.scss";
+import "./descriptor.scss";
 
 //components used
 import StarRatingComponent from "react-star-rating-component";
 
-class HoverDescriptorComponent extends Component {
+class DescriptorComponent extends Component {
   state = {};
   render() {
     const {
@@ -49,4 +49,4 @@ class HoverDescriptorComponent extends Component {
   }
 }
 
-export default HoverDescriptorComponent;
+export default DescriptorComponent;

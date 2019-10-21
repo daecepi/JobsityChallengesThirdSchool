@@ -77,14 +77,14 @@ export default class SideMenuFiltersComponent extends Component {
                 index: 9,
                 section: "Read Later",
                 to:"/user/:id/later",
-                logoClasses: "fas fa-heart",
+                logoClasses: "fas fa-bookmark",
                 isSelected: false
               },
               {
                 index: 10,
                 section: "Favorites",
                 to:"/user/:id/favorites",
-                logoClasses: "fas fa-tags",
+                logoClasses: "fas fa-heart",
                 isSelected: false
               }
           ]

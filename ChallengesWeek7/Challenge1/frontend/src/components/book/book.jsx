@@ -11,7 +11,7 @@ import "tippy.js/animations/scale-subtle.css";
 import StarRatingComponent from "react-star-rating-component";
 
 //Hover component
-import HoverDescriptorComponent from "../hoverDescriptor/hoverDescriptor";
+import DescriptorComponent from "../escriptor/descriptor";
 
 //Bringing styles
 import "./book.scss";
@@ -32,7 +32,7 @@ class Book extends Component {
     return (
       <Tippy
         content={
-          <HoverDescriptorComponent
+          <DescriptorComponent
             title={title}
             release={publishedDate}
             description={description}
@@ -44,25 +44,37 @@ class Book extends Component {
         placement="right"
         theme="bootstrap"
         offset={0}
-        interactive={true}
+        interactive={false}
         hideOnClick={true}
       >
-        <div className="book">
-          <div className="image-container">
-            <img className="" src={imageLinks.smallThumbnail? imageLinks.smallThumbnail : "https://www.union.edu/sites/default/files/union-marketing-layer/201803/picture.jpg"} alt="" />
-          </div>
-          <p className="book-title">{title}</p>
-          <p className="authors">{authors.join(", ")}</p>
-          <div className="rating-container">
-            <StarRatingComponent
-                name={"rate" + id}
-                starCount={5}
-                starColor={"#60B5D6"}
-                emptyStarColor={"#F0F0F0"} /* color of non-selected icons, default `#333` */
-                value={averageRating}
-            />
-          </div>
-        </div>
+        <Tippy
+          content={
+            "asdas"
+          }
+          trigger="click"
+          placement="top"
+          theme="bootstrap"
+          offset={0}
+          interactive={true}
+          hideOnClick={true}
+        >
+            <div className="book">
+              <div className="image-container">
+                <img className="" src={imageLinks.smallThumbnail? imageLinks.smallThumbnail : "https://www.union.edu/sites/default/files/union-marketing-layer/201803/picture.jpg"} alt="" />
+              </div>
+              <p className="book-title">{title}</p>
+              <p className="authors">{authors.join(", ")}</p>
+              <div className="rating-container">
+                <StarRatingComponent
+                    name={"rate" + id}
+                    starCount={5}
+                    starColor={"#60B5D6"}
+                    emptyStarColor={"#F0F0F0"} /* color of non-selected icons, default `#333` */
+                    value={averageRating}
+                />
+              </div>
+            </div>
+        </Tippy>
       </Tippy>
     );
   }

@@ -46,7 +46,7 @@ __To use the application:__
 [ ] change switch for if with indexof in routes for parent component
 [ ] Change descriptions to look short when they are too long
 [ ] put default image in src folder for books that doesn't have cover
-
+[ ] Use this package to improve notificationsa all over the app: https://www.npmjs.com/package/react-notification-alert
 # React documentation based readme and components
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
