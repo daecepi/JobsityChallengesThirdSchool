@@ -42,7 +42,7 @@ class Books extends Component {
         const { books } = this.props;
         return ( 
             <div className="section-1">
-            <SideMenuFiltersComponent getBooksByType={this.props.getBooksByType} getBooksByCity={this.props.getBooksByCity} />
+            <SideMenuFiltersComponent resource={this.props.resource} getBooksByType={this.props.getBooksByType} getBooksByCity={this.props.getBooksByCity} />
 			<div className="content">
 				<div className="listing-manipulator">
                     <h2>New Releases</h2>

@@ -8,7 +8,6 @@ import Books from "../books/books";
 
 class ParentBooker extends Component {
   state = {
-    resourse: undefined,
     actualPage: 0,
     totalPageCount: 0,
     searchWords: "",
@@ -47,6 +46,8 @@ class ParentBooker extends Component {
    */
   handlePagination(num) {
     console.log(num);
+    let resource = this.state.resourse.split("/");
+    console.log(resource);
   }
 
   /**
@@ -112,7 +113,7 @@ class ParentBooker extends Component {
       this.setState({
         actualPage: 1,
         totalPageCount: authResult.totalPages,
-        resource: "/type",
+        resource: `/type/${type}`,
         books: authResult.books,
       });
     }
@@ -140,7 +141,7 @@ class ParentBooker extends Component {
       this.setState({
         actualPage: 1,
         totalPageCount: authResult.totalPages,
-        resource: "/city",
+        resource:  `/city/${city}`,
         books: authResult.books,
       });
     }
@@ -169,7 +170,7 @@ class ParentBooker extends Component {
   };
 
   render() {
-    console.log(this.props);
+    console.log(this.state)
     const { books, pageCount, totalPageCount } = this.state;
     return (
       <div className="app-container">
@@ -181,6 +182,7 @@ class ParentBooker extends Component {
           />
           <Books
             books={books}
+            resource={this.state.resource}
             totalPages={totalPageCount}
             pageCount={pageCount}
             getBooksByCity={this.getBooksByCity}

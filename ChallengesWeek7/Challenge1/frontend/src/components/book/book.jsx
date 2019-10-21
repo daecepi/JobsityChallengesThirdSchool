@@ -28,7 +28,7 @@ class Book extends Component {
       averageRating,
       publishedDate
     } = this.props.book;
-    console.log(authors.join());
+    
     return (
       <Tippy
         content={

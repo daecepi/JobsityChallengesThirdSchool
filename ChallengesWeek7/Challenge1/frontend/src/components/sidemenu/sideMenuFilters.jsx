@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+
+import { Link } from "react-router-dom";
+
 import "./sideMenuFilters.scss";
 
 export default class SideMenuFiltersComponent extends Component {
@@ -47,6 +50,7 @@ export default class SideMenuFiltersComponent extends Component {
           {
             index: 6,
             section: "Personal Loans",
+            to:"/user/loans",
             logoClasses: "fas fa-user-tag",
             isSelected: false
           },
@@ -58,24 +62,28 @@ export default class SideMenuFiltersComponent extends Component {
               {
                 index: 7,
                 section: "Readings",
+                to:"/user/:id/readings",
                 logoClasses: "fas fa-book-open",
                 isSelected: false
               },
               {
                 index: 8,
                 section: "History",
+                to:"/user/:id/history",
                 logoClasses: "fas fa-history",
                 isSelected: false
               },
               {
                 index: 9,
                 section: "Read Later",
+                to:"/user/:id/later",
                 logoClasses: "fas fa-heart",
                 isSelected: false
               },
               {
                 index: 10,
                 section: "Favorites",
+                to:"/user/:id/favorites",
                 logoClasses: "fas fa-tags",
                 isSelected: false
               }
@@ -84,12 +92,13 @@ export default class SideMenuFiltersComponent extends Component {
     ]
   };
 
-  setSelectedItemIndex= (index)=>{
-    this.setState({
+  changeLocation= (index)=>{
+    window.location=index;
+    /*this.setState({
       selectedItemIndex: index
-    });
+    });*/
   }
-  
+
   render() {
     return (
       <div className="menu-left">
@@ -101,14 +110,16 @@ export default class SideMenuFiltersComponent extends Component {
                   <ul>
                     {section.items.map((item) => {
                         return (
-                          <li
-                            key={item.index}
-                            onClick={()=>{this.setSelectedItemIndex(item.index)}}
-                            className={item.index === this.state.selectedItemIndex ? "selected" : ""}
-                          >
-                            <i className={item.logoClasses}></i>
-                            <button className={item.index === this.state.selectedItemIndex ? "selected" : "element"}>{item.section}</button>
-                          </li>
+                          <Link to={item.to}>
+                            <li
+                              key={item.index}
+                              onClick={()=>{this.changeLocation(item.to)}}
+                              className={item.to === this.props.resource ? "selected" : ""}
+                            >
+                              <i className={item.logoClasses}></i>
+                              <button className={item.to === this.props.resource ? "selected" : "element"}>{item.section}</button>
+                            </li>
+                          </Link>
                         );
                       })
                     }
