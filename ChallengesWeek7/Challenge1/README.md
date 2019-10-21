@@ -16,7 +16,10 @@
 - IMPORTANT: for this week is planned a huge styling improvement (because of requirements of last week was not possible to take care of new html functions styling entirely)
 - IMPORTANT: other filter not appearing in the requirements for the weeks like layout dinamic handling were left as extras (for this or next week to be implemented)
 
-## TO DO's (for this week can be seen in each separate README)
+## Missing
+- The point of implementing the reservation form with the DatePicker, part of the component exists (but the implementation will be available during the day)
+
+## TO DO's (for this week can be seen in each separate README, IMPORTANT TO READ ITS TO DO'S)
 [X] Reused pallete color even in external star-rating-component (with RGB to string conversion) (https://stackoverflow.com/questions/13070054/convert-rgb-strings-to-hex-in-javascript)
 [X] review the amount of energy expressed
 [X] Add more security for endpoint (error handling)
