@@ -40,27 +40,37 @@ class Book extends Component {
             averageRating={averageRating}
           />
         }
-        trigger="click"
         placement="right"
         theme="bootstrap"
         offset={0}
-        interactive={false}
         hideOnClick={true}
       >
-        <Tippy
-          content={
-            "asdas"
-          }
-          trigger="click"
-          placement="top"
-          theme="bootstrap"
-          offset={0}
-          interactive={true}
-          hideOnClick={true}
-        >
             <div className="book">
               <div className="image-container">
-                <img className="" src={imageLinks.smallThumbnail? imageLinks.smallThumbnail : "https://www.union.edu/sites/default/files/union-marketing-layer/201803/picture.jpg"} alt="" />
+                <img className="img-ref" src={imageLinks.smallThumbnail? imageLinks.smallThumbnail : "https://www.union.edu/sites/default/files/union-marketing-layer/201803/picture.jpg"} alt="" />
+                <div className="book-menu-container">
+                  <div className="top-book-menu-con">
+                    <div className="favorites-container">
+                        <i className="fas fa-heart"></i>
+                    </div>
+                    <div className="read-later-container">
+                        <i className="fas fa-bookmark"></i>
+                    </div>
+                  </div>
+                  <div className="mid-book-menu-con">
+                    <div className="readings-container">
+                        <i className="fas fa-book-opened"></i>
+                    </div>
+                  </div>
+                  <div className="bottom-book-menu-con">
+                    <StarRatingComponent
+                        name={"user-rating"+id}
+                        starCount={5}
+
+                        value={averageRating}
+                    />
+                  </div>
+                </div>
               </div>
               <p className="book-title">{title}</p>
               <p className="authors">{authors.join(", ")}</p>
@@ -74,7 +84,6 @@ class Book extends Component {
                 />
               </div>
             </div>
-        </Tippy>
       </Tippy>
     );
   }
