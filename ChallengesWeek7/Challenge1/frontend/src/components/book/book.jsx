@@ -49,7 +49,7 @@ class Book extends Component {
       >
         <div className="book">
           <div className="image-container">
-            <img className="" src={imageLinks.smallThumbnail} alt="" />
+            <img className="" src={imageLinks.smallThumbnail? imageLinks.smallThumbnail : "https://www.union.edu/sites/default/files/union-marketing-layer/201803/picture.jpg"} alt="" />
           </div>
           <p className="book-title">{title}</p>
           <p className="authors">{authors.join(", ")}</p>
