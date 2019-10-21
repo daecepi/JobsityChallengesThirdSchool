@@ -57,19 +57,19 @@ export class BooksService{
             return new HttpException("The start index of the books lookup should be numeric", 400);
         }
 
+        console.log(startIndex);
         const index = parseInt(startIndex);
 
         let filters = {};
         if (city) {
-            filters['city'] = city;
+            filters['cities'] = city;
         }
         if (type) {
-            filters['type'] = type;
+            filters['types'] = type;
         }
         if (words) {
             filters['title'] = {$regex: words};
-        }   
-
+        }
         //Usage of aggregate
         let books = await this.bookModel.aggregate([
             { "$facet": {
@@ -86,7 +86,7 @@ export class BooksService{
           ]);
 
         const count = books[0].totalCount[0].count ? Math.floor(books[0].totalCount[0].count/10) : 0; // Build the count object if data exists
-        return {state: "Success", totalPages:  count,  pageNumber: (index+1), books: books[0].totalData};
+        return {state: "Success", totalPages: count,  pageNumber: (index+1), books: books[0].totalData};
     }
 
     /**
