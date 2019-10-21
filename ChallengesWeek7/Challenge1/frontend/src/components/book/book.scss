@@ -8,10 +8,14 @@
   margin-left: auto;
   flex-flow: column;
   overflow: hidden;
-  img {
-    width: 15rem;
-    height: 20rem;
+  .image-container{
+    flex-basis: 83%;
+    img{
+      height: 100%;
+      width: 100%;
+    }
   }
+
   .book-title {
     font-family: "TitlePluton", Fallback, sans-serif;
     overflow: hidden;
@@ -20,6 +24,11 @@
     font-weight: bold;
     font-size: 0.9rem;
     color: $secondary-dark;
+  }
+
+  .rating-container{
+    align-self: flex-start;
+    justify-self: flex-start;
   }
 }
 

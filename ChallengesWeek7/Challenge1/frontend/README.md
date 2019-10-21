@@ -36,12 +36,13 @@ __To use the application:__
 [X] Add routing
 [ ] improve the security
 [X] Stilying for familiarity
-[/] reusable basic components
+[/] reusabaility of basic components (external star-rating component and datepicker from react components are being used)
 [X] improve dropdown styling even more
 [ ] finish my own rating star component
 [ ] changing tippy
 [ ] put link to return to login in register
-[ ] 
+[ ] consult with the mentor the best way to validate token expiration in production (and check if my approach is valid)
+[ ] update Parent component with props already setup
 
 # React documentation based readme and components
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -86,8 +86,7 @@ export class BooksService{
                   ]
             }}
           ]);
-
-        return {state: "Success", totalPages:  (books[0].totalCount.count/10),  pageNumber: (index+1), books: books[0].totalData};
+        return {state: "Success", totalPages:  Math.floor(books[0].totalCount[0].count/10),  pageNumber: (index+1), books: books[0].totalData};
     }
 
     /**

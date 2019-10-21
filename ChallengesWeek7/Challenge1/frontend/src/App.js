@@ -87,27 +87,17 @@ class App extends React.Component {
                 handleLogout={this.handdleLogout}
                 component={ParentBooker}
               />
-              <Route
+              <PrivateRoute
                 path="/city/:name"
                 loggedIn={this.state.loggedIn}
                 handleLogout={this.handdleLogout}
-                render={({match, props}) =>{
-                  return <ParentBooker 
-                  {...match}
-                  {...props}
-                  loggedIn={this.state.loggedIn}
-                  handleLogout={this.handdleLogout} />
-                }}
+                component={ParentBooker}
               />
-              <Route
+              <PrivateRoute
                 path="/type/:name"
-                render={({match, props}) =>{
-                  return <ParentBooker 
-                  {...match}
-                  {...props}
-                  loggedIn={this.state.loggedIn}
-                  handleLogout={this.handdleLogout} />
-                }}
+                loggedIn={this.state.loggedIn}
+                handleLogout={this.handdleLogout}
+                component={ParentBooker}
               />
               <Route path="/login" render={(match,props) => <Login handleLogin={this.handleLogin} {...match} {...props} />} />
               <Route path="/register" render={(match, props) => <Register {...props} {...match} />} />

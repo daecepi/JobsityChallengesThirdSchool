@@ -66,13 +66,7 @@ class Books extends Component {
 				<div id="book-container" className="books">
                     {books.map((book)=>{
                         return <Book key={book._id} 
-                                id ={ book.id}
-                                title= {book.title}
-                                description= {book.description}
-                                imageSrc= {book.imageLinks[0].smallThumbnail}
-                                authors= {book.authors.toString()}
-                                averageRating= {book.averageRating}
-                                rating= {book.averageRating}
+                                book={book}
                             />
                     })}
 				</div>
