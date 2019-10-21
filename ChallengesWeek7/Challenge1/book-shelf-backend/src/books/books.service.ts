@@ -85,7 +85,11 @@ export class BooksService{
             }}
           ]);
 
-        const count = books[0].totalCount[0].count ? Math.floor(books[0].totalCount[0].count/10) : 0; // Build the count object if data exists
+        let count = 0;
+        if (books[0].totalData.length !== 0) { //Making sure the query had data before paginating
+            count = books[0].totalCount[0].count ? Math.floor(books[0].totalCount[0].count/10) : 0; // Build the count object if data exists
+        }
+        
         return {state: "Success", totalPages: count,  pageNumber: (index+1), books: books[0].totalData};
     }
 
