@@ -1,0 +1,24 @@
+//Importing color pallete's variables
+@import '../../ColorTheme.scss';
+
+.not-found-container{
+    background: $secondary-white;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+
+    h1{
+        color: $secondary-blue;
+        padding-bottom: 0.5rem;
+    }
+
+    p{
+        color: $third-dark;
+    }
+
+    a{
+        color: $primary-blue;
+        text-decoration: none;
+    }
+}

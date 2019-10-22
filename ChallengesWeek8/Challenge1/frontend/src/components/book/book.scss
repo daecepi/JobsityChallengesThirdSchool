@@ -1,0 +1,62 @@
+//Importing color pallete's variables
+@import "../../ColorTheme.scss";
+
+//SCSS SECTION
+.book {
+  display: flex;
+  flex-basis: 18%;
+  margin-left: auto;
+  flex-flow: column;
+  overflow: hidden;
+  .image-container{
+    flex-basis: 83%;
+    position: relative;
+    z-index: 1;
+    .img-ref{
+      position: relative;
+      width: 100%;
+      height: auto;
+      z-index: 0;
+    }
+
+    .book-menu-container{
+      display: none;
+      position: absolute;
+      top:0;
+      left:0;
+      right: 0;
+      bottom:0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+      
+      .top-book-menu{
+        display:block;
+        justify-content: space-between;
+      }
+
+      .favorites-container{
+        background: white;
+      }
+    }
+
+    .book-menu-container:hover{
+      display: grid;
+    }
+  }
+
+  .book-title {
+    font-family: "TitlePluton", Fallback, sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: $secondary-dark;
+  }
+
+  .rating-container{
+    align-self: flex-start;
+    justify-self: flex-start;
+  }
+}
+

@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "4e8622e1-35da-4f56-a3b7-e423634aa292",
+		"name": "Bookshelf updated",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all books",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzAzOTgwNzIsImV4cCI6MTU3MDQ4NDQ3Mn0.oYj_l3f1p595hSXDYgx2jAvPd9McTgr4t-4X3d4mv8o",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Look for one book",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzAzOTgwNzIsImV4cCI6MTU3MDQ4NDQ3Mn0.oYj_l3f1p595hSXDYgx2jAvPd9McTgr4t-4X3d4mv8o"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/books/5d9a8d54422fa8585ebd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"books",
+						"5d9a8d54422fa8585ebd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate (get JWT token)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "sofi",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "sofi123123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImlhdCI6MTU3MDIwMzAyOSwiZXhwIjoxNTcwMjAzMTQ5fQ.9G1hQxXVMU0aXMtD09hfqdz94oUzMEn_WBJR9xucAYs"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "identification",
+							"value": "20547854582",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Sofia",
+							"type": "text"
+						},
+						{
+							"key": "lname",
+							"value": "Peralta",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "solae",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "sofi123123",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "sofia.p@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"register"
+					]
+				},
+				"description": "Register users"
+			},
+			"response": []
+		},
+		{
+			"name": "Lend books",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzAzOTgwNzIsImV4cCI6MTU3MDQ4NDQ3Mn0.oYj_l3f1p595hSXDYgx2jAvPd9McTgr4t-4X3d4mv8o"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "bookId",
+							"value": "5d9a8d54422fa8585ebdc68c",
+							"type": "text"
+						},
+						{
+							"key": "userId",
+							"value": "5d9a5f594351ff21e04f3ea3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/books/lend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"books",
+						"lend"
+					]
+				},
+				"description": "Lent books"
+			},
+			"response": []
+		},
+		{
+			"name": "Return books",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzAzOTgwNzIsImV4cCI6MTU3MDQ4NDQ3Mn0.oYj_l3f1p595hSXDYgx2jAvPd9McTgr4t-4X3d4mv8o"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "bookId",
+							"value": "5d9a8d54422fa8585ebdc68c",
+							"type": "text"
+						},
+						{
+							"key": "userId",
+							"value": "5d9a5f594351ff21e04f3ea3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/books/return",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"books",
+						"return"
+					]
+				},
+				"description": "Return books after being lent"
+			},
+			"response": []
+		},
+		{
+			"name": "Search specific books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/books?words=\"Dolch\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"books"
+					],
+					"query": [
+						{
+							"key": "words",
+							"value": "\"Dolch\""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
