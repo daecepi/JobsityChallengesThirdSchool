@@ -29,7 +29,7 @@ export class UsersService {
    * Function that looks for a user
    * @param username : contains the username of the user to for
    */
-  async findOne(username: string): Promise<User | HttpException> {
+  async findOne(username: string): Promise<User> {
     return await this.userModel.find({ username: username });
   }
 
