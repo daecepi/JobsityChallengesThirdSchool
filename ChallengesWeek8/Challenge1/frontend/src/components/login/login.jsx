@@ -9,6 +9,7 @@ import "./login.scss";
 import NotificationAlert from 'react-notification-alert';
 import "react-notification-alert/dist/animate.css";
 
+
 //Components used
 import SearchComponent from "../searchComponent/searchComponent";
 

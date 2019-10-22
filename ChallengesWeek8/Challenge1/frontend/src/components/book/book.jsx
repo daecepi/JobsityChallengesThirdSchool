@@ -12,16 +12,47 @@ import StarRatingComponent from "react-star-rating-component";
 
 //Hover component
 import DescriptorComponent from "../descriptor/descriptor";
+import BookMenuComponent from "../bookMenu/bookMenu";
+
 
 //Bringing styles
 import "./book.scss";
 
 
 class Book extends Component {
+  state ={ 
+    toggle: true,
+    styles: "book-menu-container"
+  }
+
+  toggleAppereance= (e)=>{
+    console.log("entre");
+    if (this.state.toggle) {
+      this.setState({
+        toggle: false,
+        styles: "book-menu-container occult-class"
+      });
+    }
+  }
+
+  changeToogle = ()=>{
+    this.setState({
+      toggle: true,
+      styles: "book-menu-container"
+    });
+  }
+  /*handleMouseOver = (e)=>{
+    e.target.style["z-index"] = "0";
+  }
+
+  handleMouseOut = (e)=>{
+    e.target.style["z-index"] = "10002";
+  }*/
+
   //Check star rating component
   render() {
-    const { id, title, description, imageLinks, authors, averageRating, publishedDate } = this.props.book;
 
+    const { _id, title, description, imageLinks, authors, averageRating, publishedDate } = this.props.book;
     return (
       <Tippy
         content={
@@ -36,51 +67,40 @@ class Book extends Component {
         placement="right"
         theme="bootstrap"
         offset={0}
-        maxWidth={"200px"}
         hideOnClick={true}
       >
-        <div className="book">
-          <div className="image-container">
-            <img
-              className="img-ref"
-              src={
-                imageLinks.smallThumbnail
-                  ? imageLinks.smallThumbnail
-                  : "https://www.union.edu/sites/default/files/union-marketing-layer/201803/picture.jpg"
-              }
-              alt=""
-            />
-            <div className="book-menu-container">
-              <div className="top-book-menu-con">
-                <div className="favorites-container">
-                  <i className="fas fa-heart"></i>
-                </div>
-                <div className="read-later-container">
-                  <i className="fas fa-bookmark"></i>
-                </div>
-              </div>
-              <div className="mid-book-menu-con">
-                <div className="readings-container">
-                  <i className="fas fa-book-opened"></i>
-                </div>
-              </div>
-              <div className="bottom-book-menu-con">
-                <StarRatingComponent name={"user-rating" + id} starCount={5} value={averageRating} />
-              </div>
+          <div className="book">
+            <div className="image-container">
+              <img
+                id={_id}
+                className="img-ref"
+                onClick={this.toggleAppereance}
+                src={
+                  imageLinks.smallThumbnail
+                    ? imageLinks.smallThumbnail
+                    : "https://www.union.edu/sites/default/files/union-marketing-layer/201803/picture.jpg"
+                }
+                alt="presentation"
+              />
+              <BookMenuComponent
+                id ={_id+"menu"}
+                averageRating={averageRating}
+                styles={this.state.styles}
+                changeToogle={this.changeToogle}
+              />
+            </div>
+            <p className="book-title">{title}</p>
+            <p className="authors">{authors.join(", ")}</p>
+            <div className="rating-container">
+              <StarRatingComponent
+                name={"rate" +_id}
+                starCount={5}
+                starColor={"#60B5D6"}
+                emptyStarColor={"#F0F0F0"} /* color of non-selected icons, default `#333` */
+                value={averageRating}
+              />
             </div>
           </div>
-          <p className="book-title">{title}</p>
-          <p className="authors">{authors.join(", ")}</p>
-          <div className="rating-container">
-            <StarRatingComponent
-              name={"rate" + id}
-              starCount={5}
-              starColor={"#60B5D6"}
-              emptyStarColor={"#F0F0F0"} /* color of non-selected icons, default `#333` */
-              value={averageRating}
-            />
-          </div>
-        </div>
       </Tippy>
     );
   }

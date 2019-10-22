@@ -1,0 +1,36 @@
+.book-menu-container{
+    display: hidden;
+    position: absolute;
+    top:0;
+    left:0;
+    right: 0;
+    bottom:0;
+    background: rgba(0, 0, 0, 0.5);
+
+    i{
+      color:white;
+    }
+    
+    .top-book-menu{
+      display: block;
+      justify-content: space-between;
+    }
+
+    .read-later-container{
+    }
+
+    .favorites-container{
+    }
+
+    .mid-book-menu-con{
+    }
+  }
+
+  .book-menu-container:hover{
+    display: block;
+  }
+
+  .occult-class{
+    z-index: 100005;
+    display: block;
+  }

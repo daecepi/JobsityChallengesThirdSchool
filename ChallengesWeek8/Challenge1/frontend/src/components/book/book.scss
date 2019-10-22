@@ -8,6 +8,7 @@
   margin-left: auto;
   flex-flow: column;
   overflow: hidden;
+
   .image-container{
     flex-basis: 83%;
     position: relative;
@@ -16,31 +17,7 @@
       position: relative;
       width: 100%;
       height: auto;
-      z-index: 0;
-    }
-
-    .book-menu-container{
-      display: none;
-      position: absolute;
-      top:0;
-      left:0;
-      right: 0;
-      bottom:0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 2;
-      
-      .top-book-menu{
-        display:block;
-        justify-content: space-between;
-      }
-
-      .favorites-container{
-        background: white;
-      }
-    }
-
-    .book-menu-container:hover{
-      display: grid;
+      z-index: 10000;
     }
   }
 
@@ -59,4 +36,3 @@
     justify-self: flex-start;
   }
 }
-
