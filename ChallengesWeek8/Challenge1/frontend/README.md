@@ -34,19 +34,20 @@ __To use the application:__
 [X] Creating a THEME with the colors to use all over the application (to normalize experience)
 [X] Create the registration page (implement and finish the component)
 [X] Add routing
-[ ] improve the security
+[X] improve the security
 [X] Stilying for familiarity
 [X] reusabaility of basic components (external star-rating component and datepicker from react components are being used)
 [X] improve dropdown styling even more
 [ ] finish my own rating star component
 [ ] changing tippy
-[ ] put link to return to login in register
+[X] put link to return to login in register
 [ ] consult with the mentor the best way to validate token expiration in production (and check if my approach is valid)
 [ ] update Parent component with props already setup
 [ ] change switch for if with indexof in routes for parent component
 [ ] Change descriptions to look short when they are too long
 [ ] put default image in src folder for books that doesn't have cover
 [ ] Use this package to improve notificationsa all over the app: https://www.npmjs.com/package/react-notification-alert
+
 # React documentation based readme and components
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

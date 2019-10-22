@@ -5,8 +5,17 @@ import { Link } from "react-router-dom";
 //Styles
 import "./login.scss";
 
+//External components used
+import NotificationAlert from 'react-notification-alert';
+import "react-notification-alert/dist/animate.css";
+
 //Components used
 import SearchComponent from "../searchComponent/searchComponent";
+
+const options = {
+  interesting: "asdasd"
+}
+
 
 class Login extends Component {
   /**
@@ -50,6 +59,7 @@ class Login extends Component {
       }).then((res) => res.json());
       if (authResult.error) {
         this.setState({ message: authResult.error });
+        this.refs.notificationAlert.notificationAlert({});
         return;
       } else {
         this.setState({ message: "Success", message_style: "messages messages-success" });
@@ -72,8 +82,7 @@ class Login extends Component {
   };
 
   render() {
-    console.log(this.props);
-    console.log(this.match);
+    console.log(options);
     const { username, password, message, message_style } = this.state;
     return (
       <div className="full-container">
@@ -102,8 +111,9 @@ class Login extends Component {
             {message ? <span className={message_style}>{message}</span> : ""}
           </form>
         </div>
+        <NotificationAlert ref="notificationAlert" />
         <Link to="/register">
-          <button className="register-button">Register</button>
+          <button className="move-button">Register</button>
         </Link>
       </div>
     );
