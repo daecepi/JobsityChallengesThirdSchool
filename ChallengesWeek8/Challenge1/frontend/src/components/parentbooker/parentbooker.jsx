@@ -5,15 +5,21 @@ import "./parentbooker.scss";
 //Components used
 import NavBar from "../navbar/navbar";
 import Books from "../books/books";
+import ReservationComponent from "../reservationComponent/reservationComponent";
 
 class ParentBooker extends Component {
   state = {
     actualPage: 0,
     totalPageCount: 0,
     searchWords: "",
-    books: []
+    books: [],
+    lendBook: false,
+    idToShare: ""
   };
 
+  /**
+   * Funtrion for initialization
+   */
   componentDidMount() {
     let token = localStorage.getItem("access_token");
     if (!token) {
@@ -23,7 +29,7 @@ class ParentBooker extends Component {
   }
 
   /**
-   * Function used to
+   * Function used to handle the paginatio inside application for each query
    */
   handlePagination = (num) => {
     //Get the query params
@@ -52,7 +58,7 @@ class ParentBooker extends Component {
 
   /**
    * Function used to capitilize the first letter of types and cities wanted as API requires in its registries
-   * @param {*} word
+   * @param {*} word : word given to comver to the proper state
    */
   capitalizeFLetter(word) {
     return word[0].toUpperCase() + word.slice(1);
@@ -183,6 +189,7 @@ class ParentBooker extends Component {
             getBooksByType={this.getBooksByType}
             handlePagination={this.handlePagination}
           />
+          {this.state.lendBook ? <ReservationComponent />: ""}
         </>
       </div>
     );
