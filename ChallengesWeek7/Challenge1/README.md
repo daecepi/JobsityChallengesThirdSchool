@@ -20,10 +20,15 @@
 - The point of implementing the reservation form with the DatePicker, part of the component exists (but the implementation will be available during the day)
 
 ## TO DO's (for this week can be seen in each separate README, IMPORTANT TO READ ITS TO DO'S)
-[X] Reused pallete color even in external star-rating-component (with RGB to string conversion) (https://stackoverflow.com/questions/13070054/convert-rgb-strings-to-hex-in-javascript)
-[X] review the amount of energy expressed
+[X] Reused pallete color even in external star-rating-component (with RGB to string conversion)
 [X] Add more security for endpoint (error handling)
 [ ] PUt arrows to change books next to the book component
-[ ] pass props to change the behaviour of redirecting (using the callback of the setState method)
+[X] pass props to change the behaviour of redirecting (using the callback of the setState method)
 [X] includu page count
 [ ] fixing images responsiveness
+[X] improve endpoint callbacks
+[X] Setting up routes
+[X] Improve security
+[X] 404 page
+[X] pagination ()
+[X] improving averall styling

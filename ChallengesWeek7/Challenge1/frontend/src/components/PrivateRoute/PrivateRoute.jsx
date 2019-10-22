@@ -1,18 +1,12 @@
-import React, { Component } from 'react';
-
-
+import React, { Component } from "react";
 
 class PrivateRoute extends Component {
-    state = {  }
+  state = {};
 
-    
-    
-    render() { 
-        const {Component, ...res} = this.props;
-        return ( 
-            <div></div>
-         );
-    }
+  render() {
+    const { Component, ...res } = this.props;
+    return <div></div>;
+  }
 }
- 
+
 export default PrivateRoute;

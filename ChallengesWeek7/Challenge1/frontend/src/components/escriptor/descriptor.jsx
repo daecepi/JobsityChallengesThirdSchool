@@ -9,14 +9,7 @@ import StarRatingComponent from "react-star-rating-component";
 class DescriptorComponent extends Component {
   state = {};
   render() {
-    const {
-      title,
-      authors,
-      release,
-      description,
-      averageRating,
-      pageCount
-    } = this.props;
+    const { title, authors, release, description, averageRating, pageCount } = this.props;
     return (
       <div className="general-hover-container">
         <div className="hover-desc">
@@ -36,12 +29,7 @@ class DescriptorComponent extends Component {
         </div>
         <div>
           <p className="gray-hover-text">RATING</p>
-          <StarRatingComponent
-            name={title}
-            starCount={5}
-            starColor={"#60B5D6"}
-            value={averageRating}
-          />
+          <StarRatingComponent name={title} starCount={5} starColor={"#60B5D6"} value={averageRating} />
         </div>
         <div></div>
       </div>

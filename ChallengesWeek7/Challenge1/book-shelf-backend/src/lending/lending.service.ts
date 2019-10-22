@@ -1,10 +1,10 @@
-import { Injectable} from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 
-import { InjectModel } from "@nestjs/mongoose";
+import { InjectModel } from '@nestjs/mongoose';
 
-import { Model } from "mongoose";
+import { Model } from 'mongoose';
 
-import { Lend } from "./lending.model";
+import { Lend } from './lending.model';
 
 /**
  * CLASS DESTINED TO MANAGE LENDINGS
@@ -12,16 +12,15 @@ import { Lend } from "./lending.model";
  */
 @Injectable()
 export class LendingService {
-    constructor(@InjectModel('Lend') private readonly lendsModel: Model<Lend>){}
+  constructor(@InjectModel('Lend') private readonly lendsModel: Model<Lend>) {}
 
+  async saveLend(lendToInsert: Lend): Promise<Lend | undefined> {
+    //Creating the new lend
+    let lend = new this.lendsModel(lendToInsert);
 
-    async saveLend(lendToInsert: Lend): Promise<Lend | undefined>{
-        //Creating the new lend
-        let lend = new this.lendsModel(lendToInsert);
+    //Save the book to the database
+    let result = await lend.save();
 
-        //Save the book to the database
-        let result = await lend.save();
-
-        return result;
-    }
+    return result;
+  }
 }

@@ -19,13 +19,9 @@ const PrivateRoute = ({ component: Comp, loggedIn, handleLogin, handleLogout, pa
       {...rest}
       render={(props) => {
         const token = localStorage.getItem("access_token");
-        return (token !== null ? 
-          <Comp
-            {...props}
-            {...rest}
-            loggedIn={loggedIn}
-            handleLogout={handleLogout}/>
-         : 
+        return token !== null ? (
+          <Comp {...props} {...rest} loggedIn={loggedIn} handleLogout={handleLogout} />
+        ) : (
           <Redirect
             {...props}
             to={{
@@ -44,35 +40,41 @@ class App extends React.Component {
     loggedIn: false
   };
 
-  componentDidMount(){
+  componentDidMount() {
     let token = localStorage.getItem("access_token");
     console.log(token);
-    if(token){
+    if (token) {
       this.setState({
         loggedIn: true
-      })
+      });
     }
   }
 
   handdleLogout = () => {
     localStorage.removeItem("access_token");
-    this.setState({
-      loggedIn: false
-    }, () =>{
-      window.location = "/login";
-    });
+    this.setState(
+      {
+        loggedIn: false
+      },
+      () => {
+        window.location = "/login";
+      }
+    );
   };
 
   //Function that is in charge of changing the layout
   handleLogin = () => {
     /*const { state = {} } = this.props.location;
     const { prevLocation } = state;*/
-    this.setState({
-      loggedIn: true
-    }, () =>{
-      window.location = "/";
-      //this.props.history.push(prevLocation || "/")
-    });
+    this.setState(
+      {
+        loggedIn: true
+      },
+      () => {
+        window.location = "/";
+        //this.props.history.push(prevLocation || "/")
+      }
+    );
   };
 
   render() {
@@ -81,27 +83,30 @@ class App extends React.Component {
         <Router>
           <Switch>
             <PrivateRoute
-                path="/"
-                exact
-                loggedIn={this.state.loggedIn}
-                handleLogout={this.handdleLogout}
-                component={ParentBooker}
-              />
-              <PrivateRoute
-                path="/city/:name"
-                loggedIn={this.state.loggedIn}
-                handleLogout={this.handdleLogout}
-                component={ParentBooker}
-              />
-              <PrivateRoute
-                path="/type/:name"
-                loggedIn={this.state.loggedIn}
-                handleLogout={this.handdleLogout}
-                component={ParentBooker}
-              />
-              <Route path="/login" render={(match,props) => <Login handleLogin={this.handleLogin} {...match} {...props} />} />
-              <Route path="/register" render={(match, props) => <Register {...props} {...match} />} />
-              <Route component={NotFoundPageComponent} />
+              path="/"
+              exact
+              loggedIn={this.state.loggedIn}
+              handleLogout={this.handdleLogout}
+              component={ParentBooker}
+            />
+            <PrivateRoute
+              path="/city/:name"
+              loggedIn={this.state.loggedIn}
+              handleLogout={this.handdleLogout}
+              component={ParentBooker}
+            />
+            <PrivateRoute
+              path="/type/:name"
+              loggedIn={this.state.loggedIn}
+              handleLogout={this.handdleLogout}
+              component={ParentBooker}
+            />
+            <Route
+              path="/login"
+              render={(match, props) => <Login handleLogin={this.handleLogin} {...match} {...props} />}
+            />
+            <Route path="/register" render={(match, props) => <Register {...props} {...match} />} />
+            <Route component={NotFoundPageComponent} />
           </Switch>
         </Router>
       </div>
