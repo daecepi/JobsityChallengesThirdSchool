@@ -30,5 +30,9 @@
 [X] Setting up routes
 [X] Improve security
 [X] 404 page
-[X] pagination ()
+[X] pagination
 [X] improving averall styling
+[X] add default behaviour in books that doesn't have certain info
+[X] using formik with forms
+[X] modularizing schema for sign up of Formik
+[ ] managing notification with advance extension like react-alert
