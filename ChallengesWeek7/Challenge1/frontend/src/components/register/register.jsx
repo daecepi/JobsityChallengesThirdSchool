@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 
 //Styling imports
 import "./register.scss";
 
 //Components used
-import SearchComponent from "../searchComponent/searchComponent";
+
+//Schemas used
+import {SignupSchema} from "../../schemas/singup";
 
 class Register extends Component {
   state = {
@@ -34,40 +36,48 @@ class Register extends Component {
         <div className="container-register">
           <h2>Register</h2>
           <Formik
-            initialValues={{ name: "", password: "" }}
-            validate={(values) => {
-              let errors = {};
-              if (!values.name) {
-                errors.name = "Required";
-              } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.name)) {
-                errors.name = "Invalid email address";
-              }
-              return errors;
+            initialValues={{
+              identification:'',
+              name: '',
+              lname: '',
+              username: '',
+              password: '',
+              age: '',
+              email: '',
             }}
-            onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-              }, 400);
+            validationSchema={SignupSchema}
+            onSubmit={values => {
+              // same shape as initial values
+              console.log(values);
             }}
           >
-            {({ isSubmitting }) => (
+            {({ errors, touched }) => (
               <Form>
-                <Field
-                  name="name"
-                  render={({ field /* _form */ }) => (
-                    <SearchComponent
-                      {...field}
-                      iconsName="fas fa-address-card"
-                      type="text"
-                      placeholder="Identification..."
-                    />
-                  )}
-                />
-                <ErrorMessage name="name" component="div" />
-                <Field type="password" name="password" />
-                <ErrorMessage name="password" component="div" />
-                <input className="button" type="submit" value="Register" disabled={isSubmitting} />
+                <Field name="identification" />
+                {errors.identification && touched.identification ? (
+                  <div>{errors.identification}</div>
+                ) : null}
+                <Field name="name" />
+                {errors.name && touched.name ? (
+                  <div>{errors.name}</div>
+                ) : null}
+                <Field name="lname" />
+                {errors.lname && touched.lname ? (
+                  <div>{errors.lname}</div>
+                ) : null}
+                <Field name="username" />
+                {errors.username && touched.username ? (
+                  <div>{errors.username}</div>
+                ) : null}
+                <Field name="passsword" type="password" />
+                {errors.passsword && touched.passsword ? (
+                  <div>{errors.passsword}</div>
+                ) : null}
+                <Field name="age" type="number" />
+                {errors.age && touched.age ? <div>{errors.age}</div> : null}
+                <Field name="email" type="email" />
+                {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                <button type="submit">Submit</button>
               </Form>
             )}
           </Formik>

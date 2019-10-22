@@ -11,10 +11,11 @@ import "tippy.js/animations/scale-subtle.css";
 import StarRatingComponent from "react-star-rating-component";
 
 //Hover component
-import DescriptorComponent from "../escriptor/descriptor";
+import DescriptorComponent from "../descriptor/descriptor";
 
 //Bringing styles
 import "./book.scss";
+
 
 class Book extends Component {
   //Check star rating component

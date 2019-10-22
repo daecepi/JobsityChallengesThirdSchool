@@ -106,12 +106,11 @@ export default class SideMenuFiltersComponent extends Component {
             <div key={section.label} className="menu-box">
               <p>{section.label}</p>
 
-              <ul>
+              <ul key={section.label}>
                 {section.items.map((item) => {
                   return (
-                    <Link to={item.to}>
+                    <Link key={item.index} to={item.to}>
                       <li
-                        key={item.index}
                         onClick={() => {
                           this.changeLocation(item.to);
                         }}
