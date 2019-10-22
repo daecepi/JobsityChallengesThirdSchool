@@ -17,7 +17,7 @@
 - IMPORTANT: other filter not appearing in the requirements for the weeks like layout dinamic handling were left as extras (for this or next week to be implemented)
 
 ## Missing
-- The point of implementing the reservation form with the DatePicker, part of the component exists (but the implementation will be available during the day)
+- The point of implementing the reservation form with the DatePicker, part of the component exists (but the implementation will be available during the day in next week's project)
 
 ## TO DO's (for this week can be seen in each separate README, IMPORTANT TO READ ITS TO DO'S)
 [X] Reused pallete color even in external star-rating-component (with RGB to string conversion)
