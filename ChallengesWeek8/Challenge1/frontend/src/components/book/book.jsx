@@ -36,6 +36,7 @@ class Book extends Component {
         placement="right"
         theme="bootstrap"
         offset={0}
+        maxWidth={"200px"}
         hideOnClick={true}
       >
         <div className="book">

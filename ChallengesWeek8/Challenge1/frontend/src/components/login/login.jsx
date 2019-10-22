@@ -12,10 +12,6 @@ import "react-notification-alert/dist/animate.css";
 //Components used
 import SearchComponent from "../searchComponent/searchComponent";
 
-const options = {
-  interesting: "asdasd"
-}
-
 
 class Login extends Component {
   /**
@@ -28,6 +24,24 @@ class Login extends Component {
     message_style: "messages messages-error"
   };
 
+
+  displayNotification = (message) =>{
+    this.refs.notificationAlert.notificationAlert({
+      place: 'br',
+      message: (
+            <div className="notification-container">
+                {message}
+            </div>
+        ),
+      type: 'danger',
+      icon: "now-ui-icons ui-1_bell-53",
+      autoDismiss: 2,
+      closeButton: false
+    });
+    
+  
+  }
+
   authenticate = async (e) => {
     e.preventDefault(); //Prevent default user
 
@@ -36,6 +50,7 @@ class Login extends Component {
 
     //Verifing that the use has input before trying the log in
     if (username === undefined || password === undefined) {
+      this.displayNotification("Primero ingresa credenciales de acceso");
       this.setState({ message: "Primero ingresa credenciales de acceso" });
     } else {
       //Get the data for the request into a variable
@@ -59,13 +74,12 @@ class Login extends Component {
       }).then((res) => res.json());
       if (authResult.error) {
         this.setState({ message: authResult.error });
-        this.refs.notificationAlert.notificationAlert({});
+        this.displayNotification(authResult.error);
         return;
-      } else {
-        this.setState({ message: "Success", message_style: "messages messages-success" });
+      } else if(authResult.access_token){
+        this.displayNotification("Success");
         localStorage.setItem("access_token", authResult["access_token"]);
-
-        console.log(authResult);
+        localStorage.setItem("userInfo", authResult["user"]);
 
         await this.props.handleLogin();
       }
@@ -82,7 +96,6 @@ class Login extends Component {
   };
 
   render() {
-    console.log(options);
     const { username, password, message, message_style } = this.state;
     return (
       <div className="full-container">
