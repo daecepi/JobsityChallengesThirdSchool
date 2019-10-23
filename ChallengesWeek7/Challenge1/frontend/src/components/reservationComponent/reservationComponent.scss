@@ -1,0 +1,9 @@
+//Importing color pallete's variables
+@import '../../ColorTheme.scss';
+
+.reservation-container{
+    display: absolute;
+    height: 100%;
+    width: 100%;
+    background: $primary-dark-transparent;
+}

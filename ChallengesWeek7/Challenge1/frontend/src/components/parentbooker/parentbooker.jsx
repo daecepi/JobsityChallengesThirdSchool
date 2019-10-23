@@ -5,15 +5,21 @@ import "./parentbooker.scss";
 //Components used
 import NavBar from "../navbar/navbar";
 import Books from "../books/books";
+import ReservationComponent from "../reservationComponent/reservationComponent";
 
 class ParentBooker extends Component {
   state = {
     actualPage: 0,
     totalPageCount: 0,
     searchWords: "",
-    books: []
+    books: [],
+    lendBook: false,
+    idToShare: ""
   };
 
+  /**
+   * Funtrion for initialization
+   */
   componentDidMount() {
     let token = localStorage.getItem("access_token");
     if (!token) {
@@ -23,7 +29,7 @@ class ParentBooker extends Component {
   }
 
   /**
-   * Function used to
+   * Function used to handle the paginatio inside application for each query
    */
   handlePagination = (num) => {
     //Get the query params
@@ -52,7 +58,7 @@ class ParentBooker extends Component {
 
   /**
    * Function used to capitilize the first letter of types and cities wanted as API requires in its registries
-   * @param {*} word
+   * @param {*} word : word given to comver to the proper state
    */
   capitalizeFLetter(word) {
     return word[0].toUpperCase() + word.slice(1);
@@ -100,9 +106,11 @@ class ParentBooker extends Component {
     }).then((res) => res.json());
 
     console.log(authResult);
-    if (authResult === 400) {
+    if (authResult.statusCode === 400) {
       alert(authResult.message);
-    } else if (authResult.state === "Success") {
+    }else if(authResult.statusCode === 401){ //Means that token is not valid anymore
+      localStorage.removeItem("access_token");
+    }else if (authResult.state === "Success") {
       //Setting the state that holds the books for updates
       this.setState({
         actualPage: authResult.pageNumber - 1,
@@ -125,8 +133,10 @@ class ParentBooker extends Component {
       }
     }).then((res) => res.json());
     console.log(authResult);
-    /*if (authResult === 400) {
+    if (authResult === 400) {
       alert(authResult.message);
+    }else if(authResult.statusCode === 401){ //Means that token is not valid anymore
+      localStorage.removeItem("access_token");
     } else if(authResult.state === "Success") {
       //Setting the state that holds the books for updates
       this.setState({
@@ -135,7 +145,7 @@ class ParentBooker extends Component {
         resource:  `/city/${city}`,
         books: authResult.books,
       });
-    }*/
+    }
   };
 
   getBooksByWords = async (startIndex = 0) => {
@@ -151,6 +161,8 @@ class ParentBooker extends Component {
 
     if (authResult === 400) {
       alert(authResult.message);
+    }else if(authResult.statusCode === 401){ //Means that token is not valid anymore
+      localStorage.removeItem("access_token");
     } else {
       //Setting the state that holds the books for updates
       this.setState({ books: authResult });
@@ -177,6 +189,7 @@ class ParentBooker extends Component {
             getBooksByType={this.getBooksByType}
             handlePagination={this.handlePagination}
           />
+          {this.state.lendBook ? <ReservationComponent />: ""}
         </>
       </div>
     );

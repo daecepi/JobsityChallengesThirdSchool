@@ -3,6 +3,9 @@ import React from "react"; //Importing react
 //Router affair
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
+//Redux imports
+//import { Provider } from 'react-redux';
+
 import "./App.scss";
 
 //components used
@@ -42,7 +45,7 @@ class App extends React.Component {
 
   componentDidMount() {
     let token = localStorage.getItem("access_token");
-    console.log(token);
+
     if (token) {
       this.setState({
         loggedIn: true
@@ -79,39 +82,41 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <Router>
-          <Switch>
-            <PrivateRoute
-              path="/"
-              exact
-              loggedIn={this.state.loggedIn}
-              handleLogout={this.handdleLogout}
-              component={ParentBooker}
-            />
-            <PrivateRoute
-              path="/city/:name"
-              loggedIn={this.state.loggedIn}
-              handleLogout={this.handdleLogout}
-              component={ParentBooker}
-            />
-            <PrivateRoute
-              path="/type/:name"
-              loggedIn={this.state.loggedIn}
-              handleLogout={this.handdleLogout}
-              component={ParentBooker}
-            />
-            <Route
-              path="/login"
-              render={(match, props) => <Login handleLogin={this.handleLogin} {...match} {...props} />}
-            />
-            <Route path="/register" render={(match, props) => <Register {...props} {...match} />} />
-            <Route component={NotFoundPageComponent} />
-          </Switch>
-        </Router>
-      </div>
+          <div className="App">
+            <Router>
+              <Switch>
+                <PrivateRoute
+                  path="/"
+                  exact
+                  loggedIn={this.state.loggedIn}
+                  handleLogout={this.handdleLogout}
+                  component={ParentBooker}
+                />
+                <PrivateRoute
+                  path="/city/:name"
+                  loggedIn={this.state.loggedIn}
+                  handleLogout={this.handdleLogout}
+                  component={ParentBooker}
+                />
+                <PrivateRoute
+                  path="/type/:name"
+                  loggedIn={this.state.loggedIn}
+                  handleLogout={this.handdleLogout}
+                  component={ParentBooker}
+                />
+                <Route
+                  path="/login"
+                  render={(match, props) => <Login handleLogin={this.handleLogin} {...match} {...props} />}
+                />
+                <Route path="/register" render={(match, props) => <Register {...props} {...match} />} />
+                <Route component={NotFoundPageComponent} />
+              </Switch>
+            </Router>
+          </div>
     );
   }
 }
+
+//<Provider store="">
 
 export default App;

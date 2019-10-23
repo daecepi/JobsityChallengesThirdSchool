@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { Link } from 'react-router-dom';
+
 import { Formik, Form, Field } from "formik";
 
 //Styling imports
@@ -82,6 +84,9 @@ class Register extends Component {
             )}
           </Formik>
         </div>
+        <Link to="/login">
+          <button className="move-button">Go back</button>
+        </Link>
       </div>
     );
   }

@@ -5,15 +5,16 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 //Styles
-import "./login.scss";
+//import "./login.scss";
 
 //External components used
 import NotificationAlert from 'react-notification-alert';
 import "react-notification-alert/dist/animate.css";
 
 
-//Components used
+//Internal components used
 import SearchComponent from "../searchComponent/searchComponent";
+import NotificationComponent from "../Notification/notification";
 
 
 //styled component with syled components
@@ -80,9 +81,7 @@ class Login extends Component {
     this.refs.notificationAlert.notificationAlert({
       place: 'br',
       message: (
-            <div className="notification-container">
-                {message}
-            </div>
+        "asda"
         ),
       type: 'danger',
       icon: "now-ui-icons ui-1_bell-53",
