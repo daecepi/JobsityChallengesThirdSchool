@@ -48,14 +48,13 @@ class ReservationComponent extends Component {
             <DatePicker
               onChange={(date) => this.setEndDate(date)}
               selectsEnd
-              startDate={new Date()}
               minDate={new Date()}
               maxDate={(new Date().getDate() + 15)}
               dateFormat="MMMM d, yyyy h:mm aa"
               showDisabledMonthNavigation
             />
           </div>
-          <input type="submit" className="form-button" value="save reservation" />
+          <input type="submit" className="form-button" onSubmit={this.handleSubmit} value="save reservation" />
         </div>
       </div>
     );
