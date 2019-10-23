@@ -121,7 +121,7 @@ class Login extends Component {
                 onChange={this.handlePasswordChange}
               />
             </div>
-            <input type="submit" className="button" value="Login" />
+            <input type="submit" className="button-submit" value="Login" />
             {message ? <span className={message_style}>{message}</span> : ""}
           </form>
         </div>
@@ -135,3 +135,4 @@ class Login extends Component {
 }
 
 export default Login;
+
