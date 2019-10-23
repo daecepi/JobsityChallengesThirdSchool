@@ -59,7 +59,7 @@ class Books extends Component {
           </div>
           <div id="book-container" className="books">
             {books.map((book) => {
-              return <Book key={book._id} book={book} />;
+              return <Book key={book._id} book={book} setBookToOperate={ this.props.setBookToOperate }/>;
             })}
           </div>
         </div>

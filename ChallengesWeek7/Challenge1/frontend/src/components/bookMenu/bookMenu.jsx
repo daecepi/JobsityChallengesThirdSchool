@@ -11,19 +11,21 @@ class BookMenuComponent extends Component {
   state = {
   }
 
-  handleClick =()=>{
-    console.log("sda")
-  }
 
+  /**
+   * 
+   * The heart icon is for a proccess of adding to favorites
+   * The Book mark is for adding it to the readings (reservation component)
+   * 
+   */
   render() {
-
     return (
       <div onClick={this.props.changeToogle} className={this.props.styles}>
         <div  className="top-book-menu-con">
           <div onClick={this.handleClick} className="favorites-container">
             <i className="fas fa-heart"></i>
           </div>
-          <div onClick={this.handleClick} className="read-later-container">
+          <div onClick={() => { this.props.setBookToOperate(this.props.book) }} className="read-later-container">
             <i className="fas fa-bookmark"></i>
           </div>
         </div>

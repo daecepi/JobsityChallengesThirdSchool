@@ -26,7 +26,6 @@ class Book extends Component {
   }
 
   toggleAppereance= (e)=>{
-    console.log("entre");
     if (this.state.toggle) {
       this.setState({
         toggle: false,
@@ -41,13 +40,6 @@ class Book extends Component {
       styles: "book-menu-container"
     });
   }
-  /*handleMouseOver = (e)=>{
-    e.target.style["z-index"] = "0";
-  }
-
-  handleMouseOut = (e)=>{
-    e.target.style["z-index"] = "10002";
-  }*/
 
   //Check star rating component
   render() {
@@ -84,9 +76,11 @@ class Book extends Component {
               />
               <BookMenuComponent
                 id ={_id+"menu"}
+                book={this.props.book}
                 averageRating={averageRating}
                 styles={this.state.styles}
                 changeToogle={this.changeToogle}
+                setBookToOperate={this.props.setBookToOperate}
               />
             </div>
             <p className="book-title">{title}</p>
