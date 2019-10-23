@@ -17,7 +17,7 @@ import SearchComponent from "../searchComponent/searchComponent";
 
 
 //styled component with syled components
-const Full_div = styled.div`
+const FullDiv = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -89,8 +89,6 @@ class Login extends Component {
       autoDismiss: 2,
       closeButton: false
     });
-    
-  
   }
 
   authenticate = async (e) => {
@@ -149,11 +147,11 @@ class Login extends Component {
   render() {
     const { username, password, message, message_style } = this.state;
     return (
-      <div className="full-container">
-        <div className="container-login">
+      <FullDiv >
+        <ContainerLogin>
           <form onSubmit={this.authenticate}>
-            <h1 className="login-title">Bookshelf Login</h1>
-            <div className="input-container">
+            <LoginTitle>Bookshelf Login</LoginTitle>
+            <InputContainer>
               <SearchComponent
                 type="text"
                 placeholder="Username..."
@@ -161,8 +159,8 @@ class Login extends Component {
                 value={username}
                 onChange={this.handleUsernameChange}
               />
-            </div>
-            <div className="input-container">
+            </InputContainer>
+            <InputContainer>
               <SearchComponent
                 type="password"
                 placeholder="Password..."
@@ -170,16 +168,16 @@ class Login extends Component {
                 value={password}
                 onChange={this.handlePasswordChange}
               />
-            </div>
-            <input type="submit" className="button-submit" value="Login" />
+            </InputContainer>
+            <ButtonSubmit type="submit" className="button-submit" value="Login" />
             {message ? <span className={message_style}>{message}</span> : ""}
           </form>
-        </div>
+        </ContainerLogin>
         <NotificationAlert ref="notificationAlert" />
         <Link to="/register">
           <button className="move-button">Register</button>
         </Link>
-      </div>
+      </FullDiv>
     );
   }
 }
