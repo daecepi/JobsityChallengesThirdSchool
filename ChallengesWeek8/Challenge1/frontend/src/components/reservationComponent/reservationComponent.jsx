@@ -5,12 +5,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 //import styling
-import './ReservationComponent.scss'
+import './reservationComponent.scss'
 
 class ReservationComponent extends Component {
   state = {
     startDate: new Date(),
-    endDate: undefined
+    endDate: new Date()
   };
 
   setStartDate = (startDate) => {
@@ -21,27 +21,40 @@ class ReservationComponent extends Component {
     this.setState({ endDate });
   };
 
+  handleSubmit =(e) => {
+    e.preventDefault();
+    const { startDate, endDate } = this.state;
+
+    console.log(startDate.toString(), endDate.toString());
+  }
+
   render() {
     return (
       <div className="reservation-container">
         <div className="medium-container">
           <h1>ReservationProccess</h1>
-          <DatePicker
-            selected={new Date()}
-            onChange={(date) => setStartDate(date)}
-            selectsStart
-            minDate={startDate}
-            startDate={startDate}
-            endDate={endDate}
-          />
-          <DatePicker
-            onChange={(date) => setEndDate(date)}
-            selectsEnd
-            startDate={new Date()}
-            endDate={endDate}
-            minDate={new Date()}
-            maxDate={new Date().getDate() + 15}
-          />
+          <div className="internal-separator">
+            <DatePicker
+              selected={new Date()}
+              onChange={(date) => this.setStartDate(date)}
+              selectsStart
+              minDate={new Date()}
+              maxDate={new Date().getDate() + 15}
+              dateFormat="MMMM d, yyyy h:mm aa"
+              showDisabledMonthNavigation
+            />
+          </div>
+          <div className="internal-separator">
+            <DatePicker
+              onChange={(date) => this.setEndDate(date)}
+              selectsEnd
+              startDate={new Date()}
+              minDate={new Date()}
+              maxDate={new Date().getDate() + 15}
+              dateFormat="MMMM d, yyyy h:mm aa"
+              showDisabledMonthNavigation
+            />
+          </div>
           <input type="submit" value="save reservation" />
         </div>
       </div>

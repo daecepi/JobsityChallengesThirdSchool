@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import styled from 'styled-components';
+
 import { Link } from "react-router-dom";
 
 //Styles
@@ -12,6 +14,54 @@ import "react-notification-alert/dist/animate.css";
 
 //Components used
 import SearchComponent from "../searchComponent/searchComponent";
+
+
+//styled component with syled components
+const Full_div = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../images/LoginImage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+`
+
+const ContainerLogin = styled.div`
+  background: $secondary-white;
+  box-shadow: 2px 10px 20px 0px black;
+  height: 40%;
+  width: 25%;
+  display: flex;
+  border-radius: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem;
+`
+
+const LoginTitle = styled.h1`
+  justify-self: center;
+  align-self: center;
+  flex-grow: 5;
+  justify-content: center;
+`
+
+const InputContainer = styled.div`
+  width: 90%;
+`
+
+const ButtonSubmit = styled.button`
+  display: block;
+  border-radius: 20px;
+  width: 90%;
+  flex-grow: 1;
+  margin-top: 2%;
+  margin: 8px 0;
+`
+
 
 
 class Login extends Component {
@@ -103,7 +153,7 @@ class Login extends Component {
         <div className="container-login">
           <form onSubmit={this.authenticate}>
             <h1 className="login-title">Bookshelf Login</h1>
-            <div className="input">
+            <div className="input-container">
               <SearchComponent
                 type="text"
                 placeholder="Username..."
@@ -112,7 +162,7 @@ class Login extends Component {
                 onChange={this.handleUsernameChange}
               />
             </div>
-            <div className="input">
+            <div className="input-container">
               <SearchComponent
                 type="password"
                 placeholder="Password..."
@@ -121,7 +171,7 @@ class Login extends Component {
                 onChange={this.handlePasswordChange}
               />
             </div>
-            <input type="submit" className="button" value="Login" />
+            <input type="submit" className="button-submit" value="Login" />
             {message ? <span className={message_style}>{message}</span> : ""}
           </form>
         </div>
