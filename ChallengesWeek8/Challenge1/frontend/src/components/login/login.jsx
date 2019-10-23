@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 //Styles
-//import "./login.scss";
+import "./login.scss";
 
 //External components used
 import NotificationAlert from 'react-notification-alert';
@@ -28,7 +28,7 @@ const FullDiv = styled.div`
   background-image: url("../../images/LoginImage.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-`
+`;
 
 const ContainerLogin = styled.div`
   background: $secondary-white;
@@ -41,18 +41,18 @@ const ContainerLogin = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0.7rem;
-`
+`;
 
 const LoginTitle = styled.h1`
   justify-self: center;
   align-self: center;
   flex-grow: 5;
   justify-content: center;
-`
+`;
 
 const InputContainer = styled.div`
   width: 90%;
-`
+`;
 
 const ButtonSubmit = styled.button`
   display: block;
@@ -61,7 +61,7 @@ const ButtonSubmit = styled.button`
   flex-grow: 1;
   margin-top: 2%;
   margin: 8px 0;
-`
+`;
 
 
 
