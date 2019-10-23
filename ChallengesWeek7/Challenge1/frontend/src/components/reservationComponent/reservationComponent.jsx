@@ -39,7 +39,7 @@ class ReservationComponent extends Component {
               onChange={(date) => this.setStartDate(date)}
               selectsStart
               minDate={new Date()}
-              maxDate={new Date().getDate() + 15}
+              maxDate={(new Date().getDate() + 15)}
               dateFormat="MMMM d, yyyy h:mm aa"
               showDisabledMonthNavigation
             />
@@ -50,12 +50,12 @@ class ReservationComponent extends Component {
               selectsEnd
               startDate={new Date()}
               minDate={new Date()}
-              maxDate={new Date().getDate() + 15}
+              maxDate={(new Date().getDate() + 15)}
               dateFormat="MMMM d, yyyy h:mm aa"
               showDisabledMonthNavigation
             />
           </div>
-          <input type="submit" value="save reservation" />
+          <input type="submit" className="form-button" value="save reservation" />
         </div>
       </div>
     );

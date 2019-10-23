@@ -2,8 +2,43 @@
 @import '../../ColorTheme.scss';
 
 .reservation-container{
-    display: absolute;
-    height: 100%;
-    width: 100%;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right: 0;
     background: $primary-dark-transparent;
+    z-index: 200000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    text-align: center;
+    color: $primary-blue;
+}
+
+.medium-container{
+    border-radius: 30px;
+    padding: 0.5rem;
+    margin: 0.3rem;
+    background: $secondary-white;
+    width: 30%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.internal-separator{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.form-button{
+    height: 1rem;
 }
