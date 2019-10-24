@@ -54,7 +54,9 @@ class ReservationComponent extends Component {
               showDisabledMonthNavigation
             />
           </div>
-          <input type="submit" className="form-button" onSubmit={this.handleSubmit} value="save reservation" />
+          <div className="button-container">
+            <input type="submit" className="form-button" onSubmit={this.handleSubmit} value="save reservation" />
+          </div>
         </div>
       </div>
     );

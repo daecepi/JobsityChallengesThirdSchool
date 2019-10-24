@@ -12,7 +12,14 @@ export const ErroMessageColor = styled.span`
     color: $error-success;
 `
 
+/**
+ * FINISH THIS PART
+ */
 export const NotificationContainer = styled.span`
 
+
+`
+
+export const InternarContainer = styled.div`
 
 `
