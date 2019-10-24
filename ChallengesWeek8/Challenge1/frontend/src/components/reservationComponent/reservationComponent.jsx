@@ -28,10 +28,19 @@ class ReservationComponent extends Component {
     console.log(startDate.toString(), endDate.toString());
   }
 
+  handleClose = (e) => {
+    e.preventDefault();
+
+    this.props.returnModalBack();
+  }
+
   render() {
     return (
       <div className="reservation-container">
         <div className="medium-container">
+          <div onClick={this.handleClose} className="close-container">
+            <p>X</p>
+          </div>
           <h1>ReservationProccess</h1>
           <div className="internal-separator">
             <DatePicker
@@ -39,7 +48,7 @@ class ReservationComponent extends Component {
               onChange={(date) => this.setStartDate(date)}
               selectsStart
               minDate={new Date()}
-              maxDate={new Date().getDate() + 15}
+              maxDate={(new Date().getDate() + 15)}
               dateFormat="MMMM d, yyyy h:mm aa"
               showDisabledMonthNavigation
             />
@@ -48,14 +57,15 @@ class ReservationComponent extends Component {
             <DatePicker
               onChange={(date) => this.setEndDate(date)}
               selectsEnd
-              startDate={new Date()}
               minDate={new Date()}
-              maxDate={new Date().getDate() + 15}
+              maxDate={(new Date().getDate() + 15)}
               dateFormat="MMMM d, yyyy h:mm aa"
               showDisabledMonthNavigation
             />
           </div>
-          <input type="submit" value="save reservation" />
+          <div className="button-container">
+            <input type="submit" className="form-button" onSubmit={this.handleSubmit} value="save reservation" />
+          </div>
         </div>
       </div>
     );

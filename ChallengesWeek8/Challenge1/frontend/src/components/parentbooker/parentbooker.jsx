@@ -13,7 +13,8 @@ class ParentBooker extends Component {
     searchWords: "",
     books: [],
     lendBook: false,
-    idToShare: ""
+    showModal: "", // make sure to delete if not used
+    bookToOperateIn: undefined
   };
 
   /**
@@ -120,6 +121,10 @@ class ParentBooker extends Component {
     }
   };
 
+
+  /**
+   * Function to find books by city
+   */
   getBooksByCity = async (city, startIndex = 0) => {
     const cityCap = this.capitalizeFLetter(city);
 
@@ -147,6 +152,10 @@ class ParentBooker extends Component {
     }
   };
 
+  /**
+   * Function to get books from the server by words
+   * 
+   */
   getBooksByWords = async (startIndex = 0) => {
     let token = localStorage.getItem("access_token");
 
@@ -168,8 +177,21 @@ class ParentBooker extends Component {
     }
   };
 
+  setBookToOperate = (book) => {
+    console.log("entre");
+    this.setState({
+      bookToOperateIn: book,
+      lendBook: true
+    });
+  }
+
+  returnModalBack = () => {
+    this.setState({
+      lendBook: false
+    });
+  }
+
   render() {
-    console.log(this.state);
     const { books, actualPage, totalPageCount } = this.state;
     return (
       <div className="app-container">
@@ -187,8 +209,9 @@ class ParentBooker extends Component {
             getBooksByCity={this.getBooksByCity}
             getBooksByType={this.getBooksByType}
             handlePagination={this.handlePagination}
+            setBookToOperate = {this.setBookToOperate}
           />
-          {this.state.lendBook ? <ReservationComponent />: ""}
+          {this.state.lendBook ? <ReservationComponent returnModalBack={ this.returnModalBack } book={ this.state.bookToOperateIn } />: ""}
         </>
       </div>
     );

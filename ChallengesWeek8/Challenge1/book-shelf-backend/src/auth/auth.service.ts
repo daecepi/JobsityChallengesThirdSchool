@@ -13,19 +13,17 @@ export class AuthService {
    * @param username : contains the username for the user to authenticate
    * @param password : contains the password for the user to authenticate
    */
-  async validateUser(username: string, pass: string) {
+  async validateUser(username: string, password: string) {
     const user = await this.usersService.findOne(username);
 
-    if (!user[0] || !user[0].password) {
-      throw new HttpException('Username or password wrong', 200);
+    if (!user || !user[0].password) {
+      throw new HttpException('User not found', 404);
     }
 
     //Taking the property password out of the object and returning it
-    if (user && user[0].password === pass) {
-      const {password, ...result } = user;
-      return result;
-    }else{
-      return new HttpException("Username or password wrong", 200);
+    if (user && user[0].password === password) {
+      //const {password, ...result } = user;
+      return user;
     }
   }
 
