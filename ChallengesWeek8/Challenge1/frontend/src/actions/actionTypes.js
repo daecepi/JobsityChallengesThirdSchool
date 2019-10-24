@@ -13,6 +13,11 @@ export const GET_BOOKS_BY_TYPE = 'GET_BOOKS_TYPE';
 //Action to find books by the search field
 export const GET_BOOKS_BY_SEARCH = 'GET_BOOKS_SEARCH';
 
+export const GET_BOOK_SUCCESS = 'GET_BOOK_SUCCESS';
+
+export const GET_BOOK_PENDING = 'GET_BOOK_PENDING';
+
+export const GET_BOOKS_ERROR = 'GET_BOOKS_ERROR';
 
 /**
  * LENDING ACTIONS

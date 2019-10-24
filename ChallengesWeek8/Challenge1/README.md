@@ -37,3 +37,5 @@
 [X] modularizing schema for sign up of Formik
 [ ] managing notification with advance extension like react-alert
 [X] modularizing notifications in the entire application 
+[ ] create message handlers for the entire application
+[ ] improve images styles

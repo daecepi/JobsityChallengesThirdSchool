@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { connect } from 'react-redux';
+
 //Styles
 import "./books.scss";
 
@@ -32,6 +34,7 @@ class Books extends Component {
   };
 
   render() {
+    console.log(this.props);
     const { books } = this.props;
     return (
       <div className="section-1">
@@ -92,4 +95,24 @@ class Books extends Component {
   }
 }
 
-export default Books;
+
+//Redux function for this component
+const mapStateToProps = state => {
+  return {
+    books: state.books
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    
+  };
+};
+
+//Functions for redux
+const ConnectedBooks = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Books);
+
+export default ConnectedBooks;

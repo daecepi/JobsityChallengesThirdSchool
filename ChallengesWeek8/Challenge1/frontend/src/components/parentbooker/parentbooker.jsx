@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import "./parentbooker.scss";
 
+//Redux libraries needed
+import { connect } from 'react-redux';
+
+//Action creator
+import { getBooks } from '../../actions/actionCreator';
+
 //Components used
 import NavBar from "../navbar/navbar";
 import Books from "../books/books";
@@ -8,6 +14,7 @@ import ReservationComponent from "../reservationComponent/reservationComponent";
 
 class ParentBooker extends Component {
   state = {
+    baseEndpoint: "http://localhost:5000/books",
     actualPage: 0,
     totalPageCount: 0,
     searchWords: "",
@@ -25,7 +32,8 @@ class ParentBooker extends Component {
     if (!token) {
       return;
     }
-    this.handlePagination(0);
+    this.props.getBooks(this.state.baseEndpoint, 0);
+    //handlePagination(0);
   }
 
   /**
@@ -192,7 +200,7 @@ class ParentBooker extends Component {
   }
 
   render() {
-    const { books, actualPage, totalPageCount } = this.state;
+    const { actualPage, totalPageCount } = this.state;
     return (
       <div className="app-container">
         <>
@@ -202,7 +210,6 @@ class ParentBooker extends Component {
             logout={this.props.handleLogout}
           />
           <Books
-            books={books}
             resource={this.state.resource}
             totalPages={totalPageCount}
             actualPage={actualPage}
@@ -218,4 +225,23 @@ class ParentBooker extends Component {
   }
 }
 
-export default ParentBooker;
+//Redux function for this component
+const mapStateToProps = state => {
+  return {
+    books: state.books
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getBooks: dispatch(getBooks)
+  };
+};
+
+//Functions for redux
+const ConnectedParentBooker = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ParentBooker);
+
+export default ConnectedParentBooker;
