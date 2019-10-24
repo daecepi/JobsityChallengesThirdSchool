@@ -11,7 +11,6 @@ class BookMenuComponent extends Component {
   state = {
   }
 
-
   /**
    * 
    * The heart icon is for a proccess of adding to favorites

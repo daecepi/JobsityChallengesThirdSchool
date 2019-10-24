@@ -3,10 +3,8 @@
 
 .reservation-container{
     position: absolute;
-    top:0;
-    bottom: 0;
-    left:0;
-    right: 0;
+    width: 100vw;
+    height: 100vh;
     background: $primary-dark-transparent;
     z-index: 200000;
     display: flex;
@@ -18,12 +16,16 @@ h1{
     text-align: center;
     color: $primary-blue;
     padding: 5%;
+    font-size: 30px;
+    font-size: 3vw;
 }
 
+/*
+CONTAINER THAT HOLDS THE RESERVATION FORM
+*/
 .medium-container{
     border-radius: 30px;
     padding: 0.5rem;
-    margin: 0.3rem;
     background: $secondary-white;
     width: 30%;
     height: 40%;
@@ -33,19 +35,28 @@ h1{
     justify-content: center;
 }
 
+.close-container{
+    align-self: flex-end;
+    font-size: 2rem;
+}
+
 .internal-separator{
     display: flex;
     justify-content: center;
     width: 100%;
     margin-top: 0.3rem;
     margin-bottom: 0.3rem;
-    background: red;
 }
 
 .button-container{
-    background: red;
+    width: 100%;
+    flex-basis: 10%;
+    display: flex;
+    justify-content: center;
 }
 
 .form-button{
-    height: 500px;
+    height: 100%;
+    width: 50%;
+    border-radius: 20px;
 }
