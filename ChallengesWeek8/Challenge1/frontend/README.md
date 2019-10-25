@@ -17,7 +17,6 @@
 
 ## How to use the project for tests and production
 1. run "npm install" in the project folder to install all packages required by the projects
-2. 
 
 ### Dependencies of the frontend application
 

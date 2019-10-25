@@ -1,14 +1,19 @@
 ### Jobsity bookshelf week 6
 
+## Pre-requisites
+- Install MongoDB
+ -  For windows: [Medium Blog](https://medium.com/@LondonAppBrewery/how-to-download-install-mongodb-on-windows-4ee4b3493514)
+ - dasdas
 ## Installation
 - Backend
 - 1. Enter the folder "book-shelf-backend" made in NestJS
-- 2. run "npm install"
+- 2. run `npm install`
 - 3. The backend on its own contains a README that contains the instruction for the backend setup
 
 - Frontend
 - 1. Enter the folder "frontend" project created by create-react-app
-- 2. run "npm install"
+- 2. run `npm install`
+- 3. Run
 - 3. Follow its own README.md instructions
 
 ## Comments
@@ -22,7 +27,7 @@
 ## TO DO's (for this week can be seen in each separate README, IMPORTANT TO READ ITS TO DO'S)
 - [X] Reused pallete color even in external star-rating-component (with RGB to string conversion)
 - [X] Add more security for endpoint (error handling)
-- [ ] PUt arrows to change books next to the book component
+- [ ] Put arrows to change books next to the book component
 - [X] pass props to change the behaviour of redirecting (using the callback of the setState method)
 - [X] includu page count
 - [ ] fixing images responsiveness
