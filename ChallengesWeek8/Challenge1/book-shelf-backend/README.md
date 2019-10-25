@@ -65,19 +65,19 @@ __User endpoints__
 
 ## TO DO extras
 Not in the challenge
-[x] Use of Nest
-[x] Some tests written
-[X] Fusing the endpoint to use query strings
-[ ] Dockerize the application according to this doc (that show how to do it scalably): https://dev.to/carlillo/part-7-deploy-backend-nestjs-dockerdocker-compose-3cmb
-[ ] Assign secret to a service for it (better practice)
-[X] Limitant of how many results can you get at the same time from the books endpoint
-[ ] Put the frontend in the public's folder that serves the static files
-[x] searching for books in the title
-[X] returning size of the books list per query in the /books endpoint
-[ ] searching for books in the description (still in evaluation of time this week)
-[X] Adding state objects to every endpoint for better evaluation of queries to endpoint
-[ ] usage of nest pagination module next week (for learning purposes the pagination was stablished with mongo's aggregate funtion)
-[ ] Modify to bring only books with whole information
+- [ X ] Use of Nest
+- [ X ] Some tests written
+- [ X ] Fusing the endpoint to use query strings
+- [ ] Dockerize the application according to this doc (that show how to do it scalably): https://dev.to/carlillo/part-7-deploy-backend-nestjs-dockerdocker-compose-3cmb
+- [ ] Assign secret to a service for it (better practice)
+- [ X ] Limitant of how many results can you get at the same time from the books endpoint
+- [ ] Put the frontend in the public's folder that serves the static files
+- [ X ] searching for books in the title
+- [ X ] returning size of the books list per query in the /books endpoint
+- [ ] searching for books in the description (still in evaluation of time this week)
+- [ X ] Adding state objects to every endpoint for better evaluation of queries to endpoint
+- [ ] usage of nest pagination module next week (for learning purposes the pagination was stablished with mongo's aggregate funtion)
+- [ ] Modify to bring only books with whole information
 
 ### Faked infor from the API:
 Information that was generated to books for the sake of this challenge
