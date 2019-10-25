@@ -29,18 +29,18 @@ __To use the application:__
 5. star rating component
 
 ## TO DO
-- [ X ] move to Webpack in new version
+- [X] move to Webpack in new version
 - [ ] salting information (adding security to password)
-- [ X ] Creating a THEME with the colors to use all over the application (to normalize experience)
-- [ X ] Create the registration page (implement and finish the component)
-- [ X ] Add routing
-- [ X ] improve the security
-- [ X ] Stilying for familiarity
-- [ X ] reusabaility of basic components (external star-rating component and datepicker from react components are being used)
-- [ X ] improve dropdown styling even more
+- [X] Creating a THEME with the colors to use all over the application (to normalize experience)
+- [X] Create the registration page (implement and finish the component)
+- [X] Add routing
+- [X] improve the security
+- [X] Stilying for familiarity
+- [X] reusabaility of basic components (external star-rating component and datepicker from react components are being used)
+- [X] improve dropdown styling even more
 - [ ] finish my own rating star component
 - [ ] changing tippy
-- [ X ] put link to return to login in register
+- [X] put link to return to login in register
 - [ ] consult with the mentor the best way to validate token expiration in production (and check if my approach is valid)
 - [ ] update Parent component with props already setup
 - [ ] change switch for if with indexof in routes for parent component

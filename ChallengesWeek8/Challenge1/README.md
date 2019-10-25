@@ -20,23 +20,23 @@
 - The point of implementing the reservation form with the DatePicker, part of the component exists (but the implementation will be available during the day)
 
 ## TO DO's (for this week can be seen in each separate README, IMPORTANT TO READ ITS TO DO'S)
-- [ X ] Reused pallete color even in external star-rating-component (with RGB to string conversion)
-- [ X ] Add more security for endpoint (error handling)
+- [X] Reused pallete color even in external star-rating-component (with RGB to string conversion)
+- [X] Add more security for endpoint (error handling)
 - [ ] PUt arrows to change books next to the book component
-- [ X ] pass props to change the behaviour of redirecting (using the callback of the setState method)
-- [ X ] includu page count
+- [X] pass props to change the behaviour of redirecting (using the callback of the setState method)
+- [X] includu page count
 - [ ] fixing images responsiveness
-- [ X ] improve endpoint callbacks
-- [ X ] Setting up routes
-- [ X ] Improve security
-- [ X ] 404 page
-- [ X ] pagination
-- [ X ] improving averall styling
-- [ X ] add default behaviour in books that doesn't have certain info
-- [ X ] using formik with forms
-- [ X ] modularizing schema for sign up of Formik
+- [X] improve endpoint callbacks
+- [X] Setting up routes
+- [X] Improve security
+- [X] 404 page
+- [X] pagination
+- [X] improving averall styling
+- [X] add default behaviour in books that doesn't have certain info
+- [X] using formik with forms
+- [X] modularizing schema for sign up of Formik
 - [ ] managing notification with advance extension like react-alert
-- [ X ] modularizing notifications in the entire application 
+- [X] modularizing notifications in the entire application 
 - [ ] create message handlers for the entire application
 - [ ] improve images styles
 - [ ] apply filter dimically in fetchBooks funtion
