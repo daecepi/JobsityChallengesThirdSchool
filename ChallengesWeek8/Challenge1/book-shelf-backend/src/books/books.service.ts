@@ -64,7 +64,6 @@ export class BooksService {
       return new HttpException('The start index of the books lookup should be numeric', 400);
     }
 
-    console.log(startIndex);
     const index = parseInt(startIndex);
 
     let filters = {};
