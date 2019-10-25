@@ -1,0 +1,101 @@
+/*:export{
+    primary-white: $primary-white;
+    secondary-white: $secondary-white;
+    third-white: $third-white;
+
+    primary-blue: $primary-blue;
+    letters-blue-darker: $letters-blue-darker;
+    secondary-blue: $secondary-blue;
+
+    primary-dark: $primary-dark;
+    secondary-dark:  $secondary-dark;
+    primary-grey: $primary-grey;
+    secondary-grey: $secondary-grey;
+
+    line-gradient: $line-gradient;
+}*/
+.reservation-container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(4, 29, 41, 0.5);
+  z-index: 200000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+h1 {
+  text-align: center;
+  color: #60b5d6;
+  padding: 5%;
+  font-size: 30px;
+  font-size: 3vw;
+}
+
+/*
+CONTAINER THAT HOLDS THE RESERVATION FORM
+*/
+.medium-container {
+  border-radius: 30px;
+  padding: 0.5rem;
+  background: #f7f3eb;
+  width: 30%;
+  height: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.close-container {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  font-size: 2rem;
+}
+
+.internal-separator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.button-container {
+  width: 100%;
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form-button {
+  height: 100%;
+  width: 50%;
+  border-radius: 20px;
+}
+/*# sourceMappingURL=reservationComponent.css.map */

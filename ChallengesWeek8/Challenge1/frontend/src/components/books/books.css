@@ -1,0 +1,172 @@
+@font-face {
+  font-family: 'PlutonGeneral';
+  src: url("../../fonts/HVD Fonts - PlutoSansCondMedium.otf");
+}
+
+@font-face {
+  font-family: 'SecondTitlePluton';
+  src: url("../../fonts/HVD Fonts - PlutoSansCondExLight.otf");
+}
+
+/*:export{
+    primary-white: $primary-white;
+    secondary-white: $secondary-white;
+    third-white: $third-white;
+
+    primary-blue: $primary-blue;
+    letters-blue-darker: $letters-blue-darker;
+    secondary-blue: $secondary-blue;
+
+    primary-dark: $primary-dark;
+    secondary-dark:  $secondary-dark;
+    primary-grey: $primary-grey;
+    secondary-grey: $secondary-grey;
+
+    line-gradient: $line-gradient;
+}*/
+/*Mixin for side container*/
+.section-1 {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -ms-flex-preferred-size: 95%;
+      flex-basis: 95%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr 1fr;
+      grid-template-columns: 1fr 5fr 1fr;
+}
+
+.header, .section-1 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr 1fr;
+      grid-template-columns: 1fr 5fr 1fr;
+}
+
+.menu-box {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.menu-right {
+  background: #041d29;
+  color: #a09e99;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.7rem;
+  padding-left: 1rem;
+  /* adding margin to side containers*/
+  padding-right: 1rem;
+  /* adding margin to side containers*/
+  padding-top: 1.5rem;
+}
+
+.menu-right p {
+  font-weight: bold;
+  color: #a09e99;
+  font-size: 0.7rem;
+  padding-bottom: 0.4rem;
+}
+
+.menu-right ol {
+  overflow: hidden;
+}
+
+.menu-right li {
+  font-size: 0.75rem;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
+.menu-right a {
+  color: inherit;
+}
+
+.logo {
+  height: 100%;
+}
+
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  background: #f0f0f0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  padding: 1rem 4rem 0rem 4rem;
+}
+
+.content .listing-manipulator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.content .listing-manipulator .content-filter-box a {
+  color: #a09e99;
+}
+
+.content .listing-manipulator h2 {
+  font-size: 1.1rem;
+  font-family: 'SecondTitlePluton', Fallback, sans-serif;
+  font-weight: bold;
+  color: rgba(63, 63, 63, 0.9);
+}
+
+.content .listing-manipulator p {
+  text-decoration: none;
+  color: #a09e99;
+}
+
+.content .listing-manipulator .layout-form-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: space-between;
+  color: #60b5d6;
+}
+
+.content .listing-manipulator .layout-form-box i {
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
+}
+
+.content .listing-manipulator .layout-form-box i:hover {
+  color: #2f97f2;
+}
+
+.content .listing-manipulator .layout-form-box p {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.content .books {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-items: stretch;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+}
+
+.selected {
+  color: #fafcfe;
+}
+/*# sourceMappingURL=books.css.map */

@@ -1,0 +1,33 @@
+.book-menu-container {
+  display: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  /*
+    IMPLEMENT LATER
+    */
+}
+
+.book-menu-container i {
+  color: white;
+}
+
+.book-menu-container .top-book-menu {
+  display: block;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.book-menu-container:hover {
+  display: block;
+}
+
+.occult-class {
+  z-index: 100005;
+  display: block;
+}
+/*# sourceMappingURL=bookMenu.css.map */

@@ -1,0 +1,255 @@
+/*
+  FONTS
+*/
+@font-face {
+  font-family: 'TitlePluton';
+  src: url("./fonts/HVD Fonts - PlutoSansMedium.otf");
+}
+
+/*@font-face{
+  font-family: 'PlutonGeneral';
+  src: url('../fonts/HVD Fonts - PlutoSansCondMedium.otf');
+}
+
+@font-face{
+  font-family: 'SecondTitlePluton';
+  src: url('../fonts/HVD Fonts - PlutoSansCondExLight.otf');
+}*/
+/*
+  Section for color pallete variables
+*/
+/*
+    Section of mixings
+  */
+/*Mixing*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.App {
+  height: 100vh;
+  width: 100vw;
+}
+
+/*Mixin for side container*/
+.section-1 {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -ms-flex-preferred-size: 95%;
+      flex-basis: 95%;
+}
+
+.header, .section-1 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr 1fr;
+      grid-template-columns: 1fr 5fr 1fr;
+}
+
+.menu-box {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.menu-left {
+  font-family: "PlutonGeneral", Fallback, sans-serif;
+  background: var(--primary-dark);
+  font-size: 0.7rem;
+  padding-left: 1rem;
+  /* adding margin to side containers*/
+  padding-right: 1rem;
+  /* adding margin to side containers*/
+  padding-top: 1.5rem;
+}
+
+.menu-left p {
+  font-weight: bold;
+  color: var(--primary-white);
+  font-size: 0.7rem;
+  padding-bottom: 0.4rem;
+}
+
+.menu-left ul {
+  color: var(--primary-blue);
+  list-style-type: none;
+  padding: 0%;
+  text-decoration: none;
+}
+
+.menu-left ul li {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.menu-left ul a {
+  margin-left: 0.5rem;
+}
+
+.menu-left ul a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.menu-right {
+  background: var(--primary-dark);
+  color: var(--primary-grey);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.7rem;
+  padding-left: 1rem;
+  /* adding margin to side containers*/
+  padding-right: 1rem;
+  /* adding margin to side containers*/
+  padding-top: 1.5rem;
+}
+
+.menu-right p {
+  font-weight: bold;
+  color: var(--primary-grey);
+  font-size: 0.7rem;
+  padding-bottom: 0.4rem;
+}
+
+.menu-right ol {
+  overflow: hidden;
+}
+
+.menu-right li {
+  font-size: 0.75rem;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
+.menu-left a, .menu-right a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.element {
+  color: var(--primary-blue);
+}
+
+.logo {
+  height: 100%;
+}
+
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  background: var(--third-white);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  padding: 1rem 4rem 0rem 4rem;
+}
+
+.content .listing-manipulator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  margin-bottom: 1rem;
+}
+
+.content .listing-manipulator .content-filter-box a {
+  text-decoration: none;
+  color: var(--primary-grey);
+}
+
+.content .listing-manipulator h2 {
+  font-size: 1.1rem;
+  font-family: 'SecondTitlePluton', Fallback, sans-serif;
+  font-weight: bold;
+  color: var(--secondary-dark);
+}
+
+.content .listing-manipulator p {
+  text-decoration: none;
+  color: var(--primary-grey);
+}
+
+.content .listing-manipulator .layout-form-box {
+  color: var(--primary-blue);
+}
+
+.content .books {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-items: stretch;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.content .books .book {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-preferred-size: 18%;
+      flex-basis: 18%;
+  margin-left: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  overflow: hidden;
+}
+
+.content .books .book img {
+  width: 15rem;
+  height: 20rem;
+}
+
+.content .books .book .book-title {
+  font-family: "TitlePluton", Fallback, sans-serif;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--secondary-dark);
+}
+
+.selected {
+  color: var(--primary-white);
+}
+
+@media (max-width: 750px) {
+  .content {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .books {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+/*# sourceMappingURL=App.css.map */

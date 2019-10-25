@@ -5,7 +5,7 @@ import "./parentbooker.scss";
 import { connect } from 'react-redux';
 
 //Action creator
-import { getBooks } from '../../actions/actionCreator';
+import { getBooksPending, getBooksSuccess, getBooksError } from '../../actions/actionCreator';
 
 //Components used
 import NavBar from "../navbar/navbar";
@@ -13,6 +13,7 @@ import Books from "../books/books";
 import ReservationComponent from "../reservationComponent/reservationComponent";
 
 class ParentBooker extends Component {
+
   state = {
     baseEndpoint: "http://localhost:5000/books",
     actualPage: 0,
@@ -32,8 +33,8 @@ class ParentBooker extends Component {
     if (!token) {
       return;
     }
-    this.props.getBooks(this.state.baseEndpoint, 0);
-    //handlePagination(0);
+    //this.props.getBooks(this.state.baseEndpoint, 0);
+    this.handlePagination(0);
   }
 
   /**
@@ -42,14 +43,12 @@ class ParentBooker extends Component {
   handlePagination = (num) => {
     //Get the query params
     const path = this.props.match.path;
-    console.log(path);
     switch (path) {
       case "/":
         this.getBooks(num);
         break;
       case "/city/:name":
         const city = this.props.match.params.name;
-        console.log(city);
         this.getBooksByCity(city, num);
         break;
       case "/type/:name":
@@ -61,7 +60,6 @@ class ParentBooker extends Component {
         break;
     }
 
-    console.log(num);
   };
 
   /**
@@ -78,6 +76,11 @@ class ParentBooker extends Component {
    */
   getBooks = async (startIndex = 0) => {
     let token = localStorage.getItem("access_token");
+
+    console.log("entre en books");
+
+    this.props.getBooksPending();
+
     let authResult = await fetch(`http://localhost:5000/books?startIndex=${startIndex}`, {
       method: "GET",
       headers: {
@@ -105,6 +108,8 @@ class ParentBooker extends Component {
   getBooksByType = async (type, startIndex = 0) => {
     const typeCap = this.capitalizeFLetter(type);
 
+
+
     let token = localStorage.getItem("access_token"); //Getting the token for the request
     let authResult = await fetch(`http://localhost:5000/books?startIndex=${startIndex}&type=${typeCap}`, {
       method: "GET",
@@ -113,9 +118,11 @@ class ParentBooker extends Component {
       }
     }).then((res) => res.json());
 
+
     console.log(authResult);
     if (authResult.statusCode === 400) {
       alert(authResult.message);
+      
     }else if(authResult.statusCode === 401){ //Means that token is not valid anymore
       localStorage.removeItem("access_token");
     }else if (authResult.state === "Success") {
@@ -144,7 +151,7 @@ class ParentBooker extends Component {
         Authorization: "Bearer " + token
       }
     }).then((res) => res.json());
-    console.log(authResult);
+    
     if (authResult === 400) {
       alert(authResult.message);
     }else if(authResult.statusCode === 401){ //Means that token is not valid anymore
@@ -173,7 +180,6 @@ class ParentBooker extends Component {
         Authorization: "Bearer " + token
       }
     }).then((res) => res.json());
-    console.log(authResult);
 
     if (authResult === 400) {
       alert(authResult.message);
@@ -186,7 +192,6 @@ class ParentBooker extends Component {
   };
 
   setBookToOperate = (book) => {
-    console.log("entre");
     this.setState({
       bookToOperateIn: book,
       lendBook: true
@@ -200,7 +205,7 @@ class ParentBooker extends Component {
   }
 
   render() {
-    const { actualPage, totalPageCount } = this.state;
+    //const { actualPage, totalPageCount } = this.state;
     return (
       <div className="app-container">
         <>
@@ -211,8 +216,8 @@ class ParentBooker extends Component {
           />
           <Books
             resource={this.state.resource}
-            totalPages={totalPageCount}
-            actualPage={actualPage}
+            totalPages={this.state.totalPages}
+            actualPage={this.state.actualPage}
             getBooksByCity={this.getBooksByCity}
             getBooksByType={this.getBooksByType}
             handlePagination={this.handlePagination}
@@ -234,7 +239,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getBooks: dispatch(getBooks)
+    getBooksPending: () => {
+      dispatch(getBooksPending())
+    },
+    getBooksSuccess: (books) => {
+      dispatch(getBooksSuccess(books))
+    },
+    getBooksError: (err) =>{
+      dispatch(getBooksError(err))
+    }
   };
 };
 
