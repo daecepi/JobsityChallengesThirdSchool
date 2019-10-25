@@ -61,6 +61,13 @@ h2 {
   margin-bottom: 1rem;
 }
 
+label {
+  font-size: 1vw;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  color: #a09e99;
+}
+
 .button-register {
   display: block;
   border-radius: 20px;

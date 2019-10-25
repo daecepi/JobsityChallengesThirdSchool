@@ -30,6 +30,12 @@ h2{
     margin-bottom: 1rem;
 }
 
+label{
+    font-size: 1vw;
+    align-self: flex-start;
+    color: $primary-grey;
+}
+
 .button-register{
     display: block;
     border-radius: 20px;
