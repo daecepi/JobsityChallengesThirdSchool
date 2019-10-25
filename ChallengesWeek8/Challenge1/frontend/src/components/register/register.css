@@ -61,10 +61,6 @@ h2 {
   margin-bottom: 1rem;
 }
 
-.input {
-  width: 90%;
-}
-
 .button-register {
   display: block;
   border-radius: 20px;
@@ -73,7 +69,7 @@ h2 {
       -ms-flex-positive: 1;
           flex-grow: 1;
   margin-top: 2%;
-  margin: 8px 0;
+  margin: 8px 0px;
 }
 
 .move-button {

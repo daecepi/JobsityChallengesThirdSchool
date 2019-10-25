@@ -39,3 +39,7 @@
 [X] modularizing notifications in the entire application 
 [ ] create message handlers for the entire application
 [ ] improve images styles
+[ ] apply filter dimically in fetchBooks funtion
+
+## COOL APPROACHES NOT DONE FOR TIME (for next week)
+- Separing reducers in: books reducer and auth reducer (and then combine then)

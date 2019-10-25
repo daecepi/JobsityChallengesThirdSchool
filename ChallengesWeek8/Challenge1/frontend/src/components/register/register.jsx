@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { Formik, Form, Field } from "formik";
+import { Formik } from "formik";
 
 //Styling imports
 import "./register.scss";
@@ -38,49 +38,103 @@ class Register extends Component {
         <div className="container-register">
           <h2>Register</h2>
           <Formik
-            initialValues={{
-              identification:'',
-              name: '',
-              lname: '',
-              username: '',
-              password: '',
-              age: '',
-              email: '',
+            initialValues={{ email: '', password: '' }}
+            validate={values => {
+              let errors = {};
+              if (!values.email) {
+                errors.email = 'Required';
+              } else if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+              ) {
+                errors.email = 'Invalid email address';
+              }
+              return errors;
             }}
-            validationSchema={SignupSchema}
-            onSubmit={values => {
-              // same shape as initial values
-              console.log(values);
+            onSubmit={(values, { setSubmitting }) => {
+              setTimeout(() => {
+                alert(JSON.stringify(values, null, 2));
+                setSubmitting(false);
+              }, 400);
             }}
           >
-            {({ errors, touched }) => (
-              <Form>
-                <Field name="identification" />
-                {errors.identification && touched.identification ? (
-                  <div>{errors.identification}</div>
-                ) : null}
-                <Field name="name" />
-                {errors.name && touched.name ? (
-                  <div>{errors.name}</div>
-                ) : null}
-                <Field name="lname" />
-                {errors.lname && touched.lname ? (
-                  <div>{errors.lname}</div>
-                ) : null}
-                <Field name="username" />
-                {errors.username && touched.username ? (
-                  <div>{errors.username}</div>
-                ) : null}
-                <Field name="passsword" type="password" />
-                {errors.passsword && touched.passsword ? (
-                  <div>{errors.passsword}</div>
-                ) : null}
-                <Field name="age" type="number" />
-                {errors.age && touched.age ? <div>{errors.age}</div> : null}
-                <Field name="email" type="email" />
-                {errors.email && touched.email ? <div>{errors.email}</div> : null}
-                <button type="submit">Submit</button>
-              </Form>
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting,
+              /* and other goodies */
+            }) => (
+              <form onSubmit={handleSubmit}>
+              <label htmlFor="identification">Identification: </label>
+              <input
+                type="text"
+                name="identification"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.identification}
+              />
+              <p>{errors.identification && touched.identification && errors.identification}</p>
+                <label htmlFor="name">Name: </label>
+                <input
+                  type="text"
+                  name="name"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.name}
+                />
+                <p>{errors.name && touched.name && errors.name}</p>
+                <label htmlFor="lname">Last name: </label>
+                <input
+                  type="text"
+                  name="lname"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.lname}
+                />
+                <p>{errors.lname && touched.lname && errors.lname}</p>
+                <label htmlFor="username">Username: </label>
+                <input
+                  type="text"
+                  name="username"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.username}
+                />
+                <p>{errors.username && touched.username && errors.username}</p>
+                <label htmlFor="password">Password: </label>
+                <input
+                  type="text"
+                  name="password"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                />
+                <p>{errors.password && touched.password && errors.password}</p>
+                <label htmlFor="email">Age: </label>
+                <input
+                  type="number"
+                  name="age"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.age}
+                />
+                <p>{errors.age && touched.age && errors.age}</p>
+                <label htmlFor="email">Email: </label>
+                <input
+                  type="email"
+                  name="email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                />
+                <p>{errors.email && touched.email && errors.email}</p>
+                <button type="submit" className="button-register" disabled={isSubmitting}>
+                  Submit
+                </button>
+              </form>
             )}
           </Formik>
         </div>
