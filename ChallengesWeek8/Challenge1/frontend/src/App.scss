@@ -1,3 +1,6 @@
+//Importing color pallete's variables
+@import './ColorTheme.scss';
+
 /*
   FONTS
 */
@@ -6,33 +9,15 @@
   src: url('./fonts/HVD Fonts - PlutoSansMedium.otf');
 }
 
-/*@font-face{
-  font-family: 'PlutonGeneral';
-  src: url('../fonts/HVD Fonts - PlutoSansCondMedium.otf');
+
+.notification-container{
+  background: $primary-blue-transparent;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  border-radius: 20px;
 }
-
-@font-face{
-  font-family: 'SecondTitlePluton';
-  src: url('../fonts/HVD Fonts - PlutoSansCondExLight.otf');
-}*/
-
-/*
-  Section for color pallete variables
-*/
-  $primary-white:rgba(250, 252, 254, 1);
-  $secondary-white:rgb(247, 243, 235);
-  $third-white: rgb(240, 240, 240);
-
-  $primary-blue:rgb(96, 181, 214);
-  $letters-blue-darker:rgba(47, 151, 242, 1);
-  $secondary-blue:rgba(47, 151, 242, 1);
-  
-  $primary-dark:rgba(4, 29, 41, 1);
-  $secondary-dark: rgba(63, 63, 63, 0.9);
-  $primary-grey:rgb(160, 158, 153);
-  $secondary-grey: rgb(126, 124, 121);
-
-  $line-gradient: linear-gradient(white 0%,white 10%,black 10%, black 80%,white 80%);
 
   /*
     Section of mixings

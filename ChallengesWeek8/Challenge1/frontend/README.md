@@ -48,6 +48,25 @@ __To use the application:__
 [ ] put default image in src folder for books that doesn't have cover
 [ ] Use this package to improve notificationsa all over the app: https://www.npmjs.com/package/react-notification-alert
 
+===========
+FONTS USED
+
+@font-face{
+  font-family: 'TitlePluton';
+  src: url('./fonts/HVD Fonts - PlutoSansMedium.otf');
+}
+
+/*@font-face{
+  font-family: 'PlutonGeneral';
+  src: url('../fonts/HVD Fonts - PlutoSansCondMedium.otf');
+}
+
+@font-face{
+  font-family: 'SecondTitlePluton';
+  src: url('../fonts/HVD Fonts - PlutoSansCondExLight.otf');
+}*/
+
+==========
 # React documentation based readme and components
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

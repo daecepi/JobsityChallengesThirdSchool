@@ -40,3 +40,6 @@ export const LOGIN_USER = 'LOGIN_USER';
 
 //Action to register an user
 export const REGISTER_USER = 'REGISTER_USER';
+
+//Action to recover user data from storage if user didn't closed session
+export const RECOVER_USER = 'RECOVER_USER_DATA';

@@ -1,15 +1,29 @@
-import { GET_BOOK_SUCCESS, GET_BOOK_PENDING, GET_BOOKS_ERROR, LEND_BOOK, RETURN_BOOK } from '../actions/actionTypes';
+import {
+    GET_BOOK_SUCCESS,
+    GET_BOOK_PENDING,
+    GET_BOOKS_ERROR,
+    LEND_BOOK,
+    RETURN_BOOK,
+    RECOVER_USER
+} from '../actions/actionTypes';
 
 
 const initialState = {
-    bookToWork: "",
+    auth: {
+        isAuth: false,
+        user: {},
+    },
     books: [],
-    resource: "",
+    baseEndpoint: "http://localhost:5000/books",
+    actualPage: 0,
+    totalPageCount: 0,
+    searchWords: "",
+    lendBook: false,
+    showModal: "", // make sure to delete if not used
+    bookToOperateIn: undefined
 }
 
 const reducer = (state = initialState, action) => {
-    console.log("Revisa aqui");
-    console.log(action.type);
     //Logic for the user
     switch (action.type) {
         case GET_BOOK_PENDING:
@@ -32,6 +46,13 @@ const reducer = (state = initialState, action) => {
         case RETURN_BOOK:
             return Object.assign({}, state,{
                 pending: true
+            });
+        
+        case RECOVER_USER:
+            return Object.assign({}, state,{
+                auth: {
+                    user: action.payload.user
+                }
             });
         default:
             return state;

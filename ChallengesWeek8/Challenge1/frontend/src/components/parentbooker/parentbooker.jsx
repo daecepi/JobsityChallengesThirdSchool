@@ -5,9 +5,14 @@ import "./parentbooker.scss";
 import { connect } from 'react-redux';
 
 //Action creator
-import { getBooksPending, getBooksSuccess, getBooksError } from '../../actions/actionCreator';
+import { getBooksPending, getBooksSuccess, getBooksError, recoverUser } from '../../actions/actionCreator';
 
-//Components used
+
+//External components used
+import NotificationAlert from 'react-notification-alert';
+import "react-notification-alert/dist/animate.css";
+
+//Internal components used
 import NavBar from "../navbar/navbar";
 import Books from "../books/books";
 import ReservationComponent from "../reservationComponent/reservationComponent";
@@ -26,15 +31,82 @@ class ParentBooker extends Component {
   };
 
   /**
+   * Function to show alerts all over the applcation
+   */
+  displayNotification = (message) =>{
+    this.refs.notificationAlert.notificationAlert({
+      place: 'br',
+      message: (
+            <div className="notification-container">
+                {message}
+            </div>
+        ),
+      type: 'danger',
+      icon: "now-ui-icons ui-1_bell-53",
+      autoDismiss: 2,
+      closeButton: false
+    });
+  }
+
+  /**
    * Funtrion for initialization
    */
   componentDidMount() {
-    let token = localStorage.getItem("access_token");
+    const token = localStorage.getItem("access_token");
     if (!token) {
       return;
     }
+
+    //Recovering users data
+    const user = localStorage.getItem("user");
+    this.props.recoverUser(user);
+
     //this.props.getBooks(this.state.baseEndpoint, 0);
     this.handlePagination(0);
+  }
+
+  fetchBooks = async (endpoint, page, ...filters) => {
+    let url = endpoint+"?page="+page;
+
+    //Applying filters to customize request
+    if(filters.city){
+        url += ("&city="+this.capitalizeFLetter(filters.city));
+    }
+    if(filters.type){
+        url += ("&type="+this.capitalizeFLetter(filters.type));
+    }
+    if (filters.words) {
+        url += ("&words="+this.capitalizeFLetter(filters.words));
+    }
+
+    console.log(url);
+
+    const token = localStorage.getItem("access_token");
+
+    //Fetching the api
+    let authResult = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    }).then((res) => res.json());
+    
+    //Acting according to message
+    if (authResult === 400) {
+      alert(authResult.message);
+    }else if(authResult.statusCode === 401){ //Means that token is not valid anymore
+      localStorage.removeItem("access_token");
+    } else if (authResult.state === "Success") {
+      //Setting the state that holds the books for updates
+      this.props.getBooksSuccess(authResult.books);
+      this.setState({
+        actualPage: authResult.pageNumber - 1,
+        totalPageCount: authResult.totalPages,
+        resource: "/",
+        books: authResult.books
+      });
+    }
+
   }
 
   /**
@@ -59,7 +131,6 @@ class ParentBooker extends Component {
       default:
         break;
     }
-
   };
 
   /**
@@ -92,6 +163,7 @@ class ParentBooker extends Component {
       alert(authResult.message);
     } else if (authResult.state === "Success") {
       //Setting the state that holds the books for updates
+      this.props.getBooksSuccess(authResult.books);
       this.setState({
         actualPage: authResult.pageNumber - 1,
         totalPageCount: authResult.totalPages,
@@ -108,8 +180,6 @@ class ParentBooker extends Component {
   getBooksByType = async (type, startIndex = 0) => {
     const typeCap = this.capitalizeFLetter(type);
 
-
-
     let token = localStorage.getItem("access_token"); //Getting the token for the request
     let authResult = await fetch(`http://localhost:5000/books?startIndex=${startIndex}&type=${typeCap}`, {
       method: "GET",
@@ -117,7 +187,6 @@ class ParentBooker extends Component {
         Authorization: "Bearer " + token
       }
     }).then((res) => res.json());
-
 
     console.log(authResult);
     if (authResult.statusCode === 400) {
@@ -247,6 +316,9 @@ const mapDispatchToProps = dispatch => {
     },
     getBooksError: (err) =>{
       dispatch(getBooksError(err))
+    },
+    recoverUser: (user) => {
+      dispatch(recoverUser(user))
     }
   };
 };

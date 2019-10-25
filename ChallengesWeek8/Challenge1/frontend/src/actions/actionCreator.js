@@ -1,6 +1,6 @@
 
 
-import { GET_BOOK_SUCCESS, GET_BOOK_PENDING, GET_BOOKS_ERROR } from './actionTypes'
+import { GET_BOOK_SUCCESS, GET_BOOK_PENDING, GET_BOOKS_ERROR, RECOVER_USER } from './actionTypes'
 
 /*export const getBooks = () => {
         /et url = endpoint+"?page="+page;
@@ -58,6 +58,15 @@ export function getBooksError (error) {
     return {
         type: GET_BOOKS_ERROR,
         error
-
     }
+}
+
+
+export function recoverUser (user) {
+    return {
+        type: RECOVER_USER,
+        payload: {
+            user
+        }
+    };
 }

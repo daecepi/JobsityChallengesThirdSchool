@@ -39,8 +39,6 @@ class Login extends Component {
       autoDismiss: 2,
       closeButton: false
     });
-    
-  
   }
 
   authenticate = async (e) => {
@@ -73,14 +71,14 @@ class Login extends Component {
         },
         body: formBody
       }).then((res) => res.json());
-      if (authResult.error) {
-        this.setState({ message: authResult.error });
-        this.displayNotification(authResult.error);
+      if (authResult.statusCode === 404) {
+        this.setState({ message: authResult.message });
+        this.displayNotification(authResult.message);
         return;
       } else if(authResult.access_token){
         this.displayNotification("Success");
         localStorage.setItem("access_token", authResult["access_token"]);
-        localStorage.setItem("userInfo", authResult["user"]);
+        localStorage.setItem("user", authResult["user"]);
 
         await this.props.handleLogin();
       }

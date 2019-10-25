@@ -58,14 +58,6 @@
     color: $primary-success;
 }
 
-.notification-container{
-    background: $primary-blue-transparent;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 1.3rem;
-    padding-right: 1.3rem;
-    border-radius: 20px;
-}
 
 @media(max-width: 580px){
     .full-container{

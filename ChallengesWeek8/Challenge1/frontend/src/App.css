@@ -1,3 +1,19 @@
+/*:export{
+    primary-white: $primary-white;
+    secondary-white: $secondary-white;
+    third-white: $third-white;
+
+    primary-blue: $primary-blue;
+    letters-blue-darker: $letters-blue-darker;
+    secondary-blue: $secondary-blue;
+
+    primary-dark: $primary-dark;
+    secondary-dark:  $secondary-dark;
+    primary-grey: $primary-grey;
+    secondary-grey: $secondary-grey;
+
+    line-gradient: $line-gradient;
+}*/
 /*
   FONTS
 */
@@ -6,18 +22,15 @@
   src: url("./fonts/HVD Fonts - PlutoSansMedium.otf");
 }
 
-/*@font-face{
-  font-family: 'PlutonGeneral';
-  src: url('../fonts/HVD Fonts - PlutoSansCondMedium.otf');
+.notification-container {
+  background: rgba(96, 181, 214, 0.5);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  border-radius: 20px;
 }
 
-@font-face{
-  font-family: 'SecondTitlePluton';
-  src: url('../fonts/HVD Fonts - PlutoSansCondExLight.otf');
-}*/
-/*
-  Section for color pallete variables
-*/
 /*
     Section of mixings
   */
