@@ -1,18 +1,32 @@
 ### Jobsity bookshelf week 6
 
 ## Pre-requisites
-- Install MongoDB
- -  For windows: [Medium Blog](https://medium.com/@LondonAppBrewery/how-to-download-install-mongodb-on-windows-4ee4b3493514)
- - dasdas
+- Install MongoDB and set things up
+ - For windows: [Medium Blog](https://medium.com/@LondonAppBrewery/how-to-download-install-mongodb-on-windows-4ee4b3493514)
+ - For mac: [Github_Article](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
+ - linux: [MongoDB_page](https://docs.mongodb.com/manual/administration/install-on-linux/)
+
+## Folders in the project that you will find:
+- __book-shelf-backend folder:__ Folder where the backend of the applcation is.
+- __frontend:__ Folder in which the frontend of the application is located
+- __BD folder:__ contains the book's information to be added to the file
+- __POSTMAN ROUTES:__ a collection of routes to test the API in postman 
+
+## Database preparation:
+- Make sure mongoDB proccess is running properly (thus the database if running)
+- Use the command
+
 ## Installation
-- Backend
-- 1. Enter the folder "book-shelf-backend" made in NestJS
-- 2. run `npm install`
-- 3. The backend on its own contains a README that contains the instruction for the backend setup
+(after having all pre-requisites)
+- Backend:
+ 1. Enter the folder "book-shelf-backend" made in NestJS
+ 2. run `npm install` inside that folder
+ 3. sdasda
+ 4. The backend on its own contains a README that contains the instruction for the backend setup
 
 - Frontend
 - 1. Enter the folder "frontend" project created by create-react-app
-- 2. run `npm install`
+- 2. run `npm install` inside that folder
 - 3. Run
 - 3. Follow its own README.md instructions
 
