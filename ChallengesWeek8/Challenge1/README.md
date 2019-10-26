@@ -2,9 +2,9 @@
 
 ## Pre-requisites
 - Install MongoDB and set things up
- - For windows: [Medium Blog](https://medium.com/@LondonAppBrewery/how-to-download-install-mongodb-on-windows-4ee4b3493514)
- - For mac: [Github_Article](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
- - linux: [MongoDB_page](https://docs.mongodb.com/manual/administration/install-on-linux/)
+  - For windows: [Medium Blog](https://medium.com/@LondonAppBrewery/how-to-download-install-mongodb-on-windows-4ee4b3493514)
+  - For mac: [Github_Article](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
+  - linux: [MongoDB_page](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
 ## Folders in the project that you will find:
 - __book-shelf-backend folder:__ Folder where the backend of the applcation is.
