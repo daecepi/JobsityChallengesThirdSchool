@@ -1,4 +1,14 @@
-# Booksshelf backend week 9
+# Jobsity bookshelf backend section
+State of the bookshelf challenge in week 8 of the proccess
+
+## Pre-requisites
+- **MongoDB**
+  - For windows: [Medium Blog](https://medium.com/@LondonAppBrewery/how-to-download-install-mongodb-on-windows-4ee4b3493514)
+  - For mac: [Github_Article](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
+  - For linux: [MongoDB_page](https://docs.mongodb.com/manual/administration/install-on-linux/)
+- **NodeJs and NPM**
+  - Page to [download](https://nodejs.org/es/download/), [mac_option](https://www.webucator.com/how-to/how-install-nodejs-on-mac.cfm), [linux_option](https://nodejs.org/es/download/package-manager/)
+  - Run `npm install -g npm` or `sudo npm install -g npm` (for linux and mac)
 
 
 ## Setting things up
@@ -46,7 +56,8 @@ __User endpoints__
 - - HEADER: needs an auth token (jwt token)
 - - PUT: bookId: string and userId
 
-# Important approaches
+
+## Important approaches
 - Reuse of BookResolver library done before
 - Use two guarding strategies (a general one with JWT for the endpoints to protect)
 - Usage of mongoose and schemas to keep the app organized
@@ -77,6 +88,10 @@ Not in the challenge
 - [ ] usage of nest pagination module next week (for learning purposes the pagination was stablished with mongo's aggregate funtion)
 - [ ] Modify to bring only books with whole information
 
+## Dependencies
+- Nest and many of its modules modules
+- Mongoose
+- rxjs
 
 # Nest project's important commands
 
@@ -112,3 +127,8 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Authors 
+- **David Eduardo Cermeño Pinzón** - *main developer*
+
+## Acknowledgements
+To jobsity for producing the enviroment of a real exercise of software development

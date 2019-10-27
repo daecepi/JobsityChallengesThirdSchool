@@ -1,12 +1,11 @@
-# Frontend actual state
-## External components used
-- react-star-rating-component (eventhough i am designing mine, was a good oportunity to taste components like this)
-### Bookshelf
-#### Pre-requisites for the project (including the script)
-- NodeJS
-- NPM
-- (The packages on the dependencies to compile section)
+# Jobsity bookshelf frontend section
+State of the bookshelf challenge in week 8 of the proccess.
 
+
+## Pre-requisites
+- **NodeJs and NPM**
+  - Page to [download](https://nodejs.org/es/download/), [mac_option](https://www.webucator.com/how-to/how-install-nodejs-on-mac.cfm), [linux_option](https://nodejs.org/es/download/package-manager/)
+  - Run `npm install -g npm` or `sudo npm install -g npm` (for linux and mac)
 
 ## How to use the script
 1. After cloning or downloading the repository cd into the /Scripts folder
@@ -47,26 +46,23 @@ __To use the application:__
 - [ ] put default image in src folder for books that doesn't have cover
 - [ ] Use this package to improve notificationsa all over the app: https://www.npmjs.com/package/react-notification-alert
 
-===========
-FONTS USED
 
-@font-face{
-  font-family: 'TitlePluton';
-  src: url('./fonts/HVD Fonts - PlutoSansMedium.otf');
-}
+## Dependencies
+- Formik
+- Prettier
+- Reactstrap
+- redux
+- redux-thunk
+- react-router-dom
+- styled components
 
-/*@font-face{
-  font-family: 'PlutonGeneral';
-  src: url('../fonts/HVD Fonts - PlutoSansCondMedium.otf');
-}
+### External components used for time**
+- React-datepicker
+- React-start-rating-component
+- react-notification-alert
 
-@font-face{
-  font-family: 'SecondTitlePluton';
-  src: url('../fonts/HVD Fonts - PlutoSansCondExLight.otf');
-}*/
 
-==========
-# React documentation based readme and components
+# Project overview commands
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -106,24 +102,6 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
 ### Advanced Configuration
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
@@ -135,3 +113,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+## Authors
+- **David Eduardo Cermeño Pinzón** - *main developer*
+
+## Acknowledgements
+To jobsity for producing the enviroment of a real exercise of software development

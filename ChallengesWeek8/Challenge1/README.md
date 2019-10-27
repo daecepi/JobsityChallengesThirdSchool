@@ -1,16 +1,20 @@
-# Jobsity bookshelf week 9
+# Jobsity bookshelf web app
+State of the bookshelf challenge in week 8 of the proccess
 
 ## Pre-requisites
 - Install MongoDB and set things up
   - For windows: [Medium Blog](https://medium.com/@LondonAppBrewery/how-to-download-install-mongodb-on-windows-4ee4b3493514)
   - For mac: [Github_Article](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
-  - linux: [MongoDB_page](https://docs.mongodb.com/manual/administration/install-on-linux/)
+  - For linux: [MongoDB_page](https://docs.mongodb.com/manual/administration/install-on-linux/)
+- NodeJs and NPM
+  - Page to [download](https://nodejs.org/es/download/), [mac_option](https://www.webucator.com/how-to/how-install-nodejs-on-mac.cfm), [linux_option](https://nodejs.org/es/download/package-manager/)
+  - Run `npm install -g npm` or `sudo npm install -g npm` (for linux and mac)
 
 ## Folders in the project that you will find:
 - __book-shelf-backend folder:__ Folder where the backend of the applcation is.
 - __frontend:__ Folder in which the frontend of the application is located
 - __BD folder:__ contains the book's information to be added to the file
-- __POSTMAN ROUTES:__ a collection of routes to test the API using [postman](https://www.getpostman.com/), to import collentions in postman read this [example](https://developer.ft.com/portal/docs-start-install-postman-and-import-request-collection)
+- __Postman routes:__ a collection of routes to test the API using [postman](https://www.getpostman.com/).
 
 
 ## Database preparation:
@@ -25,12 +29,45 @@
 4. OPTIONAL: If you don't want to register users a users.json is also available in the BD folder (run the command that you use to import books and add to it)
 
 ## Installation
-(after having all pre-requisites)
+(after doing all pre-requisites and preparing the database)
+
 - Backend:
  1. use the `cd` command to get into "book-shelf-backend" folder from a terminal
  2. run `npm install` in the command prompt used
  3. then run `npm run start:dev` to run the backend (changes will be loaded automatically after saving)
  4. Read the readme inside the folder for more useful commands
+
+- To work with the routes from postman:
+  1. Import collentions in postman, [example](https://developer.ft.com/portal/docs-start-install-postman-and-import-request-collection)
+  2. If you are new to postman check this cool (playlist)[https://www.youtube.com/embed/YKalL1rVDOE?list=PLM-7VG-sgbtBsenu0CM-UF3NZj3hQFs7E]
+  3. Click send on the **Authentice** route
+  4. Get the token given body section of the answer in the access_token parameter, *see example*:
+  ```
+  #Example body:
+  {
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNvZmkiLCJpYXQiOjE1NzIyMDI5OTksImV4cCI6MTU3MjI4OTM5OX0.-wBPNB4O1aYKxNzC3Jb8ybvAcmvDzcDBZ-acnTJYWj8",
+    "user": {
+        "favorites": [],
+        "readings": [],
+        "laterReadings": [],
+        "_id": "5d9a5f594351ff21e04f3ea3",
+        "identification": "20547854582",
+        "name": "Sofia",
+        "lname": "Peralta",
+        "username": "sofi",
+        "password": "sofi123123",
+        "age": 20,
+        "email": "sofia.p@gmail.com",
+        "__v": 0
+  }
+  }
+  # Access_token given: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNvZmkiLCJpYXQiOjE1NzIyMDI5OTksImV4cCI6MTU3MjI4OTM5OX0.-wBPNB4O1aYKxNzC3Jb8ybvAcmvDzcDBZ-acnTJYWj8
+  ```
+5. See the **routes that require a token** in book-shelf-backend's folder **README.md file**
+6. Put the token in any protected route inside the **headers** portion of the request next to **Bearer**, see example:
+```
+  Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNvZmkiLCJpYXQiOjE1NzIyMDI5OTksImV4cCI6MTU3MjI4OTM5OX0.-wBPNB4O1aYKxNzC3Jb8ybvAcmvDzcDBZ-acnTJYWj8
+  ```
 
 - Frontend
   1. use the `cd` command to get into "frontend" folder from a terminal
@@ -39,10 +76,35 @@
   4. Read the readme inside the folder for more useful commands
 
 
-## For production
+## Deployment
 __IMPORTANT:__ steps 1 and 2 from installation section in this readme are necessary in both frontend and book-shelf-backend folder.
 1. inside frontend folder run `npm run build`
 2. move the content of the generated "build" folder to "public" folder inside "book-shelf-backend" folder
+3. Change the port as wanted in main.ts file
+4. run `npm run start:dev` to compile the project
+5. Copy the project to a desired destination (if still not in it)
+6. run `npm run start:prod` to start the run for production
+
+## Dependencies
+- backend:
+  - Nest and many of its modules modules
+  - Mongoose
+  - rxjs
+
+- frontend:
+  - Formik
+  - Prettier
+  - Reactstrap
+  - redux
+  - redux-thunk
+  - react-router-dom
+  - styled components
+
+  **External components used for time**
+  - React-datepicker
+  - React-start-rating-component
+  - react-notification-alert
+
 
 
 ## Missing
@@ -72,3 +134,9 @@ __IMPORTANT:__ steps 1 and 2 from installation section in this readme are necess
 
 ## COOL APPROACHES NOT DONE FOR TIME (for next week)
 - Separing reducers in: books reducer and auth reducer (and then combine then)
+
+## Authors 
+- **David Eduardo Cermeño Pinzón** - *main developer*
+
+## Acknowledgements
+To jobsity for producing the enviroment of a real exercise of software development
