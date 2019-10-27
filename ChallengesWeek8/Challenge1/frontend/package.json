@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier": "prettier single-quote --arrow-parens always --print-width 120 --write \"**/*.[tj]sx*\""
+    "prettier": "prettier single-quote --arrow-parens always --print-width 120 --write \"**/*.[tj]sx?\""
   },
   "eslintConfig": {
     "extends": "react-app"
