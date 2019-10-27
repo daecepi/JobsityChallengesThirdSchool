@@ -21,7 +21,6 @@ import * as path from 'path';
     MongooseModule.forRoot('mongodb://localhost/BookshelfBD', { useNewUrlParser: true, useUnifiedTopology: true }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
-      renderPath: '/',
     }),
     AuthModule,
     LendingModule,
