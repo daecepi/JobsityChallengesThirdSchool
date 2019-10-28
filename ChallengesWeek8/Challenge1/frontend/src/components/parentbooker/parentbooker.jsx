@@ -57,8 +57,7 @@ class ParentBooker extends Component {
    * @param {Object} filters : object that contains the filters by city, type and words to search for 
    */
   fetchBooks = async (endpoint, page, filters) => {
-    let url = endpoint + "?page=" + page;
-
+    let url = endpoint + "?startIndex=" + page;
     //Applying filters to customize request
     if (filters.city) {
       url += "&city=" + this.capitalizeFLetter(filters.city);
@@ -82,6 +81,8 @@ class ParentBooker extends Component {
       }
     }).then((res) => res.json());
 
+    console.log(authResult);
+
     //Acting according to message
     if (authResult === 400) {
       this.displayNotification(authResult.message);
@@ -90,15 +91,9 @@ class ParentBooker extends Component {
       this.displayNotification("Credentials have expired");
       localStorage.removeItem("access_token");
       localStorage.removeItem("user");
-    } else if (authResult.state === "success") {
+    } else if (authResult.state === "Success") {
       //Setting the state that holds the books for updates
       this.props.getBooksSuccess(authResult.books);
-      this.setState({
-        actualPage: authResult.pageNumber - 1,
-        totalPageCount: authResult.totalPages,
-        resource: "/",
-        books: authResult.books
-      });
     }
   };
 
@@ -110,8 +105,7 @@ class ParentBooker extends Component {
     const path = this.props.match.path;
     switch (path) {
       case "/":
-        this.getBooks(num);
-        //this.fetchBooks(this.props.baseEndpoint, num, {});
+        this.fetchBooks(this.props.baseEndpoint, num, {});
         break;
       case "/city/:name":
         const city = this.props.match.params.name;
