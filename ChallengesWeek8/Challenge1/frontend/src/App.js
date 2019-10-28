@@ -77,8 +77,7 @@ class App extends React.Component {
         loggedIn: true
       },
       () => {
-        window.location = "/";
-        //this.props.history.push(prevLocation || "/")
+        //this.props.history.push("/");
       }
     );
   };
@@ -110,7 +109,7 @@ class App extends React.Component {
                   />
                   <Route
                     path="/login"
-                    render={(match, props) => <Login handleLogin={this.handleLogin} {...match} {...props} />}
+                    render={() => <Login handleLogin={this.handleLogin} {...this.props} />}
                   />
                   <Route path="/register" render={(match, props) => <Register {...props} {...match} />} />
                   <Route component={NotFoundPageComponent} />

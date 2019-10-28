@@ -16,7 +16,7 @@ class SearchComponent extends Component {
         <input
           type={type}
           name={name}
-          className={"normal-size"}
+          className={"primary-input normal-size"}
           placeholder={placeholder}
           onChange={this.handleChange}
         ></input>

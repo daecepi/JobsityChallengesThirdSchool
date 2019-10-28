@@ -64,7 +64,7 @@ class Login extends Component {
       }
       formBody = formBody.join("&");
 
-      let authResult = await fetch("http://localhost:5000/login", {
+      let authResult = await fetch("http://localhost:5000/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -81,6 +81,8 @@ class Login extends Component {
         localStorage.setItem("user", authResult["user"]);
 
         await this.props.handleLogin();
+      }else{
+        this.displayNotification(authResult.message);
       }
     }
   };
