@@ -1,6 +1,9 @@
 # Jobsity bookshelf web app
 State of the bookshelf challenge in week 8 of the proccess
 
+### News:
+- **Breaking change**: some fields in the database were renamed (check versioning for more info) and DATABASE preparation for new installation
+
 ## Pre-requisites
 - Install MongoDB and set things up
   - For windows: [Medium Blog](https://medium.com/@LondonAppBrewery/how-to-download-install-mongodb-on-windows-4ee4b3493514)
@@ -18,10 +21,13 @@ State of the bookshelf challenge in week 8 of the proccess
 
 
 ## Database preparation:
-- Make sure mongoDB proccess is running properly (thus the database if running).
+1. Make sure mongoDB proccess is running properly (thus the database if running before continuing).
+2. If a version **previous to October 25 (2019)** of the database is installed on your system please follow steps bellow
+  1. Enter a command line as you would to execute `mongod` command and run the  command `mongo` instead.
+  2. Follow this [example](https://www.tutorialkart.com/mongodb/mongodb-delete-database/) to drop the **database with the name "BookshelfBD"** .
 
-### Steps to prepare dabase
-1. If your mongodb bin folder is added to Path of your system (therefore any command in there can be opened in the console just by adding it) got to the next step IF NOT move inside your terminal to the BIN folder of your MongoDB installation
+### Steps to prepare database
+1. If your mongodb bin folder is added to Path of your system (therefore any command in there can be opened in the console just by adding it) got to the next step IF NOT move inside your terminal to the BIN folder of your MongoDB installation.
 2. locate the BooksInfo.json inside the BD folder and copy the path to it (this is the information of the books)
 3. Run the command shown below putting the path that you copied instead of "[PATH_IN_YOUR_COMPUTER]" (with the MongoDB database working)
 - ON MAC/LINUX `./mongoimport --db BookshelfBD --collection books --type json --file "[PATH_IN_YOUR_COMPUTER]/BooksInfo.json" --jsonArray`
@@ -135,8 +141,15 @@ __IMPORTANT:__ steps 1 and 2 from installation section in this readme are necess
 ## COOL APPROACHES NOT DONE FOR TIME (for next week)
 - Separing reducers in: books reducer and auth reducer (and then combine then)
 
+## Version release
+**(Only breaking changes from last versions are referenced for brevity)**
+- *Version 1.0.0*: Vanilla javascript, SCSS and HTML5 for UI and NodeJS server
+- *Version 2.0.0*: Usage of react for UI
+- **Version 3.0.0**: Usage of redux along side React (fields renamed on database schema **New database import required**)
+
 ## Authors 
 - **David Eduardo Cermeño Pinzón** - *main developer*
 
 ## Acknowledgements
 To jobsity for producing the enviroment of a real exercise of software development
+- [Polyglot_article](https://www.thepolyglotdeveloper.com/2015/05/use-regex-to-test-password-strength-in-javascript/) for its strong password's regular expression (used for fast development in register component)
