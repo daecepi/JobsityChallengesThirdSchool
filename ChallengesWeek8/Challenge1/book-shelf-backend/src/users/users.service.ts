@@ -19,13 +19,13 @@ export class UsersService {
    * Contains the user to update in the database
    * @param userToInsert : user that will be stored in the database
    */
-  async insertUser(userToInsert: User): Promise<{state: string, user: ReturnUser} | any> {
+  async insertUser(userToInsert: User): Promise<{ state: string; user: ReturnUser } | any> {
     let user = new this.userModel(userToInsert);
     let result = await user.save();
 
-    const {password, ...userSaved} = result['_doc'];
+    const { password, ...userSaved } = result['_doc'];
 
-    return {state: "success", user: userSaved};
+    return { state: 'success', user: userSaved };
   }
 
   /**

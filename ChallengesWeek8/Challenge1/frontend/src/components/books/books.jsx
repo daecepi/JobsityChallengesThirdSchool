@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 //Styles
 import "./books.scss";
@@ -34,7 +34,6 @@ class Books extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { books } = this.props;
     return (
       <div className="section-1">
@@ -62,7 +61,7 @@ class Books extends Component {
           </div>
           <div id="book-container" className="books">
             {books.map((book) => {
-              return <Book key={book._id} book={book} setBookToOperate={ this.props.setBookToOperate }/>;
+              return <Book key={book._id} book={book} setBookToOperate={this.props.setBookToOperate} />;
             })}
           </div>
         </div>
@@ -95,18 +94,15 @@ class Books extends Component {
   }
 }
 
-
 //Redux function for this component
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     books: state.books
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    
-  };
+const mapDispatchToProps = (dispatch) => {
+  return {};
 };
 
 //Functions for redux

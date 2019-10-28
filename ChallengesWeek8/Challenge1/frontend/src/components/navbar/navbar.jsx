@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 
+import { connect } from "react-redux";
+
+import { withRouter } from "react-router-dom";
+
+import { logoutUser } from "../../actions/actionCreator";
+
 //Styles
 import "./navbar.scss";
 
@@ -12,8 +18,18 @@ import SearchComponent from "../searchComponent/searchComponent";
 class NavBar extends Component {
   state = {};
 
+  handdleLogout = () => {
+    //Removing information from the storage
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("user");
+
+    //Logging out on redux thus in the entire app
+    this.props.logoutUser();
+
+    this.props.history.push("/login"); //Redirecting to login page
+  };
+
   render() {
-    const { logout } = this.props;
     return (
       <header className="header">
         <div className="logo">
@@ -54,7 +70,7 @@ class NavBar extends Component {
                     <button>Account Settings</button>
                   </li>
                   <li>
-                    <button onClick={logout}>Log Out</button>
+                    <button onClick={this.handdleLogout}>Log Out</button>
                   </li>
                 </ul>
               </div>
@@ -66,4 +82,15 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logoutUser: () => {
+      dispatch(logoutUser());
+    }
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(withRouter(NavBar));

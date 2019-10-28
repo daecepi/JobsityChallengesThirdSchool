@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 
+import { connect } from "react-redux";
+
 import { Link, withRouter } from "react-router-dom";
+
+import { loginUser } from "../../actions/actionCreator";
 
 //Styles
 import "./login.scss";
 
 //External components used
-import NotificationAlert from 'react-notification-alert';
+import NotificationAlert from "react-notification-alert";
 import "react-notification-alert/dist/animate.css";
-
 
 //Components used
 import SearchComponent from "../searchComponent/searchComponent";
-
 
 class Login extends Component {
   /**
@@ -25,21 +27,16 @@ class Login extends Component {
     message_style: "messages messages-error"
   };
 
-
-  displayNotification = (message) =>{
+  displayNotification = (message) => {
     this.refs.notificationAlert.notificationAlert({
-      place: 'br',
-      message: (
-            <div className="notification-container">
-                {message}
-            </div>
-        ),
-      type: 'danger',
+      place: "br",
+      message: <div className="notification-container">{message}</div>,
+      type: "danger",
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 2,
       closeButton: false
     });
-  }
+  };
 
   authenticate = async (e) => {
     e.preventDefault(); //Prevent default user
@@ -74,15 +71,18 @@ class Login extends Component {
       if (authResult.statusCode === 404) {
         this.setState({ message: authResult.message });
         this.displayNotification(authResult.message);
-      } else if(authResult.access_token){
+      } else if (authResult.access_token) {
         this.displayNotification("Success"); // Showing success message to the user
 
         //Saving user info for further needs
         localStorage.setItem("access_token", authResult["access_token"]);
         localStorage.setItem("user", authResult["user"]);
 
+        //Login user
+        this.props.loginUser(authData["user"]);
+
         this.props.history.push("/"); //Going to the homepage after login
-      }else{
+      } else {
         this.displayNotification(authResult.message);
       }
     }
@@ -135,5 +135,15 @@ class Login extends Component {
   }
 }
 
-export default withRouter(Login);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: (user) => {
+      dispatch(loginUser(user));
+    }
+  };
+};
 
+export default connect(
+  null,
+  mapDispatchToProps
+)(withRouter(Login));

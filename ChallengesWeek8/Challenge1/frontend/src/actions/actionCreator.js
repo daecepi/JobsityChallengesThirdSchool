@@ -1,72 +1,65 @@
+import {
+  GET_BOOK_SUCCESS,
+  GET_BOOK_PENDING,
+  GET_BOOKS_ERROR,
+  LOGIN_USER,
+  LOGOUT_USER,
+  MARK_USER_RECOVERY
+} from "./actionTypes";
 
-
-import { GET_BOOK_SUCCESS, GET_BOOK_PENDING, GET_BOOKS_ERROR, RECOVER_USER } from './actionTypes'
-
-/*export const getBooks = () => {
-        /et url = endpoint+"?page="+page;
-
-        if(filters.city){
-            url += ("&city="+filters.city);
-        }
-        if(filters.type){
-            url += ("&type="+filters.type);
-        }
-        if (filters.words) {
-            url += ("&words="+filters.words);
-        }
-
-        console.log("added");
-        console.log(url);
-
-        //Getting token
-        let token = localStorage.getItem("access_token");
-
-        //dispatch(getBooksPending);
-        fetch("http://localhost:5000/books", {
-                method: "GET",
-                headers: {
-                Authorization: "Bearer " + token
-            }
-        }).then(res => res.json()).then((books) => {
-            //dispatch(getBooksSuccess(books));
-        }).catch((err) => {
-            //dispatch(getBooksError(err));
-        });
-
-        console.log("Inside ation creator");
-    
-};*/
-
-export function getBooksSuccess (books) {
-    console.log(books);
-    return {
-        type: GET_BOOK_SUCCESS,
-        payload: {
-            books
-        }
+export function getBooksSuccess(books) {
+  return {
+    type: GET_BOOK_SUCCESS,
+    payload: {
+      books
     }
+  };
 }
 
-export function getBooksPending () {
-    console.log("pensding");
-    return {
-        type: GET_BOOK_PENDING
-    }
+export function getBooksPending() {
+  return {
+    type: GET_BOOK_PENDING
+  };
 }
 
-export function getBooksError (error) {
-    return {
-        type: GET_BOOKS_ERROR,
-        error
-    }
+export function getBooksError(error) {
+  return {
+    type: GET_BOOKS_ERROR,
+    error
+  };
 }
 
+/**
+ * ACTION CREATORS FOR USER HANDLING
+ */
 
-export function recoverUser (user) {
-    return {
-        type: RECOVER_USER,
-        payload: {
-            user
-        }
-    };
+/**
+ * Action creator to log a user
+ * @param {*} user : contains the user logged in
+ */
+export function loginUser(user) {
+  return {
+    type: LOGIN_USER,
+    payload: {
+      user
+    }
+  };
+}
+
+/**
+ * Action to logout a user from the entire app
+ */
+export function logoutUser() {
+  return {
+    type: LOGOUT_USER
+  };
+}
+
+/**
+ * Disable the flag that controls the initial recovery of the user data
+ */
+export function markUseRecovery() {
+  return {
+    type: MARK_USER_RECOVERY
+  };
 }

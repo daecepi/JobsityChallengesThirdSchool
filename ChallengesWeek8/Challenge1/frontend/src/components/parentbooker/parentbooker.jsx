@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import "./parentbooker.scss";
 
 //Redux libraries needed
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 //Action creator
-import { getBooksPending, getBooksSuccess, getBooksError, recoverUser } from '../../actions/actionCreator';
-
+import { getBooksPending, getBooksSuccess, getBooksError } from "../../actions/actionCreator";
 
 //External components used
-import NotificationAlert from 'react-notification-alert';
+import NotificationAlert from "react-notification-alert";
 import "react-notification-alert/dist/animate.css";
 
 //Internal components used
@@ -18,7 +17,6 @@ import Books from "../books/books";
 import ReservationComponent from "../reservationComponent/reservationComponent";
 
 class ParentBooker extends Component {
-
   state = {
     baseEndpoint: "http://localhost:5000/api/books",
     actualPage: 0,
@@ -33,50 +31,37 @@ class ParentBooker extends Component {
   /**
    * Function to show alerts all over the applcation
    */
-  displayNotification = (message) =>{
+  displayNotification = (message) => {
     this.refs.notificationAlert.notificationAlert({
-      place: 'br',
-      message: (
-            <div className="notification-container">
-                {message}
-            </div>
-        ),
-      type: 'danger',
+      place: "br",
+      message: <div className="notification-container">{message}</div>,
+      type: "danger",
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 2,
       closeButton: false
     });
-  }
+  };
 
   /**
    * Funtrion for initialization
    */
   componentDidMount() {
-    const token = localStorage.getItem("access_token");
-    if (!token) {
-      return;
-    }
-
-    //Recovering users data
-    const user = localStorage.getItem("user");
-    this.props.recoverUser(user);
-
     //this.props.fetchBooks(this.state.baseEndpoint, 0);
     this.handlePagination(0);
   }
 
   fetchBooks = async (endpoint, page, ...filters) => {
-    let url = endpoint+"?page="+page;
+    let url = endpoint + "?page=" + page;
 
     //Applying filters to customize request
-    if(filters.city){
-        url += ("&city="+this.capitalizeFLetter(filters.city));
+    if (filters.city) {
+      url += "&city=" + this.capitalizeFLetter(filters.city);
     }
-    if(filters.type){
-        url += ("&type="+this.capitalizeFLetter(filters.type));
+    if (filters.type) {
+      url += "&type=" + this.capitalizeFLetter(filters.type);
     }
     if (filters.words) {
-        url += ("&words="+this.capitalizeFLetter(filters.words));
+      url += "&words=" + this.capitalizeFLetter(filters.words);
     }
 
     const token = localStorage.getItem("access_token");
@@ -88,11 +73,12 @@ class ParentBooker extends Component {
         Authorization: "Bearer " + token
       }
     }).then((res) => res.json());
-    
+
     //Acting according to message
     if (authResult === 400) {
       alert(authResult.message);
-    }else if(authResult.statusCode === 401){ //Means that token is not valid anymore
+    } else if (authResult.statusCode === 401) {
+      //Means that token is not valid anymore
       localStorage.removeItem("access_token");
     } else if (authResult.state === "Success") {
       //Setting the state that holds the books for updates
@@ -104,8 +90,7 @@ class ParentBooker extends Component {
         books: authResult.books
       });
     }
-
-  }
+  };
 
   /**
    * Function used to handle the paginatio inside application for each query
@@ -123,7 +108,6 @@ class ParentBooker extends Component {
         break;
       case "/type/:name":
         const type = this.props.match.params.name;
-        console.log(type);
         this.getBooksByType(type, num);
         break;
       default:
@@ -146,8 +130,6 @@ class ParentBooker extends Component {
   getBooks = async (startIndex = 0) => {
     let token = localStorage.getItem("access_token");
 
-    console.log("entre en books");
-
     this.props.getBooksPending();
 
     let authResult = await fetch(`http://localhost:5000/api/books?startIndex=${startIndex}`, {
@@ -156,8 +138,6 @@ class ParentBooker extends Component {
         Authorization: "Bearer " + token
       }
     }).then((res) => res.json());
-    console.log("result");
-    console.log(authResult);
 
     if (authResult === 400) {
       alert(authResult.message);
@@ -170,8 +150,7 @@ class ParentBooker extends Component {
         resource: "/",
         books: authResult.books
       });
-    }else{
-
+    } else {
     }
   };
 
@@ -190,13 +169,12 @@ class ParentBooker extends Component {
       }
     }).then((res) => res.json());
 
-    console.log(authResult);
     if (authResult.statusCode === 400) {
       alert(authResult.message);
-      
-    }else if(authResult.statusCode === 401){ //Means that token is not valid anymore
+    } else if (authResult.statusCode === 401) {
+      //Means that token is not valid anymore
       localStorage.removeItem("access_token");
-    }else if (authResult.state === "Success") {
+    } else if (authResult.state === "Success") {
       //Setting the state that holds the books for updates
       this.setState({
         actualPage: authResult.pageNumber - 1,
@@ -206,7 +184,6 @@ class ParentBooker extends Component {
       });
     }
   };
-
 
   /**
    * Function to find books by city
@@ -222,25 +199,26 @@ class ParentBooker extends Component {
         Authorization: "Bearer " + token
       }
     }).then((res) => res.json());
-    
+
     if (authResult === 400) {
       alert(authResult.message);
-    }else if(authResult.statusCode === 401){ //Means that token is not valid anymore
+    } else if (authResult.statusCode === 401) {
+      //Means that token is not valid anymore
       localStorage.removeItem("access_token");
-    } else if(authResult.state === "Success") {
+    } else if (authResult.state === "Success") {
       //Setting the state that holds the books for updates
       this.setState({
-        actualPage: (authResult.pageNumber-1),
+        actualPage: authResult.pageNumber - 1,
         totalPageCount: authResult.totalPages,
-        resource:  `/city/${city}`,
-        books: authResult.books,
+        resource: `/city/${city}`,
+        books: authResult.books
       });
     }
   };
 
   /**
    * Function to get books from the server by words
-   * 
+   *
    */
   getBooksByWords = async (startIndex = 0) => {
     let token = localStorage.getItem("access_token");
@@ -254,7 +232,8 @@ class ParentBooker extends Component {
 
     if (authResult === 400) {
       alert(authResult.message);
-    }else if(authResult.statusCode === 401){ //Means that token is not valid anymore
+    } else if (authResult.statusCode === 401) {
+      //Means that token is not valid anymore
       localStorage.removeItem("access_token");
     } else {
       //Setting the state that holds the books for updates
@@ -267,24 +246,20 @@ class ParentBooker extends Component {
       bookToOperateIn: book,
       lendBook: true
     });
-  }
+  };
 
   returnModalBack = () => {
     this.setState({
       lendBook: false
     });
-  }
+  };
 
   render() {
     //const { actualPage, totalPageCount } = this.state;
     return (
       <div className="app-container">
         <>
-          <NavBar
-            handleSearch={this.getBooksByWords}
-            searchValue={this.state.searchWords}
-            logout={this.props.handleLogout}
-          />
+          <NavBar handleSearch={this.getBooksByWords} searchValue={this.state.searchWords} />
           <Books
             resource={this.state.resource}
             totalPages={this.state.totalPages}
@@ -292,11 +267,15 @@ class ParentBooker extends Component {
             getBooksByCity={this.getBooksByCity}
             getBooksByType={this.getBooksByType}
             handlePagination={this.handlePagination}
-            setBookToOperate = {this.setBookToOperate}
+            setBookToOperate={this.setBookToOperate}
           />
-          {this.state.lendBook ? <ReservationComponent returnModalBack={ this.returnModalBack } book={ this.state.bookToOperateIn } />: ""}
+          {this.state.lendBook ? (
+            <ReservationComponent returnModalBack={this.returnModalBack} book={this.state.bookToOperateIn} />
+          ) : (
+            ""
+          )}
         </>
-        
+
         <NotificationAlert ref="notificationAlert" />
       </div>
     );
@@ -304,25 +283,22 @@ class ParentBooker extends Component {
 }
 
 //Redux function for this component
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     books: state.books
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getBooksPending: () => {
-      dispatch(getBooksPending())
+      dispatch(getBooksPending());
     },
     getBooksSuccess: (books) => {
-      dispatch(getBooksSuccess(books))
+      dispatch(getBooksSuccess(books));
     },
-    getBooksError: (err) =>{
-      dispatch(getBooksError(err))
-    },
-    recoverUser: (user) => {
-      dispatch(recoverUser(user))
+    getBooksError: (err) => {
+      dispatch(getBooksError(err));
     }
   };
 };

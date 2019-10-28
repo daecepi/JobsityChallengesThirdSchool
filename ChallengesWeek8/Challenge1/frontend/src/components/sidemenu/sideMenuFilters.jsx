@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 import { withRouter } from "react-router-dom";
 
@@ -106,18 +106,18 @@ class SideMenuFiltersComponent extends Component {
               <ul key={section.label}>
                 {section.items.map((item) => {
                   return (
-                      <li
-                        key={item.index}
-                        onClick={() => {
-                          this.changeLocation(item.to);
-                        }}
-                        className={item.to === this.props.resource ? "selected" : ""}
-                      >
-                        <i className={item.logoClasses}></i>
-                        <button className={item.to === this.props.resource ? "selected" : "element"}>
-                          {item.section}
-                        </button>
-                      </li>
+                    <li
+                      key={item.index}
+                      onClick={() => {
+                        this.changeLocation(item.to);
+                      }}
+                      className={item.to === this.props.resource ? "selected" : ""}
+                    >
+                      <i className={item.logoClasses}></i>
+                      <button className={item.to === this.props.resource ? "selected" : "element"}>
+                        {item.section}
+                      </button>
+                    </li>
                   );
                 })}
               </ul>
@@ -129,4 +129,4 @@ class SideMenuFiltersComponent extends Component {
   }
 }
 
-export default withRouter(SideMenuFiltersComponent)
+export default withRouter(SideMenuFiltersComponent);

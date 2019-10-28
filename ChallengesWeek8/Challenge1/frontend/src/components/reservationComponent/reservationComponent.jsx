@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 //DatePicker used
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 //import styling
-import './reservationComponent.scss'
+import "./reservationComponent.scss";
 
 class ReservationComponent extends Component {
   state = {
@@ -21,18 +21,16 @@ class ReservationComponent extends Component {
     this.setState({ endDate });
   };
 
-  handleSubmit =(e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const { startDate, endDate } = this.state;
-
-    console.log(startDate.toString(), endDate.toString());
-  }
+  };
 
   handleClose = (e) => {
     e.preventDefault();
 
     this.props.returnModalBack();
-  }
+  };
 
   render() {
     return (
@@ -48,7 +46,7 @@ class ReservationComponent extends Component {
               onChange={(date) => this.setStartDate(date)}
               selectsStart
               minDate={new Date()}
-              maxDate={(new Date().getDate() + 15)}
+              maxDate={new Date().getDate() + 15}
               dateFormat="MMMM d, yyyy h:mm aa"
               showDisabledMonthNavigation
             />
@@ -58,7 +56,7 @@ class ReservationComponent extends Component {
               onChange={(date) => this.setEndDate(date)}
               selectsEnd
               minDate={new Date()}
-              maxDate={(new Date().getDate() + 15)}
+              maxDate={new Date().getDate() + 15}
               dateFormat="MMMM d, yyyy h:mm aa"
               showDisabledMonthNavigation
             />

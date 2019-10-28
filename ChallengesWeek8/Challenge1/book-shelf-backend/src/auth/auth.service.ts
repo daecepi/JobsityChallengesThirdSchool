@@ -22,10 +22,10 @@ export class AuthService {
 
     //Taking the property password out of the object and returning it
     if (user && user[0].password === passwordGiven) {
-      const {password, ...result } = user[0]['_doc'];
+      const { password, ...result } = user[0]['_doc'];
       return result;
-    }else{
-      return new HttpException("Combination of user and password not found", 401);
+    } else {
+      return new HttpException('Combination of user and password not found', 401);
     }
   }
 

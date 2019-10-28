@@ -17,10 +17,9 @@ export class UsersController {
     @Body('age') age: number,
     @Body('email') email: string,
   ) {
-
     //Checking all the info required for a user is complete
-    if(!identification || !name || !lname || !username || !password || !password || !age || !email){
-      return new HttpException("Information to register a user not complete.", 400);
+    if (!identification || !name || !lname || !username || !password || !password || !age || !email) {
+      return new HttpException('Information to register a user not complete.', 400);
     }
 
     //Check for username already in use
@@ -53,7 +52,7 @@ export class UsersController {
   @Get('/validateLogin')
   async validateLogin() {
     //The request will fail before getting here if token has expired
-    return {state: "success"}; // so we return a success message
+    return { state: 'success' }; // so we return a success message
   }
 
   /**
