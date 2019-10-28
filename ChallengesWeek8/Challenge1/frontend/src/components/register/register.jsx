@@ -34,9 +34,6 @@ class Register extends Component {
    * @param user : recieves all the properties that a user needs for its registration
    */
   registerUsing = async (newUser) => {
-    //Get the data for the request into a variable
-    console.log(newUser);
-
     //Build the form-urlencoded version of it
     let formBody = [];
     for (let property in newUser) {

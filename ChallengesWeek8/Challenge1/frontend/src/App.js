@@ -16,6 +16,7 @@ import ParentBooker from "./components/parentbooker/parentbooker";
 import Login from "./components/login/login";
 import Register from "./components/register/register";
 import NotFoundPageComponent from "./components/NotFoundPage/NotFoundPage";
+import YetToComeComponent from "./components/yetToComeComponent/yetToComeComponent";
 
 //Privater route
 const PrivateRoute = ({ component: Comp, loggedIn, handleLogin, handleLogout, path, ...rest }) => {
@@ -68,20 +69,6 @@ class App extends React.Component {
     );
   };
 
-  //Function that is in charge of changing the layout
-  handleLogin = () => {
-    /*const { state = {} } = this.props.location;
-    const { prevLocation } = state;*/
-    this.setState(
-      {
-        loggedIn: true
-      },
-      () => {
-        //this.props.history.push("/");
-      }
-    );
-  };
-
   render() {
     return (
           <Provider store={store}>
@@ -107,9 +94,40 @@ class App extends React.Component {
                     handleLogout={this.handdleLogout}
                     component={ParentBooker}
                   />
+                  <PrivateRoute
+                    path="/user/loans"
+                    exact
+                    loggedIn={this.state.loggedIn}
+                    handleLogout={this.handdleLogout}
+                    component={YetToComeComponent}
+                  />
+                  <PrivateRoute
+                    path="/user/:id/readings"
+                    loggedIn={this.state.loggedIn}
+                    handleLogout={this.handdleLogout}
+                    component={YetToComeComponent}
+                  />
+                  <PrivateRoute
+                    path="/user/:id/history"
+                    loggedIn={this.state.loggedIn}
+                    handleLogout={this.handdleLogout}
+                    component={YetToComeComponent}
+                  />
+                  <PrivateRoute
+                    path="/user/:id/later"
+                    loggedIn={this.state.loggedIn}
+                    handleLogout={this.handdleLogout}
+                    component={YetToComeComponent}
+                  />
+                  <PrivateRoute
+                    path="/user/:id/favorites"
+                    loggedIn={this.state.loggedIn}
+                    handleLogout={this.handdleLogout}
+                    component={YetToComeComponent}
+                  />
                   <Route
                     path="/login"
-                    render={() => <Login handleLogin={this.handleLogin} {...this.props} />}
+                    render={() => <Login {...this.props} />}
                   />
                   <Route path="/register" render={(match, props) => <Register {...props} {...match} />} />
                   <Route component={NotFoundPageComponent} />

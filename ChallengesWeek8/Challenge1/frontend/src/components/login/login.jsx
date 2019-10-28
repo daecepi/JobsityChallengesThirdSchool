@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 //Styles
 import "./login.scss";
@@ -74,13 +74,14 @@ class Login extends Component {
       if (authResult.statusCode === 404) {
         this.setState({ message: authResult.message });
         this.displayNotification(authResult.message);
-        return;
       } else if(authResult.access_token){
-        this.displayNotification("Success");
+        this.displayNotification("Success"); // Showing success message to the user
+
+        //Saving user info for further needs
         localStorage.setItem("access_token", authResult["access_token"]);
         localStorage.setItem("user", authResult["user"]);
 
-        await this.props.handleLogin();
+        this.props.history.push("/"); //Going to the homepage after login
       }else{
         this.displayNotification(authResult.message);
       }
@@ -134,5 +135,5 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
 

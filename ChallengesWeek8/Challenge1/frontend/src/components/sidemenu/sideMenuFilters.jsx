@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import "./sideMenuFilters.scss";
 
-export default class SideMenuFiltersComponent extends Component {
+class SideMenuFiltersComponent extends Component {
   state = {
     selectedItemIndex: 0,
     sections: [
@@ -91,11 +91,8 @@ export default class SideMenuFiltersComponent extends Component {
     ]
   };
 
-  changeLocation = (index) => {
-    window.location = index;
-    /*this.setState({
-      selectedItemIndex: index
-    });*/
+  changeLocation = (resource) => {
+    this.props.history.push(resource);
   };
 
   render() {
@@ -109,8 +106,8 @@ export default class SideMenuFiltersComponent extends Component {
               <ul key={section.label}>
                 {section.items.map((item) => {
                   return (
-                    <Link key={item.index} to={item.to}>
                       <li
+                        key={item.index}
                         onClick={() => {
                           this.changeLocation(item.to);
                         }}
@@ -121,7 +118,6 @@ export default class SideMenuFiltersComponent extends Component {
                           {item.section}
                         </button>
                       </li>
-                    </Link>
                   );
                 })}
               </ul>
@@ -132,3 +128,5 @@ export default class SideMenuFiltersComponent extends Component {
     );
   }
 }
+
+export default withRouter(SideMenuFiltersComponent)
