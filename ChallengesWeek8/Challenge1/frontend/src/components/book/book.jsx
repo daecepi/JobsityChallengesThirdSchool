@@ -38,7 +38,7 @@ const ImageContainer = styled.div`
 const ImgRef = styled.img`
   position: relative;
   width: 100%;
-  height: auto;
+  height: 100%;
   z-index: 10000;
 `;
 
@@ -100,9 +100,9 @@ class Book extends Component {
         offset={0}
         hideOnClick={true}
       >
-        <div className="book">
-          <div className="image-container">
-            <img
+        <BookDiv>
+          <ImageContainer>
+            <ImgRef
               id={_id}
               className="img-ref"
               onClick={this.toggleAppereance}
@@ -121,8 +121,8 @@ class Book extends Component {
               changeToogle={this.changeToogle}
               setBookToOperate={this.props.setBookToOperate}
             />
-          </div>
-          <p className="book-title">{title}</p>
+          </ImageContainer>
+          <BookTitle>{title}</BookTitle>
           <p className="authors">{authors.join(", ")}</p>
           <RatingContainer>
             <StarRatingComponent
@@ -133,7 +133,7 @@ class Book extends Component {
               value={averageRating}
             />
           </RatingContainer>
-        </div>
+        </BookDiv>
       </Tippy>
     );
   }
