@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Inject, Param, HttpException, UseGuards, Put } from '@nestjs/common';
+import { Controller, Body, Param, HttpException, UseGuards, Get, Post, Put } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport';
 import { BooksService } from '../books/books.service';
@@ -44,6 +44,16 @@ export class UsersController {
       laterReadings: [],
     });
     return result;
+  }
+
+  /**
+   * Endpoint to verify that token given is still valid
+   */
+  @UseGuards(AuthGuard('jwt'))
+  @Get('/validateLogin')
+  async validateLogin() {
+    //The request will fail before getting here if token has expired
+    return {state: "success"}; // so we return a success message
   }
 
   /**
