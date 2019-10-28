@@ -45,22 +45,20 @@ class PrivateRouteComponent extends Component {
   };
 
   moveRoute = (state) => {
-    if (!state) {
-      this.props.history.push("Login");
+    if (state) {
+      this.props.history.push("/");
+    }else{
+      this.props.history.push("/Login");
     }
   };
 
   render() {
-    console.log(this.props);
     const { component: Comp, path, ...rest } = this.props;
-    if (this.props.userRecoveryTried === undefined) {
-      this.validateLogin(Comp, path, rest).then((state) => {
-        this.moveRoute(state);
+    if (this.props.userRecoveryTried === false) {
+      this.validateLogin().then((logged) => {
+        this.moveRoute(logged);
       });
-      console.log("entre");
-      return <CheckingStorageComponent />;
     }
-    console.log("sali");
     return (
       <Route
         path={path}
@@ -84,7 +82,6 @@ class PrivateRouteComponent extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state); 
   return {
     userIsLogged: state.user.userIsLogged,
     userRecoveryTried: state.user.userRecoveryTried

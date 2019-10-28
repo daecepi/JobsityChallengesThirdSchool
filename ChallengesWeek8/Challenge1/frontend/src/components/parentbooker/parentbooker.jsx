@@ -72,6 +72,8 @@ class ParentBooker extends Component {
 
     const token = localStorage.getItem("access_token");
 
+    this.props.getBooksPending();
+
     //Fetching the api
     let authResult = await fetch(url, {
       method: "GET",
@@ -88,8 +90,9 @@ class ParentBooker extends Component {
       this.displayNotification("Credentials have expired");
       localStorage.removeItem("access_token");
       localStorage.removeItem("user");
-    } else if (authResult.state === "Success") {
+    } else if (authResult.state === "success") {
       //Setting the state that holds the books for updates
+      console.log(authResult);
       this.props.getBooksSuccess(authResult.books);
       this.setState({
         actualPage: authResult.pageNumber - 1,
@@ -108,7 +111,9 @@ class ParentBooker extends Component {
     const path = this.props.match.path;
     switch (path) {
       case "/":
-        this.getBooks(num);
+        console.log("base endpoint");
+        console.log(this.props.baseEndpoint);
+        this.fetchBooks(this.props.baseEndpoint, num, {});
         break;
       case "/city/:name":
         const city = this.props.match.params.name;
