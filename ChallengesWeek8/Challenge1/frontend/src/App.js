@@ -1,7 +1,7 @@
 import React from "react"; //Importing react
 
 //Router affair
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //Import to make store available to every component
 import { Provider } from 'react-redux';
@@ -12,6 +12,7 @@ import store from './store/store';
 import "./App.scss";
 
 //components used
+import PrivateRouteComponent from "./components/PrivateRoute/PrivateRoute";
 import ParentBooker from "./components/parentbooker/parentbooker";
 import Login from "./components/login/login";
 import Register from "./components/register/register";
@@ -19,28 +20,18 @@ import NotFoundPageComponent from "./components/NotFoundPage/NotFoundPage";
 import YetToComeComponent from "./components/yetToComeComponent/yetToComeComponent";
 
 //Privater route
-const PrivateRoute = ({ component: Comp, loggedIn, handleLogin, handleLogout, path, ...rest }) => {
+/*const PrivateRoute = ({ component: Comp, loggedIn, handleLogin, handleLogout, path, ...rest }) => {
   return (
     <Route
       path={path}
       {...rest}
       render={(props) => {
         const token = localStorage.getItem("access_token");
-        return token !== null ? (
-          <Comp {...props} {...rest} loggedIn={loggedIn} handleLogout={handleLogout} />
-        ) : (
-          <Redirect
-            {...props}
-            to={{
-              pathname: "/login",
-              state: { prevLocation: "currentLocation" }
-            }}
-          />
-        );
+        
       }}
     />
   );
-};
+};*/
 
 class App extends React.Component {
   state = {
@@ -75,51 +66,51 @@ class App extends React.Component {
             <div className="App">
               <Router>
                 <Switch>
-                  <PrivateRoute
+                  <PrivateRouteComponent
                     path="/"
                     exact
                     loggedIn={this.state.loggedIn}
                     handleLogout={this.handdleLogout}
                     component={ParentBooker}
                   />
-                  <PrivateRoute
+                  <PrivateRouteComponent
                     path="/city/:name"
                     loggedIn={this.state.loggedIn}
                     handleLogout={this.handdleLogout}
                     component={ParentBooker}
                   />
-                  <PrivateRoute
+                  <PrivateRouteComponent
                     path="/type/:name"
                     loggedIn={this.state.loggedIn}
                     handleLogout={this.handdleLogout}
                     component={ParentBooker}
                   />
-                  <PrivateRoute
+                  <PrivateRouteComponent
                     path="/user/loans"
                     exact
                     loggedIn={this.state.loggedIn}
                     handleLogout={this.handdleLogout}
                     component={YetToComeComponent}
                   />
-                  <PrivateRoute
+                  <PrivateRouteComponent
                     path="/user/:id/readings"
                     loggedIn={this.state.loggedIn}
                     handleLogout={this.handdleLogout}
                     component={YetToComeComponent}
                   />
-                  <PrivateRoute
+                  <PrivateRouteComponent
                     path="/user/:id/history"
                     loggedIn={this.state.loggedIn}
                     handleLogout={this.handdleLogout}
                     component={YetToComeComponent}
                   />
-                  <PrivateRoute
+                  <PrivateRouteComponent
                     path="/user/:id/later"
                     loggedIn={this.state.loggedIn}
                     handleLogout={this.handdleLogout}
                     component={YetToComeComponent}
                   />
-                  <PrivateRoute
+                  <PrivateRouteComponent
                     path="/user/:id/favorites"
                     loggedIn={this.state.loggedIn}
                     handleLogout={this.handdleLogout}

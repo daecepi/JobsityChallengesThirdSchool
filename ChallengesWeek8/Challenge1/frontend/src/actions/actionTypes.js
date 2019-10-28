@@ -38,8 +38,8 @@ export const RETURN_BOOK = 'RETURN_BOOK';
 //Action destined to authentica an user that is goind to log in
 export const LOGIN_USER = 'LOGIN_USER';
 
-//Action to register an user
-export const REGISTER_USER = 'REGISTER_USER';
+//Action to logout user
+export const LOGOUT_USER = 'LOGOUT_USER';
 
 //Action to recover user data from storage if user didn't closed session
 export const RECOVER_USER = 'RECOVER_USER_DATA';

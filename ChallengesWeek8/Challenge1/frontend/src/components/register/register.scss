@@ -14,7 +14,12 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
     padding-right: 1rem;
-    padding-left: 1rem;;
+    padding-left: 1rem;
+
+    
+    p{
+        font-size: 0.9vh;
+    }
 }
 
 form{
@@ -59,9 +64,6 @@ label{
     border-radius: 10px;
 }
 
-p{
-    font-size: 0.9vh;
-}
 
 @media(max-width: 580px){
     .container-register{

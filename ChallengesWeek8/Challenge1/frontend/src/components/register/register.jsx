@@ -50,12 +50,11 @@ class Register extends Component {
       },
       body: formBody
     }).then((res) => res.json());
-    console.log('result');
-    console.log(authResult);
+
+    //validations after message
     if (authResult.statusCode === 404) {
       this.displayNotification(authResult.message);
     } else if(authResult.state === "success"){
-      console.log("entre");
       this.displayNotification("success");
       this.props.history.push("/login");
     }else{

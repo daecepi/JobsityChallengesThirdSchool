@@ -20,7 +20,7 @@ import ReservationComponent from "../reservationComponent/reservationComponent";
 class ParentBooker extends Component {
 
   state = {
-    baseEndpoint: "http://localhost:5000/books",
+    baseEndpoint: "http://localhost:5000/api/books",
     actualPage: 0,
     totalPageCount: 0,
     searchWords: "",
@@ -61,7 +61,7 @@ class ParentBooker extends Component {
     const user = localStorage.getItem("user");
     this.props.recoverUser(user);
 
-    //this.props.getBooks(this.state.baseEndpoint, 0);
+    //this.props.fetchBooks(this.state.baseEndpoint, 0);
     this.handlePagination(0);
   }
 
@@ -78,8 +78,6 @@ class ParentBooker extends Component {
     if (filters.words) {
         url += ("&words="+this.capitalizeFLetter(filters.words));
     }
-
-    console.log(url);
 
     const token = localStorage.getItem("access_token");
 
@@ -142,7 +140,7 @@ class ParentBooker extends Component {
   }
 
   /**
-   * FUnction used to get all books from the api
+   * Function used to get all books from the api
    *
    */
   getBooks = async (startIndex = 0) => {
@@ -152,12 +150,14 @@ class ParentBooker extends Component {
 
     this.props.getBooksPending();
 
-    let authResult = await fetch(`http://localhost:5000/books?startIndex=${startIndex}`, {
+    let authResult = await fetch(`http://localhost:5000/api/books?startIndex=${startIndex}`, {
       method: "GET",
       headers: {
         Authorization: "Bearer " + token
       }
     }).then((res) => res.json());
+    console.log("result");
+    console.log(authResult);
 
     if (authResult === 400) {
       alert(authResult.message);
@@ -170,6 +170,8 @@ class ParentBooker extends Component {
         resource: "/",
         books: authResult.books
       });
+    }else{
+
     }
   };
 
@@ -181,7 +183,7 @@ class ParentBooker extends Component {
     const typeCap = this.capitalizeFLetter(type);
 
     let token = localStorage.getItem("access_token"); //Getting the token for the request
-    let authResult = await fetch(`http://localhost:5000/books?startIndex=${startIndex}&type=${typeCap}`, {
+    let authResult = await fetch(`http://localhost:5000/api/books?startIndex=${startIndex}&type=${typeCap}`, {
       method: "GET",
       headers: {
         Authorization: "Bearer " + token
@@ -214,7 +216,7 @@ class ParentBooker extends Component {
 
     let token = localStorage.getItem("access_token"); // Getting the token for the request
 
-    let authResult = await fetch(`http://localhost:5000/books?startIndex=${startIndex}&city=${cityCap}`, {
+    let authResult = await fetch(`http://localhost:5000/api/books?startIndex=${startIndex}&city=${cityCap}`, {
       method: "GET",
       headers: {
         Authorization: "Bearer " + token
@@ -243,7 +245,7 @@ class ParentBooker extends Component {
   getBooksByWords = async (startIndex = 0) => {
     let token = localStorage.getItem("access_token");
 
-    let authResult = await fetch(`http://localhost:5000/books?startIndex=${startIndex}&words=${this.state.words}`, {
+    let authResult = await fetch(`http://localhost:5000/api/books?startIndex=${startIndex}&words=${this.state.words}`, {
       method: "GET",
       headers: {
         Authorization: "Bearer " + token
@@ -294,6 +296,8 @@ class ParentBooker extends Component {
           />
           {this.state.lendBook ? <ReservationComponent returnModalBack={ this.returnModalBack } book={ this.state.bookToOperateIn } />: ""}
         </>
+        
+        <NotificationAlert ref="notificationAlert" />
       </div>
     );
   }
