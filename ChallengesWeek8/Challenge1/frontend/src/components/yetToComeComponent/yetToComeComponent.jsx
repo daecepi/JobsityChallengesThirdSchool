@@ -2,17 +2,49 @@ import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
 
+
+//STYLING
+import styled from 'styled-components';
+import { secondaryWhite, secondaryBlue, thirdDark, primaryBlue } from '../../styles/colors';
+
+//Common styled components
+import { FullContainer } from '../../styles/index';
+
+
+const YetContainer = styled.div`
+    background: ${ secondaryWhite };
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+`;
+
+const StyledP = styled.p`
+  color: ${thirdDark};
+`;
+
+
+const StyledH1 = styled.h1`
+  color: ${secondaryBlue};
+  padding-bottom: 0.5rem;
+`;
+
+const StyledA = styled.p`
+  color: ${primaryBlue};
+  text-decoration: none;
+`;
+
 class YetToComeComponent extends Component {
-  state = {};
+  
   render() {
     return (
-      <div className="full-container">
-        <div className="yet-container">
-          <h1>Page still in proccess</h1>
-          <p>This page is still being made (sorry for the inconvenience).</p>
-          <Link to="/">Go home</Link>
-        </div>
-      </div>
+      <FullContainer>
+        <YetContainer>
+          <StyledH1>Page still in proccess</StyledH1>
+          <StyledP>This page is still being made (sorry for the inconvenience).</StyledP>
+          <Link style={{ textDecoration: 'none' }} to="/"><StyledA>Go home</StyledA></Link>
+        </YetContainer>
+      </FullContainer>
     );
   }
 }

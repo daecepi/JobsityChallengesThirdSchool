@@ -14,8 +14,6 @@ import StarRatingComponent from "react-star-rating-component";
 import DescriptorComponent from "../descriptor/descriptor";
 import BookMenuComponent from "../bookMenu/bookMenu";
 
-//Bringing styles
-import "./book.scss";
 
 //STYLING
 import styled from 'styled-components';
