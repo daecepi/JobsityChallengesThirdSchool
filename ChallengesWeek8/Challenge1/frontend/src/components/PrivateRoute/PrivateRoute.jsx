@@ -6,7 +6,6 @@ import { Route, Redirect, withRouter } from "react-router-dom";
 
 //Actions used
 import { loginUser, markUseRecovery } from "../../actions/actionCreator";
-import CheckingStorageComponent from "../checkingStorage/checkingStorage";
 
 class PrivateRouteComponent extends Component {
   /**
