@@ -17,6 +17,48 @@ import BookMenuComponent from "../bookMenu/bookMenu";
 //Bringing styles
 import "./book.scss";
 
+//STYLING
+import styled from 'styled-components';
+import { secondaryDark } from '../../styles/colors';
+
+const BookDiv = styled.div`
+  display: flex;
+  flex-basis: 18%;
+  margin-left: auto;
+  flex-flow: column;
+  overflow: hidden;
+`;
+
+const ImageContainer = styled.div`
+  flex-basis: 83%;
+  position: relative;
+  z-index: 1;
+`;
+
+const ImgRef = styled.img`
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 10000;
+`;
+
+//Style for the books title inthe container
+const BookTitle = styled.p`
+  font-family: "TitlePluton", Fallback, sans-serif;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: ${secondaryDark};
+`;
+
+const RatingContainer = styled.div`
+  align-self: flex-start;
+  justify-self: flex-start;
+`;
+
+
 class Book extends Component {
   state = {
     toggle: true,
@@ -82,7 +124,7 @@ class Book extends Component {
           </div>
           <p className="book-title">{title}</p>
           <p className="authors">{authors.join(", ")}</p>
-          <div className="rating-container">
+          <RatingContainer>
             <StarRatingComponent
               name={"rate" + _id}
               starCount={5}
@@ -90,7 +132,7 @@ class Book extends Component {
               emptyStarColor={"#F0F0F0"} /* color of non-selected icons, default `#333` */
               value={averageRating}
             />
-          </div>
+          </RatingContainer>
         </div>
       </Tippy>
     );
