@@ -17,6 +17,12 @@ export class UsersController {
     @Body('age') age: number,
     @Body('email') email: string,
   ) {
+
+    //Checking all the info required for a user is complete
+    if(!identification || !name || !lname || !username || !password || !password || !age || !email){
+      return new HttpException("Information to register a user not complete.", 400);
+    }
+
     //Check for username already in use
     let userExistence = await this.userService.findOne(username);
 

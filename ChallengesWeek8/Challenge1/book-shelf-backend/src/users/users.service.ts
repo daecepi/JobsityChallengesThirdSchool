@@ -5,6 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
 import { User } from './users.model';
+import { ReturnUser } from './returnUser.model';
 import { BooksService } from '../books/books.service';
 
 @Injectable()
@@ -18,11 +19,13 @@ export class UsersService {
    * Contains the user to update in the database
    * @param userToInsert : user that will be stored in the database
    */
-  async insertUser(userToInsert: User): Promise<User | undefined> {
+  async insertUser(userToInsert: User): Promise<{state: string, user: ReturnUser} | any> {
     let user = new this.userModel(userToInsert);
     let result = await user.save();
 
-    return result;
+    const {password, ...userSaved} = result['_doc'];
+
+    return {state: "success", user: userSaved};
   }
 
   /**
