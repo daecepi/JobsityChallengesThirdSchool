@@ -23,7 +23,6 @@ class ReservationComponent extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { startDate, endDate } = this.state;
   };
 
   handleClose = (e) => {

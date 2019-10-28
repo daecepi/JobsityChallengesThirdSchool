@@ -4,6 +4,52 @@ import { withRouter } from "react-router-dom";
 
 import "./sideMenuFilters.scss";
 
+
+//STYLING
+import styled from 'styled-components';
+import { secondaryWhite, secondaryBlue, thirdDark, primaryBlue, primaryDark, primaryWhite } from '../../styles/colors';
+
+const MenuLeft = styled.div`
+  font-family: "PlutonGeneral", Fallback, sans-serif;
+  background: ${primaryDark};
+  padding-left: 1rem; /* adding margin to side containers*/
+  padding-right: 1rem; /* adding margin to side containers*/
+  padding-top: 1.5rem;
+`;
+
+const ulStyled = styled.ul`
+  color: ${primaryBlue};
+  list-style-type: none;
+  padding: 0%;
+  font-size:0.8rem;
+`;
+
+const styledP = styled.p`
+  font-weight: bold;
+  color: ${primaryWhite};
+  font-size: 0.8rem;
+  padding-bottom: 0.4rem;
+`;
+
+const styledLi = styled.li`
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+`;
+
+const styledButton = styled.button`
+  margin-left: 0.5rem;
+  background: none;
+  border:none;
+  
+  &:hover{
+    color: white;
+  }
+`;
+
+const element = styled.button`
+
+`;
+
 class SideMenuFiltersComponent extends Component {
   state = {
     selectedItemIndex: 0,
