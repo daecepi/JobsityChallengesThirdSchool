@@ -5,6 +5,10 @@ import { connect } from "react-redux";
 //Styles
 import "./books.scss";
 
+//External components used
+import NotificationAlert from "react-notification-alert";
+import "react-notification-alert/dist/animate.css";
+
 //Components used
 import SideMenuFiltersComponent from "../sidemenu/sideMenuFilters";
 import Book from "../book/book";
@@ -12,11 +16,25 @@ import Book from "../book/book";
 class Books extends Component {
   state = {};
 
+  /**
+   * Function to show alerts all over the applcation
+   */
+  displayNotification = (message) => {
+    this.refs.notificationAlert.notificationAlert({
+      place: "br",
+      message: <div className="notification-container">{message}</div>,
+      type: "danger",
+      icon: "now-ui-icons ui-1_bell-53",
+      autoDismiss: 2,
+      closeButton: false
+    });
+  };
+
   handleRight = () => {
     const { totalPages, actualPage } = this.props;
 
     if (actualPage + 1 === totalPages) {
-      alert("You are already at the end of the list");
+      this.displayNotification("You are already at the end of the list");
       return;
     }
     this.props.handlePagination(actualPage + 1);
@@ -26,7 +44,7 @@ class Books extends Component {
     const { actualPage } = this.props;
 
     if (actualPage === 0) {
-      alert("You are already at the start of the list");
+      this.displayNotification("You are already at the start of the list");
       return;
     }
 
@@ -89,6 +107,7 @@ class Books extends Component {
             </ol>
           </div>
         </div>
+        <NotificationAlert ref="notificationAlert" />
       </div>
     );
   }

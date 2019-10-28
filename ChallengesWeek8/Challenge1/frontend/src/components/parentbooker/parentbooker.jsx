@@ -50,7 +50,13 @@ class ParentBooker extends Component {
     this.handlePagination(0);
   }
 
-  fetchBooks = async (endpoint, page, ...filters) => {
+  /**
+   * Function that look for the books of a specific point destined for it in the backend
+   * @param {string} endpoint : string that contains the base endpoint for books looking
+   * @param {number} page : the integer number of the page wanted
+   * @param {Object} filters : object that contains the filters by city, type and words to search for 
+   */
+  fetchBooks = async (endpoint, page, filters) => {
     let url = endpoint + "?page=" + page;
 
     //Applying filters to customize request
@@ -76,10 +82,12 @@ class ParentBooker extends Component {
 
     //Acting according to message
     if (authResult === 400) {
-      alert(authResult.message);
+      this.displayNotification(authResult.message);
     } else if (authResult.statusCode === 401) {
       //Means that token is not valid anymore
+      this.displayNotification("Credentials have expired");
       localStorage.removeItem("access_token");
+      localStorage.removeItem("user");
     } else if (authResult.state === "Success") {
       //Setting the state that holds the books for updates
       this.props.getBooksSuccess(authResult.books);
@@ -285,7 +293,8 @@ class ParentBooker extends Component {
 //Redux function for this component
 const mapStateToProps = (state) => {
   return {
-    books: state.books.books
+    books: state.books.books,
+    baseEndpoint: state.books.baseEndpoint
   };
 };
 
