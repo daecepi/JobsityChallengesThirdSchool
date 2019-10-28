@@ -97,7 +97,7 @@ class Books extends Component {
 //Redux function for this component
 const mapStateToProps = (state) => {
   return {
-    books: state.books
+    books: state.books.books
   };
 };
 
