@@ -81,7 +81,6 @@ class ParentBooker extends Component {
       }
     }).then((res) => res.json());
 
-    console.log(authResult);
 
     //Acting according to message
     if (authResult === 400) {
