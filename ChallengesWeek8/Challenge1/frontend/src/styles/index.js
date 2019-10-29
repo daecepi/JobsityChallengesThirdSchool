@@ -36,3 +36,8 @@ export const FullContainer = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 `;
+
+export const MenuBox = styled.div`
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+`;

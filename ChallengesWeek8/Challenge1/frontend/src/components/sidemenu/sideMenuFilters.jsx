@@ -2,12 +2,12 @@ import React, { Component } from "react";
 
 import { withRouter } from "react-router-dom";
 
-import "./sideMenuFilters.scss";
 
 
 //STYLING
 import styled from 'styled-components';
-import { secondaryWhite, secondaryBlue, thirdDark, primaryBlue, primaryDark, primaryWhite } from '../../styles/colors';
+import { MenuBox } from '../../styles/index';
+import { primaryBlue, primaryDark, primaryWhite } from '../../styles/colors';
 
 const MenuLeft = styled.div`
   font-family: "PlutonGeneral", Fallback, sans-serif;
@@ -17,23 +17,28 @@ const MenuLeft = styled.div`
   padding-top: 1.5rem;
 `;
 
-const ulStyled = styled.ul`
+const UlStyled = styled.ul`
   color: ${primaryBlue.rgb};
   list-style-type: none;
   padding: 0%;
   font-size:0.8rem;
 `;
 
-const styledP = styled.p`
+const StyledP = styled.p`
   font-weight: bold;
   color: ${primaryWhite.rgb };
   font-size: 0.8rem;
   padding-bottom: 0.4rem;
 `;
 
-const styledLi = styled.li`
+const StyledLi = styled.li`
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
+`;
+
+const StyledI = styled.i`
+  icon
+  color: ${props => props.color}
 `;
 
 const StyledButton = styled.button`
@@ -140,37 +145,40 @@ class SideMenuFiltersComponent extends Component {
     this.props.history.push(resource);
   };
 
-  render() {
-    conso
-    return (
-      <div className="menu-left">
-        <div className="menu-box">
-          {this.state.sections.map((section) => (
-            <div key={section.label} className="menu-box">
-              <p>{section.label}</p>
+  isSelectedStyling = (item) => {
+    return item === this.props.history.location.pathname ? primaryWhite.rgb : primaryBlue.rgb;
+  }
 
-              <ul key={section.label}>
+  render() {
+    return (
+      <MenuLeft>
+        <MenuBox>
+          {this.state.sections.map((section) => (
+            <MenuBox key={section.label}>
+              <StyledP>{section.label}</StyledP>
+
+              <UlStyled key={section.label}>
                 {section.items.map((item) => {
                   return (
-                    <li
+                    <StyledLi
                       key={item.index}
                       onClick={() => {
                         this.changeLocation(item.to);
                       }}
-                      className={item.to === this.props.resource ? "selected" : ""}
+                      className={this.isSelectedStyling(item.to)}
                     >
-                      <i className={item.logoClasses}></i>
-                      <StyledButton color={item.to === this.props.resource ? primaryBlue.rgb : primaryWhite.rgb}>
+                      <StyledI style={{color: this.isSelectedStyling(item.to)}} className={item.logoClasses}></StyledI>
+                      <StyledButton color={this.isSelectedStyling(item.to)}>
                         {item.section}
                       </StyledButton>
-                    </li>
+                    </StyledLi>
                   );
                 })}
-              </ul>
-            </div>
+              </UlStyled>
+            </MenuBox>
           ))}
-        </div>
-      </div>
+        </MenuBox>
+      </MenuLeft>
     );
   }
 }
