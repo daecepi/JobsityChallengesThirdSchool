@@ -4,8 +4,6 @@ import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-//import styling
-import "./reservationComponent.scss";
 
 //STYLING
 import styled from 'styled-components';
@@ -62,7 +60,7 @@ const Form = styled.form`
 
 const StyledLabel = styled.label`
   font-size: 1rem;
-  color: ${primaryDark}
+  color: ${primaryDark.rgb}
   width: 100%;
   text-align: center;
   padding-bottom: 0.3rem;
