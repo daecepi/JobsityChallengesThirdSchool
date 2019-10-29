@@ -7,6 +7,31 @@ import "react-datepicker/dist/react-datepicker.css";
 //import styling
 import "./reservationComponent.scss";
 
+//STYLING
+import styled from 'styled-components';
+import { primaryBlue, primaryDark, primaryWhite, primaryDarkTransparent } from '../../styles/colors';
+
+const ReservationContainer = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: ${primaryDarkTransparent.rgb};
+  z-index: 200000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledH1 = styled.h1`
+  text-align: center;
+  color: ${primaryBlue};
+  padding: 5%;
+  font-size: 30px;
+  font-size: 3vw;
+`;
+
+const MediumContainer = styled.div
+
 class ReservationComponent extends Component {
   state = {
     startDate: new Date(),
@@ -38,22 +63,12 @@ class ReservationComponent extends Component {
           <div onClick={this.handleClose} className="close-container">
             <p>X</p>
           </div>
-          <h1>ReservationProccess</h1>
+          <h1>Reservation proccess</h1>
           <div className="internal-separator">
             <DatePicker
               selected={new Date()}
               onChange={(date) => this.setStartDate(date)}
               selectsStart
-              minDate={new Date()}
-              maxDate={new Date().getDate() + 15}
-              dateFormat="MMMM d, yyyy h:mm aa"
-              showDisabledMonthNavigation
-            />
-          </div>
-          <div className="internal-separator">
-            <DatePicker
-              onChange={(date) => this.setEndDate(date)}
-              selectsEnd
               minDate={new Date()}
               maxDate={new Date().getDate() + 15}
               dateFormat="MMMM d, yyyy h:mm aa"

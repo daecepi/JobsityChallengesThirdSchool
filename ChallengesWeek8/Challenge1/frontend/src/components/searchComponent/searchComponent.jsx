@@ -2,6 +2,12 @@ import React, { Component } from "react";
 
 import "./searchComponent.scss";
 
+
+//STYLING
+import styled from 'styled-components';
+import { primaryBlue, primaryDark, primaryWhite } from '../../styles/colors';
+
+
 class SearchComponent extends Component {
   state = {};
 
