@@ -68,6 +68,7 @@ class Login extends Component {
         },
         body: formBody
       }).then((res) => res.json());
+
       if (authResult.statusCode === 404) {
         this.setState({ message: authResult.message });
         this.displayNotification(authResult.message);
@@ -80,9 +81,9 @@ class Login extends Component {
 
         //Login user
         this.props.loginUser(authData["user"]);
-
+        
         this.props.history.push("/"); //Going to the homepage after login
-      } else {
+      } else {console.log("entre");
         this.displayNotification(authResult.message);
       }
     }

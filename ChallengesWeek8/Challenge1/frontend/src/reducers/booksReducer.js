@@ -1,4 +1,4 @@
-import { GET_BOOK_SUCCESS, GET_BOOK_PENDING, GET_BOOKS_ERROR, LEND_BOOK, RETURN_BOOK } from "../actions/actionTypes";
+import { GET_BOOK_SUCCESS, GET_BOOK_PENDING, GET_BOOKS_ERROR, LEND_BOOK, RETURN_BOOK, STARTING_BOOK_RENDERING } from "../actions/actionTypes";
 
 const initialState = {
   books: [],
@@ -25,9 +25,11 @@ const books = (state = initialState, action) => {
       });
     case GET_BOOK_SUCCESS:
       return Object.assign({}, state, {
-        books: action.payload.books,
-        pending: false
+            books: action.payload.books,
+            pending: false
       });
+    case STARTING_BOOK_RENDERING:
+      return state;
     case LEND_BOOK:
       return state;
     case RETURN_BOOK:

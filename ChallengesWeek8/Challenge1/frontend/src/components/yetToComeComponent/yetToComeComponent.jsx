@@ -12,7 +12,7 @@ import { FullContainer } from '../../styles/index';
 
 
 const YetContainer = styled.div`
-    background: ${ secondaryWhite };
+    background: ${ secondaryWhite.rgb };
     padding-top: 2rem;
     padding-bottom: 2rem;
     padding-right: 0.5rem;
@@ -20,17 +20,17 @@ const YetContainer = styled.div`
 `;
 
 const StyledP = styled.p`
-  color: ${thirdDark};
+  color: ${thirdDark.rgb};
 `;
 
 
 const StyledH1 = styled.h1`
-  color: ${secondaryBlue};
+  color: ${secondaryBlue.rgb};
   padding-bottom: 0.5rem;
 `;
 
 const StyledA = styled.p`
-  color: ${primaryBlue};
+  color: ${primaryBlue.rgb};
   text-decoration: none;
 `;
 

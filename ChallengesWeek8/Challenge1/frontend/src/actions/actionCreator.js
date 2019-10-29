@@ -4,7 +4,8 @@ import {
   GET_BOOKS_ERROR,
   LOGIN_USER,
   LOGOUT_USER,
-  MARK_USER_RECOVERY
+  MARK_USER_RECOVERY,
+  STARTING_BOOK_RENDERING
 } from "./actionTypes";
 
 export function getBooksSuccess(books) {
@@ -27,6 +28,15 @@ export function getBooksError(error) {
     type: GET_BOOKS_ERROR,
     error
   };
+}
+
+export function startBookRendering(){
+  return {
+    type: STARTING_BOOK_RENDERING,
+    payload: {
+      reRender:true
+    }
+  }
 }
 
 /**

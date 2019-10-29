@@ -50,6 +50,11 @@ class ParentBooker extends Component {
     this.handlePagination(0);
   }
 
+  componentDidUpdate(){
+    console.log(this.props);
+    this.handlePagination(0);
+  }
+
   /**
    * Function that look for the books of a specific point destined for it in the backend
    * @param {string} endpoint : string that contains the base endpoint for books looking
@@ -57,6 +62,9 @@ class ParentBooker extends Component {
    * @param {Object} filters : object that contains the filters by city, type and words to search for 
    */
   fetchBooks = async (endpoint, page, filters) => {
+    console.log(filters);
+
+
     let url = endpoint + "?startIndex=" + page;
     //Applying filters to customize request
     if (filters.city) {
@@ -70,7 +78,6 @@ class ParentBooker extends Component {
     }
 
     const token = localStorage.getItem("access_token");
-
     this.props.getBooksPending();
 
     //Fetching the api
@@ -81,17 +88,17 @@ class ParentBooker extends Component {
       }
     }).then((res) => res.json());
 
-
     //Acting according to message
     if (authResult === 400) {
       this.displayNotification(authResult.message);
+      
     } else if (authResult.statusCode === 401) {
       //Means that token is not valid anymore
       this.displayNotification("Credentials have expired");
       localStorage.removeItem("access_token");
       localStorage.removeItem("user");
     } else if (authResult.state === "Success") {
-      //Setting the state that holds the books for updates
+      //Setting the state that holds the books for updates<
       this.props.getBooksSuccess(authResult.books);
     }
   };
@@ -101,18 +108,19 @@ class ParentBooker extends Component {
    */
   handlePagination = (num) => {
     //Get the query params
-    const path = this.props.match.path;
+    const path = this.props.computedMatch.path;
+    console.log(path);
     switch (path) {
       case "/":
         this.fetchBooks(this.props.baseEndpoint, num, {});
         break;
       case "/city/:name":
-        const city = this.props.match.params.name;
-        this.getBooksByCity(city, num);
+        const city = this.props.computedMatch.params.name;
+        this.fetchBooks(this.props.baseEndpoint, num, { city: city });
         break;
       case "/type/:name":
-        const type = this.props.match.params.name;
-        this.getBooksByType(type, num);
+        const type = this.props.computedMatch.params.name;
+        this.fetchBooks(this.props.baseEndpoint, num, { type: type });
         break;
       default:
         break;
@@ -279,7 +287,6 @@ class ParentBooker extends Component {
             ""
           )}
         </>
-
         <NotificationAlert ref="notificationAlert" />
       </div>
     );

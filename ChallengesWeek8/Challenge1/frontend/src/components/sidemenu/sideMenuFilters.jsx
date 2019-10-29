@@ -11,14 +11,14 @@ import { secondaryWhite, secondaryBlue, thirdDark, primaryBlue, primaryDark, pri
 
 const MenuLeft = styled.div`
   font-family: "PlutonGeneral", Fallback, sans-serif;
-  background: ${primaryDark};
+  background: ${primaryDark.rgb};
   padding-left: 1rem; /* adding margin to side containers*/
   padding-right: 1rem; /* adding margin to side containers*/
   padding-top: 1.5rem;
 `;
 
 const ulStyled = styled.ul`
-  color: ${primaryBlue};
+  color: ${primaryBlue.rgb};
   list-style-type: none;
   padding: 0%;
   font-size:0.8rem;
@@ -26,7 +26,7 @@ const ulStyled = styled.ul`
 
 const styledP = styled.p`
   font-weight: bold;
-  color: ${primaryWhite};
+  color: ${primaryWhite.rgb };
   font-size: 0.8rem;
   padding-bottom: 0.4rem;
 `;
@@ -36,21 +36,19 @@ const styledLi = styled.li`
   padding-bottom: 0.6rem;
 `;
 
-const styledButton = styled.button`
+const StyledButton = styled.button`
   margin-left: 0.5rem;
   background: none;
   border:none;
-  
+  color: ${props => props.color};
+
   &:hover{
     color: white;
   }
-`;
-
-const element = styled.button`
-
-`;
+  `;
 
 class SideMenuFiltersComponent extends Component {
+
   state = {
     selectedItemIndex: 0,
     sections: [
@@ -137,6 +135,7 @@ class SideMenuFiltersComponent extends Component {
     ]
   };
 
+
   changeLocation = (resource) => {
     this.props.history.push(resource);
   };
@@ -160,9 +159,9 @@ class SideMenuFiltersComponent extends Component {
                       className={item.to === this.props.resource ? "selected" : ""}
                     >
                       <i className={item.logoClasses}></i>
-                      <button className={item.to === this.props.resource ? "selected" : "element"}>
+                      <StyledButton color={item.to === this.props.resource ? primaryBlue.rgb : primaryWhite.rgb}>
                         {item.section}
-                      </button>
+                      </StyledButton>
                     </li>
                   );
                 })}
