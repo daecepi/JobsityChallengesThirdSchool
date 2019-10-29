@@ -19,19 +19,6 @@ import Register from "./components/register/register";
 import NotFoundPageComponent from "./components/NotFoundPage/NotFoundPage";
 import YetToComeComponent from "./components/yetToComeComponent/yetToComeComponent";
 
-//Privater route
-/*const PrivateRoute = ({ component: Comp, loggedIn, handleLogin, handleLogout, path, ...rest }) => {
-  return (
-    <Route
-      path={path}
-      {...rest}
-      render={(props) => {
-        const token = localStorage.getItem("access_token");
-        
-      }}
-    />
-  );
-};*/
 
 class App extends React.Component {
   state = {

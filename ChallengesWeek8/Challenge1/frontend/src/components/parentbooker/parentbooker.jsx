@@ -16,6 +16,18 @@ import NavBar from "../navbar/navbar";
 import Books from "../books/books";
 import ReservationComponent from "../reservationComponent/reservationComponent";
 
+
+//STYLING
+import styled from 'styled-components';
+
+const AppContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+`;
+
 class ParentBooker extends Component {
   state = {
     baseEndpoint: "http://localhost:5000/api/books",
@@ -266,7 +278,7 @@ class ParentBooker extends Component {
   render() {
     //const { actualPage, totalPageCount } = this.state;
     return (
-      <div className="app-container">
+      <AppContainer>
         <>
           <NavBar handleSearch={this.getBooksByWords} searchValue={this.state.searchWords} />
           <Books
@@ -285,7 +297,7 @@ class ParentBooker extends Component {
           )}
         </>
         <NotificationAlert ref="notificationAlert" />
-      </div>
+      </AppContainer>
     );
   }
 }
