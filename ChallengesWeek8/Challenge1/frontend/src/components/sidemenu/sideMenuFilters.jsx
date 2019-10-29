@@ -63,35 +63,35 @@ class SideMenuFiltersComponent extends Component {
           {
             index: 1,
             section: "Quito",
-            to: "/city/quito",
+            to: "?city=quito",
             logoClasses: "fas fa-globe",
             isSelected: false
           },
           {
             index: 2,
             section: "Cartagena",
-            to: "/city/cartagena",
+            to: "?city=cartagena",
             logoClasses: "fas fa-globe",
             isSelected: false
           },
           {
             index: 3,
             section: "Medellín",
-            to: "/city/medellin",
+            to: "?city=medellin",
             logoClasses: "fas fa-globe",
             isSelected: false
           },
           {
             index: 4,
             section: "Digital",
-            to: "/type/digital",
+            to: "/?type=digital",
             logoClasses: "fas fa-tablet-alt",
             isSelected: false
           },
           {
             index: 5,
             section: "Hardcover",
-            to: "/type/hardcover",
+            to: "?type=hardcover",
             logoClasses: "fas fa-book",
             isSelected: false
           },

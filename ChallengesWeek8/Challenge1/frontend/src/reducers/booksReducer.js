@@ -3,7 +3,8 @@ import { GET_BOOK_SUCCESS,
   GET_BOOKS_ERROR,
   LEND_BOOK,
   RETURN_BOOK,
-  STARTING_BOOK_RENDERING
+  STARTING_BOOK_RENDERING,
+  PAGE_CHANGE
 } from "../actionTypes/actionTypes";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   actualPage: 0,
   totalPageCount: 0,
   searchWords: "",
+  urlFilters: "/",
   lendBook: false,
   showModal: "", // make sure to delete if not used
   bookToOperateIn: undefined
@@ -32,8 +34,13 @@ const books = (state = initialState, action) => {
     case GET_BOOK_SUCCESS:
       return Object.assign({}, state, {
             books: action.payload.books,
-            pending: false
+            pending: false,
+            actualPage: action.payload.actualPage,
+            totalPageCount: action.payload.totalPageCount,
+            
       });
+    case PAGE_CHANGE: //MOFIIGING
+      return state;
     case STARTING_BOOK_RENDERING:
       return state;
     case LEND_BOOK:

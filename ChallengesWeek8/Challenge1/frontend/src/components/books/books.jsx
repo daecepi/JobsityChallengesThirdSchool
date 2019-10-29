@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
+
 //Styles
 import "./books.scss";
 
@@ -14,7 +15,6 @@ import SideMenuFiltersComponent from "../sidemenu/sideMenuFilters";
 import Book from "../book/book";
 
 class Books extends Component {
-  state = {};
 
   /**
    * Function to show alerts all over the applcation
@@ -31,13 +31,13 @@ class Books extends Component {
   };
 
   handleRight = () => {
-    const { totalPages, actualPage } = this.props;
+    const { actualPage, totalPageCount} = this.props;
 
-    if (actualPage + 1 === totalPages) {
+    if (actualPage + 1 === totalPageCount) {
       this.displayNotification("You are already at the end of the list");
       return;
     }
-    this.props.handlePagination(actualPage + 1);
+    this.handlePagination(actualPage + 1);
   };
 
   handleLeft = () => {
@@ -48,10 +48,11 @@ class Books extends Component {
       return;
     }
 
-    this.props.handlePagination(actualPage - 1);
+    this.handlePagination(actualPage - 1);
   };
 
   render() {
+    console.log(this.props);
     const { books } = this.props;
     return (
       <div className="section-1">
@@ -116,6 +117,8 @@ class Books extends Component {
 //Redux function for this component
 const mapStateToProps = (state) => {
   return {
+    actualPage: state.books.actualPage,
+    totalPageCount: state.books.totalPageCount,
     books: state.books.books
   };
 };

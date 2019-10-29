@@ -3,6 +3,9 @@ import React, { Component } from "react";
 //Redux libraries needed
 import { connect } from "react-redux";
 
+//Module to translate query params
+import queryString from 'query-string';
+
 //Action creator
 import { getBooksPending, getBooksSuccess, getBooksError } from "../../actions/actionCreator";
 
@@ -40,6 +43,17 @@ class ParentBooker extends Component {
   };
 
   /**
+   * Funtrion for initialization
+   */
+  componentDidMount() {
+    this.fetchBooks();
+  }
+
+  componentDidUpdate(){
+    this.fetchBooks();
+  }
+
+  /**
    * Function to show alerts all over the applcation
    */
   displayNotification = (message) => {
@@ -54,32 +68,27 @@ class ParentBooker extends Component {
   };
 
   /**
-   * Funtrion for initialization
-   */
-  componentDidMount() {
-    //this.props.fetchBooks(this.state.baseEndpoint, 0);
-    this.handlePagination(0);
-  }
-
-  /**
    * Function that look for the books of a specific point destined for it in the backend
    * @param {string} endpoint : string that contains the base endpoint for books looking
    * @param {number} page : the integer number of the page wanted
    * @param {Object} filters : object that contains the filters by city, type and words to search for 
    */
-  fetchBooks = async (endpoint, page, filters) => {
+  fetchBooks = async () => {
+    const filters = queryString.parse(this.props.location.search)
+    const endpoint = this.props.baseEndpoint;
+    let url = endpoint + "?startIndex=" + this.props.actualPage;
 
+    console.log(filters.city);
+    if(filters.city){
+      url += ("&cities="+filters.city);
+    }
 
-    let url = endpoint + "?startIndex=" + page;
-    //Applying filters to customize request
-    if (filters.city) {
-      url += "&city=" + this.capitalizeFLetter(filters.city);
+    if(filters.type){
+      url += ("&types="+filters.type);
     }
-    if (filters.type) {
-      url += "&type=" + this.capitalizeFLetter(filters.type);
-    }
-    if (filters.words) {
-      url += "&words=" + this.capitalizeFLetter(filters.words);
+
+    if(filters.words){
+      url += ("&words="+filters.words);
     }
 
     const token = localStorage.getItem("access_token");
@@ -103,8 +112,10 @@ class ParentBooker extends Component {
       localStorage.removeItem("access_token");
       localStorage.removeItem("user");
     } else if (authResult.state === "Success") {
-      //Setting the state that holds the books for updates<
-      this.props.getBooksSuccess(authResult.books);
+      console.log(authResult);
+      //Setting the state that holds the books for updates
+      const path = this.props.computedMatch.path;
+      this.props.getBooksSuccess(authResult.books, authResult.actualPage, authResult.totalPageCount, path);
     }
   };
 
@@ -112,7 +123,6 @@ class ParentBooker extends Component {
    * Function used to handle the paginatio inside application for each query
    */
   handlePagination = (num) => {
-    console.log("enter");
     //Get the query params
     const path = this.props.computedMatch.path;
     switch (path) {
@@ -140,99 +150,7 @@ class ParentBooker extends Component {
     return word[0].toUpperCase() + word.slice(1);
   }
 
-  /**
-   * Function used to get all books from the api
-   *
-   */
-  getBooks = async (startIndex = 0) => {
-    let token = localStorage.getItem("access_token");
-
-    this.props.getBooksPending();
-
-    let authResult = await fetch(`http://localhost:5000/api/books?startIndex=${startIndex}`, {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + token
-      }
-    }).then((res) => res.json());
-
-    if (authResult === 400) {
-      alert(authResult.message);
-    } else if (authResult.state === "Success") {
-      //Setting the state that holds the books for updates
-      this.props.getBooksSuccess(authResult.books);
-      this.setState({
-        actualPage: authResult.pageNumber - 1,
-        totalPageCount: authResult.totalPages,
-        resource: "/",
-        books: authResult.books
-      });
-    } else {
-    }
-  };
-
-  /**
-   * Function that looks for books in the API by type
-   *
-   */
-  getBooksByType = async (type, startIndex = 0) => {
-    const typeCap = this.capitalizeFLetter(type);
-
-    let token = localStorage.getItem("access_token"); //Getting the token for the request
-    let authResult = await fetch(`http://localhost:5000/api/books?startIndex=${startIndex}&type=${typeCap}`, {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + token
-      }
-    }).then((res) => res.json());
-
-    if (authResult.statusCode === 400) {
-      alert(authResult.message);
-    } else if (authResult.statusCode === 401) {
-      //Means that token is not valid anymore
-      localStorage.removeItem("access_token");
-    } else if (authResult.state === "Success") {
-      //Setting the state that holds the books for updates
-      this.setState({
-        actualPage: authResult.pageNumber - 1,
-        totalPageCount: authResult.totalPages,
-        resource: `/type/${type}`,
-        books: authResult.books
-      });
-    }
-  };
-
-  /**
-   * Function to find books by city
-   */
-  getBooksByCity = async (city, startIndex = 0) => {
-    const cityCap = this.capitalizeFLetter(city);
-
-    let token = localStorage.getItem("access_token"); // Getting the token for the request
-
-    let authResult = await fetch(`http://localhost:5000/api/books?startIndex=${startIndex}&city=${cityCap}`, {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + token
-      }
-    }).then((res) => res.json());
-
-    if (authResult === 400) {
-      alert(authResult.message);
-    } else if (authResult.statusCode === 401) {
-      //Means that token is not valid anymore
-      localStorage.removeItem("access_token");
-    } else if (authResult.state === "Success") {
-      //Setting the state that holds the books for updates
-      this.setState({
-        actualPage: authResult.pageNumber - 1,
-        totalPageCount: authResult.totalPages,
-        resource: `/city/${city}`,
-        books: authResult.books
-      });
-    }
-  };
-
+ 
   /**
    * Function to get books from the server by words
    *
@@ -302,7 +220,9 @@ class ParentBooker extends Component {
 const mapStateToProps = (state) => {
   return {
     books: state.books.books,
-    baseEndpoint: state.books.baseEndpoint
+    baseEndpoint: state.books.baseEndpoint,
+    actualPage: state.books.actualPage,
+    totalPageCount: state.books.totalPageCount
   };
 };
 

@@ -24,6 +24,8 @@ export const GET_BOOKS_ERROR = "GET_BOOKS_ERROR";
 
 export const STARTING_BOOK_RENDERING  = "START_BOOK_RENDERING";
 
+export const PAGE_CHANGE = "PAGE_CHANGE";
+
 /**
  * LENDING ACTIONS
  */

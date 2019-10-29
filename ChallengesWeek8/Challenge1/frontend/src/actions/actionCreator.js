@@ -5,14 +5,18 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   MARK_USER_RECOVERY,
-  STARTING_BOOK_RENDERING
+  STARTING_BOOK_RENDERING,
+  PAGE_CHANGE
 } from "../actionTypes/actionTypes";
 
-export function getBooksSuccess(books) {
+export function getBooksSuccess(books, actualPage, totalPageCount, urlFilters) {
   return {
     type: GET_BOOK_SUCCESS,
     payload: {
-      books
+      books,
+      actualPage,
+      totalPageCount,
+      urlFilters
     }
   };
 }
@@ -36,6 +40,16 @@ export function startBookRendering(){
     payload: {
       reRender:true
     }
+  }
+}
+
+export function pageChange(num){
+  return {
+    type: PAGE_CHANGE,
+    payload: {
+      pageNumber: num
+    }
+
   }
 }
 
