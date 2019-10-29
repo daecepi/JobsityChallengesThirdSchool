@@ -41,3 +41,11 @@ export const MenuBox = styled.div`
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 `;
+
+export const InternalSeparator = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+`;

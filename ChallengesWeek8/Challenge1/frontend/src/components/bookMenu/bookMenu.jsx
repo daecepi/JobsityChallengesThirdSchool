@@ -27,7 +27,7 @@ class BookMenuComponent extends Component {
             }}
             className="read-later-container"
           >
-            <i className="fas fa-bookmark"></i>
+            <i className="fas fa-bookmark"></i><p>Reserve</p>
           </div>
         </div>
         <div className="mid-book-menu-con">
