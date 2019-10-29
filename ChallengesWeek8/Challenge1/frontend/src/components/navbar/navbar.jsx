@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import { logoutUser } from "../../actions/actionCreator";
 
@@ -33,7 +33,9 @@ class NavBar extends Component {
     return (
       <header className="header">
         <div className="logo">
-          <img src={logo} className="image-logo" alt="logo"></img>
+          <Link to="/">
+            <img src={logo} className="image-logo" alt="logo"></img>
+          </Link>
         </div>
         <div className="search-bar">
           <p>Bookshelf</p>
