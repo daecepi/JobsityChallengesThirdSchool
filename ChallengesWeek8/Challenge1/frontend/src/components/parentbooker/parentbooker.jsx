@@ -51,7 +51,6 @@ class ParentBooker extends Component {
   }
 
   componentDidUpdate(){
-    console.log(this.props);
     this.handlePagination(0);
   }
 
@@ -62,7 +61,6 @@ class ParentBooker extends Component {
    * @param {Object} filters : object that contains the filters by city, type and words to search for 
    */
   fetchBooks = async (endpoint, page, filters) => {
-    console.log(filters);
 
 
     let url = endpoint + "?startIndex=" + page;
@@ -109,7 +107,6 @@ class ParentBooker extends Component {
   handlePagination = (num) => {
     //Get the query params
     const path = this.props.computedMatch.path;
-    console.log(path);
     switch (path) {
       case "/":
         this.fetchBooks(this.props.baseEndpoint, num, {});

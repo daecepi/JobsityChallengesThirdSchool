@@ -83,7 +83,6 @@ class Login extends Component {
         this.props.loginUser(authData["user"]);
         
         this.props.history.push("/"); //Going to the homepage after login
-      } else {console.log("entre");
         this.displayNotification(authResult.message);
       }
     }

@@ -141,6 +141,7 @@ class SideMenuFiltersComponent extends Component {
   };
 
   render() {
+    conso
     return (
       <div className="menu-left">
         <div className="menu-box">
