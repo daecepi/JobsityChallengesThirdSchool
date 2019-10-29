@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { primaryBlue } from "./colors";
+
 import backgroundImage from "../images/LoginImage.jpg";
 
 
@@ -52,3 +54,9 @@ export const MoveButton = styled.button`
   width: 100%;
   border-radius: 10px;
 `;
+
+//Default style for A tags inside the application
+export const defaultStyleLink = {
+  color: primaryBlue.rgb,
+  textDecoration: 'none'
+};

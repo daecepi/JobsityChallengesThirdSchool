@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./parentbooker.scss";
 
 //Redux libraries needed
 import { connect } from "react-redux";
@@ -62,10 +61,6 @@ class ParentBooker extends Component {
     this.handlePagination(0);
   }
 
-  componentDidUpdate(){
-    this.handlePagination(0);
-  }
-
   /**
    * Function that look for the books of a specific point destined for it in the backend
    * @param {string} endpoint : string that contains the base endpoint for books looking
@@ -117,6 +112,7 @@ class ParentBooker extends Component {
    * Function used to handle the paginatio inside application for each query
    */
   handlePagination = (num) => {
+    console.log("enter");
     //Get the query params
     const path = this.props.computedMatch.path;
     switch (path) {

@@ -4,8 +4,8 @@ import "./searchComponent.scss";
 
 
 //STYLING
-import styled from 'styled-components';
-import { primaryBlue, primaryDark, primaryWhite } from '../../styles/colors';
+//import styled from 'styled-components';
+//import { primaryBlue, primaryDark, primaryWhite } from '../../styles/colors';
 
 
 class SearchComponent extends Component {
@@ -32,5 +32,4 @@ class SearchComponent extends Component {
   }
 }
 
-//{iconClasses ? <i className={iconClasses} aria-hidden="true"></i> : ""}
 export default SearchComponent;
