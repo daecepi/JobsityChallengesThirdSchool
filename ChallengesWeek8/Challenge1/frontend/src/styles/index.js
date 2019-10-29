@@ -45,6 +45,8 @@ export const MenuBox = styled.div`
 export const InternalSeparator = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;

@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGOUT_USER, MARK_USER_RECOVERY } from "../actions/actionTypes";
+import { LOGIN_USER, LOGOUT_USER, MARK_USER_RECOVERY } from "../actionTypes/actionTypes";
 
 const initialState = {
   userIsLogged: false,

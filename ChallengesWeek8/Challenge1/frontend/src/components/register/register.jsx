@@ -12,7 +12,9 @@ import "./register.scss";
 import NotificationAlert from "react-notification-alert";
 import "react-notification-alert/dist/animate.css";
 
+
 class Register extends Component {
+
   displayNotification = (message) => {
     this.refs.notificationAlert.notificationAlert({
       place: "br",

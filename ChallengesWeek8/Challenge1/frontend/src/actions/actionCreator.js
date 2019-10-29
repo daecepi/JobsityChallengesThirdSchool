@@ -6,7 +6,7 @@ import {
   LOGOUT_USER,
   MARK_USER_RECOVERY,
   STARTING_BOOK_RENDERING
-} from "./actionTypes";
+} from "../actionTypes/actionTypes";
 
 export function getBooksSuccess(books) {
   return {

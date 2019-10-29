@@ -10,7 +10,7 @@ import "./reservationComponent.scss";
 //STYLING
 import styled from 'styled-components';
 import { InternalSeparator } from '../../styles/index';
-import { primaryBlue, primaryDarkTransparent, secondaryWhite } from '../../styles/colors';
+import { primaryBlue, primaryDarkTransparent, secondaryWhite, primaryDark } from '../../styles/colors';
 
 const ReservationContainer = styled.div`
   position: absolute;
@@ -56,9 +56,16 @@ const ButtonContainer = styled.div`
 `;
 
 const Form = styled.form`
-  background:red;
   display:flex;
   justify-content: center;
+`;
+
+const StyledLabel = styled.label`
+  font-size: 1rem;
+  color: ${primaryDark}
+  width: 100%;
+  text-align: center;
+  padding-bottom: 0.3rem;
 `;
 
 const FormButton = styled.input`
@@ -68,18 +75,6 @@ const FormButton = styled.input`
 `;
 
 class ReservationComponent extends Component {
-  state = {
-    startDate: new Date(),
-    endDate: new Date()
-  };
-
-  setStartDate = (startDate) => {
-    this.setState({ startDate });
-  };
-
-  setEndDate = (endDate) => {
-    this.setState({ endDate });
-  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -101,7 +96,7 @@ class ReservationComponent extends Component {
           <StyledH1>Reservation proccess</StyledH1>
           <Form onSubmit={this.handleSubmit}>
             <InternalSeparator>
-              <Label>Return date:</Label>
+              <StyledLabel>Return date:</StyledLabel>
               <DatePicker
                 style={{width:"90%"}}
                 selected={new Date()}
