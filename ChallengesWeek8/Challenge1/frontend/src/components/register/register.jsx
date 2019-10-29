@@ -5,13 +5,75 @@ import { withRouter } from "react-router-dom";
 
 import { Formik } from "formik";
 
-//Styling imports
-import "./register.scss";
 
 //External components used
 import NotificationAlert from "react-notification-alert";
 import "react-notification-alert/dist/animate.css";
 
+
+//STYLING
+import styled from 'styled-components';
+import { FullContainer, MoveButton } from '../../styles/index';
+import { secondaryWhite, primaryGrey } from '../../styles/colors';
+
+const ContainerRegister = styled.div`
+  background: ${secondaryWhite.rgb};
+  box-shadow: 2px 10px 20px 0px black;
+  height: 50%;
+  width: 25%;
+  display: flex;
+  border-radius: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+
+  @media(max-width: 580px){
+        width: 70%;
+  }
+`;
+
+const StyledH2 = styled.h2`
+  margin-bottom: 1rem;
+`;
+
+const StyledForm = styled.form`
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+`;
+
+const RegisterPTag = styled.p`
+  font-size: 0.9vh; 
+`;
+
+const StyledLabel = styled.label`
+  font-size: 0.8vw;
+  align-self: flex-start;
+  color: ${primaryGrey.rgb};
+`;
+
+const SecondaryInput = styled.input`
+  height: 5%;
+  width: 100%;
+  border-radius: 10px;
+`;
+
+const RegisterButton = styled.button`
+  border-radius: 20px;
+  height: 5vh;
+  width: 100%;
+  margin-top: 2%;
+  margin: 8px 0px;
+  justify-self: flex-end;
+`;
 
 class Register extends Component {
 
@@ -61,9 +123,9 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="full-container">
-        <div className="container-register">
-          <h2>Register</h2>
+      <FullContainer>
+        <ContainerRegister>
+          <StyledH2>Register</StyledH2>
           <Formik
             initialValues={{ identification: "", name: "", lname: "", username: "", password: "", age: "", email: "" }}
             validate={(values) => {
@@ -140,89 +202,82 @@ class Register extends Component {
               isSubmitting
               /* and other goodies */
             }) => (
-              <form onSubmit={handleSubmit}>
-                <label htmlFor="identification">Identification: </label>
-                <input
+              <StyledForm onSubmit={handleSubmit}>
+                <StyledLabel htmlFor="identification">Identification: </StyledLabel>
+                <SecondaryInput
                   type="number"
                   name="identification"
-                  className="secondary-input"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.identification}
                 />
-                <p>{errors.identification && touched.identification && errors.identification}</p>
-                <label htmlFor="name">Name: </label>
-                <input
+                <RegisterPTag>{errors.identification && touched.identification && errors.identification}</RegisterPTag>
+                <StyledLabel htmlFor="name">Name: </StyledLabel>
+                <SecondaryInput
                   type="text"
                   name="name"
-                  className="secondary-input"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.name}
                 />
-                <p>{errors.name && touched.name && errors.name}</p>
-                <label htmlFor="lname">Last name: </label>
-                <input
+                <RegisterPTag>{errors.name && touched.name && errors.name}</RegisterPTag>
+                <StyledLabel htmlFor="lname">Last name: </StyledLabel>
+                <SecondaryInput
                   type="text"
                   name="lname"
-                  className="secondary-input"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.lname}
                 />
-                <p>{errors.lname && touched.lname && errors.lname}</p>
-                <label htmlFor="username">Username: </label>
-                <input
+                <RegisterPTag>{errors.lname && touched.lname && errors.lname}</RegisterPTag>
+                <StyledLabel htmlFor="username">Username: </StyledLabel>
+                <SecondaryInput
                   type="text"
                   name="username"
-                  className="secondary-input"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.username}
                 />
-                <p>{errors.username && touched.username && errors.username}</p>
-                <label htmlFor="password">Password: </label>
-                <input
+                <RegisterPTag>{errors.username && touched.username && errors.username}</RegisterPTag>
+                <StyledLabel htmlFor="password">Password: </StyledLabel>
+                <SecondaryInput
                   type="password"
                   name="password"
-                  className="secondary-input"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
                 />
-                <p>{errors.password && touched.password && errors.password}</p>
-                <label htmlFor="email">Age: </label>
-                <input
+                <RegisterPTag>{errors.password && touched.password && errors.password}</RegisterPTag>
+                <StyledLabel htmlFor="email">Age: </StyledLabel>
+                <SecondaryInput
                   type="number"
                   name="age"
-                  className="secondary-input"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.age}
                 />
-                <p>{errors.age && touched.age && errors.age}</p>
-                <label htmlFor="email">Email: </label>
-                <input
+                <RegisterPTag>{errors.age && touched.age && errors.age}</RegisterPTag>
+                <StyledLabel htmlFor="email">Email: </StyledLabel>
+                <SecondaryInput
                   type="email"
                   name="email"
-                  className="secondary-input"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
                 />
-                <p>{errors.email && touched.email && errors.email}</p>
-                <button type="submit" className="button-register" disabled={isSubmitting}>
+                <RegisterPTag>{errors.email && touched.email && errors.email}</RegisterPTag>
+                <RegisterButton type="submit" disabled={isSubmitting}>
                   Submit
-                </button>
-              </form>
+                </RegisterButton>
+              </StyledForm>
             )}
           </Formik>
-        </div>
+        </ContainerRegister>
         <NotificationAlert ref="notificationAlert" />
         <Link to="/login">
-          <button className="move-button">Go back</button>
+          <MoveButton className="move-button">Go back</MoveButton>
         </Link>
-      </div>
+      </FullContainer>
     );
   }
 }
