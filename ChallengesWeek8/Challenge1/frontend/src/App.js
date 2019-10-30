@@ -20,6 +20,28 @@ import NotFoundPageComponent from "./components/NotFoundPage/NotFoundPage";
 import YetToComeComponent from "./components/yetToComeComponent/yetToComeComponent";
 
 
+
+//Including all fonts to be used
+import { createGlobalStyle } from "styled-components";
+import fontTitle1 from "./fonts/HVD Fonts - PlutoSansMedium.otf";
+import fontTitle2 from "./fonts/HVD Fonts - PlutoSansCondMedium.otf";
+import fontTitle3 from "./fonts/HVD Fonts - PlutoSansCondExLight.otf";
+
+
+const GlobalStyles = createGlobalStyle`
+  body {
+    @import url(${fontTitle1});
+    font-family: 'TitlePluton', sans-serif;
+
+    
+    @import url(${fontTitle2});
+    font-family: 'PlutonGeneral', sans-serif;
+
+    @import url(${fontTitle3});
+    font-family: 'SecondTitlePluton', sans-serif;
+  }
+`
+
 class App extends React.Component {
   state = {
     loggedIn: false
@@ -38,6 +60,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
+        <GlobalStyles />
         <div className="App">
           <Router>
             <Switch>
