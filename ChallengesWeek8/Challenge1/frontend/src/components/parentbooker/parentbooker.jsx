@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import queryString from 'query-string';
 
 //Action creator
-import { getBooksPending, getBooksSuccess, getBooksError } from "../../actions/actionCreator";
+import { getBooksPending, getBooksSuccess, getBooksError } from "../../actions/booksActionCreator";
 
 //External components used
 import NotificationAlert from "react-notification-alert";

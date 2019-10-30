@@ -3,7 +3,6 @@ import { GET_BOOK_SUCCESS,
   GET_BOOKS_ERROR,
   LEND_BOOK,
   RETURN_BOOK,
-  STARTING_BOOK_RENDERING,
   PAGE_CHANGE
 } from "../actionTypes/actionTypes";
 
@@ -40,8 +39,6 @@ const books = (state = initialState, action) => {
             
       });
     case PAGE_CHANGE: //MOFIIGING
-      return state;
-    case STARTING_BOOK_RENDERING:
       return state;
     case LEND_BOOK:
       return state.books.id=== action.id? Object.assign({}, state, {

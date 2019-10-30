@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { Link, withRouter } from "react-router-dom";
 
-import { loginUser } from "../../actions/actionCreator";
+import { loginUser } from "../../actions/userActionCreator";
 
 //Styles
 import "./login.scss";

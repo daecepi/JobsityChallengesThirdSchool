@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+import { connect } from "react-redux";
+
+import { prepareReservationProccess } from '../../actions/booksActionCreator';
+
 //DatePicker used
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -84,6 +88,7 @@ class ReservationComponent extends Component {
     this.props.returnModalBack();
   };
 
+
   render() {
     return (
       <ReservationContainer>
@@ -117,4 +122,20 @@ class ReservationComponent extends Component {
   }
 }
 
-export default ReservationComponent;
+const mapStateToProps = (state)=>{
+  return {
+    reservationId: state.reservationId,
+    startDate: state.startDate,
+    endDate: state.endDate
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateReservationProccess: (startDate, endDate) =>{
+      dispatch(prepareReservationProccess(startDate, endDate))
+    } 
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReservationComponent);

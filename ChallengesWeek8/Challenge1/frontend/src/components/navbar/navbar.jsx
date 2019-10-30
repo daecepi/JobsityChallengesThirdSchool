@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { withRouter, Link } from "react-router-dom";
 
-import { logoutUser } from "../../actions/actionCreator";
+import { logoutUser } from "../../actions/userActionCreator";
 
 //Styles
 import "./navbar.scss";

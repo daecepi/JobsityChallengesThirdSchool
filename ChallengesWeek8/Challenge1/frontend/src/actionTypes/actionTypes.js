@@ -22,8 +22,6 @@ export const GET_BOOK_PENDING = "GET_BOOK_PENDING";
 
 export const GET_BOOKS_ERROR = "GET_BOOKS_ERROR";
 
-export const STARTING_BOOK_RENDERING  = "START_BOOK_RENDERING";
-
 export const PAGE_CHANGE = "PAGE_CHANGE";
 
 /**
@@ -34,6 +32,8 @@ export const LEND_BOOK = "LEND_BOOK";
 
 //Action to return the books lent by an user
 export const RETURN_BOOK = "RETURN_BOOK";
+
+export const UPDATE_RESERVATION_PROCCESS = "UPDATE_RESERVATION_PROCCESS";
 
 /**
  * AUTHENTICATION/USER ACTIONS

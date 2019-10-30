@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Route, Redirect, withRouter } from "react-router-dom";
 
 //Actions used
-import { loginUser, markUseRecovery } from "../../actions/actionCreator";
+import { loginUser, markUseRecovery } from "../../actions/userActionCreator";
 
 class PrivateRouteComponent extends Component {
   /**
