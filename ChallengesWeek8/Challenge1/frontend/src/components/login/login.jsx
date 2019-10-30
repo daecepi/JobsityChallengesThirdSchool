@@ -17,9 +17,6 @@ import "react-notification-alert/dist/animate.css";
 import SearchComponent from "../searchComponent/searchComponent";
 
 class Login extends Component {
-  /**
-   * If login will require more than two
-   */
   state = {
     username: undefined,
     password: undefined,

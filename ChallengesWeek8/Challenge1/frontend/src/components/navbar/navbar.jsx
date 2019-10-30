@@ -16,6 +16,11 @@ import logo from "./logo.svg";
 import SearchComponent from "../searchComponent/searchComponent";
 
 
+//External components used
+import NotificationAlert from "react-notification-alert";
+import "react-notification-alert/dist/animate.css";
+
+
 //STYLING
 import styled from 'styled-components';
 import { secondaryWhite, primaryGrey, primaryBlue, secondaryDark } from "../../styles/colors";
@@ -25,7 +30,7 @@ const StyledHeader = styled.header`
   flex-basis: 5%;
 `;
 
-const LogoContainer = styled`
+const LogoContainer = styled.div`
   height: 100%;
 `;
 
@@ -140,6 +145,23 @@ const StyledButtonNav = styled.button`
 
 class NavBar extends Component {
 
+  mentionNotYetFunctionality = (e) => {
+    e.preventDefault();
+    this.displayNotification("Functionality not yet implemented");
+  }
+
+
+  displayNotification = (message) => {
+    this.refs.notificationAlert.notificationAlert({
+      place: "br",
+      message: <div className="notification-container">{message}</div>,
+      type: "danger",
+      icon: "now-ui-icons ui-1_bell-53",
+      autoDismiss: 2,
+      closeButton: false
+    });
+  };
+
   handdleLogout = () => {
     //Removing information from the storage
     localStorage.removeItem("access_token");
@@ -169,38 +191,38 @@ class NavBar extends Component {
           />
         </SearchBar>
         <BorderX>
-          <div className="user">
-            <div className="user-box">
-              <div className="user-elements">
-                <p className="user-name">Matt Barrera</p>
-                <i className="fa fa-chevron-down fa-xs"></i>
-                <div className="profile-container">
-                  <img
-                    className="profile-pic"
+          <UserContainer>
+            <UserBoxContainer>
+              <UserElementsDiv>
+                <StyledPNav className="user-name">Matt Barrera</StyledPNav>
+                <StyledINav className="fa fa-chevron-down fa-xs"></StyledINav>
+                <ProfileContainer>
+                  <ProfilePic
                     src="https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2019/02/5-create-fake-people-in-2-seconds-on-this-insane-site.jpg"
-                    alt=""
+                    alt="User image"
                   />
-                </div>
-              </div>
-              <div id="dropdown" className="ddmenu">
-                <ul>
+                </ProfileContainer>
+              </UserElementsDiv>
+              <DDMenu id="dropdown">
+                <StyledUlNav>
                   <li>
-                    <button>Profile</button>
+                    <StyledButtonNav onClick={this.mentionNotYetFunctionality}>Profile</StyledButtonNav>
                   </li>
                   <li>
-                    <button>Books saved</button>
+                    <StyledButtonNav onClick={this.mentionNotYetFunctionality}>Books saved</StyledButtonNav>
                   </li>
                   <li>
-                    <button>Account Settings</button>
+                    <StyledButtonNav onClick={this.mentionNotYetFunctionality}>Account Settings</StyledButtonNav>
                   </li>
                   <li>
-                    <button onClick={this.handdleLogout}>Log Out</button>
+                    <StyledButtonNav onClick={this.handdleLogout}>Log Out</StyledButtonNav>
                   </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+                </StyledUlNav>
+              </DDMenu>
+            </UserBoxContainer>
+          </UserContainer>
         </BorderX>
+        <NotificationAlert ref="notificationAlert" />
       </StyledHeader>
     );
   }

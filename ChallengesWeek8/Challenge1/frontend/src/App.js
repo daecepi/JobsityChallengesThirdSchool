@@ -28,6 +28,7 @@ import fontTitle2 from "./fonts/HVD Fonts - PlutoSansCondMedium.otf";
 import fontTitle3 from "./fonts/HVD Fonts - PlutoSansCondExLight.otf";
 
 
+
 const GlobalStyles = createGlobalStyle`
   body {
     @import url(${fontTitle1});
