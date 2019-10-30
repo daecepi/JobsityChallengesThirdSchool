@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4e8622e1-35da-4f56-a3b7-e423634aa292",
+		"_postman_id": "114610af-8604-47f1-9ed4-fc53efa2cd2c",
 		"name": "Bookshelf updated",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,23 +12,36 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzAzOTgwNzIsImV4cCI6MTU3MDQ4NDQ3Mn0.oYj_l3f1p595hSXDYgx2jAvPd9McTgr4t-4X3d4mv8o",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNvZmkiLCJpYXQiOjE1NzIyMDI5OTksImV4cCI6MTU3MjI4OTM5OX0.-wBPNB4O1aYKxNzC3Jb8ybvAcmvDzcDBZ-acnTJYWj8",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "http://localhost:5000/books",
+					"raw": "http://localhost:5000/api/books?startIndex=0&city=Cartagena",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
+						"api",
 						"books"
+					],
+					"query": [
+						{
+							"key": "startIndex",
+							"value": "0"
+						},
+						{
+							"key": "city",
+							"value": "Cartagena"
+						}
 					]
 				}
 			},
@@ -44,18 +57,15 @@
 						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzAzOTgwNzIsImV4cCI6MTU3MDQ4NDQ3Mn0.oYj_l3f1p595hSXDYgx2jAvPd9McTgr4t-4X3d4mv8o"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "http://localhost:5000/books/5d9a8d54422fa8585ebd",
+					"raw": "http://localhost:5000/api/books/5d9a8d54422fa8585ebd",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
+						"api",
 						"books",
 						"5d9a8d54422fa8585ebd"
 					]
@@ -89,13 +99,14 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:5000/login",
+					"raw": "http://localhost:5000/api/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
+						"api",
 						"login"
 					]
 				}
@@ -157,13 +168,14 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/register",
+					"raw": "http://localhost:5000/api/users/register",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "5000",
 					"path": [
+						"api",
 						"users",
 						"register"
 					]
@@ -202,13 +214,14 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:5000/books/lend",
+					"raw": "http://localhost:5000/api/books/lend",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
+						"api",
 						"books",
 						"lend"
 					]
@@ -247,13 +260,14 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:5000/books/return",
+					"raw": "http://localhost:5000/api/books/return",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
+						"api",
 						"books",
 						"return"
 					]
@@ -266,19 +280,22 @@
 			"name": "Search specific books",
 			"request": {
 				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNvZmkiLCJpYXQiOjE1NzIyMTMzNDcsImV4cCI6MTU3MjI5OTc0N30.X8pVQH-6jo2haRzamHeyUmxCNWtAHIdsXP4KV49wJJ8",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:5000/books?words=\"Dolch\"",
+					"raw": "http://localhost:5000/api/books?words=\"Dolch\"",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
+						"api",
 						"books"
 					],
 					"query": [
@@ -291,5 +308,6 @@
 			},
 			"response": []
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
