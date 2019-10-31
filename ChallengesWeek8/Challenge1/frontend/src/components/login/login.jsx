@@ -129,7 +129,6 @@ class Login extends Component {
         this.props.loginUser(authData["user"]);
         
         this.props.history.push("/"); //Going to the homepage after login
-        this.displayNotification(authResult.message);
       }
     }
   };

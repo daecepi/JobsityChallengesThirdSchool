@@ -116,7 +116,7 @@ const DDMenu = styled.div`
   background: ${secondaryWhite.rgb};
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   padding: 12px 16px;
-  z-index: 99999999;
+  z-index: 1;
   color: gray;
 
   ${UserBoxContainer}:hover &{
