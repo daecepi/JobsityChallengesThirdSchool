@@ -144,7 +144,7 @@ class Books extends Component {
       this.displayNotification("You are already at the end of the list");
       return;
     }
-    this.handlePagination(actualPage + 1);
+    this.props.handlePagination(actualPage + 1);
   };
 
   handleLeft = () => {

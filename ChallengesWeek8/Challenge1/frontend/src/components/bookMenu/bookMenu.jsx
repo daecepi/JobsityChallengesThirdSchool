@@ -25,10 +25,6 @@ const BookMenuContainer = styled.div`
   }
 `;
 
-const StyledI = styled.i`
-  color:white;
-`;
-
 const ReadLaterContainer = styled.div`
     background: white;
     border-radius: 20px;
@@ -69,7 +65,7 @@ class BookMenuComponent extends Component {
     return (
       <BookMenuContainer onClick={this.props.changeToogle} className={this.props.styles}>
         <TopBookMenu>
-          <FavoritesContainer onClick={this.handleClick} className={this.props.styles} className="favorites-container">
+          <FavoritesContainer onClick={this.handleClick}  className="favorites-container">
             <i className="fas fa-heart"></i>
           </FavoritesContainer>
           <ReadLaterContainer
