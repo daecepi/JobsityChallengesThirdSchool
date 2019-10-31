@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "114610af-8604-47f1-9ed4-fc53efa2cd2c",
+		"_postman_id": "52bc43dc-0055-44dc-8433-c37fab24c325",
 		"name": "Bookshelf updated",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,7 +12,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNvZmkiLCJpYXQiOjE1NzIyMDI5OTksImV4cCI6MTU3MjI4OTM5OX0.-wBPNB4O1aYKxNzC3Jb8ybvAcmvDzcDBZ-acnTJYWj8",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNvZmkiLCJpYXQiOjE1NzI1NjE4ODQsImV4cCI6MTU3MjY0ODI4NH0.W3_Sz0gPHZsozE5rSNZSb6a6jfCvMnNL86WKrsBBJ2g",
 						"type": "text"
 					},
 					{
@@ -23,7 +23,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:5000/api/books?startIndex=0&city=Cartagena",
+					"raw": "http://localhost:5000/api/books?startIndex=0&citi<es=Cartagena",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -39,7 +39,7 @@
 							"value": "0"
 						},
 						{
-							"key": "city",
+							"key": "citi<es",
 							"value": "Cartagena"
 						}
 					]

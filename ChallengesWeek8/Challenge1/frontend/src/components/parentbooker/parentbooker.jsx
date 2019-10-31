@@ -89,11 +89,11 @@ class ParentBooker extends Component {
     let url = endpoint + "?startIndex=" + pageNum;
 
     if(filters.city){
-      url += ("&cities="+filters.city);
+      url += ("&cities="+this.capitalizeFLetter(filters.city));
     }
 
     if(filters.type){
-      url += ("&types="+filters.type);
+      url += ("&types="+this.capitalizeFLetter(filters.type));
     }
 
     if(filters.words){
@@ -112,6 +112,8 @@ class ParentBooker extends Component {
         Authorization: "Bearer " + token
       }
     }).then((res) => res.json());
+
+    console.log("url", url);
 
     //Acting according to message
     if (authResult === 400) {
