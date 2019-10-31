@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 
 //STYLING
 import styled from 'styled-components';
-import { MenuBox } from '../../styles/index';
+import { MenuBox } from '../../styles';
 import { primaryBlue, primaryDark, primaryWhite } from '../../styles/colors';
 
 const MenuLeft = styled.div`

@@ -13,7 +13,7 @@ import "react-notification-alert/dist/animate.css";
 
 //STYLING
 import styled from 'styled-components';
-import { FullContainer, MoveButton } from '../../styles/index';
+import { FullContainer, MoveButton } from '../../styles';
 import { secondaryWhite, primaryGrey } from '../../styles/colors';
 
 const ContainerRegister = styled.div`
@@ -32,7 +32,9 @@ const ContainerRegister = styled.div`
   padding-left: 1rem;
 
   @media(max-width: 580px){
-        width: 70%;
+        &{
+          width: 70%;
+        }
   }
 `;
 

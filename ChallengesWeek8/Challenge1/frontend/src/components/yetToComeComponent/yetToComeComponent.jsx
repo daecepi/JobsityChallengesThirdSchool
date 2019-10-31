@@ -5,10 +5,9 @@ import { Link } from "react-router-dom";
 
 //STYLING
 import styled from 'styled-components';
+import { FullContainer } from '../../styles';
 import { secondaryWhite, secondaryBlue, thirdDark, primaryBlue } from '../../styles/colors';
 
-//Common styled components
-import { FullContainer } from '../../styles/index';
 
 
 const YetContainer = styled.div`

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 //STYLING
 import styled from 'styled-components';
-import { FullContainer, defaultStyleLink } from '../../styles/index';
+import { FullContainer, defaultStyleLink } from '../../styles';
 import { secondaryWhite, secondaryBlue, thirdDark } from "../../styles/colors";
 
 const NotFoundContainer = styled.div`

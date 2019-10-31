@@ -6,9 +6,6 @@ import { withRouter, Link } from "react-router-dom";
 
 import { logoutUser } from "../../actions/userActionCreator";
 
-//Styles
-import "./navbar.scss";
-
 //Svg logo
 import logo from "./logo.svg";
 

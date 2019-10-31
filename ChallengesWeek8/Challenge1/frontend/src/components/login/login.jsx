@@ -6,8 +6,6 @@ import { Link, withRouter } from "react-router-dom";
 
 import { loginUser } from "../../actions/userActionCreator";
 
-//Styles
-import "./login.scss";
 
 //External components used
 import NotificationAlert from "react-notification-alert";
@@ -15,6 +13,58 @@ import "react-notification-alert/dist/animate.css";
 
 //Components used
 import SearchComponent from "../searchComponent/searchComponent";
+
+//STYLING
+import styled from 'styled-components';
+import { FullContainer, MoveButton } from '../../styles';
+import { secondaryWhite, primaryError } from "../../styles/colors";
+
+const LoginContainer = styled.div`
+  background: ${secondaryWhite.rgb};
+  box-shadow: 2px 10px 20px 0px black;
+  height: 40%;
+  width: 25%;
+  display: flex;
+  border-radius: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem;
+
+  
+  @media(max-width: 580px){
+    &{    
+      padding-top: 1rem;
+      justify-content: flex-start;
+    }
+  }
+`; 
+
+const LoginTitle = styled.h1`
+  justify-self: center;
+  align-self: center;
+  flex-grow: 5;
+  justify-content: center;
+  padding-bottom: black;
+`; 
+
+const InputContainer = styled.div`
+  width: 90%;
+`;
+
+const SubmitButton = styled.input`
+  display: block;
+  border-radius: 20px;
+  width: 90%;
+  flex-grow: 1;
+  margin-top: 2%;
+  margin: 8px 0;
+`;
+
+const MessageSpan = styled.span`
+  font-size: 0.7rem;
+  color: ${primaryError.rgb};
+`;
 
 class Login extends Component {
   state = {
@@ -95,13 +145,13 @@ class Login extends Component {
   };
 
   render() {
-    const { username, password, message, message_style } = this.state;
+    const { username, password, message } = this.state;
     return (
-      <div className="full-container">
-        <div className="container-login">
+      <FullContainer>
+        <LoginContainer>
           <form onSubmit={this.authenticate}>
-            <h1 className="login-title">Bookshelf Login</h1>
-            <div className="input">
+            <LoginTitle>Bookshelf Login</LoginTitle>
+            <InputContainer>
               <SearchComponent
                 type="text"
                 placeholder="Username..."
@@ -109,8 +159,8 @@ class Login extends Component {
                 value={username}
                 onChange={this.handleUsernameChange}
               />
-            </div>
-            <div className="input">
+            </InputContainer>
+            <InputContainer>
               <SearchComponent
                 type="password"
                 placeholder="Password..."
@@ -118,16 +168,16 @@ class Login extends Component {
                 value={password}
                 onChange={this.handlePasswordChange}
               />
-            </div>
-            <input type="submit" className="button-submit" value="Login" />
-            {message ? <span className={message_style}>{message}</span> : ""}
+            </InputContainer>
+            <SubmitButton type="submit" value="Login" />
+            {message ? <MessageSpan>{message}</MessageSpan> : ""}
           </form>
-        </div>
+        </LoginContainer>
         <NotificationAlert ref="notificationAlert" />
         <Link to="/register">
-          <button className="move-button">Register</button>
+          <MoveButton>Register</MoveButton>
         </Link>
-      </div>
+      </FullContainer>
     );
   }
 }

@@ -11,7 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 //STYLING
 import styled from 'styled-components';
-import { InternalSeparator } from '../../styles/index';
+import { InternalSeparator } from '../../styles';
 import { primaryBlue, primaryDarkTransparent, secondaryWhite, primaryDark } from '../../styles/colors';
 
 const ReservationContainer = styled.div`

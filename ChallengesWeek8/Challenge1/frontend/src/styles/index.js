@@ -31,6 +31,13 @@ export const FullContainer = styled.div`
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media(max-width: 580px){
+    &{    
+      padding-top: 1rem;
+      justify-content: flex-start;
+    }
+  }
 `;
 
 export const MenuBox = styled.div`
