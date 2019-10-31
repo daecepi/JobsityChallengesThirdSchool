@@ -9,7 +9,7 @@ import StarRatingComponent from "react-star-rating-component";
 //STYLING
 import styled from 'styled-components';
 import { FullContainer, MoveButton } from '../../styles';
-import { secondaryWhite, primaryError } from "../../styles/colors";
+import { secondaryWhite, primaryError, secondaryGrey, primaryWhite, primaryGrey } from "../../styles/colors";
 
 const GeneralHoverContainer = styled.div`
   margin: 0.4rem;
@@ -29,7 +29,7 @@ const AuthorsContainer = styled.div`
 
 const StyledP = styled.p`
   color: ${props => props.color};
-  margin-left: 0.3rem;
+  margin-left: ${props => props.gap?props.gap:"0"}rem;
 `;
 
 
@@ -39,31 +39,31 @@ class DescriptorComponent extends Component {
     const { title, authors, release, description, averageRating, pageCount } = this.props;
 
     return (
-      <div className="general-hover-container">
-        <div className="hover-desc">
-          <p className="blue-hover-text">{title}</p>
-          <p className="gray-hover-text left-gap">
+      <GeneralHoverContainer>
+        <HoverDesc>
+          <StyledP color={primaryBlue.rgb}>{title}</StyledP>
+          <StyledP color={secondaryGrey.rgb} gap={0.3}>
             {typeof release !== "undefined" && release.indexOf >= "-" ? release.split("-")[0] : release}
-          </p>
-        </div>
-        <div className="authors-container">
-          <p className="white-hover-text">Novel by</p>
-          <p className="gray-hover-text">{authors.join(",")}</p>
-        </div>
+          </StyledP>
+        </HoverDesc>
+        <AuthorsContainer>
+          <StyledP color={primaryWhite.rgb} gap={0.3}>Novel by</StyledP>
+          <StyledP color={primaryGrey,rgb}  gap={0.3}>{authors.join(",")}</StyledP>
+        </AuthorsContainer>
         <div>
           <p>{pageCount}</p>
         </div>
         <div>
-          <p className="gray-hover-text">SUMARY: </p>
+          <StyledP color={secondaryGrey.rgb}>SUMARY: </StyledP>
           <p>
             {typeof description !== "undefined" && description.length >= 250 ? description.substr(0, 250) : description}
           </p>
         </div>
         <div>
-          <p className="gray-hover-text">RATING: </p>
+          <StyledP color={secondaryGrey.rgb}>RATING: </StyledP>
           <StarRatingComponent name={title} starCount={5} starColor={"#60B5D6"} value={averageRating} />
         </div>
-      </div>
+      </GeneralHoverContainer>
     );
   }
 }
