@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
-
+import { defaultStyleLink } from "../../styles";
 
 //External components used
 import NotificationAlert from "react-notification-alert";
@@ -15,11 +15,10 @@ import Book from "../book/book";
 
 //STYLING
 import styled from 'styled-components';
-import { primaryGrey, thirdWhite, primaryDark, secondaryDark, primaryBlue } from "../../styles/colors";
+import { primaryGrey, thirdWhite, primaryDark, secondaryDark, primaryBlue, secondaryBlue } from "../../styles/colors";
 import { MenuBox } from "../../styles";
 
 const Section1Container = styled.div`
-  box-sizing: border-box;
   flex-basis: 95%;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
@@ -30,7 +29,7 @@ const ContentContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
-  background: ${thirdWhite};
+  background: ${thirdWhite.rgb};
   flex-flow: column;
   padding: 1rem 4rem 0rem 4rem;
 `;
@@ -103,7 +102,7 @@ const StyledI = styled.i`
   padding-right: 0.15rem;
 
   &:hover{
-    color: $secondary-blue;
+    color: ${secondaryBlue.rgb};
   }
 `;
 
@@ -114,8 +113,7 @@ const StyledPFormBox = styled.p`
 
 const BooksContainer = styled.div`
   display: flex;
-  justify-items: stretch;
-  align-items: space-between;
+  flex-wrap: wrap;
 `;
 
 class Books extends Component {
@@ -159,75 +157,75 @@ class Books extends Component {
     console.log(this.props);
     const { books } = this.props;
     return (
-      <Section1Container>
-        <SideMenuFiltersComponent
-          resource={this.props.resource}
-          getBooksByType={this.props.getBooksByType}
-          getBooksByCity={this.props.getBooksByCity}
-        />
-        <ContentContainer>
-          <ListingManipulatorContainer>
-            <StyledH2>New Releases</StyledH2>
-            <ContentFilterBox>
-              <StyledP>
-                <Link><p >Release Date</p> |{" "}</Link>
-                <Link><p >Popularity</p></Link>
-              </StyledP>
-            </ContentFilterBox>
-            <LayoutFormBox>
-              <StyledI className="fa fa-th-large"></StyledI>
-              <StyledI className="fa fa-th-list"></StyledI>
-              <StyledPFormBox>| pages</StyledPFormBox>
-              <StyledI onClick={this.handleLeft} className="fas fa-chevron-left i-hov" />
-              <StyledI onClick={this.handleRight} className="fas fa-chevron-right i-hov" />
-            </LayoutFormBox>
-          </ListingManipulatorContainer>
-          <BooksContainer id="book-container">
-            {books.map((book) => {
-              return <Book key={book._id} book={book} setBookToOperate={this.props.setBookToOperate} />;
-            })}
-          </BooksContainer>
-        </ContentContainer>
-        <MenuRight>
-          <MenuBox>
-            <MenuRightP>MOST READ BOOKS</MenuRightP>
-            <StyledMenuRightOl>
-              <StyledMenuRightLi key="1">
-                <Link to={"/book/11111dasdafs"}><p>Hooked: How To Build Habit forming Products.</p></Link>
-              </StyledMenuRightLi>
-              <StyledMenuRightLi key="2">
-                <Link to={"book/22222dasdad"}>
-                  <p>
-                    The Inevitable: Understanding the 12 Technological Forces That Will Shape Our Future
-                  </p>
-                </Link>
-              </StyledMenuRightLi>
-              <StyledMenuRightLi key="3">
-                <Link to={"33333dasdad"}>
-                  <p>
-                    Lean In: Women, Work, and the Will to Lead.
-                  </p>
-                </Link>
-              </StyledMenuRightLi>
-              <StyledMenuRightLi key="4">
-                <Link to={"44444dadsad"}>
-                  <p>
-                    Building a Bussiness When There Are Not Easy Answers.
-                  </p>
-                </Link>
-              </StyledMenuRightLi>
-              <StyledMenuRightLi key="5">
-                <Link>
-                  <p>
-                    How Google Works
-                  </p>
-                </Link>
-              </StyledMenuRightLi>
-            </StyledMenuRightOl>
-          </MenuBox>
-        </MenuRight>
-        <NotificationAlert ref="notificationAlert" />
-      </Section1Container>
+      <>
+        <Section1Container>
+          <SideMenuFiltersComponent
+            resource={this.props.resource}
+            getBooksByType={this.props.getBooksByType}
+            getBooksByCity={this.props.getBooksByCity}
+          />
+          <ContentContainer>
+            <ListingManipulatorContainer>
+              <StyledH2>New Releases</StyledH2>
+              <ContentFilterBox>
+                <StyledP>
+                  <p><Link style={defaultStyleLink} >Release Date</Link> | <Link style={defaultStyleLink}>Popularity</Link></p>
+                </StyledP>
+              </ContentFilterBox>
+              <LayoutFormBox>
+                <StyledI className="fa fa-th-large"></StyledI>
+                <StyledI className="fa fa-th-list"></StyledI>
+                <StyledPFormBox>| pages</StyledPFormBox>
+                <StyledI onClick={this.handleLeft} className="fas fa-chevron-left i-hov" />
+                <StyledI onClick={this.handleRight} className="fas fa-chevron-right i-hov" />
+              </LayoutFormBox>
+            </ListingManipulatorContainer>
+            <BooksContainer id="book-container">
+              {books.map((book) => {
+                return <Book key={book._id} book={book} setBookToOperate={this.props.setBookToOperate} />;
+              })}
+            </BooksContainer>
+          </ContentContainer>
+          <MenuRight>
+            <MenuBox>
+              <MenuRightP>MOST READ BOOKS</MenuRightP>
+              <StyledMenuRightOl>
+                <StyledMenuRightLi key="1">
+                  <Link to={"/book/11111dasdafs"}><p>Hooked: How To Build Habit forming Products.</p></Link>
+                </StyledMenuRightLi>
+                <StyledMenuRightLi key="2">
+                  <Link to={"book/22222dasdad"}>
+                    <p>
+                      The Inevitable: Understanding the 12 Technological Forces That Will Shape Our Future
+                    </p>
+                  </Link>
+                </StyledMenuRightLi>
+                <StyledMenuRightLi key="3">
+                  <Link to={"33333dasdad"}>
+                    <p>
+                      Lean In: Women, Work, and the Will to Lead.
+                    </p>
+                  </Link>
+                </StyledMenuRightLi>
+                <StyledMenuRightLi key="4">
+                  <Link to={"44444dadsad"}>
+                    <p>
+                      Building a Bussiness When There Are Not Easy Answers.
+                    </p>
+                  </Link>
+                </StyledMenuRightLi>
+                <StyledMenuRightLi key="5">
+                  <Link>
+                    <p>
+                      How Google Works
+                    </p>
+                  </Link>
+                </StyledMenuRightLi>
+              </StyledMenuRightOl>
+            </MenuBox>
+          </MenuRight>
+        </Section1Container>
+      </>
     );
   }
 }

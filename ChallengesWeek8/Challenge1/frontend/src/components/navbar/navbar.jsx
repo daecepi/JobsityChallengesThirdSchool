@@ -25,10 +25,12 @@ import { secondaryWhite, primaryGrey, primaryBlue, secondaryDark } from "../../s
 const StyledHeader = styled.header`
   box-sizing: border-box;
   flex-basis: 5%;
+
+  display:grid;
+  grid-template-columns: 1fr 5fr 1fr;
 `;
 
 const LogoContainer = styled.div`
-  height: 100%;
 `;
 
 const SearchBar = styled.div`
@@ -40,7 +42,7 @@ const SearchBar = styled.div`
   border-bottom: 1px solid ${primaryBlue.rgb};
   padding-left: 1rem;
   padding-right: 1rem;
-  background: $secondary-white;
+  background: ${secondaryWhite.rgb};
 `;
 
 const NavBarTitle = styled.p`
@@ -140,6 +142,11 @@ const StyledButtonNav = styled.button`
   }
 `;
 
+const LogoImage = styled.img`
+  height: 100%;
+  width: 100%;
+`;
+
 class NavBar extends Component {
 
   mentionNotYetFunctionality = (e) => {
@@ -175,8 +182,8 @@ class NavBar extends Component {
       <StyledHeader>
         <LogoContainer>
           <Link to="/">
-            <img src={logo} alt="logo"></img>
-          </Link>
+            <LogoImage src={logo} alt="logo" />
+            </Link>
         </LogoContainer>
         <SearchBar>
           <NavBarTitle>Bookshelf</NavBarTitle>
