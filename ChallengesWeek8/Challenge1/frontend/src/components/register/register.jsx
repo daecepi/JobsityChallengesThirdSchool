@@ -32,9 +32,7 @@ const ContainerRegister = styled.div`
   padding-left: 1rem;
 
   @media(max-width: 580px){
-        &{
-          width: 70%;
-        }
+    width: 70%;
   }
 `;
 

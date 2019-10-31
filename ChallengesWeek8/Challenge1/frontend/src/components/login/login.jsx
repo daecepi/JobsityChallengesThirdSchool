@@ -33,10 +33,9 @@ const LoginContainer = styled.div`
 
   
   @media(max-width: 580px){
-    &{    
       padding-top: 1rem;
       justify-content: flex-start;
-    }
+      width: 50vw;
   }
 `; 
 

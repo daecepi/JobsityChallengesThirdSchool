@@ -6,9 +6,35 @@ import "./descriptor.scss";
 //components used
 import StarRatingComponent from "react-star-rating-component";
 
-class DescriptorComponent extends Component {
-  state = {};
+//STYLING
+import styled from 'styled-components';
+import { FullContainer, MoveButton } from '../../styles';
+import { secondaryWhite, primaryError } from "../../styles/colors";
 
+const GeneralHoverContainer = styled.div`
+  margin: 0.4rem;
+  height: 100%;
+  width: 100%;
+`;
+
+const HoverDesc = styled.div`
+  width: 100%;
+  display: flex;
+  align-content: space-between;
+`;
+
+const AuthorsContainer = styled.div`
+  display: flex;
+`;
+
+const StyledP = styled.p`
+  color: ${props => props.color};
+  margin-left: 0.3rem;
+`;
+
+
+
+class DescriptorComponent extends Component {
   render() {
     const { title, authors, release, description, averageRating, pageCount } = this.props;
 
@@ -37,7 +63,6 @@ class DescriptorComponent extends Component {
           <p className="gray-hover-text">RATING: </p>
           <StarRatingComponent name={title} starCount={5} starColor={"#60B5D6"} value={averageRating} />
         </div>
-        <div></div>
       </div>
     );
   }
