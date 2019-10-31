@@ -73,6 +73,7 @@ class App extends React.Component {
               <PrivateRouteComponent path="/user/:id/history" component={YetToComeComponent} />
               <PrivateRouteComponent path="/user/:id/later" component={YetToComeComponent} />
               <PrivateRouteComponent path="/user/:id/favorites" component={YetToComeComponent} />
+              <PrivateRouteComponent path="/book/:id" component={YetToComeComponent} />
               <Route path="/login" render={() => <Login {...this.props} />} />
               <Route path="/register" render={(match, props) => <Register {...props} {...match} />} />
               <Route component={NotFoundPageComponent} />
