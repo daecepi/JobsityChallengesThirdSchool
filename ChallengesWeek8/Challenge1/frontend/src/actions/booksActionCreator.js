@@ -6,14 +6,16 @@ import {
   UPDATE_RESERVATION_PROCCESS,
 } from "../actionTypes/actionTypes";
 
-export function getBooksSuccess(books, actualPage, totalPageCount, urlFilters) {
+export function getBooksSuccess(books, actualPage, totalPageCount, urlFilters, resource) {
+  console.log("in action creator", urlFilters);
   return {
     type: GET_BOOK_SUCCESS,
     payload: {
       books,
       actualPage,
       totalPageCount,
-      urlFilters
+      urlFilters,
+      resource
     }
   };
 }
@@ -38,7 +40,6 @@ export function pageChange(num){
     payload: {
       pageNumber: num
     }
-
   }
 }
 

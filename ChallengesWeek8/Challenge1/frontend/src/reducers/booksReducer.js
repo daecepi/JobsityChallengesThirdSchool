@@ -13,6 +13,7 @@ const initialState = {
   totalPageCount: 0,
   searchWords: "",
   urlFilters: "/",
+  resource: "/",
   lendBook: false,
   showModal: "", // make sure to delete if not used
   bookToOperateIn: undefined
@@ -31,15 +32,18 @@ const books = (state = initialState, action) => {
         pending: false
       });
     case GET_BOOK_SUCCESS:
+      console.log(action.payload);
       return Object.assign({}, state, {
             books: action.payload.books,
             pending: false,
             actualPage: action.payload.actualPage,
             totalPageCount: action.payload.totalPageCount,
-            
+            resource: action.payload.resource
       });
     case PAGE_CHANGE: //MOFIIGING
-      return state;
+      return Object.assign({}, state, {
+        actualPage: action.payload.pageNum
+      });
     case LEND_BOOK:
       return state.books.id=== action.id? Object.assign({}, state, {
                 reserved: true

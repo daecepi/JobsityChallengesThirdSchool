@@ -46,11 +46,15 @@ class ParentBooker extends Component {
    * Funtrion for initialization
    */
   componentDidMount() {
-    this.fetchBooks();
+    this.fetchBooks(this.props.location.pathname+this.props.location.search);
   }
 
   componentDidUpdate(){
-    this.fetchBooks();
+    const resource = this.props.location.pathname+this.props.location.search;
+    console.log(this.props.resource !== resource, resource, this.props.resource);
+    if(this.props.resource !== resource){
+      this.fetchBooks(resource);
+    }
   }
 
   /**
@@ -73,12 +77,17 @@ class ParentBooker extends Component {
    * @param {number} page : the integer number of the page wanted
    * @param {Object} filters : object that contains the filters by city, type and words to search for 
    */
-  fetchBooks = async () => {
-    const filters = queryString.parse(this.props.location.search)
-    const endpoint = this.props.baseEndpoint;
-    let url = endpoint + "?startIndex=" + this.props.actualPage;
+  fetchBooks = async (resource) => {
+    let pageNum = 0;
+    const filters = queryString.parse(this.props.location.search);
 
-    console.log(filters.city);
+    if(filters.page){
+      pageNum = parseInt(filters.page);
+    }
+
+    const endpoint = this.props.baseEndpoint;
+    let url = endpoint + "?startIndex=" + pageNum;
+
     if(filters.city){
       url += ("&cities="+filters.city);
     }
@@ -90,6 +99,8 @@ class ParentBooker extends Component {
     if(filters.words){
       url += ("&words="+filters.words);
     }
+
+    console.log(url);
 
     const token = localStorage.getItem("access_token");
     this.props.getBooksPending();
@@ -105,18 +116,18 @@ class ParentBooker extends Component {
     //Acting according to message
     if (authResult === 400) {
       this.displayNotification(authResult.message);
-      
     } else if (authResult.statusCode === 401) {
       //Means that token is not valid anymore
       this.displayNotification("Credentials have expired");
       localStorage.removeItem("access_token");
       localStorage.removeItem("user");
     } else if (authResult.state === "Success") {
-      console.log(authResult);
+      console.log("entre");
       //Setting the state that holds the books for updates
       const path = this.props.computedMatch.path;
-      this.props.getBooksSuccess(authResult.books, authResult.actualPage, authResult.totalPageCount, path);
+      this.props.getBooksSuccess(authResult.books, authResult.actualPage, authResult.totalPageCount, path, resource);
     }
+    console.log(authResult);
   };
 
   /**
@@ -124,22 +135,7 @@ class ParentBooker extends Component {
    */
   handlePagination = (num) => {
     //Get the query params
-    const path = this.props.computedMatch.path;
-    switch (path) {
-      case "/":
-        this.fetchBooks(this.props.baseEndpoint, num, {});
-        break;
-      case "/city/:name":
-        const city = this.props.computedMatch.params.name;
-        this.fetchBooks(this.props.baseEndpoint, num, { city: city });
-        break;
-      case "/type/:name":
-        const type = this.props.computedMatch.params.name;
-        this.fetchBooks(this.props.baseEndpoint, num, { type: type });
-        break;
-      default:
-        break;
-    }
+    this.fetchBooks();
   };
 
   /**
@@ -190,7 +186,6 @@ class ParentBooker extends Component {
   };
 
   render() {
-    //const { actualPage, totalPageCount } = this.state;
     return (
       <AppContainer>
         <>
@@ -202,6 +197,7 @@ class ParentBooker extends Component {
             getBooksByCity={this.getBooksByCity}
             getBooksByType={this.getBooksByType}
             handlePagination={this.handlePagination}
+            fetchBooks={this.fetchBooks}
             setBookToOperate={this.setBookToOperate}
           />
           {this.state.lendBook ? (
@@ -222,7 +218,8 @@ const mapStateToProps = (state) => {
     books: state.books.books,
     baseEndpoint: state.books.baseEndpoint,
     actualPage: state.books.actualPage,
-    totalPageCount: state.books.totalPageCount
+    totalPageCount: state.books.totalPageCount,
+    resource: state.books.resource
   };
 };
 
@@ -231,8 +228,8 @@ const mapDispatchToProps = (dispatch) => {
     getBooksPending: () => {
       dispatch(getBooksPending());
     },
-    getBooksSuccess: (books) => {
-      dispatch(getBooksSuccess(books));
+    getBooksSuccess: (books, actualPage, totalPageCount, urlFilters, resource) => {
+      dispatch(getBooksSuccess(books, actualPage, totalPageCount, urlFilters, resource));
     },
     getBooksError: (err) => {
       dispatch(getBooksError(err));

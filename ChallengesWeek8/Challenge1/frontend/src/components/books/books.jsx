@@ -18,6 +18,8 @@ import styled from 'styled-components';
 import { primaryGrey, thirdWhite, primaryDark, secondaryDark, primaryBlue, secondaryBlue } from "../../styles/colors";
 import { MenuBox } from "../../styles";
 
+import { pageChange } from "../../actions/booksActionCreator";
+
 const Section1Container = styled.div`
   flex-basis: 95%;
   display: grid;
@@ -144,7 +146,7 @@ class Books extends Component {
       this.displayNotification("You are already at the end of the list");
       return;
     }
-    this.props.handlePagination(actualPage + 1);
+    this.props.fetchBooks(actualPage + 1);
   };
 
   handleLeft = () => {
@@ -250,7 +252,11 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    changePage: (pageNum) => {
+      dispatch(pageChange(pageNum))
+    }
+  };
 };
 
 //Functions for redux
