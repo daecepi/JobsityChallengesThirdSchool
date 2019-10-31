@@ -50,7 +50,6 @@ const FavoritesContainer = styled.div`
 `;
 
 const ReadingsContainer = styled.div`
-background: red;
 `;
 
 
@@ -82,9 +81,9 @@ class BookMenuComponent extends Component {
           </ReadLaterContainer>
         </TopBookMenu>
         <MidBookMenu>
-          <div onClick={this.handleClick} className="readings-container">
+          <ReadingsContainer onClick={this.handleClick}>
             <i className="fas fa-book-open"></i>
-          </div>
+          </ReadingsContainer>
         </MidBookMenu>
         <BottomBookMenu>
           <StarRatingComponent

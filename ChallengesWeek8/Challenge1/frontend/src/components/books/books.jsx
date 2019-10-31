@@ -34,11 +34,6 @@ const ContentContainer = styled.div`
   padding: 1rem 4rem 0rem 4rem;
 `;
 
-const MenuBoxContainer = styled.div`
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-`;
-
 const MenuRight = styled.div`
   background: ${primaryDark.rgb};
   color: ${primaryGrey.rgb};
@@ -116,6 +111,16 @@ const BooksContainer = styled.div`
   flex-wrap: wrap;
 `;
 
+const StyledFilterBoxSpan = styled.span`
+  color: ${primaryBlue.rgb};
+
+  &:hover{
+    color: ${secondaryBlue.rgb};
+  }
+`;
+
+
+
 class Books extends Component {
 
   /**
@@ -169,15 +174,15 @@ class Books extends Component {
               <StyledH2>New Releases</StyledH2>
               <ContentFilterBox>
                 <StyledP>
-                  <p><Link style={defaultStyleLink} >Release Date</Link> | <Link style={defaultStyleLink}>Popularity</Link></p>
+                  <StyledFilterBoxSpan>Release Date</StyledFilterBoxSpan> | <StyledFilterBoxSpan>Popularity</StyledFilterBoxSpan>
                 </StyledP>
               </ContentFilterBox>
               <LayoutFormBox>
                 <StyledI className="fa fa-th-large"></StyledI>
                 <StyledI className="fa fa-th-list"></StyledI>
                 <StyledPFormBox>| pages</StyledPFormBox>
-                <StyledI onClick={this.handleLeft} className="fas fa-chevron-left i-hov" />
-                <StyledI onClick={this.handleRight} className="fas fa-chevron-right i-hov" />
+                <StyledI onClick={this.handleLeft} className="fas fa-chevron-left" />
+                <StyledI onClick={this.handleRight} className="fas fa-chevron-right" />
               </LayoutFormBox>
             </ListingManipulatorContainer>
             <BooksContainer id="book-container">
@@ -191,31 +196,35 @@ class Books extends Component {
               <MenuRightP>MOST READ BOOKS</MenuRightP>
               <StyledMenuRightOl>
                 <StyledMenuRightLi key="1">
-                  <Link to={"/book/11111dasdafs"}><p>Hooked: How To Build Habit forming Products.</p></Link>
+                  <Link style={defaultStyleLink} to={"/book/11111dasdafs"}>
+                    <p>
+                      Hooked: How To Build Habit forming Products.
+                    </p>
+                  </Link>
                 </StyledMenuRightLi>
                 <StyledMenuRightLi key="2">
-                  <Link to={"book/22222dasdad"}>
+                  <Link style={defaultStyleLink} to={"book/22222dasdad"}>
                     <p>
                       The Inevitable: Understanding the 12 Technological Forces That Will Shape Our Future
                     </p>
                   </Link>
                 </StyledMenuRightLi>
                 <StyledMenuRightLi key="3">
-                  <Link to={"33333dasdad"}>
+                  <Link style={defaultStyleLink} to={"33333dasdad"}>
                     <p>
                       Lean In: Women, Work, and the Will to Lead.
                     </p>
                   </Link>
                 </StyledMenuRightLi>
                 <StyledMenuRightLi key="4">
-                  <Link to={"44444dadsad"}>
+                  <Link style={defaultStyleLink} to={"44444dadsad"}>
                     <p>
                       Building a Bussiness When There Are Not Easy Answers.
                     </p>
                   </Link>
                 </StyledMenuRightLi>
                 <StyledMenuRightLi key="5">
-                  <Link>
+                  <Link style={defaultStyleLink} to={"55555dadsad"}>
                     <p>
                       How Google Works
                     </p>
@@ -225,6 +234,7 @@ class Books extends Component {
             </MenuBox>
           </MenuRight>
         </Section1Container>
+        <NotificationAlert ref="notificationAlert" />
       </>
     );
   }
