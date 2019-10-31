@@ -19,8 +19,8 @@ export class BooksController {
   @Get()
   public async getBooks(
     @Query('words') words: string,
-    @Query('city') city: string,
-    @Query('type') type,
+    @Query('cities') city: string,
+    @Query('types') type,
     @Query('startIndex') startIndex: string,
   ) {
     return await this.booksService.searchBooks(words, city, type, startIndex);

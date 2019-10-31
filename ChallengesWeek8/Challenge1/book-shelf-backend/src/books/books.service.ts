@@ -63,7 +63,7 @@ export class BooksService {
       //Verifing that the index is a number
       return new HttpException('The start index of the books lookup should be numeric', 400);
     }
-
+    
     const index = parseInt(startIndex);
 
     let filters = {};
@@ -76,6 +76,7 @@ export class BooksService {
     if (words) {
       filters['title'] = { $regex: words };
     }
+
     //Usage of aggregate
     let books = await this.bookModel.aggregate([
       {
