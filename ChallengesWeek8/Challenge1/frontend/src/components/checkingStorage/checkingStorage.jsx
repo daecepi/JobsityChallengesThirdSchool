@@ -4,7 +4,7 @@ import React, { Component } from "react";
 //STYLING
 import styled from 'styled-components';
 import { FullContainer } from "../../styles";
-import { primaryBlue,  secondaryBlue, thirdDark, secondaryWhite } from "../../styles/colors";
+import { secondaryBlue, thirdDark, secondaryWhite } from "../../styles/colors";
 
 const CheckingContainer = styled.div`
   background: ${secondaryWhite.rgb};
