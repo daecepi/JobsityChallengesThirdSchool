@@ -8,8 +8,7 @@ import StarRatingComponent from "react-star-rating-component";
 
 //STYLING
 import styled from 'styled-components';
-import { FullContainer, MoveButton } from '../../styles';
-import { secondaryWhite, primaryError, secondaryGrey, primaryWhite, primaryGrey } from "../../styles/colors";
+import { primaryBlue,  secondaryGrey, primaryWhite, primaryGrey } from "../../styles/colors";
 
 const GeneralHoverContainer = styled.div`
   margin: 0.4rem;
@@ -48,7 +47,7 @@ class DescriptorComponent extends Component {
         </HoverDesc>
         <AuthorsContainer>
           <StyledP color={primaryWhite.rgb} gap={0.3}>Novel by</StyledP>
-          <StyledP color={primaryGrey,rgb}  gap={0.3}>{authors.join(",")}</StyledP>
+          <StyledP color={primaryGrey.rgb}  gap={0.3}>{authors.join(",")}</StyledP>
         </AuthorsContainer>
         <div>
           <p>{pageCount}</p>
