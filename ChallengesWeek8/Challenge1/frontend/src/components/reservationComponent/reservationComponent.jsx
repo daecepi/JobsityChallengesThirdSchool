@@ -79,16 +79,26 @@ const FormButton = styled.input`
 
 class ReservationComponent extends Component {
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("working");
 
-    console.log(this.props.user._id);
-    console.log("Book", this.props.bookId);
-    console.log("StartDate", this.props.startDate);
-    console.log("endDate", this.props.endDate);
 
-    //let authResult = fetch();
+
+    const url = this.props.baseEndpoint.concat("/books/lend");
+    const data = {userId: this.props.user._id, bookId: this.props.bookId, startDate: this.props.startDate.toGMTString(), endDate: this.props.endDate.toGMTString()};
+    const token = localStorage.getItem("access_token");
+    
+
+    let authResult = await fetch(url,{
+      method: "PUT",
+      headers: {
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+    console.log(authResult);
+
   };
 
   handleClose = (e) => {
@@ -139,6 +149,7 @@ class ReservationComponent extends Component {
 
 const mapStateToProps = state => {
   return {
+    baseEndpoint: state.books.baseEndpoint,
     bookId: state.books.bookId,
     user: state.user.userLogged,
     startDate: state.books.startDate,

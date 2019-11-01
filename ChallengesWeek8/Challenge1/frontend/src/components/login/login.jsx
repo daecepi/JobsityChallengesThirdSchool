@@ -107,7 +107,9 @@ class Login extends Component {
       }
       formBody = formBody.join("&");
 
-      let authResult = await fetch("http://localhost:5000/api/login", {
+      const url = this.props.baseEndpoint+"/login";
+
+      let authResult = await fetch( url , {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -180,6 +182,12 @@ class Login extends Component {
   }
 }
 
+const mapStateToProp = (state) => {
+  return {
+    baseEndpoint: state.books.baseEndpoint
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     loginUser: (user) => {
@@ -189,6 +197,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(
-  null,
+  mapStateToProp,
   mapDispatchToProps
 )(withRouter(Login));

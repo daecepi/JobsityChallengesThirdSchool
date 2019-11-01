@@ -11,7 +11,7 @@ import { GET_BOOK_SUCCESS,
 
 const initialState = {
   books: [],
-  baseEndpoint: "http://localhost:5000/api/books",
+  baseEndpoint: "http://localhost:5000/api",
   actualPage: 0,
   totalPageCount: 0,
   searchWords: "",

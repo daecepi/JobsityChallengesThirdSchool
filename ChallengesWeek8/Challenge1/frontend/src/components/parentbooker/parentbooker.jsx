@@ -91,7 +91,7 @@ class ParentBooker extends Component {
 
     const endpoint = this.props.baseEndpoint;
     const page = num !== undefined ? num : pageNum;
-    let url = endpoint + "?startIndex=" + page;
+    let url = endpoint.concat( "/books", "?startIndex=", page);
 
     if(filters.city){
       url += ("&cities="+this.capitalizeFLetter(filters.city));
