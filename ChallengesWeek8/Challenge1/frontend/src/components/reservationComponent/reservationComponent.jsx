@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
-import { prepareReservationProccess } from '../../actions/booksActionCreator';
+import { updateReservationInfo, finishReservationProccess } from '../../actions/booksActionCreator';
 
 //DatePicker used
 import DatePicker from "react-datepicker";
@@ -59,6 +59,7 @@ const ButtonContainer = styled.div`
 
 const Form = styled.form`
   display:flex;
+  background:red;
   justify-content: center;
 `;
 
@@ -80,14 +81,28 @@ class ReservationComponent extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("done");
+    console.log("working");
+
+    console.log("user",this.props.user);
+    console.log("Book", this.props.bookId);
+    console.log("StartDate", this.props.startDate);
+    console.log("endDate", this.props.endDate);
+
+    //let authResult = fetch();
   };
 
   handleClose = (e) => {
     e.preventDefault();
-    this.props.returnModalBack();
+    this.props.finishReservationProccess();
   };
 
+
+  updateEndDate = (date) => {
+    console.log(this.props.bookId);
+
+    const endDate = new Date(date);
+    this.props.updateReservationInfo(this.props.bookId, new Date(), endDate);
+  }
 
   render() {
     return (
@@ -103,7 +118,7 @@ class ReservationComponent extends Component {
               <DatePicker
                 style={{width:"90%"}}
                 selected={new Date()}
-                onChange={(date) => this.setStartDate(date)}
+                onChange={(date) => this.updateEndDate(date)}
                 selectsStart
                 startDate={new Date()}
                 minDate={new Date()}
@@ -113,7 +128,7 @@ class ReservationComponent extends Component {
               />
             </InternalSeparator>
             <ButtonContainer>
-              <FormButton type="submit" value="make reservation" />
+              <FormButton type="submit" value="make" />
             </ButtonContainer>
           </Form>
         </MediumContainer>
@@ -122,18 +137,22 @@ class ReservationComponent extends Component {
   }
 }
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = state => {
   return {
-    reservationId: state.reservationId,
-    startDate: state.startDate,
-    endDate: state.endDate
+    bookId: state.books.bookId,
+    user: state.user.userLogged,
+    startDate: state.books.startDate,
+    endDate: state.books.endDate
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateReservationProccess: (startDate, endDate) =>{
-      dispatch(prepareReservationProccess(startDate, endDate))
+    updateReservationInfo: (bookId, startDate, endDate) => {
+      dispatch(updateReservationInfo(bookId, startDate, endDate));
+    },
+    finishReservationProccess: () => {
+      dispatch(finishReservationProccess());
     } 
   };
 }

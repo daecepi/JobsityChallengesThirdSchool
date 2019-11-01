@@ -169,6 +169,7 @@ class ParentBooker extends Component {
   };
 
   setBookToOperate = (book) => {
+    console.log(book);
     this.setState({
       bookToOperateIn: book,
       lendBook: true
@@ -195,8 +196,8 @@ class ParentBooker extends Component {
             handlePageChange={this.handlePageChange}
             setBookToOperate={this.setBookToOperate}
           />
-          {this.state.lendBook ? (
-            <ReservationComponent returnModalBack={this.returnModalBack} book={this.state.bookToOperateIn} />
+          {this.props.isReservationProcessStarted ? (
+            <ReservationComponent returnModalBack={this.returnModalBack} />
           ) : (
             ""
           )}
@@ -214,7 +215,8 @@ const mapStateToProps = (state) => {
     baseEndpoint: state.books.baseEndpoint,
     actualPage: state.books.actualPage,
     totalPageCount: state.books.totalPageCount,
-    resource: state.books.resource
+    resource: state.books.resource,
+    isReservationProcessStarted: state.books.isReservationProcessStarted
   };
 };
 

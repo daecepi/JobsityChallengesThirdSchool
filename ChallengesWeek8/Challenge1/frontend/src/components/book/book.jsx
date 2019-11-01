@@ -114,6 +114,7 @@ class Book extends Component {
             <BookMenuComponent
               id={_id + "menu"}
               book={this.props.book}
+              bookId={this.props._id}
               averageRating={averageRating}
               styles={this.state.styles}
               changeToogle={this.changeToogle}

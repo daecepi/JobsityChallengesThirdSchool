@@ -3,7 +3,10 @@ import { GET_BOOK_SUCCESS,
   GET_BOOKS_ERROR,
   LEND_BOOK,
   RETURN_BOOK,
-  PAGE_CHANGE
+  PAGE_CHANGE,
+  START_RESERVATION_PROCCESS,
+  UPDATE_RESERVATION_PROCCESS,
+  FINISH_RESERVATION_PROCCESS
 } from "../actionTypes/actionTypes";
 
 const initialState = {
@@ -16,7 +19,11 @@ const initialState = {
   resource: "/",
   lendBook: false,
   showModal: "", // make sure to delete if not used
-  bookToOperateIn: undefined
+  bookToOperateIn: undefined,
+  bookId: undefined,
+  startDate: undefined,
+  endDate: undefined,
+  isReservationProcessStarted: false,
 };
 
 const books = (state = initialState, action) => {
@@ -42,6 +49,24 @@ const books = (state = initialState, action) => {
     case PAGE_CHANGE: //MOFIIGING
       return Object.assign({}, state, {
         actualPage: action.payload.pageNum
+      });
+    case START_RESERVATION_PROCCESS:
+      return Object.assign({}, state, {
+        bookId: action.payload.bookId,
+        isReservationProcessStarted: true
+      });
+    case UPDATE_RESERVATION_PROCCESS:
+      return Object.assign({}, state, {
+        startDate: action.payload.startDate,
+        endDate: action.payload.endDate
+      });
+
+    case FINISH_RESERVATION_PROCCESS:
+      return Object.assign({}, state, {
+        bookId: undefined,
+        startDate: undefined,
+        endDate: undefined,
+        isReservationProcessStarted: false
       });
     case LEND_BOOK:
       return state.books.id=== action.id? Object.assign({}, state, {

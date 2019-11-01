@@ -3,7 +3,9 @@ import {
   GET_BOOK_PENDING,
   GET_BOOKS_ERROR,
   PAGE_CHANGE,
+  START_RESERVATION_PROCCESS,
   UPDATE_RESERVATION_PROCCESS,
+  FINISH_RESERVATION_PROCCESS
 } from "../actionTypes/actionTypes";
 
 export function getBooksSuccess(books, actualPage, totalPageCount, urlFilters, resource) {
@@ -42,17 +44,35 @@ export function pageChange(num){
   }
 }
 
+
+/**
+ * FUNCTION TO START A RESERVATION PROCCESS
+ */
+export function startReservationProccess(bookId) {
+  return {
+    type: START_RESERVATION_PROCCESS,
+    payload: {
+      bookId
+    }
+  };
+}
+
 /**
  * FUNCTIONS FOR THE RESERVATION PROCCESS
  */
-export function prepareReservationProccess(startDate, returnDate){
+export function updateReservationInfo(startDate, returnDate){
   return {
     type: UPDATE_RESERVATION_PROCCESS,
     payload: {
       startDate,
       returnDate
     }
-  }
+  };
 }
 
+export function finishReservationProccess(){
+  return {
+    type: FINISH_RESERVATION_PROCCESS
+  };
+}
 
