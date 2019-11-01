@@ -123,10 +123,10 @@ class Login extends Component {
 
         //Saving user info for further needs
         localStorage.setItem("access_token", authResult["access_token"]);
-        localStorage.setItem("user", authResult["user"]);
+        localStorage.setItem("user", JSON.stringify(authResult["user"]));
 
         //Login user
-        this.props.loginUser(authData["user"]);
+        this.props.loginUser(authResult["user"]);
         
         this.props.history.push("/"); //Going to the homepage after login
       }

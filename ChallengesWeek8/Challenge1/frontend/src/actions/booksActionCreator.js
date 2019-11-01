@@ -48,11 +48,13 @@ export function pageChange(num){
 /**
  * FUNCTION TO START A RESERVATION PROCCESS
  */
-export function startReservationProccess(bookId) {
+export function startReservationProccess(bookId, startDate,endDate) {
   return {
     type: START_RESERVATION_PROCCESS,
     payload: {
-      bookId
+      bookId,
+      startDate,
+      endDate
     }
   };
 }
@@ -60,12 +62,12 @@ export function startReservationProccess(bookId) {
 /**
  * FUNCTIONS FOR THE RESERVATION PROCCESS
  */
-export function updateReservationInfo(startDate, returnDate){
+export function updateReservationInfo(startDate, endDate){
   return {
     type: UPDATE_RESERVATION_PROCCESS,
     payload: {
       startDate,
-      returnDate
+      endDate
     }
   };
 }

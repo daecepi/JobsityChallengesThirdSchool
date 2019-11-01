@@ -83,7 +83,7 @@ class ReservationComponent extends Component {
     e.preventDefault();
     console.log("working");
 
-    console.log("user",this.props.user);
+    console.log(this.props.user._id);
     console.log("Book", this.props.bookId);
     console.log("StartDate", this.props.startDate);
     console.log("endDate", this.props.endDate);
@@ -98,10 +98,10 @@ class ReservationComponent extends Component {
 
 
   updateEndDate = (date) => {
-    console.log(this.props.bookId);
+    console.log(this.props.endDate);
 
     const endDate = new Date(date);
-    this.props.updateReservationInfo(this.props.bookId, new Date(), endDate);
+    this.props.updateReservationInfo(new Date(), endDate);
   }
 
   render() {
@@ -117,7 +117,7 @@ class ReservationComponent extends Component {
               <StyledLabel>Return date:</StyledLabel>
               <DatePicker
                 style={{width:"90%"}}
-                selected={new Date()}
+                selected={this.props.endDate}
                 onChange={(date) => this.updateEndDate(date)}
                 selectsStart
                 startDate={new Date()}

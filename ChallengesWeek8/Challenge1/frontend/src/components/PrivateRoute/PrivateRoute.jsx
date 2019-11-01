@@ -38,7 +38,7 @@ class PrivateRouteComponent extends Component {
     }
 
     //Loading the user since token is still valid
-    const user = localStorage.getItem("user");
+    const user = JSON.parse(localStorage.getItem("user"));
     this.props.loginUser(user);
     return true;
   };

@@ -53,6 +53,8 @@ const books = (state = initialState, action) => {
     case START_RESERVATION_PROCCESS:
       return Object.assign({}, state, {
         bookId: action.payload.bookId,
+        startDate: action.payload.startDate,
+        endDate: action.payload.endDate,
         isReservationProcessStarted: true
       });
     case UPDATE_RESERVATION_PROCCESS:

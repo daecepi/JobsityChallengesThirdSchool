@@ -74,14 +74,10 @@ class BookMenuComponent extends Component {
     });
   };
 
-
-  /**
-   * FUnction used to save the reservation of the books Id on redux
-   */
-  handleReservationInfo = () => {
-    const startDate= new Date();
+  handleReservationProccess = () => {
+    const startDate = new Date();
     const endDate = new Date();
-    this.props.updateReservationInfo(this.props.book._id, startDate, endDate);
+    this.props.startReservationProccess(this.props.book._id, startDate, endDate);
   }
 
   /**
@@ -99,9 +95,7 @@ class BookMenuComponent extends Component {
               <i className="fas fa-heart"></i>
             </FavoritesContainer>
             <ReadLaterContainer
-              onClick={() => {
-                this.props.startReservationProccess(this.props.book._id);
-              }}
+              onClick={this.handleReservationProccess}
             >
               <i className="fas fa-bookmark"></i>
             </ReadLaterContainer>
@@ -129,8 +123,8 @@ class BookMenuComponent extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    startReservationProccess: (reservationId)=>{
-      dispatch(startReservationProccess(reservationId));
+    startReservationProccess: (reservationId, startDate, endDate)=>{
+      dispatch(startReservationProccess(reservationId, startDate, endDate))
     }
   };
 }
