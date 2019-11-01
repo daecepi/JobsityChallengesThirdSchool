@@ -51,7 +51,6 @@ class ParentBooker extends Component {
 
   componentDidUpdate(){
     const resource = this.props.location.pathname+this.props.location.search;
-    console.log(this.props.resource !== resource, resource, this.props.resource);
     if(this.props.resource !== resource){
       this.fetchBooks(resource);
     }
@@ -100,7 +99,6 @@ class ParentBooker extends Component {
       url += ("&words="+filters.words);
     }
 
-    console.log(url);
 
     const token = localStorage.getItem("access_token");
     this.props.getBooksPending();
@@ -113,7 +111,6 @@ class ParentBooker extends Component {
       }
     }).then((res) => res.json());
 
-    console.log("url", url);
 
     //Acting according to message
     if (authResult === 400) {
@@ -124,12 +121,10 @@ class ParentBooker extends Component {
       localStorage.removeItem("access_token");
       localStorage.removeItem("user");
     } else if (authResult.state === "Success") {
-      console.log("entre");
       //Setting the state that holds the books for updates
       const path = this.props.computedMatch.path;
       this.props.getBooksSuccess(authResult.books, authResult.actualPage, authResult.totalPageCount, path, resource);
     }
-    console.log(authResult);
   };
 
   /**

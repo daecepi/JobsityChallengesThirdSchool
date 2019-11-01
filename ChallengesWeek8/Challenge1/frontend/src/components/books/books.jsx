@@ -125,6 +125,12 @@ const StyledFilterBoxSpan = styled.span`
 
 class Books extends Component {
 
+
+  mentionNotYetFunctionality = (e) => {
+    e.preventDefault();
+    this.displayNotification("Functionality not yet implemented");
+  }
+
   /**
    * Function to show alerts all over the applcation
    */
@@ -161,7 +167,6 @@ class Books extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { books } = this.props;
     return (
       <>
@@ -176,12 +181,12 @@ class Books extends Component {
               <StyledH2>New Releases</StyledH2>
               <ContentFilterBox>
                 <StyledP>
-                  <StyledFilterBoxSpan>Release Date</StyledFilterBoxSpan> | <StyledFilterBoxSpan>Popularity</StyledFilterBoxSpan>
+                  <StyledFilterBoxSpan onClick={this.mentionNotYetFunctionality} >Release Date</StyledFilterBoxSpan> | <StyledFilterBoxSpan onClick={this.mentionNotYetFunctionality} >Popularity</StyledFilterBoxSpan>
                 </StyledP>
               </ContentFilterBox>
               <LayoutFormBox>
-                <StyledI className="fa fa-th-large"></StyledI>
-                <StyledI className="fa fa-th-list"></StyledI>
+                <StyledI onClick={this.mentionNotYetFunctionality} className="fa fa-th-large"></StyledI>
+                <StyledI onClick={this.mentionNotYetFunctionality}  className="fa fa-th-list"></StyledI>
                 <StyledPFormBox>| pages</StyledPFormBox>
                 <StyledI onClick={this.handleLeft} className="fas fa-chevron-left" />
                 <StyledI onClick={this.handleRight} className="fas fa-chevron-right" />

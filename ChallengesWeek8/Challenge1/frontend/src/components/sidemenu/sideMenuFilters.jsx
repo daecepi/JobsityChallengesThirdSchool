@@ -146,7 +146,7 @@ class SideMenuFiltersComponent extends Component {
   };
 
   isSelectedStyling = (item) => {
-    return item === this.props.history.location.pathname ? primaryWhite.rgb : primaryBlue.rgb;
+    return item === this.props.history.location.search ? primaryWhite.rgb : primaryBlue.rgb;
   }
 
   render() {
