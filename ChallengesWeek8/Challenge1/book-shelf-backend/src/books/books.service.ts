@@ -3,10 +3,12 @@ import { InjectModel } from '@nestjs/mongoose';
 
 import { Model } from 'mongoose';
 
-import { ObjectId } from 'mongoose';
+//const ObjectID =  require('mongodb').ObjectID;
 
 //Books interface
 import { Book } from './books.model';
+
+var mongoose = require("mongoose");
 
 //Adding the lending service
 import { LendingService } from '../lending/lending.service';
@@ -28,7 +30,7 @@ export class BooksService {
    */
   async getBook(id: string): Promise<{ state: string; book: Book } | HttpException> {
     //Error handling for mongoose id
-    const isValid = ObjectId.isValid(id);
+    const isValid = mongoose.Types.ObjectId.isValid(id);
     if (!isValid) {
       throw new BadRequestException('Invalid ID!');
     }
@@ -101,9 +103,13 @@ export class BooksService {
    * @param bookId : holds the id of the book
    * @param userId : holds the identification of the user
    */
-  async lendBook(bookId: string, userId: string): Promise<{ state: string; book: Book } | HttpException> {
+  async lendBook(bookId: string, userId: string, startDate: string, endDate: string): Promise<{ state: string; book: Book } | any> {
+    const isValidBook = mongoose.Types.ObjectId.isValid(bookId);
+    const isValidUser = mongoose.Types.ObjectId.isValid(userId);
+    
+
     //Error handling for mongoose ids
-    if (!ObjectId.isValid(bookId) || !ObjectId.isValid(userId)) {
+    if (!isValidBook|| !isValidUser) {
       throw new BadRequestException('Invalid element ids for book of user!');
     }
     //Error handler for knowing that a
@@ -127,8 +133,30 @@ export class BooksService {
       return new HttpException('The books is already lent', 204); //Status code recommended by a programmer at jobsity Cartagena
     }
 
+    //Calling the procedure destined for it
+    if(!startDate){
+      return new HttpException("A start date must be provided",400);
+    }
+
+    if(!endDate){
+      return new HttpException("A end date must be provided",400);
+    }
+
+    const startDateGot = new Date(parseInt(startDate));
+    const endDateGot = new Date(parseInt(endDate));
+
+    //Error handlers for date validation
+    if(startDateGot < new Date() || endDateGot < new Date()){
+      return new HttpException("The provided dates cannot be before actual date", 400);
+    }
+
+    if(startDateGot > endDateGot){
+      return new HttpException("The start date cannopt adter later", 400);
+    }
+
     //Updating the book's lent property with a user and the date when the lent started
-    book.lent = { user: userId, startDate: new Date().toString() };
+    book.lent = { user: userId, startDate: startDate, endDate: endDate };
+
 
     //Updating the book in the database
     let result = await book.save();
@@ -143,7 +171,7 @@ export class BooksService {
    */
   async returnBook(bookId: string, userId: string): Promise<{ state: string; book: Book } | HttpException> {
     //Error handling for mongoose ids
-    if (!ObjectId.isValid(bookId) || !ObjectId.isValid(userId)) {
+    if (!mongoose.Types.ObjectId.isValid(bookId) || !mongoose.Types.ObjectId.isValid(userId)) {
       throw new BadRequestException('Invalid element ids for book of user!');
     }
 

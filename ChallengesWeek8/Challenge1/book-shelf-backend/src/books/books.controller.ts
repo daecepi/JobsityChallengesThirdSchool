@@ -1,4 +1,4 @@
-import { Controller, Body, Get, Param, UseGuards, Put, Query } from '@nestjs/common';
+import { Controller, Body, Get, Param, UseGuards, Put, Query, HttpException } from '@nestjs/common';
 
 import { BooksService } from './books.service';
 import { AuthService } from 'src/auth/auth.service';
@@ -45,9 +45,8 @@ export class BooksController {
    */
   @UseGuards(AuthGuard('jwt'))
   @Put('lend')
-  public async lendBook(@Body('bookId') id: string, @Body('userId') userId: string) {
-    //Calling the procedure destined for it
-    let result = await this.booksService.lendBook(id, userId);
+  public async lendBook(@Body('bookId') id: string, @Body('userId') userId: string, @Body('startDate') startDate: string, @Body('endDate') endDate: string) {
+    let result = await this.booksService.lendBook(id, userId, startDate, endDate);
 
     return result;
   }
