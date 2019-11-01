@@ -12,6 +12,7 @@ import { join } from 'path';
 import { LendingModule } from './lending/lending.module';
 
 import { ConfigModule } from 'nest-config'; //For dockerization in next iteration of the project
+import { EeventsGateway } from './eevents.gateway';
 import * as path from 'path';
 
 @Module({
@@ -26,6 +27,6 @@ import * as path from 'path';
     LendingModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, EeventsGateway],
 })
 export class AppModule {}
