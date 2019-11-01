@@ -32,7 +32,6 @@ const books = (state = initialState, action) => {
         pending: false
       });
     case GET_BOOK_SUCCESS:
-      console.log(action.payload);
       return Object.assign({}, state, {
             books: action.payload.books,
             pending: false,

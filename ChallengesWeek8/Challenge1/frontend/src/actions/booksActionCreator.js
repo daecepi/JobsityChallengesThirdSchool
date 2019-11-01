@@ -7,7 +7,6 @@ import {
 } from "../actionTypes/actionTypes";
 
 export function getBooksSuccess(books, actualPage, totalPageCount, urlFilters, resource) {
-  console.log("in action creator", urlFilters);
   return {
     type: GET_BOOK_SUCCESS,
     payload: {

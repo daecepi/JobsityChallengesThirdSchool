@@ -70,13 +70,18 @@ class ParentBooker extends Component {
     });
   };
 
+  handlePageChange = (num) => {
+    const resource = this.props.location.pathname+this.props.location.search;
+    this.fetchBooks(resource,num);
+  }
+
   /**
    * Function that look for the books of a specific point destined for it in the backend
    * @param {string} endpoint : string that contains the base endpoint for books looking
    * @param {number} page : the integer number of the page wanted
    * @param {Object} filters : object that contains the filters by city, type and words to search for 
    */
-  fetchBooks = async (resource) => {
+  fetchBooks = async (resource, num) => {
     let pageNum = 0;
     const filters = queryString.parse(this.props.location.search);
 
@@ -85,7 +90,8 @@ class ParentBooker extends Component {
     }
 
     const endpoint = this.props.baseEndpoint;
-    let url = endpoint + "?startIndex=" + pageNum;
+    const page = num !== undefined ? num : pageNum;
+    let url = endpoint + "?startIndex=" + page;
 
     if(filters.city){
       url += ("&cities="+this.capitalizeFLetter(filters.city));
@@ -123,16 +129,9 @@ class ParentBooker extends Component {
     } else if (authResult.state === "Success") {
       //Setting the state that holds the books for updates
       const path = this.props.computedMatch.path;
-      this.props.getBooksSuccess(authResult.books, authResult.actualPage, authResult.totalPageCount, path, resource);
-    }
-  };
 
-  /**
-   * Function used to handle the paginatio inside application for each query
-   */
-  handlePagination = (num) => {
-    //Get the query params
-    this.fetchBooks();
+      this.props.getBooksSuccess(authResult.books, authResult.pageNumber, authResult.totalPages, path, resource);
+    }
   };
 
   /**
@@ -193,8 +192,7 @@ class ParentBooker extends Component {
             actualPage={this.state.actualPage}
             getBooksByCity={this.getBooksByCity}
             getBooksByType={this.getBooksByType}
-            handlePagination={this.handlePagination}
-            fetchBooks={this.fetchBooks}
+            handlePageChange={this.handlePageChange}
             setBookToOperate={this.setBookToOperate}
           />
           {this.state.lendBook ? (

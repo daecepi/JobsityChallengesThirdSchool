@@ -93,7 +93,7 @@ export class BooksService {
       count = books[0].totalCount[0].count ? Math.ceil(books[0].totalCount[0].count / 10) : 0; // Build the count object if data exists
     }
 
-    return { state: 'Success', totalPages: count, pageNumber: index + 1, books: books[0].totalData };
+    return { state: 'Success', totalPages: count, pageNumber: index, books: books[0].totalData };
   }
 
   /**

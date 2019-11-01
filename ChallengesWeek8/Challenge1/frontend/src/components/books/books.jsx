@@ -148,11 +148,12 @@ class Books extends Component {
   handleRight = () => {
     const { actualPage, totalPageCount} = this.props;
 
+
     if (actualPage + 1 === totalPageCount) {
       this.displayNotification("You are already at the end of the list");
       return;
     }
-    this.props.fetchBooks(actualPage + 1);
+    this.props.handlePageChange(actualPage + 1);
   };
 
   handleLeft = () => {
@@ -163,7 +164,7 @@ class Books extends Component {
       return;
     }
 
-    this.handlePagination(actualPage - 1);
+    this.props.handlePageChange(actualPage - 1);
   };
 
   render() {
@@ -187,7 +188,7 @@ class Books extends Component {
               <LayoutFormBox>
                 <StyledI onClick={this.mentionNotYetFunctionality} className="fa fa-th-large"></StyledI>
                 <StyledI onClick={this.mentionNotYetFunctionality}  className="fa fa-th-list"></StyledI>
-                <StyledPFormBox>| pages</StyledPFormBox>
+                <StyledPFormBox>| pages ({this.props.totalPageCount} of {this.props.actualPage+1})</StyledPFormBox>
                 <StyledI onClick={this.handleLeft} className="fas fa-chevron-left" />
                 <StyledI onClick={this.handleRight} className="fas fa-chevron-right" />
               </LayoutFormBox>
