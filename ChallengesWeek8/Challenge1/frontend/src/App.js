@@ -38,7 +38,6 @@ const GlobalStyles = createGlobalStyle`
   html, body {
     @import url(${fontTitle1});
     font-family: 'TitlePluton', sans-serif;
-
     
     @import url(${fontTitle2});
     font-family: 'PlutonGeneral', sans-serif;
@@ -48,12 +47,25 @@ const GlobalStyles = createGlobalStyle`
     
     height: 100vh;
     width: 100vw;
+    
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
   }
 `;
 
 const AppContainer = styled.div`
-height: 100vh;
-width: 100vw;
+  height: 100vh;
+  width: 100vw;
 `;
 
 class App extends React.Component {
@@ -98,6 +110,5 @@ class App extends React.Component {
   }
 }
 
-//<Provider store="">
 
 export default App;
