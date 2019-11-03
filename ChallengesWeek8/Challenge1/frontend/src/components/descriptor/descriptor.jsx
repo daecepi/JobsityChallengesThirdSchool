@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-//import styling
-import "./descriptor.scss";
 
 //components used
 import StarRatingComponent from "react-star-rating-component";

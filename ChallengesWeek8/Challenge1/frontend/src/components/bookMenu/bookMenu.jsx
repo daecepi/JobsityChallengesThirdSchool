@@ -6,18 +6,19 @@ import { startReservationProccess } from "../../actions/booksActionCreator";
 //Rating component
 import StarRatingComponent from "react-star-rating-component";
 
-import "./bookMenu.scss";
 
 //STYLING
 import styled from 'styled-components';
+import { NotificationContainer } from '../../styles';
 
 //External components used
 import NotificationAlert from "react-notification-alert";
 import "react-notification-alert/dist/animate.css";
+import { primaryWhite, primaryBlue } from "../../styles/colors";
 
 
 const BookMenuContainer = styled.div`
-  display: hidden;
+${props=> props.hidden? "display: block;" : "display: hidden;" }
   position: absolute;
   top:0;
   left:0;
@@ -25,8 +26,8 @@ const BookMenuContainer = styled.div`
   bottom:0;
   background: rgba(0, 0, 0, 0.5);
 
-  ${props=> props.clicked? "display: block;" : "" }
-  ${props=> props.clicked? "justify-content: space-between" : "" }
+  ${props=> props.clicked? "justify-content: space-between:" : "" }
+  ${props => props.hidden === true? "z-index: 10005;" : "z-index: 10001;"}
 
   &:hover{
     display: block;
@@ -34,21 +35,30 @@ const BookMenuContainer = styled.div`
 `;
 
 const ReadLaterContainer = styled.div`
-    background: white;
     border-radius: 20px;
 `;
 
 const TopBookMenu = styled.div`
   display: flex;
+  height: 10%;
   width:90%;
   margin:auto;
-  margin-top: 1rem;
+  margin-top: 5%;
   justify-content: space-between;
 `;
 
-const MidBookMenu = styled.div``;
+const MidBookMenu = styled.div`
+  height:75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-const BottomBookMenu = styled.div``;
+const BottomBookMenu = styled.div`
+  height: 10%;
+  display: flex;
+  justify-content: center;
+`;
 
 const FavoritesContainer = styled.div`
 `;
@@ -56,6 +66,13 @@ const FavoritesContainer = styled.div`
 const ReadingsContainer = styled.div`
 `;
 
+const StyledI = styled.i`
+    color: ${primaryWhite.rgb};
+
+    &:hover{
+      color: ${primaryBlue.rgb};
+    }
+`;
 
 class BookMenuComponent extends Component {
 
@@ -66,7 +83,7 @@ class BookMenuComponent extends Component {
   displayNotification = (message) => {
     this.refs.notificationAlert.notificationAlert({
       place: "br",
-      message: <div className="notification-container">{message}</div>,
+      message: <NotificationContainer>{message}</NotificationContainer>,
       type: "danger",
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 2,
@@ -89,20 +106,20 @@ class BookMenuComponent extends Component {
   render() {
     return (
       <>
-        <BookMenuContainer onClick={this.props.changeToogle} className={this.props.styles}>
+        <BookMenuContainer onClick={this.props.changeToogle} hidden={this.props.hidden}>
           <TopBookMenu>
             <FavoritesContainer onClick={this.displayNotYetImplementedMessage}  className="favorites-container">
-              <i className="fas fa-heart"></i>
+              <StyledI className="fas fa-heart fa-2x"></StyledI>
             </FavoritesContainer>
             <ReadLaterContainer
               onClick={this.handleReservationProccess}
             >
-              <i className="fas fa-bookmark"></i>
+              <StyledI className="fas fa-bookmark fa-2x"></StyledI>
             </ReadLaterContainer>
           </TopBookMenu>
           <MidBookMenu>
             <ReadingsContainer onClick={this.displayNotYetImplementedMessage}>
-              <i className="fas fa-book-open"></i>
+              <StyledI className="fas fa-book-open fa-5x"></StyledI>
             </ReadingsContainer>
           </MidBookMenu>
           <BottomBookMenu>

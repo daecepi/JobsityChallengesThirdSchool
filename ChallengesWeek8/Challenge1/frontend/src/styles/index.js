@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { primaryBlue } from "./colors";
+import { primaryBlue, primaryBlueTransparent } from "./colors";
 
 import backgroundImage from "../images/LoginImage.jpg";
 
@@ -60,6 +60,15 @@ export const MoveButton = styled.button`
   height: 100%;
   width: 100%;
   border-radius: 10px;
+`;
+
+export const NotificationContainer = styled.div`
+  background: ${primaryBlueTransparent.rgb};
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  border-radius: 20px;
 `;
 
 //Default style for A tags inside the application

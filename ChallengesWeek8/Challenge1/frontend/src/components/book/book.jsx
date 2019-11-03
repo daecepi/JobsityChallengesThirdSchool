@@ -37,7 +37,7 @@ const ImgRef = styled.img`
   position: relative;
   width: 100%;
   height: 100%;
-  z-index: 10000;
+  z-index: 10003;
 `;
 
 //Style for the books title inthe container
@@ -59,23 +59,23 @@ const RatingContainer = styled.div`
 
 class Book extends Component {
   state = {
-    toggle: true,
-    styles: "book-menu-container"
+    showMenu: false
   };
 
   toggleAppereance = (e) => {
-    if (this.state.toggle) {
+    console.log("Working");
+    if (this.state.showMenu === false) {
+      console.log("entre");
       this.setState({
-        toggle: false,
-        styles: "book-menu-container occult-class"
+        showMenu: true
       });
     }
   };
 
   changeToogle = () => {
+    console.log("Change menu activated");
     this.setState({
-      toggle: true,
-      styles: "book-menu-container"
+      showMenu: false
     });
   };
 
@@ -113,6 +113,7 @@ class Book extends Component {
             />
             <BookMenuComponent
               id={_id + "menu"}
+              hidden = {this.state.showMenu}
               book={this.props.book}
               bookId={this.props._id}
               averageRating={averageRating}
