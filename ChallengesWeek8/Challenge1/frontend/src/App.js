@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 //Importing the store
 import store from "./store/store";
 
-import "./App.scss";
 
 //components used
 import PrivateRouteComponent from "./components/PrivateRoute/PrivateRoute";
@@ -22,7 +21,8 @@ import YetToComeComponent from "./components/yetToComeComponent/yetToComeCompone
 
 
 //Including all fonts to be used
-import { createGlobalStyle } from "styled-components";
+import {createGlobalStyle} from "styled-components";
+import styled from "styled-components";
 import fontTitle1 from "./fonts/HVD Fonts - PlutoSansMedium.otf";
 import fontTitle2 from "./fonts/HVD Fonts - PlutoSansCondMedium.otf";
 import fontTitle3 from "./fonts/HVD Fonts - PlutoSansCondExLight.otf";
@@ -30,7 +30,12 @@ import fontTitle3 from "./fonts/HVD Fonts - PlutoSansCondExLight.otf";
 
 
 const GlobalStyles = createGlobalStyle`
-  body {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
     @import url(${fontTitle1});
     font-family: 'TitlePluton', sans-serif;
 
@@ -40,8 +45,16 @@ const GlobalStyles = createGlobalStyle`
 
     @import url(${fontTitle3});
     font-family: 'SecondTitlePluton', sans-serif;
+    
+    height: 100vh;
+    width: 100vw;
   }
-`
+`;
+
+const AppContainer = styled.div`
+height: 100vh;
+width: 100vw;
+`;
 
 class App extends React.Component {
   state = {
@@ -62,7 +75,7 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <GlobalStyles />
-        <div className="App">
+        <AppContainer>
           <Router>
             <Switch>
               <PrivateRouteComponent path="/" exact component={ParentBooker} />
@@ -79,7 +92,7 @@ class App extends React.Component {
               <Route component={NotFoundPageComponent} />
             </Switch>
           </Router>
-        </div>
+        </AppContainer>
       </Provider>
     );
   }
