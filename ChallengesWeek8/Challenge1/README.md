@@ -92,24 +92,27 @@ __IMPORTANT:__ steps 1 and 2 from installation section in this readme are necess
 6. run `npm run start:prod` to start the run for production
 
 ## Dependencies
+- Entire project
+  - NPM: 6.12.0
+
 - backend:
+  - NodeJS: 9.3.0
   - Nest and many of its modules modules
-  - Mongoose
-  - rxjs
+  - Mongoose: 5.7.5
+  - rxjs: 6.5.3
 
 - frontend:
-  - Formik
-  - Prettier
-  - Reactstrap
-  - redux
-  - redux-thunk
-  - react-router-dom
-  - styled components
+  - Formik: 1.5.8
+  - Prettier: 1.18.2
+  - Reactstrap: 8.1.1
+  - redux: 7.1.1
+  - react-router-dom: 5.1.2
+  - styled components: 4.4.0
 
   **External components used for time**
-  - React-datepicker
-  - React-start-rating-component
-  - react-notification-alert
+  - React-datepicker: 2.9.6
+  - React-start-rating-component: 1.4.1
+  - react-notification-alert: 0.0.12
 
 
 
