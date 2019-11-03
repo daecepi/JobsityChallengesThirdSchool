@@ -188,7 +188,7 @@ class Books extends Component {
               <LayoutFormBox>
                 <StyledI onClick={this.mentionNotYetFunctionality} className="fa fa-th-large"></StyledI>
                 <StyledI onClick={this.mentionNotYetFunctionality}  className="fa fa-th-list"></StyledI>
-                <StyledPFormBox>| pages ({this.props.totalPageCount} of {this.props.actualPage+1})</StyledPFormBox>
+                <StyledPFormBox>| pages ({this.props.actualPage+1} of {this.props.totalPageCount})</StyledPFormBox>
                 <StyledI onClick={this.handleLeft} className="fas fa-chevron-left" />
                 <StyledI onClick={this.handleRight} className="fas fa-chevron-right" />
               </LayoutFormBox>
