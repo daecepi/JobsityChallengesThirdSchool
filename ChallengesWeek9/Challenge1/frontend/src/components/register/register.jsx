@@ -11,7 +11,7 @@ import NotificationAlert from "react-notification-alert";
 import "react-notification-alert/dist/animate.css";
 
 
-import { FullContainer, MoveButton } from '../../styles';
+import { FullContainer, MoveButton, NotificationContainer } from '../../styles';
 import { 
   ContainerRegister,
   StyledH2,
@@ -27,7 +27,7 @@ class Register extends Component {
   displayNotification = (message) => {
     this.refs.notificationAlert.notificationAlert({
       place: "br",
-      message: <div className="notification-container">{message}</div>,
+      message: <NotificationContainer>{message}</NotificationContainer>,
       type: "danger",
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 2,

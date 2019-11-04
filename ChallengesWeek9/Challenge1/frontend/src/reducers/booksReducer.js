@@ -46,7 +46,7 @@ const books = (state = initialState, action) => {
             totalPageCount: action.payload.totalPageCount,
             resource: action.payload.resource
       });
-    case PAGE_CHANGE: //MOFIIGING
+    case PAGE_CHANGE: //modifying
       return Object.assign({}, state, {
         actualPage: action.payload.pageNum
       });

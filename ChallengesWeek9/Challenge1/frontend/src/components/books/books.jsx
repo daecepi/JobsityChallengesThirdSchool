@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
-import { defaultStyleLink } from "../../styles";
+import { defaultStyleLink, NotificationContainer } from "../../styles";
 
 //External components used
 import NotificationAlert from "react-notification-alert";
@@ -49,7 +49,7 @@ class Books extends Component {
   displayNotification = (message) => {
     this.refs.notificationAlert.notificationAlert({
       place: "br",
-      message: <div className="notification-container">{message}</div>,
+      message: <NotificationContainer>{message}</NotificationContainer>,
       type: "danger",
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 2,

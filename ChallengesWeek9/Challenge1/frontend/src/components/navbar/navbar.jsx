@@ -11,6 +11,7 @@ import logo from "./logo.svg";
 
 //Component
 import SearchComponent from "../searchComponent/searchComponent";
+import { NotificationContainer } from '../../styles';
 import { 
   StyledHeader,
   LogoContainer,
@@ -47,7 +48,7 @@ class NavBar extends Component {
   displayNotification = (message) => {
     this.refs.notificationAlert.notificationAlert({
       place: "br",
-      message: <div className="notification-container">{message}</div>,
+      message: <NotificationContainer>{message}</NotificationContainer>,
       type: "danger",
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 2,

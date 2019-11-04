@@ -14,7 +14,7 @@ import "react-notification-alert/dist/animate.css";
 //Components used
 import SearchComponent from "../searchComponent/searchComponent";
 
-import { FullContainer, MoveButton } from '../../styles';
+import { FullContainer, MoveButton, NotificationContainer } from '../../styles';
 import { 
   LoginContainer,
   LoginTitle,
@@ -34,7 +34,7 @@ class Login extends Component {
   displayNotification = (message) => {
     this.refs.notificationAlert.notificationAlert({
       place: "br",
-      message: <div className="notification-container">{message}</div>,
+      message: <NotificationContainer>{message}</NotificationContainer>,
       type: "danger",
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 2,

@@ -16,6 +16,7 @@ import "react-notification-alert/dist/animate.css";
 //Internal components used
 import NavBar from "../navbar/navbar";
 import Books from "../books/books";
+import { NotificationContainer } from "../../styles";
 import ReservationComponent from "../reservationComponent/reservationComponent";
 import { AppContainer } from './parentBookerInternals';
 
@@ -52,7 +53,7 @@ class ParentBooker extends Component {
   displayNotification = (message) => {
     this.refs.notificationAlert.notificationAlert({
       place: "br",
-      message: <div className="notification-container">{message}</div>,
+      message: <NotificationContainer>{message}</NotificationContainer>,
       type: "danger",
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 2,
@@ -159,7 +160,6 @@ class ParentBooker extends Component {
   };
 
   setBookToOperate = (book) => {
-    console.log(book);
     this.setState({
       bookToOperateIn: book,
       lendBook: true

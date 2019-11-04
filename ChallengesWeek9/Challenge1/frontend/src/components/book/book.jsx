@@ -7,6 +7,8 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/material.css";
 import "tippy.js/animations/scale-subtle.css";
 
+import { connect } from 'react-redux';
+
 //Rating component
 import StarRatingComponent from "react-star-rating-component";
 
@@ -14,7 +16,15 @@ import StarRatingComponent from "react-star-rating-component";
 import DescriptorComponent from "../descriptor/descriptor";
 import BookMenuComponent from "../bookMenu/bookMenu";
 
-import { BookDiv, ImageContainer, ImgRef, BookTitle, RatingContainer } from './bookInternals';
+import { 
+  BookDiv,
+  ImageContainer,
+  ImgRef,
+  BookTitle,
+  RatingContainer,
+  VisualIndicator
+ } from './bookInternals';
+import { primaryWhite, thirdGreyTransparent, primaryBlueTransparent2 } from "../../styles/colors";
 
 
 class Book extends Component {
@@ -23,9 +33,7 @@ class Book extends Component {
   };
 
   toggleAppereance = (e) => {
-    console.log("Working");
     if (this.state.showMenu === false) {
-      console.log("entre");
       this.setState({
         showMenu: true
       });
@@ -33,15 +41,33 @@ class Book extends Component {
   };
 
   changeToogle = () => {
-    console.log("Change menu activated");
     this.setState({
       showMenu: false
     });
   };
 
+
+  getVisualIndicator = (lent) => {
+    //const { lent } = this.props.book;
+    if(lent && lent.user === this.props.user._id){
+      return (
+        <VisualIndicator color={primaryBlueTransparent2.rgb} fontColor={primaryWhite.rgb}>
+          <p>LENT by you</p>
+        </VisualIndicator>
+        );
+    }else if (lent) {
+      return (
+        <VisualIndicator color={thirdGreyTransparent.rgb} fontColor={primaryWhite.rgb}>
+          <p>LENT</p>
+        </VisualIndicator>
+        );
+    }
+    return "";
+  }
+
   //Check star rating component
   render() {
-    const { _id, title, description, imageLinks, authors, averageRating, publishedDate } = this.props.book;
+    const { _id, title, description, imageLinks, authors, averageRating, publishedDate, lent } = this.props.book;
     return (
       <Tippy
         content={
@@ -60,6 +86,7 @@ class Book extends Component {
       >
         <BookDiv>
           <ImageContainer>
+            {this.getVisualIndicator(lent)}
             <ImgRef
               id={_id}
               className="img-ref"
@@ -99,4 +126,10 @@ class Book extends Component {
   }
 }
 
-export default Book;
+const mapStateToProps = state => {
+  return {
+    user: state.user.userLogged
+  };
+}
+
+export default connect(mapStateToProps, null)(Book);

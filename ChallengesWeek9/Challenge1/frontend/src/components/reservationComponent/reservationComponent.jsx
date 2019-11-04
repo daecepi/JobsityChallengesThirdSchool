@@ -26,10 +26,8 @@ class ReservationComponent extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-
-
     const url = this.props.baseEndpoint.concat("/books/lend");
-    const data = {userId: this.props.user._id, bookId: this.props.bookId, startDate: this.props.startDate.toGMTString(), endDate: this.props.endDate.toGMTString()};
+    const data = {userId: this.props.user._id, bookId: this.props.bookId, startDate: this.props.startDate.toUTCString(), endDate: this.props.endDate.toUTCString()};
     const token = localStorage.getItem("access_token");
     
 
@@ -52,8 +50,6 @@ class ReservationComponent extends Component {
 
 
   updateEndDate = (date) => {
-    console.log(this.props.endDate);
-
     const endDate = new Date(date);
     this.props.updateReservationInfo(new Date(), endDate);
   }

@@ -7,7 +7,6 @@ const initialState = {
 };
 
 const user = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case LOGIN_USER:
       return Object.assign({}, state, {

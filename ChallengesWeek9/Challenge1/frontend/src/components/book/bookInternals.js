@@ -38,3 +38,16 @@ export const RatingContainer = styled.div`
 align-self: flex-start;
 justify-self: flex-start;
 `;
+
+export const VisualIndicator = styled.div`
+    display: flex:
+    aling-items: center;
+    justify-items: center;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    z-index: 10004;
+    margin-top: 30%;
+    background: ${props => props.color};
+    color: ${props => props.fontColor};
+`;
