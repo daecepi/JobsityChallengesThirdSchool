@@ -1,0 +1,20 @@
+[
+    {
+        "identification": "20547854582",
+        "name": "Sofia",
+        "lname": "Peralta",
+        "username": "sofi",
+        "password": "sofi123123",
+        "age": 20,
+        "email": "sofia.p@gmail.com"
+    },
+    {
+        "identification": "20547854583",
+        "name": "Marcelo",
+        "lname": "Gomez",
+        "username": "BandejaPaisa",
+        "password": "GOmez123",
+        "age": 20,
+        "email": "marcelo59@gmail.com"
+    }
+]

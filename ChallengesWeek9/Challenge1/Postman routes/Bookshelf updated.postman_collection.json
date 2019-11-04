@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "52bc43dc-0055-44dc-8433-c37fab24c325",
+		"name": "Bookshelf updated",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all books",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNvZmkiLCJpYXQiOjE1NzI2Mzc4NzgsImV4cCI6MTU3MjcyNDI3OH0.aguJmzvfOTmh1loLqx32zq5OXOdDuKu_aLDQvxGw1bo",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/books?startIndex=0&citi<es=Cartagena",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books"
+					],
+					"query": [
+						{
+							"key": "startIndex",
+							"value": "0"
+						},
+						{
+							"key": "citi<es",
+							"value": "Cartagena"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Look for one book",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzAzOTgwNzIsImV4cCI6MTU3MDQ4NDQ3Mn0.oYj_l3f1p595hSXDYgx2jAvPd9McTgr4t-4X3d4mv8o"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/books/5d9a8d54422fa8585ebd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books",
+						"5d9a8d54422fa8585ebd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate (get JWT token)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "sofi",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "sofi123123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImlhdCI6MTU3MDIwMzAyOSwiZXhwIjoxNTcwMjAzMTQ5fQ.9G1hQxXVMU0aXMtD09hfqdz94oUzMEn_WBJR9xucAYs"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "identification",
+							"value": "20547854582",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Sofia",
+							"type": "text"
+						},
+						{
+							"key": "lname",
+							"value": "Peralta",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "solae",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "sofi123123",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "sofia.p@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				},
+				"description": "Register users"
+			},
+			"response": []
+		},
+		{
+			"name": "Lend books",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNvZmkiLCJpYXQiOjE1NzI2Mzc4NzgsImV4cCI6MTU3MjcyNDI3OH0.aguJmzvfOTmh1loLqx32zq5OXOdDuKu_aLDQvxGw1bo"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "bookId",
+							"value": "5d9650a6c3cf08a5d94b97ec",
+							"type": "text"
+						},
+						{
+							"key": "userId",
+							"value": "5d97765766e6cb05997166f8",
+							"type": "text"
+						},
+						{
+							"key": "startDate",
+							"value": "Fri, 01 Nov 2019 19:54:50 GMT",
+							"type": "text"
+						},
+						{
+							"key": "endDate",
+							"value": "Fri, 01 Nov 2019 19:54:50 GMT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/books/lend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books",
+						"lend"
+					]
+				},
+				"description": "Lent books"
+			},
+			"response": []
+		},
+		{
+			"name": "Return books",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzAzOTgwNzIsImV4cCI6MTU3MDQ4NDQ3Mn0.oYj_l3f1p595hSXDYgx2jAvPd9McTgr4t-4X3d4mv8o"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "bookId",
+							"value": "5d9a8d54422fa8585ebdc68c",
+							"type": "text"
+						},
+						{
+							"key": "userId",
+							"value": "5d9a5f594351ff21e04f3ea3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/books/return",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books",
+						"return"
+					]
+				},
+				"description": "Return books after being lent"
+			},
+			"response": []
+		},
+		{
+			"name": "Search specific books",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNvZmkiLCJpYXQiOjE1NzIyMTMzNDcsImV4cCI6MTU3MjI5OTc0N30.X8pVQH-6jo2haRzamHeyUmxCNWtAHIdsXP4KV49wJJ8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/books?words=\"Dolch\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books"
+					],
+					"query": [
+						{
+							"key": "words",
+							"value": "\"Dolch\""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

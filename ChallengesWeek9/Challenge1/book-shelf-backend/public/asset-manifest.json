@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9ba17536.chunk.css",
+    "main.js": "/static/js/main.20f4764d.chunk.js",
+    "main.js.map": "/static/js/main.20f4764d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.fca44c8b.js",
+    "runtime-main.js.map": "/static/js/runtime-main.fca44c8b.js.map",
+    "static/css/2.d450d75b.chunk.css": "/static/css/2.d450d75b.chunk.css",
+    "static/js/2.ae1cc743.chunk.js": "/static/js/2.ae1cc743.chunk.js",
+    "static/js/2.ae1cc743.chunk.js.map": "/static/js/2.ae1cc743.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.2a180c1ae2591f36a0bbba073f64d9eb.js": "/precache-manifest.2a180c1ae2591f36a0bbba073f64d9eb.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.d450d75b.chunk.css.map": "/static/css/2.d450d75b.chunk.css.map",
+    "static/css/main.9ba17536.chunk.css.map": "/static/css/main.9ba17536.chunk.css.map",
+    "static/media/books.scss": "/static/media/HVD Fonts - PlutoSansCondMedium.87d3e06d.otf",
+    "static/media/navbar.scss": "/static/media/HVD Fonts - PlutoSansMedium.d3e0d6bd.otf",
+    "static/media/login.scss": "/static/media/LoginImage.6b88ce93.jpg",
+    "static/media/logo.svg": "/static/media/logo.b5877b5e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fca44c8b.js",
+    "static/css/2.d450d75b.chunk.css",
+    "static/js/2.ae1cc743.chunk.js",
+    "static/css/main.9ba17536.chunk.css",
+    "static/js/main.20f4764d.chunk.js"
+  ]
+}
