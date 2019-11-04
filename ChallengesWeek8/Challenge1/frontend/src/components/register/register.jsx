@@ -11,69 +11,16 @@ import NotificationAlert from "react-notification-alert";
 import "react-notification-alert/dist/animate.css";
 
 
-//STYLING
-import styled from 'styled-components';
 import { FullContainer, MoveButton } from '../../styles';
-import { secondaryWhite, primaryGrey } from '../../styles/colors';
-
-const ContainerRegister = styled.div`
-  background: ${secondaryWhite.rgb};
-  box-shadow: 2px 10px 20px 0px black;
-  height: 50%;
-  width: 25%;
-  display: flex;
-  border-radius: 20px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  padding-right: 1rem;
-  padding-left: 1rem;
-
-  @media(max-width: 580px){
-    width: 70%;
-  }
-`;
-
-const StyledH2 = styled.h2`
-  margin-bottom: 1rem;
-`;
-
-const StyledForm = styled.form`
-  display:flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: flex-end;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-`;
-
-const RegisterPTag = styled.p`
-  font-size: 0.9vh; 
-`;
-
-const StyledLabel = styled.label`
-  font-size: 0.8vw;
-  align-self: flex-start;
-  color: ${primaryGrey.rgb};
-`;
-
-const SecondaryInput = styled.input`
-  height: 5%;
-  width: 100%;
-  border-radius: 10px;
-`;
-
-const RegisterButton = styled.button`
-  border-radius: 20px;
-  height: 5vh;
-  width: 100%;
-  margin-top: 2%;
-  margin: 8px 0px;
-  justify-self: flex-end;
-`;
+import { 
+  ContainerRegister,
+  StyledH2,
+  StyledForm,
+  RegisterPTag,
+  StyledLabel,
+  SecondaryInput,
+  RegisterButton
+ } from './registerInternals';
 
 class Register extends Component {
 

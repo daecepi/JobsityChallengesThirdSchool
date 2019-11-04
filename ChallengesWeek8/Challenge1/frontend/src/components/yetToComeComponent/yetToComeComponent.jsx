@@ -3,35 +3,14 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 
-//STYLING
-import styled from 'styled-components';
 import { FullContainer } from '../../styles';
-import { secondaryWhite, secondaryBlue, thirdDark, primaryBlue } from '../../styles/colors';
 
-
-
-const YetContainer = styled.div`
-    background: ${ secondaryWhite.rgb };
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-`;
-
-const StyledP = styled.p`
-  color: ${thirdDark.rgb};
-`;
-
-
-const StyledH1 = styled.h1`
-  color: ${secondaryBlue.rgb};
-  padding-bottom: 0.5rem;
-`;
-
-const StyledA = styled.p`
-  color: ${primaryBlue.rgb};
-  text-decoration: none;
-`;
+import { 
+  YetContainer,
+  StyledP,
+  StyledH1,
+  StyledA
+ } from './yetToComeComponentInternals';
 
 class YetToComeComponent extends Component {
   

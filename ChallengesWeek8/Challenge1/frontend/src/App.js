@@ -11,22 +11,22 @@ import store from "./store/store";
 
 
 //components used
-import PrivateRouteComponent from "./components/PrivateRoute/PrivateRoute";
-import ParentBooker from "./components/parentbooker/parentbooker";
+import PrivateRouteComponent from "./components/PrivateRoute/privateRoute";
+import ParentBooker from "./components/parentbooker/parentBooker";
 import Login from "./components/login/login";
 import Register from "./components/register/register";
-import NotFoundPageComponent from "./components/NotFoundPage/NotFoundPage";
+import NotFoundPageComponent from "./components/NotFoundPage/notFoundPage";
 import YetToComeComponent from "./components/yetToComeComponent/yetToComeComponent";
 
 
 
 //Including all fonts to be used
 import {createGlobalStyle} from "styled-components";
-import styled from "styled-components";
 import fontTitle1 from "./fonts/HVD Fonts - PlutoSansMedium.otf";
 import fontTitle2 from "./fonts/HVD Fonts - PlutoSansCondMedium.otf";
 import fontTitle3 from "./fonts/HVD Fonts - PlutoSansCondExLight.otf";
 
+import { AppContainer } from './mainAppComponents';
 
 
 const GlobalStyles = createGlobalStyle`
@@ -63,10 +63,7 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const AppContainer = styled.div`
-  height: 100vh;
-  width: 100vw;
-`;
+
 
 class App extends React.Component {
   state = {

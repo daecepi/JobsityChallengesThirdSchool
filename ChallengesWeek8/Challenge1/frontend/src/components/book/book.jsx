@@ -14,47 +14,7 @@ import StarRatingComponent from "react-star-rating-component";
 import DescriptorComponent from "../descriptor/descriptor";
 import BookMenuComponent from "../bookMenu/bookMenu";
 
-
-//STYLING
-import styled from 'styled-components';
-import { secondaryDark } from '../../styles/colors';
-
-const BookDiv = styled.div`
-  display: flex;
-  flex-basis: 18%;
-  margin-left: auto;
-  flex-flow: column;
-  overflow: hidden;
-`;
-
-const ImageContainer = styled.div`
-  flex-basis: 83%;
-  position: relative;
-  z-index: 1;
-`;
-
-const ImgRef = styled.img`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 10003;
-`;
-
-//Style for the books title inthe container
-const BookTitle = styled.p`
-  font-family: "TitlePluton", Fallback, sans-serif;
-  overflow: hidden;
-  white-space: nowrap;
-  overflow: hidden;
-  font-weight: bold;
-  font-size: 0.9rem;
-  color: ${secondaryDark};
-`;
-
-const RatingContainer = styled.div`
-  align-self: flex-start;
-  justify-self: flex-start;
-`;
+import { BookDiv, ImageContainer, ImgRef, BookTitle, RatingContainer } from './bookInternals';
 
 
 class Book extends Component {

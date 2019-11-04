@@ -14,56 +14,14 @@ import "react-notification-alert/dist/animate.css";
 //Components used
 import SearchComponent from "../searchComponent/searchComponent";
 
-//STYLING
-import styled from 'styled-components';
 import { FullContainer, MoveButton } from '../../styles';
-import { secondaryWhite, primaryError } from "../../styles/colors";
-
-const LoginContainer = styled.div`
-  background: ${secondaryWhite.rgb};
-  box-shadow: 2px 10px 20px 0px black;
-  height: 40%;
-  width: 25%;
-  display: flex;
-  border-radius: 20px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.7rem;
-
-  
-  @media(max-width: 580px){
-      padding-top: 1rem;
-      justify-content: flex-start;
-      width: 50vw;
-  }
-`; 
-
-const LoginTitle = styled.h1`
-  justify-self: center;
-  align-self: center;
-  flex-grow: 5;
-  justify-content: center;
-  padding-bottom: black;
-`; 
-
-const InputContainer = styled.div`
-  width: 90%;
-`;
-
-const SubmitButton = styled.input`
-  display: block;
-  border-radius: 20px;
-  width: 90%;
-  flex-grow: 1;
-  margin-top: 2%;
-  margin: 8px 0;
-`;
-
-const MessageSpan = styled.span`
-  font-size: 0.7rem;
-  color: ${primaryError.rgb};
-`;
+import { 
+  LoginContainer,
+  LoginTitle,
+  InputContainer,
+  SubmitButton,
+  MessageSpan
+ } from './loginInternals';
 
 class Login extends Component {
   state = {

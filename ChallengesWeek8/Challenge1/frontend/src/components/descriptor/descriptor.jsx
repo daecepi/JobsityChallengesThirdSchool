@@ -3,33 +3,14 @@ import React, { Component } from "react";
 
 //components used
 import StarRatingComponent from "react-star-rating-component";
-
-//STYLING
-import styled from 'styled-components';
 import { primaryBlue,  secondaryGrey, primaryWhite, primaryGrey } from "../../styles/colors";
 
-const GeneralHoverContainer = styled.div`
-  margin: 0.4rem;
-  height: 100%;
-  width: 100%;
-`;
-
-const HoverDesc = styled.div`
-  width: 100%;
-  display: flex;
-  align-content: space-between;
-`;
-
-const AuthorsContainer = styled.div`
-  display: flex;
-`;
-
-const StyledP = styled.p`
-  color: ${props => props.color};
-  margin-left: ${props => props.gap?props.gap:"0"}rem;
-`;
-
-
+import { 
+  GeneralHoverContainer,
+  HoverDesc,
+  AuthorsContainer,
+  StyledP
+ } from './descriptorInternals';
 
 class DescriptorComponent extends Component {
   render() {

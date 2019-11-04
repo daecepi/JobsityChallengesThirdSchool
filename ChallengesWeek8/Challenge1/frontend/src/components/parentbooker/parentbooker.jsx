@@ -17,18 +17,8 @@ import "react-notification-alert/dist/animate.css";
 import NavBar from "../navbar/navbar";
 import Books from "../books/books";
 import ReservationComponent from "../reservationComponent/reservationComponent";
+import { AppContainer } from './parentBookerInternals';
 
-
-//STYLING
-import styled from 'styled-components';
-
-const AppContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  position: relative;
-  flex-direction: column;
-`;
 
 class ParentBooker extends Component {
   state = {
