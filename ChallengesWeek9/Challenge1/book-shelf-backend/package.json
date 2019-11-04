@@ -33,6 +33,7 @@
     "controller": "^1.0.0",
     "mongoose": ">=5.7.5",
     "nest-config": "^1.0.0",
+    "nest-schedule": "^0.6.3",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",

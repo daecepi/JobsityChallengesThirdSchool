@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 
 import { Model } from 'mongoose';
 
-//const ObjectID =  require('mongodb').ObjectID;
 
 //Books interface
 import { Book } from './books.model';
@@ -214,5 +213,14 @@ export class BooksService {
     let result = await book.save();
 
     return { state: 'success', book: result };
+  }
+
+
+  /**
+   * Function that will check for books that will be returned today and free them
+   */
+  async returnBooksOfDay(){
+    let date = new Date();
+    this.bookModel.update({lent: {endDate: date.toUTCString()}}, {"$set": {}});
   }
 }

@@ -11,9 +11,15 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { LendingModule } from './lending/lending.module';
 
+//import { Book } from './books/books.model';
+
 import { ConfigModule } from 'nest-config'; //For dockerization in next iteration of the project
 import { EeventsGateway } from './eevents.gateway';
 import * as path from 'path';
+
+//CRON section
+import { ScheduleModule } from 'nest-schedule';
+import { ReturnService } from './cron/return.service';
 
 @Module({
   imports: [
@@ -25,8 +31,13 @@ import * as path from 'path';
     }),
     AuthModule,
     LendingModule,
+    ScheduleModule.register(),
   ],
   controllers: [AppController],
-  providers: [AppService, EeventsGateway],
+  providers: [
+    AppService,
+    EeventsGateway,
+    ReturnService
+  ],
 })
 export class AppModule {}
