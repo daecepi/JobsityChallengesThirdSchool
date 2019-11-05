@@ -1,6 +1,5 @@
-
 //STYLING
-import styled from 'styled-components';
+import styled from "styled-components";
 import { primaryGrey, thirdWhite, primaryDark, secondaryDark, primaryBlue, secondaryBlue } from "../../styles/colors";
 
 export const Section1Container = styled.div`
@@ -8,7 +7,6 @@ export const Section1Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   width: 100%;
-
 `;
 
 export const ContentContainer = styled.div`
@@ -61,7 +59,7 @@ export const ContentFilterBox = styled.div`
 
 export const StyledH2 = styled.h2`
   font-size: 1.1rem;
-  font-family: 'SecondTitlePluton', Fallback, sans-serif;
+  font-family: "SecondTitlePluton", Fallback, sans-serif;
   font-weight: bold;
   color: ${secondaryDark.rgb};
 `;
@@ -82,7 +80,7 @@ export const StyledI = styled.i`
   padding-left: 0.15rem;
   padding-right: 0.15rem;
 
-  &:hover{
+  &:hover {
     color: ${secondaryBlue.rgb};
   }
 `;
@@ -96,7 +94,7 @@ export const BooksContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  @media(max-width: 700px){
+  @media (max-width: 700px) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -105,7 +103,7 @@ export const BooksContainer = styled.div`
 export const StyledFilterBoxSpan = styled.span`
   color: ${primaryBlue.rgb};
 
-  &:hover{
+  &:hover {
     color: ${secondaryBlue.rgb};
   }
 `;

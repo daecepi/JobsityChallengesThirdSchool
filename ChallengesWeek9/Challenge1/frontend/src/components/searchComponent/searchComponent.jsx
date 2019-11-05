@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 
 //Components used
-import { 
-  PrimaryInput,
-  InputWithIcon,
-  StyledI
- } from './searchComponentInternals';
+import { PrimaryInput, InputWithIcon, StyledI } from "./searchComponentInternals";
 
 class SearchComponent extends Component {
   state = {};
@@ -16,7 +12,7 @@ class SearchComponent extends Component {
 
   handleKeyUp = (event) => {
     this.props.onKeyUp && this.props.onKeyUp(event.which);
-  }
+  };
 
   render() {
     let { name, type, placeholder, iconClasses } = this.props;

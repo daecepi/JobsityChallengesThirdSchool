@@ -6,7 +6,6 @@ import { Link, withRouter } from "react-router-dom";
 
 import { loginUser } from "../../actions/userActionCreator";
 
-
 //External components used
 import NotificationAlert from "react-notification-alert";
 import "react-notification-alert/dist/animate.css";
@@ -14,14 +13,8 @@ import "react-notification-alert/dist/animate.css";
 //Components used
 import SearchComponent from "../searchComponent/searchComponent";
 
-import { FullContainer, MoveButton, NotificationContainer } from '../../styles';
-import { 
-  LoginContainer,
-  LoginTitle,
-  InputContainer,
-  SubmitButton,
-  MessageSpan
- } from './loginInternals';
+import { FullContainer, MoveButton, NotificationContainer } from "../../styles";
+import { LoginContainer, LoginTitle, InputContainer, SubmitButton, MessageSpan } from "./loginInternals";
 
 class Login extends Component {
   state = {
@@ -65,9 +58,9 @@ class Login extends Component {
       }
       formBody = formBody.join("&");
 
-      const url = this.props.baseEndpoint+"/login";
+      const url = this.props.baseEndpoint + "/login";
 
-      let authResult = await fetch( url , {
+      let authResult = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -87,7 +80,7 @@ class Login extends Component {
 
         //Login user
         this.props.loginUser(authResult["user"]);
-        
+
         this.props.history.push("/"); //Going to the homepage after login
       }
     }
@@ -143,8 +136,8 @@ class Login extends Component {
 const mapStateToProp = (state) => {
   return {
     baseEndpoint: state.books.baseEndpoint
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {

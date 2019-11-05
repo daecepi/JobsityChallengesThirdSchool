@@ -7,25 +7,17 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/material.css";
 import "tippy.js/animations/scale-subtle.css";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 //Rating component
-import StarRatings from 'react-star-ratings';
+import StarRatings from "react-star-ratings";
 
 //Hover component
 import DescriptorComponent from "../descriptor/descriptor";
 import BookMenuComponent from "../bookMenu/bookMenu";
 
-import { 
-  BookDiv,
-  ImageContainer,
-  ImgRef,
-  BookTitle,
-  RatingContainer,
-  VisualIndicator
- } from './bookInternals';
+import { BookDiv, ImageContainer, ImgRef, BookTitle, RatingContainer, VisualIndicator } from "./bookInternals";
 import { primaryWhite, thirdGreyTransparent, primaryBlueTransparent2 } from "../../styles/colors";
-
 
 class Book extends Component {
   state = {
@@ -46,33 +38,32 @@ class Book extends Component {
     });
   };
 
-
   getVisualIndicator = (lent) => {
-    if(lent && lent.user === this.props.user._id){
+    if (lent && lent.user === this.props.user._id) {
       return (
         <VisualIndicator color={primaryBlueTransparent2.rgb} fontColor={primaryWhite.rgb}>
           <p>LENT by you</p>
         </VisualIndicator>
-        );
-    }else if (lent) {
+      );
+    } else if (lent) {
       return (
         <VisualIndicator color={thirdGreyTransparent.rgb} fontColor={primaryWhite.rgb}>
           <p>LENT</p>
         </VisualIndicator>
-        );
+      );
     }
     return "";
-  }
+  };
 
   getImageAsset = () => {
     const { imageLinks } = this.props.book;
-    if(imageLinks[0]){
+    if (imageLinks[0]) {
       return imageLinks[0].smallThumbnail;
-    }else if(imageLinks.smallThumbnail){
+    } else if (imageLinks.smallThumbnail) {
       return imageLinks.smallThumbnail;
     }
     return "https://www.union.edu/sites/default/files/union-marketing-layer/201803/picture.jpg";
-  }
+  };
 
   //Check star rating component
   render() {
@@ -97,16 +88,10 @@ class Book extends Component {
         <BookDiv>
           <ImageContainer>
             {this.getVisualIndicator(lent)}
-            <ImgRef
-              id={_id}
-              className="img-ref"
-              onClick={this.toggleAppereance}
-              src={imageLink}
-              alt="presentation"
-            />
+            <ImgRef id={_id} className="img-ref" onClick={this.toggleAppereance} src={imageLink} alt="presentation" />
             <BookMenuComponent
               id={_id + "menu"}
-              hidden = {this.state.showMenu}
+              hidden={this.state.showMenu}
               book={this.props.book}
               bookId={this.props._id}
               averageRating={averageRating}
@@ -134,10 +119,13 @@ class Book extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     user: state.user.userLogged
   };
-}
+};
 
-export default connect(mapStateToProps, null)(Book);
+export default connect(
+  mapStateToProps,
+  null
+)(Book);

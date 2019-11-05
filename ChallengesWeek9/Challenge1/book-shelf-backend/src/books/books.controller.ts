@@ -45,7 +45,12 @@ export class BooksController {
    */
   @UseGuards(AuthGuard('jwt'))
   @Put('lend')
-  public async lendBook(@Body('bookId') id: string, @Body('userId') userId: string, @Body('startDate') startDate: string, @Body('endDate') endDate: string) {
+  public async lendBook(
+    @Body('bookId') id: string,
+    @Body('userId') userId: string,
+    @Body('startDate') startDate: string,
+    @Body('endDate') endDate: string,
+  ) {
     let result = await this.booksService.lendBook(id, userId, startDate, endDate);
 
     return result;

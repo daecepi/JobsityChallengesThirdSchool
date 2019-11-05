@@ -1,7 +1,5 @@
-
 //STYLING
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const GeneralHoverContainer = styled.div`
   margin: 0.4rem;
@@ -20,7 +18,6 @@ export const AuthorsContainer = styled.div`
 `;
 
 export const StyledP = styled.p`
-  color: ${props => props.color};
-  margin-left: ${props => props.gap?props.gap:"0"}rem;
+  color: ${(props) => props.color};
+  margin-left: ${(props) => (props.gap ? props.gap : "0")}rem;
 `;
-

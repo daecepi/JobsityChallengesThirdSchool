@@ -2,21 +2,11 @@ import React, { Component } from "react";
 
 import { withRouter } from "react-router-dom";
 
-
-
-import { MenuBox } from '../../styles';
-import { 
-  MenuLeft,
-  UlStyled,
-  StyledP,
-  StyledLi,
-  StyledI,
-  StyledButton
- } from './sideMenuComponentInternals';
- import { primaryBlue, primaryWhite } from '../../styles/colors';
+import { MenuBox } from "../../styles";
+import { MenuLeft, UlStyled, StyledP, StyledLi, StyledI, StyledButton } from "./sideMenuComponentInternals";
+import { primaryBlue, primaryWhite } from "../../styles/colors";
 
 class SideMenuFiltersComponent extends Component {
-
   state = {
     selectedItemIndex: 0,
     sections: [
@@ -103,14 +93,13 @@ class SideMenuFiltersComponent extends Component {
     ]
   };
 
-
   changeLocation = (resource) => {
     this.props.history.push(resource);
   };
 
   isSelectedStyling = (item) => {
     return item === this.props.history.location.search ? primaryWhite.rgb : primaryBlue.rgb;
-  }
+  };
 
   render() {
     return (
@@ -130,10 +119,11 @@ class SideMenuFiltersComponent extends Component {
                       }}
                       className={this.isSelectedStyling(item.to)}
                     >
-                      <StyledI style={{color: this.isSelectedStyling(item.to)}} className={item.logoClasses}></StyledI>
-                      <StyledButton color={this.isSelectedStyling(item.to)}>
-                        {item.section}
-                      </StyledButton>
+                      <StyledI
+                        style={{ color: this.isSelectedStyling(item.to) }}
+                        className={item.logoClasses}
+                      ></StyledI>
+                      <StyledButton color={this.isSelectedStyling(item.to)}>{item.section}</StyledButton>
                     </StyledLi>
                   );
                 })}

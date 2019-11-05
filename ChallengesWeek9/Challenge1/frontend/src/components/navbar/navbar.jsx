@@ -10,11 +10,10 @@ import { logoutUser } from "../../actions/userActionCreator";
 //Svg logo
 import logo from "./logo.svg";
 
-
 //Component
 import SearchComponent from "../searchComponent/searchComponent";
-import { NotificationContainer } from '../../styles';
-import { 
+import { NotificationContainer } from "../../styles";
+import {
   StyledHeader,
   LogoContainer,
   SearchBar,
@@ -31,21 +30,17 @@ import {
   StyledUlNav,
   StyledButtonNav,
   LogoImage
- } from './navbarInternals';
+} from "./navbarInternals";
 
 //External components used
 import NotificationAlert from "react-notification-alert";
 import "react-notification-alert/dist/animate.css";
 
-
-
 class NavBar extends Component {
-
   mentionNotYetFunctionality = (e) => {
     e.preventDefault();
     this.displayNotification("Functionality not yet implemented");
-  }
-
+  };
 
   displayNotification = (message) => {
     this.refs.notificationAlert.notificationAlert({
@@ -71,13 +66,13 @@ class NavBar extends Component {
 
   handleChange = (words) => {
     this.props.prepareSearchByWords(words);
-  }
+  };
 
   handleKey = (key) => {
-    if(key === 13){
+    if (key === 13) {
       this.props.deploySearchByWords();
     }
-  }
+  };
 
   render() {
     return (
@@ -85,7 +80,7 @@ class NavBar extends Component {
         <LogoContainer>
           <Link to="/">
             <LogoImage src={logo} alt="logo" />
-            </Link>
+          </Link>
         </LogoContainer>
         <SearchBar>
           <NavBarTitle>Bookshelf</NavBarTitle>
@@ -135,20 +130,20 @@ class NavBar extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     searchWords: state.books.searchWords,
     wordsChanged: state.books.wordsChanged,
     searchbyWordsDeploy: state.books.searchbyWordsDeploy
   };
-}
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    prepareSearchByWords: (words)=>{
+    prepareSearchByWords: (words) => {
       dispatch(prepareSearchByWords(words));
     },
-    deploySearchByWords: ()=>{
+    deploySearchByWords: () => {
       dispatch(deploySearchByWords());
     },
     logoutUser: () => {

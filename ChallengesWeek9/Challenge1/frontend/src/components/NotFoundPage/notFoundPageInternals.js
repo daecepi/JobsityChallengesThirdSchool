@@ -1,7 +1,6 @@
 //STYLING
-import styled from 'styled-components';
+import styled from "styled-components";
 import { secondaryWhite, secondaryBlue, thirdDark } from "../../styles/colors";
-
 
 export const NotFoundContainer = styled.div`
   background: ${secondaryWhite.rgb};
@@ -11,11 +10,11 @@ export const NotFoundContainer = styled.div`
   padding-left: 0.5rem;
 `;
 
-export const StyledH1  = styled.h1`
-  color: ${ secondaryBlue.rgb };
+export const StyledH1 = styled.h1`
+  color: ${secondaryBlue.rgb};
   padding-bottom: 0.5rem;
 `;
 
 export const StyledP = styled.p`
-  color: ${ thirdDark.rgb };
+  color: ${thirdDark.rgb};
 `;

@@ -1,7 +1,6 @@
 //STYLING
-import styled from 'styled-components';
-import { primaryBlue, primaryDarkTransparent, secondaryWhite, primaryDark } from '../../styles/colors';
-
+import styled from "styled-components";
+import { primaryBlue, primaryDarkTransparent, secondaryWhite, primaryDark } from "../../styles/colors";
 
 export const ReservationContainer = styled.div`
   position: absolute;
@@ -47,7 +46,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Form = styled.form`
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
 `;

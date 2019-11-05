@@ -1,8 +1,6 @@
-
 //STYLING
-import styled from 'styled-components';
-import { primaryBlue } from '../../styles/colors';
-
+import styled from "styled-components";
+import { primaryBlue } from "../../styles/colors";
 
 export const PrimaryInput = styled.input`
   border: 2px solid ${primaryBlue.rgb};
@@ -16,9 +14,9 @@ export const PrimaryInput = styled.input`
   font-size: 0.7rem;
   height: 2rem;
 
-  ${props => props.width? "width: " + props.width + ";" : "width: 100%;"}
+  ${(props) => (props.width ? "width: " + props.width + ";" : "width: 100%;")}
 
-  &:focus{
+  &:focus {
     border-color: ${primaryBlue.rgb};
     box-shadow: 0 0 8px 0 ${primaryBlue.rgb};
   }
@@ -27,12 +25,12 @@ export const PrimaryInput = styled.input`
 export const InputWithIcon = styled.div`
   position: relative;
 
-  & ${PrimaryInput}{
+  & ${PrimaryInput} {
     padding-left: 40px;
   }
 
   & ${PrimaryInput} + i {
-    color: ${primaryBlue.rgb}
+    color: ${primaryBlue.rgb};
   }
 
   & i {

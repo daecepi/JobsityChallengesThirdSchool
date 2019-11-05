@@ -1,6 +1,6 @@
 //STYLING
-import styled from 'styled-components';
-import { secondaryWhite, primaryGrey } from '../../styles/colors';
+import styled from "styled-components";
+import { secondaryWhite, primaryGrey } from "../../styles/colors";
 
 export const ContainerRegister = styled.div`
   background: ${secondaryWhite.rgb};
@@ -17,7 +17,7 @@ export const ContainerRegister = styled.div`
   padding-right: 1rem;
   padding-left: 1rem;
 
-  @media(max-width: 580px){
+  @media (max-width: 580px) {
     width: 70%;
   }
 `;
@@ -27,7 +27,7 @@ export const StyledH2 = styled.h2`
 `;
 
 export const StyledForm = styled.form`
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: flex-end;
@@ -37,7 +37,7 @@ export const StyledForm = styled.form`
 `;
 
 export const RegisterPTag = styled.p`
-  font-size: 0.9vh; 
+  font-size: 0.9vh;
 `;
 
 export const StyledLabel = styled.label`

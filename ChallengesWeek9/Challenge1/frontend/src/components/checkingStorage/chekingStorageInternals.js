@@ -1,7 +1,6 @@
 //STYLING
-import styled from 'styled-components';
+import styled from "styled-components";
 import { secondaryBlue, thirdDark, secondaryWhite } from "../../styles/colors";
-
 
 export const CheckingContainer = styled.div`
   background: ${secondaryWhite.rgb};

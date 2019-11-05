@@ -46,7 +46,7 @@ class PrivateRouteComponent extends Component {
   moveRoute = (state) => {
     if (state) {
       this.props.history.push("/");
-    }else{
+    } else {
       this.props.history.push("/Login");
     }
   };

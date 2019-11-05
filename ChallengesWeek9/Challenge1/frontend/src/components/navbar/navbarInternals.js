@@ -1,18 +1,16 @@
 //STYLING
-import styled from 'styled-components';
+import styled from "styled-components";
 import { secondaryWhite, primaryGrey, primaryBlue, secondaryDark } from "../../styles/colors";
-
 
 export const StyledHeader = styled.header`
   box-sizing: border-box;
   flex-basis: 5%;
 
-  display:grid;
+  display: grid;
   grid-template-columns: 1fr 5fr 1fr;
 `;
 
-export const LogoContainer = styled.div`
-`;
+export const LogoContainer = styled.div``;
 
 export const SearchBar = styled.div`
   font-family: "TitlePluton", Fallback, sans-serif;
@@ -32,7 +30,14 @@ export const NavBarTitle = styled.p`
 
 //Menu section of the components styling
 export const BorderX = styled.div`
-  background: linear-gradient(90deg, rgba(0,0,0,0.0), white), linear-gradient(to bottom, rgb(247, 243, 235) 20%, rgba(68, 68, 68,0.5) 20%, rgba(68, 68, 68, 0.5)  80%, rgb(247, 243, 235) 80%) ;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0), white),
+    linear-gradient(
+      to bottom,
+      rgb(247, 243, 235) 20%,
+      rgba(68, 68, 68, 0.5) 20%,
+      rgba(68, 68, 68, 0.5) 80%,
+      rgb(247, 243, 235) 80%
+    );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,7 +59,7 @@ export const UserBoxContainer = styled.div`
   align-content: center;
   justify-content: center;
 
-  &:hover{
+  &:hover {
     padding: 0.3em;
     border: 1px solid ${primaryGrey.rgb};
   }
@@ -95,12 +100,12 @@ export const DDMenu = styled.div`
   display: none;
   position: absolute;
   background: ${secondaryWhite.rgb};
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
   z-index: 1;
   color: gray;
 
-  ${UserBoxContainer}:hover &{
+  ${UserBoxContainer}:hover & {
     display: block;
     text-decoration: none;
     list-style-type: none;
@@ -117,7 +122,7 @@ export const StyledButtonNav = styled.button`
   background: none;
   border: none;
 
-  &:hover{
+  &:hover {
     background: ${secondaryDark.rgb};
     color: ${secondaryWhite.rgb};
   }

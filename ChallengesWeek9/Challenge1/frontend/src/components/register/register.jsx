@@ -5,14 +5,12 @@ import { withRouter } from "react-router-dom";
 
 import { Formik } from "formik";
 
-
 //External components used
 import NotificationAlert from "react-notification-alert";
 import "react-notification-alert/dist/animate.css";
 
-
-import { FullContainer, MoveButton, NotificationContainer } from '../../styles';
-import { 
+import { FullContainer, MoveButton, NotificationContainer } from "../../styles";
+import {
   ContainerRegister,
   StyledH2,
   StyledForm,
@@ -20,10 +18,9 @@ import {
   StyledLabel,
   SecondaryInput,
   RegisterButton
- } from './registerInternals';
+} from "./registerInternals";
 
 class Register extends Component {
-
   displayNotification = (message) => {
     this.refs.notificationAlert.notificationAlert({
       place: "br",

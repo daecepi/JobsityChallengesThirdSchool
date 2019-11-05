@@ -4,7 +4,6 @@ import { primaryBlue, primaryBlueTransparent } from "./colors";
 
 import backgroundImage from "../images/LoginImage.jpg";
 
-
 export const MessageTag = styled.span`
   font-size: 0.7rem;
 `;
@@ -17,10 +16,9 @@ export const ErroMessageColor = styled.span`
   color: $error-success;
 `;
 
-
 /*
-* Common containers
-*/
+ * Common containers
+ */
 export const FullContainer = styled.div`
   height: 100vh;
   width: 100vw;
@@ -32,8 +30,8 @@ export const FullContainer = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 
-  @media(max-width: 580px){
-    &{    
+  @media (max-width: 580px) {
+    & {
       padding-top: 1rem;
       justify-content: flex-start;
     }
@@ -74,5 +72,5 @@ export const NotificationContainer = styled.div`
 //Default style for A tags inside the application
 export const defaultStyleLink = {
   color: primaryBlue.rgb,
-  textDecoration: 'none'
+  textDecoration: "none"
 };

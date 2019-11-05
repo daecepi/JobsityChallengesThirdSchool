@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 
-
 //components used
 import StarRatings from "react-star-ratings";
-import { primaryBlue,  secondaryGrey, primaryWhite, primaryGrey } from "../../styles/colors";
+import { primaryBlue, secondaryGrey, primaryWhite, primaryGrey } from "../../styles/colors";
 
-import { 
-  GeneralHoverContainer,
-  HoverDesc,
-  AuthorsContainer,
-  StyledP
- } from './descriptorInternals';
+import { GeneralHoverContainer, HoverDesc, AuthorsContainer, StyledP } from "./descriptorInternals";
 
 class DescriptorComponent extends Component {
   render() {
@@ -25,8 +19,12 @@ class DescriptorComponent extends Component {
           </StyledP>
         </HoverDesc>
         <AuthorsContainer>
-          <StyledP color={primaryWhite.rgb} gap={0.3}>Novel by</StyledP>
-          <StyledP color={primaryGrey.rgb}  gap={0.3}>{authors.join(",")}</StyledP>
+          <StyledP color={primaryWhite.rgb} gap={0.3}>
+            Novel by
+          </StyledP>
+          <StyledP color={primaryGrey.rgb} gap={0.3}>
+            {authors.join(",")}
+          </StyledP>
         </AuthorsContainer>
         <div>
           <p>{pageCount}</p>
@@ -40,14 +38,14 @@ class DescriptorComponent extends Component {
         <div>
           <StyledP color={secondaryGrey.rgb}>RATING: </StyledP>
           <StarRatings
-              name={title}
-              numberOfStars={5}
-              starRatedColor={"#60B5D6"}
-              starEmptyColor={"#F0F0F0"} /* color of non-selected icons, default `#333` */
-              rating={averageRating}
-              starDimension="10px"
-              starSpacing="0px"
-            />
+            name={title}
+            numberOfStars={5}
+            starRatedColor={"#60B5D6"}
+            starEmptyColor={"#F0F0F0"} /* color of non-selected icons, default `#333` */
+            rating={averageRating}
+            starDimension="10px"
+            starSpacing="0px"
+          />
         </div>
       </GeneralHoverContainer>
     );

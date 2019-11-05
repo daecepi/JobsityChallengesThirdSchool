@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 //Importing the store
 import store from "./store/store";
 
-
 //components used
 import PrivateRouteComponent from "./components/PrivateRoute/privateRoute";
 import ParentBooker from "./components/parentbooker/parentBooker";
@@ -18,16 +17,13 @@ import Register from "./components/register/register";
 import NotFoundPageComponent from "./components/NotFoundPage/notFoundPage";
 import YetToComeComponent from "./components/yetToComeComponent/yetToComeComponent";
 
-
-
 //Including all fonts to be used
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import fontTitle1 from "./fonts/HVD Fonts - PlutoSansMedium.otf";
 import fontTitle2 from "./fonts/HVD Fonts - PlutoSansCondMedium.otf";
 import fontTitle3 from "./fonts/HVD Fonts - PlutoSansCondExLight.otf";
 
-import { AppContainer } from './mainAppComponents';
-
+import { AppContainer } from "./mainAppComponents";
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -62,8 +58,6 @@ const GlobalStyles = createGlobalStyle`
       monospace;
   }
 `;
-
-
 
 class App extends React.Component {
   state = {
@@ -106,6 +100,5 @@ class App extends React.Component {
     );
   }
 }
-
 
 export default App;

@@ -1,7 +1,6 @@
 //STYLING
-import styled from 'styled-components';
+import styled from "styled-components";
 import { secondaryWhite, primaryError } from "../../styles/colors";
-
 
 export const LoginContainer = styled.div`
   background: ${secondaryWhite.rgb};
@@ -15,13 +14,12 @@ export const LoginContainer = styled.div`
   justify-content: center;
   padding: 0.7rem;
 
-  
-  @media(max-width: 580px){
-      padding-top: 1rem;
-      justify-content: flex-start;
-      width: 50vw;
+  @media (max-width: 580px) {
+    padding-top: 1rem;
+    justify-content: flex-start;
+    width: 50vw;
   }
-`; 
+`;
 
 export const LoginTitle = styled.h1`
   justify-self: center;
@@ -29,7 +27,7 @@ export const LoginTitle = styled.h1`
   flex-grow: 5;
   justify-content: center;
   padding-bottom: black;
-`; 
+`;
 
 export const InputContainer = styled.div`
   width: 90%;

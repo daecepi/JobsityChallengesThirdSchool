@@ -4,15 +4,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 //Module to translate query params
-import queryString from 'query-string';
+import queryString from "query-string";
 
 //Action creator
-import { 
-  getBooksPending,
-  getBooksSuccess,
-  getBooksError,
-  applyBookupdate
- } from "../../actions/booksActionCreator";
+import { getBooksPending, getBooksSuccess, getBooksError, applyBookupdate } from "../../actions/booksActionCreator";
 
 //External components used
 import NotificationAlert from "react-notification-alert";
@@ -23,10 +18,10 @@ import NavBar from "../navbar/navbar";
 import Books from "../books/books";
 import { NotificationContainer } from "../../styles";
 import ReservationComponent from "../reservationComponent/reservationComponent";
-import { AppContainer } from './parentBookerInternals';
+import { AppContainer } from "./parentBookerInternals";
 
 //Librarie taht supports sockets
-import socketIOClient from 'socket.io-client';
+import socketIOClient from "socket.io-client";
 
 class ParentBooker extends Component {
   state = {
@@ -45,21 +40,20 @@ class ParentBooker extends Component {
    * Funtrion for initialization
    */
   componentDidMount() {
-    this.fetchBooks(this.props.location.pathname+this.props.location.search);
+    this.fetchBooks(this.props.location.pathname + this.props.location.search);
 
-    
     const socket = socketIOClient("http://localhost:4001");
-    socket.on("LendUpdate", data => {
+    socket.on("LendUpdate", (data) => {
       const book = JSON.parse(data);
       this.props.applyBookupdate(book._id, book);
     });
   }
 
-  componentDidUpdate(){
-    const resource = this.props.location.pathname+this.props.location.search;
-    if(this.props.resource !== resource){
+  componentDidUpdate() {
+    const resource = this.props.location.pathname + this.props.location.search;
+    if (this.props.resource !== resource) {
       this.fetchBooks(resource);
-    }else if(this.props.wordsChanged === true && this.props.searchbyWordsDeploy){
+    } else if (this.props.wordsChanged === true && this.props.searchbyWordsDeploy) {
       this.fetchBooks(resource);
     }
   }
@@ -79,40 +73,39 @@ class ParentBooker extends Component {
   };
 
   handlePageChange = (num) => {
-    const resource = this.props.location.pathname+this.props.location.search;
-    this.fetchBooks(resource,num);
-  }
+    const resource = this.props.location.pathname + this.props.location.search;
+    this.fetchBooks(resource, num);
+  };
 
   /**
    * Function that look for the books of a specific point destined for it in the backend
    * @param {string} endpoint : string that contains the base endpoint for books looking
    * @param {number} page : the integer number of the page wanted
-   * @param {Object} filters : object that contains the filters by city, type and words to search for 
+   * @param {Object} filters : object that contains the filters by city, type and words to search for
    */
   fetchBooks = async (resource, num) => {
     let pageNum = 0;
     const filters = queryString.parse(this.props.location.search);
 
-    if(filters.page){
+    if (filters.page) {
       pageNum = parseInt(filters.page);
     }
 
     const endpoint = this.props.baseEndpoint;
     const page = num !== undefined ? num : pageNum;
-    let url = endpoint.concat( "/books", "?startIndex=", page);
+    let url = endpoint.concat("/books", "?startIndex=", page);
 
-    if(filters.city){
-      url += ("&cities="+this.capitalizeFLetter(filters.city));
+    if (filters.city) {
+      url += "&cities=" + this.capitalizeFLetter(filters.city);
     }
 
-    if(filters.type){
-      url += ("&types="+this.capitalizeFLetter(filters.type));
+    if (filters.type) {
+      url += "&types=" + this.capitalizeFLetter(filters.type);
     }
 
-    if(this.props.searchWords !== ""){
-      url += ("&words="+this.props.searchWords);
+    if (this.props.searchWords !== "") {
+      url += "&words=" + this.props.searchWords;
     }
-
 
     const token = localStorage.getItem("access_token");
     this.props.getBooksPending();
@@ -124,7 +117,6 @@ class ParentBooker extends Component {
         Authorization: "Bearer " + token
       }
     }).then((res) => res.json());
-
 
     //Acting according to message
     if (authResult === 400) {
@@ -150,7 +142,6 @@ class ParentBooker extends Component {
     return word[0].toUpperCase() + word.slice(1);
   }
 
- 
   /**
    * Function to get books from the server by words
    *

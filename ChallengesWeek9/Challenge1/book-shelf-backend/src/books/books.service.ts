@@ -3,11 +3,10 @@ import { InjectModel } from '@nestjs/mongoose';
 
 import { Model } from 'mongoose';
 
-
 //Books interface
 import { Book } from './books.model';
 
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 
 //Adding the lending service
 import { LendingService } from '../lending/lending.service';
@@ -66,7 +65,7 @@ export class BooksService {
       //Verifing that the index is a number
       return new HttpException('The start index of the books lookup should be numeric', 400);
     }
-    
+
     const index = parseInt(startIndex);
 
     let filters = {};
@@ -104,13 +103,17 @@ export class BooksService {
    * @param bookId : holds the id of the book
    * @param userId : holds the identification of the user
    */
-  async lendBook(bookId: string, userId: string, startDate: string, endDate: string): Promise<{ state: string; book: Book } | any> {
+  async lendBook(
+    bookId: string,
+    userId: string,
+    startDate: string,
+    endDate: string,
+  ): Promise<{ state: string; book: Book } | any> {
     const isValidBook = mongoose.Types.ObjectId.isValid(bookId);
     const isValidUser = mongoose.Types.ObjectId.isValid(userId);
-    
 
     //Error handling for mongoose ids
-    if (!isValidBook|| !isValidUser) {
+    if (!isValidBook || !isValidUser) {
       throw new BadRequestException('Invalid element ids for book of user!');
     }
     //Error handler for knowing that a
@@ -135,32 +138,34 @@ export class BooksService {
     }
 
     //Calling the procedure destined for it
-    if(!startDate){
-      return new HttpException("A start date must be provided",400);
+    if (!startDate) {
+      return new HttpException('A start date must be provided', 400);
     }
 
-    if(!endDate){
-      return new HttpException("A end date must be provided",400);
+    if (!endDate) {
+      return new HttpException('A end date must be provided', 400);
     }
-
 
     //Error handlers for date validation
     const actualDate = new Date();
     const startDateGot = new Date(startDate);
     const endDateGot = new Date(endDate);
 
-
     //Validating according to current requierements startdate must be when reservation solicited
-    if( startDateGot.getDate() !== actualDate.getDate() || startDateGot.getMonth() !== actualDate.getMonth() || startDateGot.getFullYear() !== actualDate.getFullYear()){
-      return new HttpException("The start date of the request should be in the present date", 400);
+    if (
+      startDateGot.getDate() !== actualDate.getDate() ||
+      startDateGot.getMonth() !== actualDate.getMonth() ||
+      startDateGot.getFullYear() !== actualDate.getFullYear()
+    ) {
+      return new HttpException('The start date of the request should be in the present date', 400);
     }
 
     //Evaluating return date isn't as close (taking a minute as the base delay for the client to connect to server)
-    if((endDateGot.getTime() - startDateGot.getTime())/1000 < 60000 ){
-      return new HttpException("Return of the book must be more than a minute.", 400);
+    if ((endDateGot.getTime() - startDateGot.getTime()) / 1000 < 60000) {
+      return new HttpException('Return of the book must be more than a minute.', 400);
     }
 
-    if(startDateGot.getTime() > endDateGot.getTime()){
+    if (startDateGot.getTime() > endDateGot.getTime()) {
       return new HttpException("The start date can't be after end one", 400);
     }
 
@@ -170,7 +175,7 @@ export class BooksService {
     //Updating the book in the database
     let result = await book.save();
 
-    await this.lendsGateway.wss.emit("LendUpdate",JSON.stringify(result));
+    await this.lendsGateway.wss.emit('LendUpdate', JSON.stringify(result));
 
     return { state: 'Success', book: result };
   }
@@ -224,22 +229,24 @@ export class BooksService {
     //Updating book
     let result = await book.save();
 
-    await this.lendsGateway.wss.emit("LendUpdate",JSON.stringify(result));
-    
+    await this.lendsGateway.wss.emit('LendUpdate', JSON.stringify(result));
+
     return { state: 'success', book: result };
   }
-
 
   /**
    * Function that will check for books that will be returned today and free them
    */
-  async returnBooksOfDay(){
+  async returnBooksOfDay() {
     const actual = new Date();
-    const baseString = actual.getFullYear()+'-'+(actual.getMonth()+1)+'-'+actual.getDate();
+    const baseString = actual.getFullYear() + '-' + (actual.getMonth() + 1) + '-' + actual.getDate();
 
-    const earlyDate = new Date(baseString+' 00:00:00');
-    const lateDate = new Date(baseString+' 23:59:59');
+    const earlyDate = new Date(baseString + ' 00:00:00');
+    const lateDate = new Date(baseString + ' 23:59:59');
 
-    return await this.bookModel.updateMany({ $and: [{"lent.endDate": {$gte: earlyDate}} , {"lent.endDate": {$lte: lateDate}}]}, {"$unset": {lent: ""}});
+    return await this.bookModel.updateMany(
+      { $and: [{ 'lent.endDate': { $gte: earlyDate } }, { 'lent.endDate': { $lte: lateDate } }] },
+      { $unset: { lent: '' } },
+    );
   }
 }

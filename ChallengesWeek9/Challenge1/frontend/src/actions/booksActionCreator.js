@@ -37,8 +37,7 @@ export function getBooksError(error) {
   };
 }
 
-
-export function pageChange(num){
+export function pageChange(num) {
   return {
     type: PAGE_CHANGE,
     payload: {
@@ -47,7 +46,7 @@ export function pageChange(num){
   };
 }
 
-export function applyBookupdate(bookId, book){
+export function applyBookupdate(bookId, book) {
   return {
     type: APPLY_BOOK_CHANGE,
     payload: {
@@ -61,7 +60,7 @@ export function applyBookupdate(bookId, book){
  * Function that creates the action that sets the words to look for by title
  * @param {string} words : words to look for in books title
  */
-export function prepareSearchByWords(words){
+export function prepareSearchByWords(words) {
   return {
     type: PREPARE_BOOKS_SEARCHING,
     payload: {
@@ -73,7 +72,7 @@ export function prepareSearchByWords(words){
 /**
  * Function that creates the action when words were finished written
  */
-export function deploySearchByWords(){
+export function deploySearchByWords() {
   return {
     type: DEPLOY_SEARCHES_BY_BOOK
   };
@@ -83,7 +82,7 @@ export function deploySearchByWords(){
  * Function that starts the action of setting the base values for the reservation
  * proccess, being important on this the book's id
  */
-export function startReservationProccess(bookId, startDate,endDate) {
+export function startReservationProccess(bookId, startDate, endDate) {
   return {
     type: START_RESERVATION_PROCCESS,
     payload: {
@@ -98,7 +97,7 @@ export function startReservationProccess(bookId, startDate,endDate) {
  * Function that start the action for updating the reservation dates
  * where was needed
  */
-export function updateReservationInfo(startDate, endDate){
+export function updateReservationInfo(startDate, endDate) {
   return {
     type: UPDATE_RESERVATION_PROCCESS,
     payload: {
@@ -112,9 +111,8 @@ export function updateReservationInfo(startDate, endDate){
  * Function that start the action for reseting all changes in redux variables
  * for reservation proccess
  */
-export function finishReservationProccess(){
+export function finishReservationProccess() {
   return {
     type: FINISH_RESERVATION_PROCCESS
   };
 }
-

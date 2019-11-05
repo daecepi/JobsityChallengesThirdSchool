@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 
 import { FullContainer } from "../../styles";
-import { 
-  CheckingContainer,
-  StyledH1,
-  StyledP
- } from './chekingStorageInternals';
+import { CheckingContainer, StyledH1, StyledP } from "./chekingStorageInternals";
 
 class checkingStorageComponent extends Component {
-
   render() {
     return (
       <FullContainer>

@@ -17,7 +17,7 @@ import { MenuBox } from "../../styles";
 
 import { pageChange } from "../../actions/booksActionCreator";
 
-import { 
+import {
   Section1Container,
   ContentContainer,
   MenuRight,
@@ -33,15 +33,13 @@ import {
   StyledPFormBox,
   BooksContainer,
   StyledFilterBoxSpan
- } from './booksInternals';
+} from "./booksInternals";
 
 class Books extends Component {
-
-
   mentionNotYetFunctionality = (e) => {
     e.preventDefault();
     this.displayNotification("Functionality not yet implemented");
-  }
+  };
 
   /**
    * Function to show alerts all over the applcation
@@ -58,8 +56,7 @@ class Books extends Component {
   };
 
   handleRight = () => {
-    const { actualPage, totalPageCount} = this.props;
-
+    const { actualPage, totalPageCount } = this.props;
 
     if (actualPage + 1 === totalPageCount) {
       this.displayNotification("You are already at the end of the list");
@@ -94,13 +91,16 @@ class Books extends Component {
               <StyledH2>New Releases</StyledH2>
               <ContentFilterBox>
                 <StyledP>
-                  <StyledFilterBoxSpan onClick={this.mentionNotYetFunctionality} >Release Date</StyledFilterBoxSpan> | <StyledFilterBoxSpan onClick={this.mentionNotYetFunctionality} >Popularity</StyledFilterBoxSpan>
+                  <StyledFilterBoxSpan onClick={this.mentionNotYetFunctionality}>Release Date</StyledFilterBoxSpan> |{" "}
+                  <StyledFilterBoxSpan onClick={this.mentionNotYetFunctionality}>Popularity</StyledFilterBoxSpan>
                 </StyledP>
               </ContentFilterBox>
               <LayoutFormBox>
                 <StyledI onClick={this.mentionNotYetFunctionality} className="fa fa-th-large"></StyledI>
-                <StyledI onClick={this.mentionNotYetFunctionality}  className="fa fa-th-list"></StyledI>
-                <StyledPFormBox>| pages ({this.props.actualPage+1} of {this.props.totalPageCount})</StyledPFormBox>
+                <StyledI onClick={this.mentionNotYetFunctionality} className="fa fa-th-list"></StyledI>
+                <StyledPFormBox>
+                  | pages ({this.props.actualPage + 1} of {this.props.totalPageCount})
+                </StyledPFormBox>
                 <StyledI onClick={this.handleLeft} className="fas fa-chevron-left" />
                 <StyledI onClick={this.handleRight} className="fas fa-chevron-right" />
               </LayoutFormBox>
@@ -117,9 +117,7 @@ class Books extends Component {
               <StyledMenuRightOl>
                 <StyledMenuRightLi key="1">
                   <Link style={defaultStyleLink} to={"/book/11111dasdafs"}>
-                    <StyledP>
-                      Hooked: How To Build Habit forming Products.
-                    </StyledP>
+                    <StyledP>Hooked: How To Build Habit forming Products.</StyledP>
                   </Link>
                 </StyledMenuRightLi>
                 <StyledMenuRightLi key="2">
@@ -131,23 +129,17 @@ class Books extends Component {
                 </StyledMenuRightLi>
                 <StyledMenuRightLi key="3">
                   <Link style={defaultStyleLink} to={"33333dasdad"}>
-                    <StyledP>
-                      Lean In: Women, Work, and the Will to Lead.
-                    </StyledP>
+                    <StyledP>Lean In: Women, Work, and the Will to Lead.</StyledP>
                   </Link>
                 </StyledMenuRightLi>
                 <StyledMenuRightLi key="4">
                   <Link style={defaultStyleLink} to={"44444dadsad"}>
-                    <StyledP>
-                      Building a Bussiness When There Are Not Easy Answers.
-                    </StyledP>
+                    <StyledP>Building a Bussiness When There Are Not Easy Answers.</StyledP>
                   </Link>
                 </StyledMenuRightLi>
                 <StyledMenuRightLi key="5">
                   <Link style={defaultStyleLink} to={"55555dadsad"}>
-                    <StyledP>
-                      How Google Works
-                    </StyledP>
+                    <StyledP>How Google Works</StyledP>
                   </Link>
                 </StyledMenuRightLi>
               </StyledMenuRightOl>
@@ -172,7 +164,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     changePage: (pageNum) => {
-      dispatch(pageChange(pageNum))
+      dispatch(pageChange(pageNum));
     }
   };
 };

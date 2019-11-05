@@ -1,4 +1,5 @@
-import { GET_BOOK_SUCCESS,
+import {
+  GET_BOOK_SUCCESS,
   GET_BOOK_PENDING,
   GET_BOOKS_ERROR,
   PAGE_CHANGE,
@@ -23,7 +24,7 @@ const initialState = {
   bookId: undefined,
   startDate: undefined,
   endDate: undefined,
-  isReservationProcessStarted: false,
+  isReservationProcessStarted: false
 };
 
 const books = (state = initialState, action) => {
@@ -42,11 +43,11 @@ const books = (state = initialState, action) => {
       });
     case GET_BOOK_SUCCESS:
       return Object.assign({}, state, {
-            books: action.payload.books,
-            pending: false,
-            actualPage: action.payload.actualPage,
-            totalPageCount: action.payload.totalPageCount,
-            resource: action.payload.resource
+        books: action.payload.books,
+        pending: false,
+        actualPage: action.payload.actualPage,
+        totalPageCount: action.payload.totalPageCount,
+        resource: action.payload.resource
       });
     case PAGE_CHANGE: //modifying
       return Object.assign({}, state, {
@@ -54,13 +55,13 @@ const books = (state = initialState, action) => {
       });
 
     case APPLY_BOOK_CHANGE:
-      let booksUpdated = state.books.map(book => {
-        if(book._id === action.payload.bookId) return action.payload.book;
+      let booksUpdated = state.books.map((book) => {
+        if (book._id === action.payload.bookId) return action.payload.book;
         return book;
       });
       return Object.assign({}, state, {
         books: booksUpdated
-      })
+      });
 
     case PREPARE_BOOKS_SEARCHING:
       return Object.assign({}, state, {

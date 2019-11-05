@@ -34,10 +34,6 @@ import { ReturnService } from './cron/return.service';
     ScheduleModule.register(),
   ],
   controllers: [AppController],
-  providers: [
-    AppService,
-    EeventsGateway,
-    ReturnService
-  ],
+  providers: [AppService, EeventsGateway, ReturnService],
 })
 export class AppModule {}
