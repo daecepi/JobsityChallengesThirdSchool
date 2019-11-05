@@ -9,9 +9,11 @@ export class ReturnService extends NestSchedule {
     super();
   }
   
-  @Cron('0 */3 * * * *',  { key: 'books-available-cron' })
+  @Cron('0 0 10 1/1 * ? *',  { key: 'books-available-cron' })
   async cronJob() {
     let result = await this.bookService.returnBooksOfDay();
-    console.log("Books available for today task runned: "+result['nModified']+ "new books freed");
+
+    //Logging about new books freed
+    console.log("Books available for today task runned: "+result['nModified']+ " new books freed");
   }
 }

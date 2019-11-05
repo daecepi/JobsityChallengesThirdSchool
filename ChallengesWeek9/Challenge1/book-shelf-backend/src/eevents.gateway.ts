@@ -2,20 +2,8 @@ import { SubscribeMessage, WebSocketGateway, MessageBody, OnGatewayConnection, W
 import { Server } from 'tls';
 
 @WebSocketGateway(4001)
-export class EeventsGateway implements OnGatewayConnection {
+export class EeventsGateway {
 
   @WebSocketServer() wss: Server;
 
-  //Method that handles the mesages
-  @SubscribeMessage('message')
-  handleMessage(client: any, payload: any, @MessageBody() data: string): string {
-
-    this.wss.emit("Message from a client");
-    return 'Hello world!';
-  }
-
-
-  handleConnection(){
-    console.log("New client connection");
-  }
 }

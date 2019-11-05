@@ -51,7 +51,6 @@ class ParentBooker extends Component {
     const socket = socketIOClient("http://localhost:4001");
     socket.on("LendUpdate", data => {
       const book = JSON.parse(data);
-      console.log("Data being passed", book._id, book)
       this.props.applyBookupdate(book._id, book);
     });
   }
