@@ -14,6 +14,10 @@ class SearchComponent extends Component {
     this.props.onChange && this.props.onChange(event.target.value);
   };
 
+  handleKeyUp = (event) => {
+    this.props.onKeyUp && this.props.onKeyUp(event.which);
+  }
+
   render() {
     let { name, type, placeholder, iconClasses } = this.props;
     return (
@@ -24,6 +28,7 @@ class SearchComponent extends Component {
           className={"primary-input normal-size"}
           placeholder={placeholder}
           onChange={this.handleChange}
+          onKeyUp={this.handleKeyUp}
         ></PrimaryInput>
         {iconClasses ? <StyledI className={iconClasses} aria-hidden="true"></StyledI> : ""}
       </InputWithIcon>

@@ -109,9 +109,6 @@ export class BooksService {
     const isValidUser = mongoose.Types.ObjectId.isValid(userId);
     
 
-    console.log("Step one",startDate, endDate);
-    console.log("Converted", new Date(startDate).toString(), new Date(endDate).toString());
-
     //Error handling for mongoose ids
     if (!isValidBook|| !isValidUser) {
       throw new BadRequestException('Invalid element ids for book of user!');
@@ -227,6 +224,8 @@ export class BooksService {
     //Updating book
     let result = await book.save();
 
+    await this.lendsGateway.wss.emit("LendUpdate",JSON.stringify(result));
+    
     return { state: 'success', book: result };
   }
 

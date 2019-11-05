@@ -20,7 +20,9 @@ import {
     BottomBookMenu,
     FavoritesContainer,
     ReadingsContainer,
-    StyledI
+    StyledI,
+    ReturnBookContainer,
+    StyledPOption
   } from './bookMenuInternals';
 import { primaryError } from "../../styles/colors";
 
@@ -46,6 +48,32 @@ class BookMenuComponent extends Component {
     const startDate = new Date();
     const endDate = new Date();
     this.props.startReservationProccess(this.props.book._id, startDate, endDate);
+  }
+
+  fetchReturnBook = async () => {
+    //Prepare information for request
+    const url = this.props.baseEndpoint.concat("/users/"+this.props.user._id+"/returnBook/"+this.props.book._id);
+    const token = localStorage.getItem("access_token");
+    
+    //Fetching the request on the API
+    let authResult = await fetch(url,{
+      method: "PUT",
+      headers: {
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+      },
+    }).then(res => res.json());
+    
+    //Handling of response
+    if(authResult.status === 401){//Point where is not going to enter since inside protcted route
+      this.displayNotification("Login again, your session have expired");
+    }else if(authResult.state &&authResult.state === "Success"){
+      this.displayNotification("Book returned");
+    }else if(authResult.state){
+      this.displayNotification(authResult.state);
+    }else{
+      this.displayNotification(authResult.response);
+    }
   }
 
   getReservationModule = () => {
@@ -96,6 +124,11 @@ class BookMenuComponent extends Component {
             <ReadingsContainer onClick={this.displayNotYetImplementedMessage}>
               <StyledI className="fas fa-book-open fa-5x"></StyledI>
             </ReadingsContainer>
+            <ReturnBookContainer onClick={this.fetchReturnBook}>
+                <StyledPOption>
+                  return
+                </StyledPOption>
+            </ReturnBookContainer>
           </MidBookMenu>
           <BottomBookMenu>
             <StarRatingComponent
@@ -113,6 +146,13 @@ class BookMenuComponent extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    baseEndpoint: state.books.baseEndpoint,
+    user: state.user.userLogged
+  };
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     startReservationProccess: (reservationId, startDate, endDate)=>{
@@ -122,6 +162,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(BookMenuComponent);

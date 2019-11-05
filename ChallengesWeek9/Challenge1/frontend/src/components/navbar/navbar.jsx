@@ -4,10 +4,12 @@ import { connect } from "react-redux";
 
 import { withRouter, Link } from "react-router-dom";
 
+import { prepareSearchByWords, deploySearchByWords } from "../../actions/booksActionCreator";
 import { logoutUser } from "../../actions/userActionCreator";
 
 //Svg logo
 import logo from "./logo.svg";
+
 
 //Component
 import SearchComponent from "../searchComponent/searchComponent";
@@ -67,6 +69,16 @@ class NavBar extends Component {
     this.props.history.push("/login"); //Redirecting to login page
   };
 
+  handleChange = (words) => {
+    this.props.prepareSearchByWords(words);
+  }
+
+  handleKey = (key) => {
+    if(key === 13){
+      this.props.deploySearchByWords();
+    }
+  }
+
   render() {
     return (
       <StyledHeader>
@@ -80,7 +92,8 @@ class NavBar extends Component {
           <SearchComponent
             type="text"
             placeholder="Search.."
-            onChange={this.props.handleSearch}
+            onChange={this.handleChange}
+            onKeyUp={this.handleKey}
             iconClasses="fas fa-search"
           />
         </SearchBar>
@@ -122,8 +135,22 @@ class NavBar extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = state => {
   return {
+    searchWords: state.books.searchWords,
+    wordsChanged: state.books.wordsChanged,
+    searchbyWordsDeploy: state.books.searchbyWordsDeploy
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    prepareSearchByWords: (words)=>{
+      dispatch(prepareSearchByWords(words));
+    },
+    deploySearchByWords: ()=>{
+      dispatch(deploySearchByWords());
+    },
     logoutUser: () => {
       dispatch(logoutUser());
     }
@@ -131,6 +158,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(withRouter(NavBar));

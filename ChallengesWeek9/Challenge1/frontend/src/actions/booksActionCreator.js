@@ -4,6 +4,8 @@ import {
   GET_BOOKS_ERROR,
   PAGE_CHANGE,
   APPLY_BOOK_CHANGE,
+  PREPARE_BOOKS_SEARCHING,
+  DEPLOY_SEARCHES_BY_BOOK,
   START_RESERVATION_PROCCESS,
   UPDATE_RESERVATION_PROCCESS,
   FINISH_RESERVATION_PROCCESS
@@ -52,6 +54,28 @@ export function applyBookupdate(bookId, book){
       bookId,
       book
     }
+  };
+}
+
+/**
+ * Function that creates the action that sets the words to look for by title
+ * @param {string} words : words to look for in books title
+ */
+export function prepareSearchByWords(words){
+  return {
+    type: PREPARE_BOOKS_SEARCHING,
+    payload: {
+      words
+    }
+  };
+}
+
+/**
+ * Function that creates the action when words were finished written
+ */
+export function deploySearchByWords(){
+  return {
+    type: DEPLOY_SEARCHES_BY_BOOK
   };
 }
 

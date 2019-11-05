@@ -1,10 +1,10 @@
 import { GET_BOOK_SUCCESS,
   GET_BOOK_PENDING,
   GET_BOOKS_ERROR,
-  LEND_BOOK,
-  RETURN_BOOK,
   PAGE_CHANGE,
   APPLY_BOOK_CHANGE,
+  PREPARE_BOOKS_SEARCHING,
+  DEPLOY_SEARCHES_BY_BOOK,
   START_RESERVATION_PROCCESS,
   UPDATE_RESERVATION_PROCCESS,
   FINISH_RESERVATION_PROCCESS
@@ -16,11 +16,10 @@ const initialState = {
   actualPage: 0,
   totalPageCount: 0,
   searchWords: "",
+  wordsChanged: false,
+  searchbyWordsDeploy: false,
   urlFilters: "/",
   resource: "/",
-  lendBook: false,
-  showModal: "", // make sure to delete if not used
-  bookToOperateIn: undefined,
   bookId: undefined,
   startDate: undefined,
   endDate: undefined,
@@ -32,7 +31,9 @@ const books = (state = initialState, action) => {
   switch (action.type) {
     case GET_BOOK_PENDING:
       return Object.assign({}, state, {
-        pending: true
+        pending: true,
+        wordsChanged: false,
+        searchbyWordsDeploy: false
       });
     case GET_BOOKS_ERROR:
       return Object.assign({}, state, {
@@ -54,14 +55,23 @@ const books = (state = initialState, action) => {
 
     case APPLY_BOOK_CHANGE:
       let booksUpdated = state.books.map(book => {
-        console.log("On book Change", book._id === action.payload.bookId, action.payload.bookId, book._id);
         if(book._id === action.payload.bookId) return action.payload.book;
         return book;
       });
-
       return Object.assign({}, state, {
         books: booksUpdated
       })
+
+    case PREPARE_BOOKS_SEARCHING:
+      return Object.assign({}, state, {
+        searchWords: action.payload.words,
+        wordsChanged: true
+      });
+
+    case DEPLOY_SEARCHES_BY_BOOK:
+      return Object.assign({}, state, {
+        searchbyWordsDeploy: true
+      });
 
     case START_RESERVATION_PROCCESS:
       return Object.assign({}, state, {
@@ -83,14 +93,6 @@ const books = (state = initialState, action) => {
         startDate: undefined,
         endDate: undefined,
         isReservationProcessStarted: false
-      });
-    case LEND_BOOK:
-      return state.books.id=== action.id? Object.assign({}, state, {
-                reserved: true
-              }): state;
-    case RETURN_BOOK:
-      return Object.assign({}, state, {
-        pending: true
       });
     default:
       return state;

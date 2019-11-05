@@ -8,19 +8,26 @@ export const GET_BOOK_PENDING = "GET_BOOK_PENDING";
 
 export const GET_BOOKS_ERROR = "GET_BOOKS_ERROR";
 
+/**
+ * PAGE CHANGING ACTIONS
+ */
 export const PAGE_CHANGE = "PAGE_CHANGE";
 
+/**
+ * BOOK'S UPDATING FROM WEBSOCKET
+ */
 export const APPLY_BOOK_CHANGE = "APPLY_BOOK_CHANGE";
+
+/**
+ * PREPARING SEARCHES BY WORDS
+ */
+export const PREPARE_BOOKS_SEARCHING = "PREPARE_BOOKS_SEARCHING";
+
+export const DEPLOY_SEARCHES_BY_BOOK = "DEPLOY_SEARCHES_BY_BOOK";
 
 /**
  * LENDING ACTIONS
  */
-//Action to lend books
-export const LEND_BOOK = "LEND_BOOK";
-
-//Action to return the books lent by an user
-export const RETURN_BOOK = "RETURN_BOOK";
-
 export const START_RESERVATION_PROCCESS = "START_RESERVATION_PROCCESS";
 
 export const UPDATE_RESERVATION_PROCCESS= "UPDATE_RESERVATION_PROCCESS";

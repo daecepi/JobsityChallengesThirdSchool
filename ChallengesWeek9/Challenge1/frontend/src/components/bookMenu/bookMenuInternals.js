@@ -37,6 +37,7 @@ export const TopBookMenu = styled.div`
 export const MidBookMenu = styled.div`
   height:75%;
   display: flex;
+  flex-direction:column;
   justify-content: center;
   align-items: center;
 `;
@@ -59,4 +60,23 @@ export const StyledI = styled.i`
     &:hover{
       color: ${props => props.color ? props.color : primaryBlue.rgb};
     }
+`;
+
+export const ReturnBookContainer = styled.div`
+    background: rgba(0,0,0,0.0);
+    border: 1px solid ${primaryWhite.rgb};
+    color: ${primaryWhite.rgb};
+    border-radius:20px;
+
+    &:hover{
+      border: 1px solid ${primaryBlue.rgb};
+      color: ${primaryBlue.rgb};
+    }
+`;
+
+export const StyledPOption = styled.p`
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weigth: bold;
 `;

@@ -60,6 +60,8 @@ class ParentBooker extends Component {
     const resource = this.props.location.pathname+this.props.location.search;
     if(this.props.resource !== resource){
       this.fetchBooks(resource);
+    }else if(this.props.wordsChanged === true && this.props.searchbyWordsDeploy){
+      this.fetchBooks(resource);
     }
   }
 
@@ -108,8 +110,8 @@ class ParentBooker extends Component {
       url += ("&types="+this.capitalizeFLetter(filters.type));
     }
 
-    if(filters.words){
-      url += ("&words="+filters.words);
+    if(this.props.searchWords !== ""){
+      url += ("&words="+this.props.searchWords);
     }
 
 
@@ -222,7 +224,10 @@ const mapStateToProps = (state) => {
     actualPage: state.books.actualPage,
     totalPageCount: state.books.totalPageCount,
     resource: state.books.resource,
-    isReservationProcessStarted: state.books.isReservationProcessStarted
+    isReservationProcessStarted: state.books.isReservationProcessStarted,
+    searchWords: state.books.searchWords,
+    wordsChanged: state.books.wordsChanged,
+    searchbyWordsDeploy: state.books.searchbyWordsDeploy
   };
 };
 

@@ -61,7 +61,7 @@ export class UsersController {
    * @param userId : holds the user's id
    */
   @UseGuards(AuthGuard('jwt'))
-  @Put('/:userId/book/:bookId')
+  @Put('/:userId/returnBook/:bookId')
   async returnBook(@Param('userId') userId: string, @Param('bookId') bookId: string) {
     let result = await this.booksService.returnBook(bookId, userId);
 
