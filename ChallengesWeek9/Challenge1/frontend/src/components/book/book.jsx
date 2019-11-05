@@ -10,7 +10,7 @@ import "tippy.js/animations/scale-subtle.css";
 import { connect } from 'react-redux';
 
 //Rating component
-import StarRatingComponent from "react-star-rating-component";
+import StarRatings from 'react-star-ratings';
 
 //Hover component
 import DescriptorComponent from "../descriptor/descriptor";
@@ -118,12 +118,14 @@ class Book extends Component {
           <BookTitle>{title}</BookTitle>
           <p className="authors">{authors.join(", ")}</p>
           <RatingContainer>
-            <StarRatingComponent
+            <StarRatings
               name={"rate" + _id}
-              starCount={5}
-              starColor={"#60B5D6"}
-              emptyStarColor={"#F0F0F0"} /* color of non-selected icons, default `#333` */
-              value={averageRating}
+              numberOfStars={5}
+              starRatedColor={"#60B5D6"}
+              starEmptyColor={"#F0F0F0"} /* color of non-selected icons, default `#333` */
+              rating={averageRating}
+              starDimension="10px"
+              starSpacing="0px"
             />
           </RatingContainer>
         </BookDiv>

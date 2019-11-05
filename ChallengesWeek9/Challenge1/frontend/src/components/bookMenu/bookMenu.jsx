@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { startReservationProccess } from "../../actions/booksActionCreator";
 //Rating component
-import StarRatingComponent from "react-star-rating-component";
+import StarRatings from "react-star-ratings";
 import { NotificationContainer } from '../../styles';
 
 
@@ -131,11 +131,15 @@ class BookMenuComponent extends Component {
             </ReturnBookContainer>
           </MidBookMenu>
           <BottomBookMenu>
-            <StarRatingComponent
+            
+          <StarRatings
               name={"user-rating" + this.props.id}
-              starCount={5}
-              value={this.props.averageRating}
-              editing={true}
+              numberOfStars={5}
+              starRatedColor={"#60B5D6"}
+              starEmptyColor={"#F0F0F0"} /* color of non-selected icons, default `#333` */
+              rating={this.props.averageRating}
+              starDimension="10px"
+              starSpacing="0px"
             />
           </BottomBookMenu>
         </BookMenuContainer>

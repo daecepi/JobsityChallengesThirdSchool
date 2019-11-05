@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 
 //components used
-import StarRatingComponent from "react-star-rating-component";
+import StarRatings from "react-star-ratings";
 import { primaryBlue,  secondaryGrey, primaryWhite, primaryGrey } from "../../styles/colors";
 
 import { 
@@ -39,7 +39,15 @@ class DescriptorComponent extends Component {
         </div>
         <div>
           <StyledP color={secondaryGrey.rgb}>RATING: </StyledP>
-          <StarRatingComponent name={title} starCount={5} starColor={"#60B5D6"} value={averageRating} />
+          <StarRatings
+              name={title}
+              numberOfStars={5}
+              starRatedColor={"#60B5D6"}
+              starEmptyColor={"#F0F0F0"} /* color of non-selected icons, default `#333` */
+              rating={averageRating}
+              starDimension="10px"
+              starSpacing="0px"
+            />
         </div>
       </GeneralHoverContainer>
     );
