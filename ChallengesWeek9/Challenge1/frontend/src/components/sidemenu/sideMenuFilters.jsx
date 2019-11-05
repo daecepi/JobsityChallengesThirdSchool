@@ -47,7 +47,7 @@ class SideMenuFiltersComponent extends Component {
           {
             index: 4,
             section: "Digital",
-            to: "/?type=digital",
+            to: "?type=digital",
             logoClasses: "fas fa-tablet-alt",
             isSelected: false
           },
