@@ -115,40 +115,12 @@ __IMPORTANT:__ steps 1 and 2 from installation section in this readme are necess
   - react-notification-alert: 0.0.12
 
 
-
-## Missing
-- The point of implementing the reservation form with the DatePicker, part of the component exists (but the implementation will be available during the day)
-
-## TO DO's (for this week can be seen in each separate README, IMPORTANT TO READ ITS TO DO'S)
-- [X] Reused pallete color even in external star-rating-component (with RGB to string conversion)
-- [X] Add more security for endpoint (error handling)
-- [ ] Put arrows to change books next to the book component
-- [X] pass props to change the behaviour of redirecting (using the callback of the setState method)
-- [X] includu page count
-- [ ] fixing images responsiveness
-- [X] improve endpoint callbacks
-- [X] Setting up routes
-- [X] Improve security
-- [X] 404 page
-- [X] pagination
-- [X] improving averall styling
-- [X] add default behaviour in books that doesn't have certain info
-- [X] using formik with forms
-- [X] modularizing schema for sign up of Formik
-- [ ] managing notification with advance extension like react-alert
-- [X] modularizing notifications in the entire application 
-- [ ] create message handlers for the entire application
-- [ ] improve images styles
-- [ ] apply filter dymically in fetchBooks funtion
-
-## COOL APPROACHES NOT DONE FOR TIME (for next week)
-- Separing reducers in: books reducer and auth reducer (and then combine then)
-
 ## Version release
 **(Only breaking changes from last versions are referenced for brevity)**
 - *Version 1.0.0*: Vanilla javascript, SCSS and HTML5 for UI and NodeJS server
 - *Version 2.0.0*: Usage of react for UI
-- **Version 3.0.0**: Usage of redux along side React (fields renamed on database schema **New database import required**)
+- Version 3.0.0: Usage of redux along side React (fields renamed on database schema **New database import required**)
+- **Version 3.1.0**: implementation of websockets and the rest of the functionalities
 
 ## Authors 
 - **David Eduardo Cermeño Pinzón** - *main developer*

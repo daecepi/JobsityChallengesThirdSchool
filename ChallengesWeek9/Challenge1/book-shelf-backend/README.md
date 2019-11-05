@@ -38,7 +38,7 @@ __User endpoints__
 - - POST (url http encoded): a user: string and a password: string
 - /user/register : to add new user profiles
 - - POST: identification: string, name: string, lname: string, username:string, password: string, age: number, email: string;
-- user/:userId/return/:bookId : to return the book after finished with it (requires id of the book y id of the user that wants to lend it)
+- user/:userId/returnBook/:bookId : to return the book after finished with it (requires id of the book y id of the user that wants to lend it)
 - - HEADER: needs an auth token (jwt token)
 - - PUT: bookId: id that MongoDB assigned to the book and userId: id that MongoDB assigned to the user
 - /books : to get all books in the API
@@ -72,24 +72,14 @@ __User endpoints__
 - The projet folder should remind outside the folder of the backend server
 - Keep strategies in the auth folder
 
-## TO DO extras
-Not in the challenge
-- [X] Use of Nest
-- [X] Some tests written
-- [X] Fusing the endpoint to use query strings
-- [ ] Dockerize the application according to this doc (that show how to do it scalably): https://dev.to/carlillo/part-7-deploy-backend-nestjs-dockerdocker-compose-3cmb
-- [ ] Assign secret to a service for it (better practice)
-- [X] Limitant of how many results can you get at the same time from the books endpoint
-- [ ] Put the frontend in the public's folder that serves the static files
-- [X] searching for books in the title
-- [X] returning size of the books list per query in the /books endpoint
-- [ ] searching for books in the description (still in evaluation of time this week)
-- [X] Adding state objects to every endpoint for better evaluation of queries to endpoint
-- [ ] usage of nest pagination module next week (for learning purposes the pagination was stablished with mongo's aggregate funtion)
-- [ ] Modify to bring only books with whole information
 
 ## Dependencies
-- Nest and many of its modules modules
+- Nest, and many of its modules modules like:
+  - Static routes
+  - CRON tasks
+  - Gateways
+  - Services
+  - Controllers
 - Mongoose
 - rxjs
 

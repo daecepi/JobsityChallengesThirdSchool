@@ -25,7 +25,7 @@ class PrivateRouteComponent extends Component {
     }
 
     //Fetching an endpoint to verify the token
-    let authValidation = await fetch("http://localhost:5000/api/users/validateLogin", {
+    let authValidation = await fetch(this.props.baseEndpoint+"/users/validateLogin", {
       method: "GET",
       headers: {
         Authorization: "Bearer " + token
@@ -82,6 +82,7 @@ class PrivateRouteComponent extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    baseEndpoint: state.books.baseEndpoint,
     userIsLogged: state.user.userIsLogged,
     userRecoveryTried: state.user.userRecoveryTried
   };
