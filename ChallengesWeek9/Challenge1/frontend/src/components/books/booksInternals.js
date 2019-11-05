@@ -94,6 +94,11 @@ export const StyledPFormBox = styled.p`
 export const BooksContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+
+  @media(max-width: 700px){
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;
 
 export const StyledFilterBoxSpan = styled.span`

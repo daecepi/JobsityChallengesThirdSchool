@@ -46,6 +46,8 @@ export class BooksController {
   @UseGuards(AuthGuard('jwt'))
   @Put('lend')
   public async lendBook(@Body('bookId') id: string, @Body('userId') userId: string, @Body('startDate') startDate: string, @Body('endDate') endDate: string) {
+    console.log("Step one",startDate, endDate);
+    console.log("Converted", new Date(startDate).toString(), new Date(endDate).toString());
     let result = await this.booksService.lendBook(id, userId, startDate, endDate);
 
     return result;

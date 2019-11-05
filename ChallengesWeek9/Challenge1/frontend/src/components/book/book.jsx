@@ -48,7 +48,6 @@ class Book extends Component {
 
 
   getVisualIndicator = (lent) => {
-    //const { lent } = this.props.book;
     if(lent && lent.user === this.props.user._id){
       return (
         <VisualIndicator color={primaryBlueTransparent2.rgb} fontColor={primaryWhite.rgb}>
@@ -65,9 +64,20 @@ class Book extends Component {
     return "";
   }
 
+  getImageAsset = () => {
+    const { imageLinks } = this.props.book;
+    if(imageLinks[0]){
+      return imageLinks[0].smallThumbnail;
+    }else if(imageLinks.smallThumbnail){
+      return imageLinks.smallThumbnail;
+    }
+    return "https://www.union.edu/sites/default/files/union-marketing-layer/201803/picture.jpg";
+  }
+
   //Check star rating component
   render() {
-    const { _id, title, description, imageLinks, authors, averageRating, publishedDate, lent } = this.props.book;
+    const { _id, title, description, authors, averageRating, publishedDate, lent } = this.props.book;
+    const imageLink = this.getImageAsset();
     return (
       <Tippy
         content={
@@ -91,11 +101,7 @@ class Book extends Component {
               id={_id}
               className="img-ref"
               onClick={this.toggleAppereance}
-              src={
-                imageLinks.smallThumbnail
-                  ? imageLinks.smallThumbnail
-                  : "https://www.union.edu/sites/default/files/union-marketing-layer/201803/picture.jpg"
-              }
+              src={imageLink}
               alt="presentation"
             />
             <BookMenuComponent

@@ -1,8 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Cron, Interval, Timeout, NestSchedule } from 'nest-schedule';
-import { InjectModel } from '@nestjs/mongoose';
-
-import { Model } from 'mongoose';
+import { Cron, NestSchedule } from 'nest-schedule';
 
 import { BooksService } from '../books/books.service';
 
@@ -12,10 +9,11 @@ export class ReturnService extends NestSchedule {
     super();
   }
   
-  @Cron('0 * * * * *',  { key: 'books-available-cron' })
+  @Cron('0 */3 * * * *',  { key: 'books-available-cron' })
   async cronJob() {
-    this.bookService.returnBooksOfDay();
+    let result = await this.bookService.returnBooksOfDay();
     //const date = new Date();
+    console.log(result);
     console.log("Books available for today done");
   }
 }

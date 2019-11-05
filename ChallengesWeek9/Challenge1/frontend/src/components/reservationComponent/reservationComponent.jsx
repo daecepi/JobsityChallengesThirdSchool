@@ -9,7 +9,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 
-import { InternalSeparator } from '../../styles';
+//External components used
+import NotificationAlert from "react-notification-alert";
+import "react-notification-alert/dist/animate.css";
+
+import { InternalSeparator, NotificationContainer } from '../../styles';
 import { 
   ReservationContainer,
   StyledH1,
@@ -23,11 +27,23 @@ import {
 
 class ReservationComponent extends Component {
 
+  displayNotification = (message) => {
+    this.refs.notificationAlert.notificationAlert({
+      place: "br",
+      message: <NotificationContainer>{message}</NotificationContainer>,
+      type: "danger",
+      icon: "now-ui-icons ui-1_bell-53",
+      autoDismiss: 2,
+      closeButton: false
+    });
+  };
+
   handleSubmit = async (e) => {
     e.preventDefault();
 
     const url = this.props.baseEndpoint.concat("/books/lend");
-    const data = {userId: this.props.user._id, bookId: this.props.bookId, startDate: this.props.startDate.toUTCString(), endDate: this.props.endDate.toUTCString()};
+    console.log("Date to send", this.props.startDate.toString(),  this.props.endDate.toString());
+    const data = {userId: this.props.user._id, bookId: this.props.bookId, startDate: this.props.startDate.toString(), endDate: this.props.endDate.toString()};
     const token = localStorage.getItem("access_token");
     
 
@@ -39,8 +55,17 @@ class ReservationComponent extends Component {
       },
       body: JSON.stringify(data)
     }).then(res => res.json());
-    console.log(authResult);
-
+    
+    if(authResult.status === 401){//Point where is not going to enter since inside protcted route
+      this.displayNotification("Login again, your session have expired");
+    }else if(authResult.state &&authResult.state === "Success"){
+      this.props.finishReservationProccess();
+    }else if(authResult.state){
+      this.displayNotification(authResult.state);
+    }else{
+      this.displayNotification(authResult.response);
+    }
+    console.log("Answer", authResult);
   };
 
   handleClose = (e) => {
@@ -82,6 +107,7 @@ class ReservationComponent extends Component {
             </ButtonContainer>
           </Form>
         </MediumContainer>
+        <NotificationAlert ref="notificationAlert" />
       </ReservationContainer>
     );
   }

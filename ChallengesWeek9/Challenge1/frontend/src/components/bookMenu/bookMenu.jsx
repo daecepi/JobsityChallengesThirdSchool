@@ -22,6 +22,7 @@ import {
     ReadingsContainer,
     StyledI
   } from './bookMenuInternals';
+import { primaryError } from "../../styles/colors";
 
 
 class BookMenuComponent extends Component {
@@ -47,6 +48,33 @@ class BookMenuComponent extends Component {
     this.props.startReservationProccess(this.props.book._id, startDate, endDate);
   }
 
+  getReservationModule = () => {
+    if(this.props.book.types === "Digital"){
+      return (
+        <ReadLaterContainer
+          onClick={() => {this.displayNotification("Digital books cannot be lent")}}
+        >
+          <StyledI color={ primaryError.rgb } className="fas fa-times fa-2x"></StyledI>}
+        </ReadLaterContainer>
+        );
+      }else if(this.props.book.lent) {
+        return (
+          <ReadLaterContainer
+            onClick={() => {this.displayNotification("Book has been already lent")}}
+          >
+            <StyledI color={ primaryError.rgb } className="fas fa-times fa-2x"></StyledI>}
+          </ReadLaterContainer>
+          );
+      }
+    return (
+      <ReadLaterContainer
+        onClick={ this.handleReservationProccess }
+      >
+        <StyledI className="fas fa-bookmark fa-2x"></StyledI>
+      </ReadLaterContainer>
+    );
+  }
+
   /**
    *
    * The heart icon is for a proccess of adding to favorites
@@ -54,6 +82,7 @@ class BookMenuComponent extends Component {
    *
    */
   render() {
+    const reservationItem = this.getReservationModule();
     return (
       <>
         <BookMenuContainer onClick={this.props.changeToogle} hidden={this.props.hidden}>
@@ -61,11 +90,7 @@ class BookMenuComponent extends Component {
             <FavoritesContainer onClick={this.displayNotYetImplementedMessage}  className="favorites-container">
               <StyledI className="fas fa-heart fa-2x"></StyledI>
             </FavoritesContainer>
-            <ReadLaterContainer
-              onClick={this.handleReservationProccess}
-            >
-              <StyledI className="fas fa-bookmark fa-2x"></StyledI>
-            </ReadLaterContainer>
+            { reservationItem }
           </TopBookMenu>
           <MidBookMenu>
             <ReadingsContainer onClick={this.displayNotYetImplementedMessage}>

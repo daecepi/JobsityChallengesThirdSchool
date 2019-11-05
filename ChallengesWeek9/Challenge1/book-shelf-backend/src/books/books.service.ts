@@ -107,6 +107,9 @@ export class BooksService {
     const isValidUser = mongoose.Types.ObjectId.isValid(userId);
     
 
+    console.log("Step one",startDate, endDate);
+    console.log("Converted", new Date(startDate).toString(), new Date(endDate).toString());
+
     //Error handling for mongoose ids
     if (!isValidBook|| !isValidUser) {
       throw new BadRequestException('Invalid element ids for book of user!');
@@ -141,26 +144,35 @@ export class BooksService {
       return new HttpException("A end date must be provided",400);
     }
 
-    const startDateGot = new Date(parseInt(startDate));
-    const endDateGot = new Date(parseInt(endDate));
 
     //Error handlers for date validation
-    if(startDateGot < new Date() || endDateGot < new Date()){
-      return new HttpException("The provided dates cannot be before actual date", 400);
+    const actualDate = new Date();
+    const startDateGot = new Date(startDate);
+    const endDateGot = new Date(endDate);
+
+
+    //Validating according to current requierements startdate must be when reservation solicited
+    if( startDateGot.getDate() !== actualDate.getDate() || startDateGot.getMonth() !== actualDate.getMonth() || startDateGot.getFullYear() !== actualDate.getFullYear()){
+      return new HttpException("The start date of the request should be in the present date", 400);
     }
 
-    if(startDateGot > endDateGot){
+    //Evaluating return date isn't as close (taking a minute as the base delay for the client to connect to server)
+    if((endDateGot.getTime() - startDateGot.getTime())/1000 > 60000 ){
+      return new HttpException("Return of the book must be more than a minute.", 400);
+    }
+
+    if(startDateGot.getTime() > endDateGot.getTime()){
       return new HttpException("The start date cannopt adter later", 400);
     }
 
     //Updating the book's lent property with a user and the date when the lent started
-    book.lent = { user: userId, startDate: startDate, endDate: endDate };
+    book.lent = { user: userId, startDate: startDateGot, endDate: endDateGot };
 
 
     //Updating the book in the database
     let result = await book.save();
 
-    return { state: 'success', book: result };
+    return { state: 'Success', book: result };
   }
 
   /**
@@ -220,7 +232,14 @@ export class BooksService {
    * Function that will check for books that will be returned today and free them
    */
   async returnBooksOfDay(){
-    let date = new Date();
-    this.bookModel.update({lent: {endDate: date.toUTCString()}}, {"$set": {}});
+    const actual = new Date();
+    const baseString = actual.getFullYear()+'-'+(actual.getMonth()+1)+'-'+actual.getDate();
+
+    const earlyDate = new Date(baseString+' 00:00:00');
+    const lateDate = new Date(baseString+' 23:59:59');
+
+    console.log("Date to find", earlyDate.toString(), lateDate.toString());
+
+    return await this.bookModel.updateMany({ $and: [{"lent.endDate": {$gte: earlyDate}} , {"lent.endDate": {$lte: lateDate}}]}, {"$unset": {lent: ""}});
   }
 }

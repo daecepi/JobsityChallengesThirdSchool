@@ -9,5 +9,5 @@ export const bookSchema = new mongoose.Schema({
   imageLinks: { type: [] },
   city: { type: String },
   type: { type: String },
-  lent: { type: { user: String, startDate: String, endDate: String } },
+  lent: { type: { user: String, startDate: Date, endDate: Date } },
 });

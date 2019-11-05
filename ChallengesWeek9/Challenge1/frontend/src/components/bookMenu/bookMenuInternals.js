@@ -54,9 +54,9 @@ export const ReadingsContainer = styled.div`
 `;
 
 export const StyledI = styled.i`
-    color: ${primaryWhite.rgb};
+    color: ${ props => props.color ? props.color : primaryWhite.rgb };
 
     &:hover{
-      color: ${primaryBlue.rgb};
+      color: ${props => props.color ? props.color : primaryBlue.rgb};
     }
 `;
