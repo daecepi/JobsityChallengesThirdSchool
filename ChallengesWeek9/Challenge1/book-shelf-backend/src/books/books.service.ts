@@ -161,7 +161,7 @@ export class BooksService {
     }
 
     //Evaluating return date isn't as close (taking a minute as the base delay for the client to connect to server)
-    if ((endDateGot.getTime() - startDateGot.getTime()) / 1000 < 60000) {
+    if ((endDateGot.getTime() - startDateGot.getTime()) < 60000) {
       return new HttpException('Return of the book must be more than a minute.', 400);
     }
 
