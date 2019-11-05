@@ -1,7 +1,7 @@
 import { SubscribeMessage, WebSocketGateway, MessageBody, OnGatewayConnection, WebSocketServer } from '@nestjs/websockets';
 import { Server } from 'tls';
 
-@WebSocketGateway()
+@WebSocketGateway(4001)
 export class EeventsGateway implements OnGatewayConnection {
 
   @WebSocketServer() wss: Server;
@@ -16,6 +16,6 @@ export class EeventsGateway implements OnGatewayConnection {
 
 
   handleConnection(){
-    console.log("there was a connection");
+    console.log("New client connection");
   }
 }

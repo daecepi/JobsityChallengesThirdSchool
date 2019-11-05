@@ -7,7 +7,12 @@ import { connect } from "react-redux";
 import queryString from 'query-string';
 
 //Action creator
-import { getBooksPending, getBooksSuccess, getBooksError } from "../../actions/booksActionCreator";
+import { 
+  getBooksPending,
+  getBooksSuccess,
+  getBooksError,
+  applyBookupdate
+ } from "../../actions/booksActionCreator";
 
 //External components used
 import NotificationAlert from "react-notification-alert";
@@ -20,6 +25,8 @@ import { NotificationContainer } from "../../styles";
 import ReservationComponent from "../reservationComponent/reservationComponent";
 import { AppContainer } from './parentBookerInternals';
 
+//Librarie taht supports sockets
+import socketIOClient from 'socket.io-client';
 
 class ParentBooker extends Component {
   state = {
@@ -33,11 +40,20 @@ class ParentBooker extends Component {
     bookToOperateIn: undefined
   };
 
+  ws = undefined;
   /**
    * Funtrion for initialization
    */
   componentDidMount() {
     this.fetchBooks(this.props.location.pathname+this.props.location.search);
+
+    
+    const socket = socketIOClient("http://localhost:4001");
+    socket.on("LendUpdate", data => {
+      const book = JSON.parse(data);
+      console.log("Data being passed", book._id, book)
+      this.props.applyBookupdate(book._id, book);
+    });
   }
 
   componentDidUpdate(){
@@ -220,6 +236,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getBooksError: (err) => {
       dispatch(getBooksError(err));
+    },
+    applyBookupdate: (bookId, book) => {
+      dispatch(applyBookupdate(bookId, book));
     }
   };
 };

@@ -4,6 +4,7 @@ import { GET_BOOK_SUCCESS,
   LEND_BOOK,
   RETURN_BOOK,
   PAGE_CHANGE,
+  APPLY_BOOK_CHANGE,
   START_RESERVATION_PROCCESS,
   UPDATE_RESERVATION_PROCCESS,
   FINISH_RESERVATION_PROCCESS
@@ -50,6 +51,18 @@ const books = (state = initialState, action) => {
       return Object.assign({}, state, {
         actualPage: action.payload.pageNum
       });
+
+    case APPLY_BOOK_CHANGE:
+      let booksUpdated = state.books.map(book => {
+        console.log("On book Change", book._id === action.payload.bookId, action.payload.bookId, book._id);
+        if(book._id === action.payload.bookId) return action.payload.book;
+        return book;
+      });
+
+      return Object.assign({}, state, {
+        books: booksUpdated
+      })
+
     case START_RESERVATION_PROCCESS:
       return Object.assign({}, state, {
         bookId: action.payload.bookId,
@@ -57,6 +70,7 @@ const books = (state = initialState, action) => {
         endDate: action.payload.endDate,
         isReservationProcessStarted: true
       });
+
     case UPDATE_RESERVATION_PROCCESS:
       return Object.assign({}, state, {
         startDate: action.payload.startDate,

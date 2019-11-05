@@ -1,17 +1,3 @@
-/**
- * SEARCHING AND FILTERING BOOKS ACTIONS
- */
-//Action for general books searching
-export const GET_BOOKS = "GET_BOOKS";
-
-//Action to find books by city
-export const GET_BOOKS_BY_CITY = "GET_BOOK_CITY";
-
-//Action to find books by the type of the book (hardcover or digital)
-export const GET_BOOKS_BY_TYPE = "GET_BOOKS_TYPE";
-
-//Action to find books by the search field
-export const GET_BOOKS_BY_SEARCH = "GET_BOOKS_SEARCH";
 
 /**
  * GET BOOKS STATES OF THE FETCHING
@@ -23,6 +9,8 @@ export const GET_BOOK_PENDING = "GET_BOOK_PENDING";
 export const GET_BOOKS_ERROR = "GET_BOOKS_ERROR";
 
 export const PAGE_CHANGE = "PAGE_CHANGE";
+
+export const APPLY_BOOK_CHANGE = "APPLY_BOOK_CHANGE";
 
 /**
  * LENDING ACTIONS

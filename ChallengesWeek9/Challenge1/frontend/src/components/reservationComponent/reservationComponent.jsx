@@ -41,12 +41,12 @@ class ReservationComponent extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
+    //Preparing variables to send
     const url = this.props.baseEndpoint.concat("/books/lend");
-    console.log("Date to send", this.props.startDate.toString(),  this.props.endDate.toString());
     const data = {userId: this.props.user._id, bookId: this.props.bookId, startDate: this.props.startDate.toString(), endDate: this.props.endDate.toString()};
     const token = localStorage.getItem("access_token");
     
-
+    //Fetching the request on the API
     let authResult = await fetch(url,{
       method: "PUT",
       headers: {
@@ -56,6 +56,7 @@ class ReservationComponent extends Component {
       body: JSON.stringify(data)
     }).then(res => res.json());
     
+    //Handling of response
     if(authResult.status === 401){//Point where is not going to enter since inside protcted route
       this.displayNotification("Login again, your session have expired");
     }else if(authResult.state &&authResult.state === "Success"){
@@ -65,7 +66,6 @@ class ReservationComponent extends Component {
     }else{
       this.displayNotification(authResult.response);
     }
-    console.log("Answer", authResult);
   };
 
   handleClose = (e) => {

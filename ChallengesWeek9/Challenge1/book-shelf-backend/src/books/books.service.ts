@@ -11,6 +11,7 @@ var mongoose = require("mongoose");
 
 //Adding the lending service
 import { LendingService } from '../lending/lending.service';
+import { EeventsGateway } from '../eevents.gateway';
 
 @Injectable()
 export class BooksService {
@@ -21,6 +22,7 @@ export class BooksService {
   constructor(
     @InjectModel('Book') private readonly bookModel: Model<Book>,
     private readonly lendService: LendingService,
+    private lendsGateway: EeventsGateway,
   ) {}
 
   /**
@@ -157,20 +159,21 @@ export class BooksService {
     }
 
     //Evaluating return date isn't as close (taking a minute as the base delay for the client to connect to server)
-    if((endDateGot.getTime() - startDateGot.getTime())/1000 > 60000 ){
+    if((endDateGot.getTime() - startDateGot.getTime())/1000 < 60000 ){
       return new HttpException("Return of the book must be more than a minute.", 400);
     }
 
     if(startDateGot.getTime() > endDateGot.getTime()){
-      return new HttpException("The start date cannopt adter later", 400);
+      return new HttpException("The start date can't be after end one", 400);
     }
 
     //Updating the book's lent property with a user and the date when the lent started
     book.lent = { user: userId, startDate: startDateGot, endDate: endDateGot };
 
-
     //Updating the book in the database
     let result = await book.save();
+
+    await this.lendsGateway.wss.emit("LendUpdate",JSON.stringify(result));
 
     return { state: 'Success', book: result };
   }
@@ -237,8 +240,6 @@ export class BooksService {
 
     const earlyDate = new Date(baseString+' 00:00:00');
     const lateDate = new Date(baseString+' 23:59:59');
-
-    console.log("Date to find", earlyDate.toString(), lateDate.toString());
 
     return await this.bookModel.updateMany({ $and: [{"lent.endDate": {$gte: earlyDate}} , {"lent.endDate": {$lte: lateDate}}]}, {"$unset": {lent: ""}});
   }

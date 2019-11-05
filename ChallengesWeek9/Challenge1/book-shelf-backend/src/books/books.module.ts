@@ -10,11 +10,12 @@ import { bookSchema } from '../Schemas/books.schema';
 import { BooksController } from './books.controller';
 import { BooksService } from './books.service';
 import { LendingModule } from '../lending/lending.module';
+import { EeventsGateway } from '../eevents.gateway';
 
 @Module({
   imports: [MongooseModule.forFeature([{ name: 'Book', schema: bookSchema }]), LendingModule],
   controllers: [BooksController],
-  providers: [BooksService],
+  providers: [BooksService, EeventsGateway],
   exports: [BooksService],
 })
 export class BooksModule {}

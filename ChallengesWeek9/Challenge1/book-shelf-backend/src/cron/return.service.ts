@@ -12,8 +12,6 @@ export class ReturnService extends NestSchedule {
   @Cron('0 */3 * * * *',  { key: 'books-available-cron' })
   async cronJob() {
     let result = await this.bookService.returnBooksOfDay();
-    //const date = new Date();
-    console.log(result);
-    console.log("Books available for today done");
+    console.log("Books available for today task runned: "+result['nModified']+ "new books freed");
   }
 }

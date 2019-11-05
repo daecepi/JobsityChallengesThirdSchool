@@ -3,6 +3,7 @@ import {
   GET_BOOK_PENDING,
   GET_BOOKS_ERROR,
   PAGE_CHANGE,
+  APPLY_BOOK_CHANGE,
   START_RESERVATION_PROCCESS,
   UPDATE_RESERVATION_PROCCESS,
   FINISH_RESERVATION_PROCCESS
@@ -41,12 +42,22 @@ export function pageChange(num){
     payload: {
       pageNumber: num
     }
-  }
+  };
 }
 
+export function applyBookupdate(bookId, book){
+  return {
+    type: APPLY_BOOK_CHANGE,
+    payload: {
+      bookId,
+      book
+    }
+  };
+}
 
 /**
- * FUNCTION TO START A RESERVATION PROCCESS
+ * Function that starts the action of setting the base values for the reservation
+ * proccess, being important on this the book's id
  */
 export function startReservationProccess(bookId, startDate,endDate) {
   return {
@@ -60,7 +71,8 @@ export function startReservationProccess(bookId, startDate,endDate) {
 }
 
 /**
- * FUNCTIONS FOR THE RESERVATION PROCCESS
+ * Function that start the action for updating the reservation dates
+ * where was needed
  */
 export function updateReservationInfo(startDate, endDate){
   return {
@@ -72,6 +84,10 @@ export function updateReservationInfo(startDate, endDate){
   };
 }
 
+/**
+ * Function that start the action for reseting all changes in redux variables
+ * for reservation proccess
+ */
 export function finishReservationProccess(){
   return {
     type: FINISH_RESERVATION_PROCCESS
