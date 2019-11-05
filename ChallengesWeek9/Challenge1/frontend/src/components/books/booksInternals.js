@@ -7,6 +7,7 @@ export const Section1Container = styled.div`
   flex-basis: 95%;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
+  width: 100%;
 
 `;
 

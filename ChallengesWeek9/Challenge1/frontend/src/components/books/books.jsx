@@ -117,37 +117,37 @@ class Books extends Component {
               <StyledMenuRightOl>
                 <StyledMenuRightLi key="1">
                   <Link style={defaultStyleLink} to={"/book/11111dasdafs"}>
-                    <p>
+                    <StyledP>
                       Hooked: How To Build Habit forming Products.
-                    </p>
+                    </StyledP>
                   </Link>
                 </StyledMenuRightLi>
                 <StyledMenuRightLi key="2">
                   <Link style={defaultStyleLink} to={"book/22222dasdad"}>
-                    <p>
+                    <StyledP>
                       The Inevitable: Understanding the 12 Technological Forces That Will Shape Our Future
-                    </p>
+                    </StyledP>
                   </Link>
                 </StyledMenuRightLi>
                 <StyledMenuRightLi key="3">
                   <Link style={defaultStyleLink} to={"33333dasdad"}>
-                    <p>
+                    <StyledP>
                       Lean In: Women, Work, and the Will to Lead.
-                    </p>
+                    </StyledP>
                   </Link>
                 </StyledMenuRightLi>
                 <StyledMenuRightLi key="4">
                   <Link style={defaultStyleLink} to={"44444dadsad"}>
-                    <p>
+                    <StyledP>
                       Building a Bussiness When There Are Not Easy Answers.
-                    </p>
+                    </StyledP>
                   </Link>
                 </StyledMenuRightLi>
                 <StyledMenuRightLi key="5">
                   <Link style={defaultStyleLink} to={"55555dadsad"}>
-                    <p>
+                    <StyledP>
                       How Google Works
-                    </p>
+                    </StyledP>
                   </Link>
                 </StyledMenuRightLi>
               </StyledMenuRightOl>
