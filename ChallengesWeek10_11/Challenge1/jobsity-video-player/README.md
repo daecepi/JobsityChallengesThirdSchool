@@ -1,4 +1,52 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Jobsity challenge for weeks 10 and 11: Video Player
+## Description
+
+## Project requirements
+
+## Dependencies
+Like always there are pre-requisites to accomplish 😏
+- NodeJS
+- Yarn (package manager)
+- Styled-components
+
+## Component reusability in other projects
+### Steps to import
+1. Move the content of the **"components" folder** into your **"components" folder**
+2. Import the component class **ParentPlayer** (which if the main wrapper of the component), see example below:
+```Javascript (in App.js example)
+import { ParentPlayer } from './components/ParentPlayer/ParentPlayer';
+```
+3. Use the component in your application, see example below:
+```Javascript (in App.js example)
+const flex_basis = 30;
+render(){
+    return (
+        <ParentPlayer
+            identifier="plyrExtra"
+            height="100%"
+            flex_basis = {flex_basis+"%"}
+        />
+    );
+}
+```
+
+
+### Important commands resources taken onto account for architecture design
+- [React_design_practices_2019](https://medium.com/@konstankino/2019-reactjs-best-practices-design-patterns-516e1c3ca06a)
+- [Re-thinking_design_practices](https://www.youtube.com/watch?v=7iMElBsRto4)
+
+## Key approaches
+- Data-Down, Actions-Up pattern seen in [2019_pattern_tendencies](https://medium.com/@konstankino/2019-reactjs-best-practices-design-patterns-516e1c3ca06a)
+- Full component reusability in other projects, with the identification, sizing and styling parametrization given
+- Component co-existance with multiple of their own, thanks to identification (method which allows information id base information saving in LocalStorage)
+
+## Personal challenges proposed
+- usage of more in depth yarn commands
+- Designing of
+
+## TO DO LIST defined for the project
+[ ] Define base components
+[ ] Define
 
 ## Available Scripts
 
@@ -37,32 +85,8 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Version release
+- **Version 1.0.0**: React with styled-components application
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Information reviewed this week
+- [Serverless_react](https://www.youtube.com/watch?v=QeNLdiTHy4M&t=1s)
