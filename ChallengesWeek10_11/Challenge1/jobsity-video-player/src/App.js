@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ParentPlayer from './components/ParentPlayer/ParentPlayer';
+
+/**
+ * Assets is the variable that expects the video player for the base video/os it is going to manage
+ */
+const assets = [
+  {
+    id: "Video 1",
+    assets: [
+      ""
+    ]
+  }
+];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ParentPlayer
+        identifier={assets[0].id}
+        height="100%"
+        width="100%"
+        mode="edit"
+        assets={assets[0].assets}
+      />
     </div>
   );
 }
