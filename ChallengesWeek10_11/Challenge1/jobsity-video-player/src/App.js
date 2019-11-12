@@ -9,7 +9,12 @@ const assets = [
   {
     id: "Video 1",
     assets: [
-      ""
+        {
+          id: "adjasdk",
+          name: "Escapada con amigos",
+          normal: "./videos/BaseVideo.mp4",
+          legacy: "./videos/BaseVIdeo.webm",
+        }
     ]
   }
 ];
@@ -19,8 +24,8 @@ function App() {
     <div className="App">
       <ParentPlayer
         identifier={assets[0].id}
-        height="100%"
-        width="100%"
+        height="100"
+        width="100"
         mode="edit"
         assets={assets[0].assets}
       />
