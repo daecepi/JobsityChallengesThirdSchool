@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { ParentPlayerWrapper } from './ParentPlayerInternals';
+import { ParentPlayerWrapper } from './ParentPlayerStyles';
 
 /**
  * Parent player is the wrapper component of the player component made:
@@ -11,7 +11,14 @@ import { ParentPlayerWrapper } from './ParentPlayerInternals';
  *      - assets: a list with the assets that the video is generated of
  */
 class ParentPlayer extends Component {
-    state = {  }
+
+    constructor(props){
+        super(props);
+
+        loadedAssets = localStorage.getItem("assets");
+        let assets = {}
+    }
+
     render() { 
         const { identifier , ...layoutProperty } = this.props;
         return ( 
