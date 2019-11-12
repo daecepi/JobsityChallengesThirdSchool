@@ -9,9 +9,10 @@ import {
     StyledSnippets,
 } from './SideBar';
 
+import { Player } from './components/Player';
 import styled from 'styled-components';
 
-import defaultTheme from './theme';
+import defaultTheme from './Theme';
 /**
  * General container that fixes layout according to parameters given
  */
@@ -41,9 +42,11 @@ ParentPlayerWrapper.defaultProps = {
  *      - assets: a list with the assets that the video is generated of
  */
 class ParentPlayer extends Component {
+    
     state = {
         assets: [],
         snippets: [],
+        isPlaying: undefined,
     };
 
     componentDidMount(){
@@ -86,6 +89,7 @@ class ParentPlayer extends Component {
         localStorage.setItem("assets"+this.props.identifier, this.state.assets);
     }
 
+    
     render() { 
         const { identifier , ...layoutProperty } = this.props;
         return ( 

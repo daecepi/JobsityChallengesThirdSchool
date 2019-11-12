@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from './node_modules/react';
 
-import styled from 'styled-components';
+import styled from './node_modules/styled-components';
 
 import defaultTheme from '../theme';
 
@@ -10,6 +10,8 @@ export const PlayerContainer = styled.div`
     height: 100%;
     width: 30%;
     background: ${({theme}) => theme.colors.background};
+
+    display: flex;
 `;
 
 PlayerContainer.defaultProps = {
@@ -38,7 +40,7 @@ class Player extends Component {
         return ( 
             <PlayerContainer>
                 <LoadingComponent opened/>
-                <StyledSlider type="range" min="">
+                <StyledSlider type="range">
 
                 </StyledSlider>
             </PlayerContainer>
@@ -46,4 +48,5 @@ class Player extends Component {
     }
 }
  
-export default Player;
+//Making sure the video player doesn't update unless props change
+export default React.memo(Player);
