@@ -34,7 +34,11 @@ render(){
 ### Specializing the component
 Property name | value | description | example
 ------------ | ------------- | ------------- | -------------
-Content from cell 1 | Content from cell 2 | Content from cell 3 | Content from cell 4
+identifier | `sadlad_ksdlakdjl`, `video_1` | a string that identifies the value | `identifier="Video_1"`
+height | `100`, `50` | A strign that contains the porcentage of the container de element is going to ocupy in height | `height={100}`
+width | `100`, `50` | A strign that contains the porcentage of the container de element is going to ocupy in width | `width={100}`
+mode | either `edit` or `mode`| A string the contains one of the two available modes (__edit__ for __editing__ and __prod__ for __production__) | `mode="prod"`
+assets | `[]` `[{id: "aksdajs", name: "Cumpleaños", urlNormal: "./cumple.mp4", urlLegacy: "./cumple.mpeg"}]` | The list of assets should have the next design an id with the image, name the name of the video to show, urlNormal the url to the normal video, urlLegacy: url to the video in a supported version | `assets={[{id: "aksdajs", name: "Cumpleaños", urlNormal: "./cumple.mp4", urlLegacy: "./cumple.mpeg"}]}`
 
 ### Important commands resources taken onto account for architecture design
 - [React_design_practices_2019](https://medium.com/@konstankino/2019-reactjs-best-practices-design-patterns-516e1c3ca06a)
