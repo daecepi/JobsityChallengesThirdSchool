@@ -1,36 +1,25 @@
-import React, { Component } from './node_modules/react';
+import React, { Component } from 'react';
 
-import styled from './node_modules/styled-components';
+import styled from 'styled-components';
 
-import defaultTheme from '../theme';
+import defaultTheme from '../../Theme';
 
 import LoadingComponent from '../LoadingComponent';
 
+import VideoComponent from '../Video';
+
 export const PlayerContainer = styled.div`
-    height: 100%;
-    width: 30%;
-    background: ${({theme}) => theme.colors.background};
+    background: ${(props) => props.theme.colors.background};
 
     display: flex;
+    flex-direction:column;
 `;
 
 PlayerContainer.defaultProps = {
     theme: defaultTheme,
-}
+};
 
-export const StyledSlider = styled.input`
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.textOnBackground};
-
-    &::-webkit-slider-thumb{
-        color: ${({theme}) => theme.colors.primary};
-    }
-`;
-
-StyledSlider.defaultProps = {
-    theme: defaultTheme,
-}
-
+//Make the map
 class Player extends Component {
     state = { 
         source: false,
@@ -39,10 +28,14 @@ class Player extends Component {
     render() { 
         return ( 
             <PlayerContainer>
-                <LoadingComponent opened/>
-                <StyledSlider type="range">
-
-                </StyledSlider>
+                <LoadingComponent opened={false}/>
+                {
+                this.props.assets.map( asset => {
+                    return (
+                        <VideoComponent { ...asset }  />
+                    );
+                })
+                }
             </PlayerContainer>
          );
     }

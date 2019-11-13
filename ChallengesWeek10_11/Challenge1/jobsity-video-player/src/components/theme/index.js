@@ -2,7 +2,7 @@
  * Variable that represents the styling
  */
 export default {
-    color: {
+    colors: {
         background: 'rgb(200, 200, 220)',
         textOnBackground: 'rgb(0, 0, 0)',
         secondaryTextOnBackground: 'rgb(150, 150, 150)',
@@ -17,8 +17,6 @@ export default {
     input:{
         size: '30'
     }
-    
-
 };
 
 //primary: 'rgb(,,)'

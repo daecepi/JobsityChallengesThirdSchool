@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
-import defaultTheme from './theme';
+import defaultTheme from '../../Theme';
 
 export const SideBar= styled.div`
-    margin: 0px 3px;
+    margin: 10px 3px 10px;
+    background: red;
 `;
+SideBar.defaultProps = {
+    theme: defaultTheme
+}
 
 export const PartialContainer = styled.div`
     margin: 3px 0px;

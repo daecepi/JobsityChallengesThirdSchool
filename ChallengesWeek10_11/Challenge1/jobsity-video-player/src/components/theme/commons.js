@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import defaultTheme from '..'
+import defaultTheme from './index';
 
 import { bodyMargins, bodyText } from './mixins';
 
 export const FullContainer = styled.div`
-    display: ${({opened}) => opened ? 'flex' : 'hidden' };
+    display: ${({opened}) => opened ? 'flex' : 'none' };
     justify-content: center;
     align-content: center;
 
@@ -51,5 +51,5 @@ export const CommonText = styled.p`
 `;
 
 CommonText.defaultProps = {
-    theme: defaultThem,
+    theme: defaultTheme,
 }

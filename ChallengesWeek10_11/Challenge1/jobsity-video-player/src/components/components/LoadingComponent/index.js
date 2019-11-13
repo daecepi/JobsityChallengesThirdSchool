@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { rotate } from '../../animations';
 
-import { FullHoverContainer } from '../../Theme/commons';
+import { FullContainer } from '../../Theme/commons';
 
 const  StyledImage = styled.img`
     height: 20%;

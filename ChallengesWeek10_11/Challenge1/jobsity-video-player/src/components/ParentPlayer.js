@@ -7,26 +7,24 @@ import {
     PartialContainer,
     StyledSection,
     StyledSnippets,
-} from './SideBar';
+} from './Components/SideBar';
 
-import { Player } from './components/Player';
+import Player  from './Components/Player';
 import styled from 'styled-components';
 
-import defaultTheme from './Theme';
+import defaultTheme from './Theme/index';
 /**
  * General container that fixes layout according to parameters given
  */
 export const ParentPlayerWrapper = styled.div`
-    ${props => props.height ? "height: "+props.height+";" : !props.flex_basis ? "height: 100%;" : ""}
-    ${props => props.width ? "width: "+props.width+";" : !props.flex_basis ? "width: 100%;" : ""}
-    ${props => props.flex_basis ? "flex_basis: "+props.flex_basis+";" : ""}
-
+    ${props => props.height ? "height: "+props.height+"%;" : !props.flex_basis ? "height: 100%;" : ""}
+    ${props => props.width ? "width: "+props.width+"%;" : !props.flex_basis ? "width: 100%;" : ""}
+    ${props => props.flex_basis ? "flex_basis: "+props.flex_basis+"%;" : ""}
+    
     /*Styling*/
-    background: ${({theme}) => theme.colors.background};
     display: grid;
     grid-template-columns: 1fr 15fr;
-
-    ${props => props}
+    background: green;
 `;
 
 ParentPlayerWrapper.defaultProps = {
@@ -89,11 +87,10 @@ class ParentPlayer extends Component {
         localStorage.setItem("assets"+this.props.identifier, this.state.assets);
     }
 
-    
-    render() { 
-        const { identifier , ...layoutProperty } = this.props;
-        return ( 
-            <ParentPlayerWrapper {...layoutProperty} >
+
+    returnSideBar = () => {
+        if(this.props.mode !== "edit") 
+            return (
                 <SideBar>
                     <PartialContainer>
                         <StyledSection>
@@ -118,9 +115,15 @@ class ParentPlayer extends Component {
                         </StyledSnippets>
                     </PartialContainer>
                 </SideBar>
-                <Player>
-                
-                </Player>
+            );
+    }
+    
+    render() { 
+        const { identifier , ...layoutProperty } = this.props;
+        return ( 
+            <ParentPlayerWrapper {...layoutProperty} >
+                {this.returnSideBar()}
+                <Player assets={this.state.assets} snippets={this.state.snippets} />
             </ParentPlayerWrapper>
          );
     }
