@@ -7,12 +7,12 @@ import {
     PartialContainer,
     StyledSection,
     StyledSnippets,
-} from './Components/SideBar';
+} from './SideBar';
 
-import Player  from './Components/Player';
+import Player  from './Player';
 import styled from 'styled-components';
 
-import defaultTheme from './Theme/index';
+import defaultTheme from '../theme/index';
 /**
  * General container that fixes layout according to parameters given
  */
@@ -61,6 +61,21 @@ class ParentPlayer extends Component {
         });
     }
 
+    /**
+     * {
+     * id: string
+     * name: string
+     * t: string // t=start,end
+     * }
+     */
+
+    /**
+     * Function to add snippets
+     */
+    addSnippet = () => {
+
+    }
+    
     loadSnippets = () => {
         let snippets = localStorage.getItem("snippets"+this.props.identifier);
 
