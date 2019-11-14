@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import styled from 'styled-components';
 
-import defaultTheme from '../../Theme';
+import defaultTheme from '../../styles';
 
 import LoadingComponent from '../LoadingComponent';
 

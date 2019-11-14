@@ -6,7 +6,7 @@ import {
     InputContainer,
     FormLabels,
 
- } from '../../Theme/commons';
+ } from '../../styles/commons';
 
 class AddingSnippetForm extends Component {
     state = {  }

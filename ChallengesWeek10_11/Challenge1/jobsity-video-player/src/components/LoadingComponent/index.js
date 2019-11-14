@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import styled from 'styled-components';
 
-import { rotate } from '../../animations';
+import { rotate } from '../animations';
 
-import { FullContainer } from '../../Theme/commons';
+import { FullContainer } from '../../styles/commons';
 
 const  StyledImage = styled.img`
     height: 20%;

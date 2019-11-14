@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import defaultTheme from '../../Theme';
+import defaultTheme from '../../styles';
 
 export const SideBar= styled.div`
     margin: 10px 3px 10px;
