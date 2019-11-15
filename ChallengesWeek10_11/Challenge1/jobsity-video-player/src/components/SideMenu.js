@@ -5,13 +5,21 @@ import {
     SideBar,
     Card,
     StyleList,
-    StyledSnippets,
-    BaseShortTitle,
+    BaseControlBox,
  } from '../styles/commons';
 
- import styled from 'styled-components';
+import {
+    MainTitle,
+} from '../styles/commons';
 
- const Title = styled(BaseShortTitle)`
+import {
+    baseH3,
+} from '../styles/typografy';
+
+ import styled from 'styled-components';
+import IconComponent from './IconComponent';
+
+ const Title = styled(baseH3)`
     justify-self: center;
  `;
 
@@ -21,8 +29,14 @@ class SideMenu extends Component {
     render() { 
         return ( 
             <SideBar>
+                <MainTitle>Resources</MainTitle>
                 <Card>
-                    <Title>Assets</Title>
+                    <BaseControlBox>
+                        <Title>Assets</Title>
+                        <IconComponent 
+                            className={}
+                        />
+                    </BaseControlBox>
                     <StyleList>
                         {this.props.assets.map( (asset) => {
                             return (
@@ -35,7 +49,7 @@ class SideMenu extends Component {
                 </Card>
                 <Card>
                     <Title>Clips</Title>
-                    <StyledSnippets>
+                    <StyleList>
                         {this.props.snippets.map( (snippet) => {
                             return (
                                 <li key={snippet.id}>
@@ -43,7 +57,7 @@ class SideMenu extends Component {
                                 </li>
                             );
                         })}
-                    </StyledSnippets>
+                    </StyleList>
                 </Card>
         </SideBar>
          );

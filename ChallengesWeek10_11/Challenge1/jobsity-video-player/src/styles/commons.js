@@ -2,6 +2,12 @@ import styled from 'styled-components';
 
 import defaultTheme from './index';
 
+import {
+    baseH1,
+    baseH2,
+    baseH3,
+} from '../styles/typografy';
+
 import { bodyMargins, bodyText, partialContainer } from './mixins';
 
 export const FullContainer = styled.div`
@@ -63,16 +69,6 @@ SideBar.defaultProps = {
     theme: defaultTheme,
 }
 
-export const MainTitle = styled.h1`
-    margin: 0;
-    padding: 0;
-`;
-
-
-MainTitle.defaultProps = {
-    theme: defaultTheme,
-}
-
 export const Card = styled.div`
     height: 300px;
     width: 90%;
@@ -89,17 +85,6 @@ Card.defaultProps = {
     theme: defaultTheme,
 }
 
-export const BaseShortTitle = styled.h3`
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    /*Add class for fonts later*/
-    color: ${({theme}) => theme.colors.primary};
-`;
-
-BaseShortTitle.defaultProps = {
-    theme: defaultTheme,
-}
 
 export const StyleList = styled.ul`
     color: ${({theme}) => theme.colors.textOnSecondaryBackground};
@@ -112,6 +97,44 @@ StyleList.defaultProps = {
     theme: defaultTheme,
 }
 
-export const StyledSnippets = styled(StyleList)`
+export const BaseControlBox = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+`;
+
+/*
+BASE TYPOGRAPHY COMPONENTS
+*/
+export const MainTitle = styled.h1`
+    ${baseH1}
+`;
+
+MainTitle.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const SecondaryTitle = styled.h2`
+    ${baseH2}
+`;
+
+
+SecondaryTitle.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const BaseTitle = styled.h3`
+    ${baseH3}
+`;
+
+BaseTitle.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const BaseText = styled.p`
 
 `;
+
+BaseText.defaultProps = {
+    theme: defaultTheme,
+};
