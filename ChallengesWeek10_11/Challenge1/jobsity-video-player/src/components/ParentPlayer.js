@@ -23,7 +23,7 @@ export const ParentPlayerWrapper = styled.div`
     
     /*Styling*/
     display: grid;
-    grid-template-columns: 1fr 15fr;
+    grid-template-columns: 1fr 10fr;
     background: green;
 `;
 
@@ -68,12 +68,25 @@ class ParentPlayer extends Component {
      * t: string // t=start,end
      * }
      */
-
     /**
      * Function to add snippets
      */
-    addSnippet = () => {
+    addSnippet = (id, name, startTime, endTime) => {
+        this.setState({
+            snippets: [ ...this.state.snippets, {
+                id,
+                name,
+                startTime,
+                endTime,
+            }],
+        });
+    }
 
+    deleteSnippet = (id) => {
+        const filtered = this.state.snippets.filter(snippet => snippet.id !== id);
+        this.setState({
+            snippets: filtered,
+        });
     }
     
     loadSnippets = () => {
@@ -86,6 +99,14 @@ class ParentPlayer extends Component {
         return snippets;
     }
 
+    saveSnippets = () => {
+        localStorage.setItem("snippets"+this.props.identifier, this.state.snippets);
+    }
+
+    saveAssets = () => {
+        localStorage.setItem("assets"+this.props.identifier, this.state.assets);
+    }
+    
     loadAssets = () => {
         let loadedAssets = localStorage.getItem("assets"+this.props.identifier);
         let assets = [];
@@ -98,8 +119,8 @@ class ParentPlayer extends Component {
     }
 
     componentWillUnmount(){
-        localStorage.setItem("snippets"+this.props.identifier, this.state.snippets);
-        localStorage.setItem("assets"+this.props.identifier, this.state.assets);
+        this.saveSnippets();
+        this.saveAssets();
     }
 
 

@@ -28,7 +28,18 @@ class Player extends Component {
     render() { 
         return ( 
             <PlayerContainer>
-                <LoadingComponent opened={false}/>
+                
+                { !this.props.loading ? <LoadingComponent opened={false}/> : <VideoComponent /> }
+
+            </PlayerContainer>
+         );
+    }
+}
+ 
+
+/**
+ * 
+ * 
                 {
                 this.props.assets.map( asset => {
                     return (
@@ -36,10 +47,6 @@ class Player extends Component {
                     );
                 })
                 }
-            </PlayerContainer>
-         );
-    }
-}
- 
+ */
 //Making sure the video player doesn't update unless props change
 export default React.memo(Player);
