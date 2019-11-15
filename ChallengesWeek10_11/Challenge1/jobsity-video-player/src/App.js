@@ -8,18 +8,17 @@ import ParentPlayer from './components/ParentPlayer';
 const assets = [
   {
     id: "Video 1",
-    assets: [
-        {
+    assets: [{
           id: "adjasdk",
-          name: "Escapada con amigos",
-          urlNormal: "./videos/BaseVideo.mp4",
-          urlLegacy: "./videos/BaseVIdeo.webm",
-        }
-    ]
+          name: "React course episode 7",
+          urlNormal: "../../../videos/BaseVideo.mp4",
+          urlLegacy: "../../../videos/BaseVIdeo.webm",
+        }],
   }
 ];
 
 function App() {
+  console.log("given from app",assets[0].assets);
   return ( 
     <div className="general-container">
       <ParentPlayer 

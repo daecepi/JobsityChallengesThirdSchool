@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import defaultTheme from './index';
 
-import { bodyMargins, bodyText } from './mixins';
+import { bodyMargins, bodyText, partialContainer } from './mixins';
 
 export const FullContainer = styled.div`
     display: ${({opened}) => opened ? 'flex' : 'none' };
@@ -17,12 +17,10 @@ export const FullContainer = styled.div`
     background: black;
 `;
 
-
 export const StyledForm = styled.form`
     height: 80%;
     width: 50%;
     display:flex;
-    
 `;
 
 export const InputContainer = styled.div`
@@ -53,3 +51,67 @@ export const CommonText = styled.p`
 CommonText.defaultProps = {
     theme: defaultTheme,
 }
+
+export const SideBar= styled.div`
+    margin: 0;
+    margin-right: 3px;
+    flex-grow: 1;
+    background: ${({theme}) => theme.colors.secondaryBackground};
+`;
+
+SideBar.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const MainTitle = styled.h1`
+    margin: 0;
+    padding: 0;
+`;
+
+
+MainTitle.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const Card = styled.div`
+    height: 300px;
+    width: 90%;
+    margin: auto;
+    ${partialContainer}
+    border-radius: 10%;
+    background: ${({theme}) => theme.colors.secondarySoft};
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+`;
+
+Card.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const BaseShortTitle = styled.h3`
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    /*Add class for fonts later*/
+    color: ${({theme}) => theme.colors.primary};
+`;
+
+BaseShortTitle.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const StyleList = styled.ul`
+    color: ${({theme}) => theme.colors.textOnSecondaryBackground};
+
+    
+    list-style-type: none;
+`;
+
+StyleList.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const StyledSnippets = styled(StyleList)`
+
+`;

@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
-import {
-    SideBar,
-    PartialContainer,
-    StyledSection,
-    StyledSnippets,
-} from './SideBar';
+import SideMenu from './SideMenu';
+
 
 import Player  from './Player';
 import styled from 'styled-components';
+
 
 import defaultTheme from '../styles/index';
 /**
@@ -22,9 +19,7 @@ export const ParentPlayerWrapper = styled.div`
     ${props => props.flex_basis ? "flex_basis: "+props.flex_basis+"%;" : ""}
     
     /*Styling*/
-    display: grid;
-    grid-template-columns: 1fr 10fr;
-    background: green;
+    display: flex;
 `;
 
 ParentPlayerWrapper.defaultProps = {
@@ -44,7 +39,9 @@ class ParentPlayer extends Component {
     state = {
         assets: [],
         snippets: [],
-        isPlaying: undefined,
+        isPlayingSnippets: false,
+        isPlayingAssets: false,
+        isLoading: false,
     };
 
     componentDidMount(){
@@ -61,13 +58,6 @@ class ParentPlayer extends Component {
         });
     }
 
-    /**
-     * {
-     * id: string
-     * name: string
-     * t: string // t=start,end
-     * }
-     */
     /**
      * Function to add snippets
      */
@@ -89,77 +79,47 @@ class ParentPlayer extends Component {
         });
     }
     
-    loadSnippets = () => {
-        let snippets = localStorage.getItem("snippets"+this.props.identifier);
-
-        if(!snippets){
-            snippets = [];
-            localStorage.setItem("snippets"+this.props.identifier, snippets);
+    loadAssets = () => {
+        let loadedAssets = localStorage.getItem("assets"+this.props.identifier);
+        if(loadedAssets){
+            return JSON.parse(loadedAssets);
         }
+        const assets = this.props.assets;
+        localStorage.setItem("assets"+this.props.identifier, JSON.stringify(assets));
+        return assets;
+    }
+    
+    loadSnippets = () => {
+        let loadedSnippets = localStorage.getItem("snippets"+this.props.identifier);
+
+        if(loadedSnippets){
+            return JSON.parse(loadedSnippets);
+        }
+        const snippets = [];
+        localStorage.setItem("snippets"+this.props.identifier, JSON.stringify(snippets));
+        
         return snippets;
     }
 
-    saveSnippets = () => {
-        localStorage.setItem("snippets"+this.props.identifier, this.state.snippets);
-    }
-
     saveAssets = () => {
-        localStorage.setItem("assets"+this.props.identifier, this.state.assets);
+        localStorage.setItem("assets"+this.props.identifier, JSON.stringify(this.props.assets));
     }
-    
-    loadAssets = () => {
-        let loadedAssets = localStorage.getItem("assets"+this.props.identifier);
-        let assets = [];
-        if(!loadedAssets){
-            assets = this.props.assets;
-            localStorage.setItem("assets"+this.props.identifier, assets);
-        }
 
-        return assets;
+    saveSnippets = () => {
+        localStorage.setItem("snippets"+this.props.identifier, JSON.stringify(this.state.snippets));
     }
 
     componentWillUnmount(){
         this.saveSnippets();
         this.saveAssets();
     }
-
-
-    returnSideBar = () => {
-        if(this.props.mode !== "edit") 
-            return (
-                <SideBar>
-                    <PartialContainer>
-                        <StyledSection>
-                            {this.state.assets.map( (asset) => {
-                                return (
-                                    <li key={asset.id}>
-                                        {asset.desc}
-                                    </li>
-                                );
-                            })}
-                        </StyledSection>
-                    </PartialContainer>
-                    <PartialContainer>
-                        <StyledSnippets>
-                            {this.state.snippets.map( (snippet) => {
-                                return (
-                                    <li key={snippet.id}>
-                                        {snippet.desc}
-                                    </li>
-                                );
-                            })}
-                        </StyledSnippets>
-                    </PartialContainer>
-                </SideBar>
-            );
-    }
     
     render() { 
         const { identifier , ...layoutProperty } = this.props;
         return ( 
             <ParentPlayerWrapper {...layoutProperty} >
-                {this.returnSideBar()}
-                <Player assets={this.state.assets} snippets={this.state.snippets} />
+                {this.props.mode === "edit"? <SideMenu assets={this.state.assets} snippets={this.state.snippets} /> : ""}
+                <Player assets={this.state.assets} isLoading={this.state.isLoading} snippets={this.state.snippets} />
             </ParentPlayerWrapper>
          );
     }

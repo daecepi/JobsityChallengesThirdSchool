@@ -6,6 +6,8 @@ import { rotate } from '../animations';
 
 import { FullContainer } from '../../styles/commons';
 
+import image from './loadingImage.jpeg';
+
 const  StyledImage = styled.img`
     height: 20%;
     width: 20%;
@@ -15,12 +17,11 @@ const  StyledImage = styled.img`
 
 class LoadingComponent extends Component {
     state = { 
-        resource: "./LoadingImage.jpeg",
      }
     render() { 
         return ( 
             <FullContainer opened={this.props.opened} >
-                <StyledImage src={this.state.resource} alt="Loading"/>
+                <StyledImage src={image} alt="Loading"/>
             </FullContainer>
          );
     }
