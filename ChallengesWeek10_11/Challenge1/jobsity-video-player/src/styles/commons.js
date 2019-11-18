@@ -2,7 +2,13 @@ import styled from 'styled-components';
 
 import defaultTheme from './index';
 
-import { bodyMargins, bodyText } from './mixins';
+import {
+    baseH1,
+    baseH2,
+    baseH3,
+} from '../styles/typografy';
+
+import { bodyMargins, bodyText, partialContainer } from './mixins';
 
 export const FullContainer = styled.div`
     display: ${({opened}) => opened ? 'flex' : 'none' };
@@ -17,12 +23,10 @@ export const FullContainer = styled.div`
     background: black;
 `;
 
-
 export const StyledForm = styled.form`
     height: 80%;
     width: 50%;
     display:flex;
-    
 `;
 
 export const InputContainer = styled.div`
@@ -53,3 +57,84 @@ export const CommonText = styled.p`
 CommonText.defaultProps = {
     theme: defaultTheme,
 }
+
+export const SideBar= styled.div`
+    margin: 0;
+    margin-right: 3px;
+    flex-grow: 1;
+    background: ${({theme}) => theme.colors.secondaryBackground};
+`;
+
+SideBar.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const Card = styled.div`
+    height: 300px;
+    width: 90%;
+    margin: auto;
+    ${partialContainer}
+    border-radius: 10%;
+    background: ${({theme}) => theme.colors.secondarySoft};
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+`;
+
+Card.defaultProps = {
+    theme: defaultTheme,
+}
+
+
+export const StyleList = styled.ul`
+    color: ${({theme}) => theme.colors.textOnSecondaryBackground};
+
+    
+    list-style-type: none;
+`;
+
+StyleList.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const BaseControlBox = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+`;
+
+/*
+BASE TYPOGRAPHY COMPONENTS
+*/
+export const MainTitle = styled.h1`
+    ${baseH1}
+`;
+
+MainTitle.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const SecondaryTitle = styled.h2`
+    ${baseH2}
+`;
+
+
+SecondaryTitle.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const BaseTitle = styled.h3`
+    ${baseH3}
+`;
+
+BaseTitle.defaultProps = {
+    theme: defaultTheme,
+}
+
+export const BaseText = styled.p`
+
+`;
+
+BaseText.defaultProps = {
+    theme: defaultTheme,
+};

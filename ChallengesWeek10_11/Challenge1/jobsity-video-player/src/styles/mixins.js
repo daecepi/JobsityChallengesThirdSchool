@@ -19,3 +19,13 @@ export const bodyText = css`
     font-size: 0.9rem;
     font-weight: normal;
 `;
+
+export const partialContainer = css`
+    margin-top: 10px;
+    margin-bottom: 10px;
+`;
+
+export const defaultHorizontalSpacer = css`
+    margin-left: 20px;
+    margin-right: 20px;
+`;
