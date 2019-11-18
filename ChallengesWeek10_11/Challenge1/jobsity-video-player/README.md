@@ -4,10 +4,9 @@
 ## Project requirements
 
 ## Dependencies
-Like always there are pre-requisites to accomplish 😏
+Like always there are pre-requisites to have installed 😏
 - NodeJS
-- Yarn (package manager)
-- Styled-components
+- NPM package manager
 
 ## Component reusability in other projects
 ### Steps to import

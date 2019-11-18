@@ -7,7 +7,6 @@ const VideoMedia = styled.video`
 
 class VideoComponent extends Component {
     state = { 
-        timestamp: this.props.ti,
      }
     render() { 
         return ( 
