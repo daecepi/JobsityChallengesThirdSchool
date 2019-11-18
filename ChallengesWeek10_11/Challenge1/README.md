@@ -4,10 +4,15 @@
 ## Project requirements
 
 ## Dependencies
-Like always there are pre-requisites to accomplish 😏
+Like always there are pre-requisites to have installed 😏
 - NodeJS
-- Yarn (package manager)
-- Styled-components
+- NPM package manager
+
+## Project installation and usage
+1. **clone** or **download** the the repositories code.
+2. Use the commands `cd` and `ls`(`dir` for windows) to position inside the folder with a command line instance.
+3. run `npm install` to install the required packages.
+4. run `npm run start` to test the application.
 
 ## Component reusability in other projects
 ### Steps to import
@@ -34,7 +39,11 @@ render(){
 ### Specializing the component
 Property name | value | description | example
 ------------ | ------------- | ------------- | -------------
-Content from cell 1 | Content from cell 2 | Content from cell 3 | Content from cell 4
+identifier | `sadlad_ksdlakdjl`, `video_1` | a string that identifies the value | `identifier="Video_1"`
+height | `100`, `50` | A strign that contains the porcentage of the container de element is going to ocupy in height | `height={100}`
+width | `100`, `50` | A strign that contains the porcentage of the container de element is going to ocupy in width | `width={100}`
+mode | either `edit` or `mode`| A string the contains one of the two available modes (__edit__ for __editing__ and __prod__ for __production__) | `mode="prod"`
+assets | `[]` `[{id: "aksdajs", name: "Cumpleaños", urlNormal: "./cumple.mp4", urlLegacy: "./cumple.mpeg"}]` | The list of assets should have the next design an id with the image, name the name of the video to show, urlNormal the url to the normal video, urlLegacy: url to the video in a supported version | `assets={[{id: "aksdajs", name: "Cumpleaños", urlNormal: "./cumple.mp4", urlLegacy: "./cumple.mpeg"}]}`
 
 ### Important commands resources taken onto account for architecture design
 - [React_design_practices_2019](https://medium.com/@konstankino/2019-reactjs-best-practices-design-patterns-516e1c3ca06a)
@@ -44,10 +53,6 @@ Content from cell 1 | Content from cell 2 | Content from cell 3 | Content from c
 - Data-Down, Actions-Up pattern seen in [2019_pattern_tendencies](https://medium.com/@konstankino/2019-reactjs-best-practices-design-patterns-516e1c3ca06a)
 - Full component reusability in other projects, with the identification, sizing and styling parametrization given
 - Component co-existance with multiple of their own, thanks to identification (method which allows information id base information saving in LocalStorage)
-
-## Personal challenges proposed
-- usage of more in depth yarn commands
-- Designing of
 
 ## TO DO LIST defined for the project
 [ ] Define base components

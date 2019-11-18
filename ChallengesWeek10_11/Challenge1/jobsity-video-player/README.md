@@ -8,6 +8,12 @@ Like always there are pre-requisites to have installed 😏
 - NodeJS
 - NPM package manager
 
+## Project installation and usage
+1. **clone** or **download** the the repositories code.
+2. Use the commands `cd` and `ls`(`dir` for windows) to position inside the folder with a command line instance.
+3. run `npm install` to install the required packages.
+4. run `npm run start` to test the application.
+
 ## Component reusability in other projects
 ### Steps to import
 1. Move the content of the **"components" folder** into your **"components" folder**
@@ -48,9 +54,6 @@ assets | `[]` `[{id: "aksdajs", name: "Cumpleaños", urlNormal: "./cumple.mp4", 
 - Full component reusability in other projects, with the identification, sizing and styling parametrization given
 - Component co-existance with multiple of their own, thanks to identification (method which allows information id base information saving in LocalStorage)
 
-## Personal challenges proposed
-- usage of more in depth yarn commands
-- Designing of
 
 ## TO DO LIST defined for the project
 [ ] Define base components
