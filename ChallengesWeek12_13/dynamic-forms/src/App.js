@@ -1,19 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import { FullWrapper } from './styles/baseComponents';
 
 import BaseForm from './components/BaseForm';
 
 function App() {
-  const baseObject = {
-    a: 23,
-    b: 33,
-  };
-
-  const other = ;
-
   return (
-    <BaseForm />
+    <FullWrapper>
+      <BaseForm />
+    </FullWrapper>
   );
 }
 

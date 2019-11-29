@@ -1,3 +1,33 @@
+# Dynamic forms
+__*Note:* as part of the requirements the work is a branch__
+
+## Objectives
+- Simulate a project workflow by working in branch for the feature
+- Usage of redux in the creation of a large scale application using redux
+
+## Knowledge applied for other projects
+- Usage of Jobsity App exprience in a large project.
+
+## Dependencies
+- react-bootstrap
+- styled-components
+- redux
+
+## How to install
+- Clone/Download the project
+- Work and move under the following project folder `JobsityChallengesThirdSchool/ChallengesWeek12_13/dynamic-forms`
+- Run in the command line `npm install` (to install dependencies)
+- Run in the command line `npm run start` to run the app locally, see react's available scripts [below](https://github.com/daecepi/JobsityChallengesThirdSchool/tree/master/ChallengesWeek12_13/dynamic-forms#available-scripts)
+
+### How to run for production
+- Run `npm run propd`
+
+## How to reuse for production
+
+
+## Aspects had onto account
+[ ] Implement endpoint for reading the information (for brevity in json format)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
