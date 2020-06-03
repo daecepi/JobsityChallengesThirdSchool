@@ -28,7 +28,7 @@
     "@nestjs/platform-express": "^6.7.2",
     "@nestjs/serve-static": "^1.0.1",
     "controller": "^1.0.0",
-    "mongoose": "^5.7.3",
+    "mongoose": "^5.7.5",
     "nest-config": "^1.0.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
