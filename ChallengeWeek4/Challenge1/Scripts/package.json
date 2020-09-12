@@ -20,6 +20,6 @@
   "author": "David Eduardo Cermeño Pinzón",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   }
 }
